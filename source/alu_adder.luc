@@ -1,0 +1,49 @@
+// Performs addition, subtration, multiplication, division.
+
+module adder ( 
+    
+  // Inputs from the ALU.
+    
+  input alufn[4],
+  input a[16],  
+  input b[16],  
+    
+  // Outputs to the ALU.
+    
+  output sum_out[16],
+  output z_,
+  output v,
+  output n
+    
+) {
+  
+  sig sum[16]; // 16-bit output
+    
+  always {
+    
+    case (alufn[1:0]) { // Alufn value controlling add or subtract operator
+      
+      b00: // Addition.
+        sum = $signed(a) + $signed(b);  
+      b01: // Subtraction.
+        sum = $signed(a) - $signed(b);  
+      b10: // Multiply.
+        sum = $signed(a) * $signed(b);
+      b11: // Division.
+        sum = $signed(a) / $signed(b);
+        
+      default:
+        sum = 9999;
+        
+    }
+    
+    // Assigning values to outputs.
+    
+    sum_out = sum[15:0];
+    if( sum == 0 | -0){
+    z_ = 1;}
+    else{z_ = 0;} //
+    v = (~a[15] & b[15] & (sum[15])) | ((a[15])&(~b[15])& ~(sum[15]));
+    n = sum[15]; //   
+  }
+}

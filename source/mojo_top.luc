@@ -1,0 +1,41 @@
+module mojo_top (
+    
+    input clk,              // 50MHz clock.
+    input rst_n,            // reset button (active low).
+    input cclk,             // configuration clock, AVR ready when high.
+    output spi_miso,        // AVR SPI MISO.
+    input spi_ss,           // AVR SPI Slave Select.
+    input spi_mosi,         // AVR SPI MOSI.
+    input spi_sck,          // AVR SPI Clock.
+    output spi_channel [4], // AVR general purpose pins (used by default to select ADC channel).
+    input avr_tx,           // AVR TX (FPGA RX).
+    output avr_rx,          // AVR RX (FPGA TX).
+    input avr_rx_busy,      // AVR RX buffer full.
+    output io_led [24],   // LEDs on IO Shield.
+    input io_dip [24] // DIP switches on IO Shield.
+
+) {
+  
+  // pipeline button_cond[1] (#DEPTH(5), .clk(clk)).
+  sig rst;                  // Reset signal.
+  
+  .clk(clk) {
+    
+    reset_conditioner reset_cond;
+
+        .rst(rst) {
+      
+                }
+  }
+  
+   always {
+    
+    io_led = io_dip; //led on the io shield are all connected to the io dip
+    reset_cond.in = ~rst_n; // Input raw inverted reset signal.
+    rst = reset_cond.out;   // Conditioned reset.
+    spi_miso = bz;          // Not using SPI.
+    spi_channel = bzzzz;    // Not using flags.
+    avr_rx = bz;            // Not using serial port.
+
+  }
+}

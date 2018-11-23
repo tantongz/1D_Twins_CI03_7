@@ -1,0 +1,74 @@
+module alu (
+
+  // Inputs from mojo_top.
+    
+  input alufn[6],
+  input a[16],  
+  input b[16],  
+    
+  // Outputs to mojo_top.
+    
+  output alu[16],
+  output z_,
+  output v,
+  output n
+    
+) {  
+  
+  // Modules of ALU.
+  
+  adder add_call;
+  cmp cmp_call;
+  boole bool_call;
+  shift shift_call;
+  
+  always {
+    
+    // Adder module.
+    
+    add_call.a = a;
+    add_call.b = b; 
+    add_call.alufn = alufn[3:0]; 
+    
+    // Comparator module.
+    
+    cmp_call.alufn = alufn[3:0];
+    cmp_call.a = a;
+    cmp_call.b = b;
+    
+    // Boolean module.
+    
+    bool_call.a = a;
+    bool_call.b = b;
+    bool_call.alufn=alufn[3:0];
+    
+    // Shift module.
+    
+    shift_call.a = a;
+    shift_call.shift_bit = b[4:0];
+    shift_call.alufn=alufn[3:0];
+    
+    // Choose which component to use, based on the 2 most significnat bits of alufn.
+    
+    case(alufn[5:4]){
+      
+      b00:       
+        alu = add_call.sum_out;
+      b01:
+        alu = bool_call.boole_out; // Calling the boolean component.
+      b10:
+        alu = shift_call.shift_out; // Using the shifter component.
+      b11:
+        alu = cmp_call.cmp_out; // Using the compare component.
+        
+      default:
+        alu = 0;   
+         
+    }
+    
+    z_= add_call.z_ | cmp_call.z_;
+    v = add_call.v | cmp_call.v;
+    n = add_call.n | cmp_call.n;
+    
+  }  
+}

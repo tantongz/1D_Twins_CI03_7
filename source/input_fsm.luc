@@ -1,0 +1,64 @@
+module input_fsm (
+    input clk,  // clock
+    input rst,  // reset
+    output value[4][4], // display_value
+    input fsm_send, // SUM input from mojo_top
+    input input_carry, // CARRY input from mojo_top
+    input input_mode, // mode_input from mojo_top
+    output modee[5],
+    input alufn_st,
+    input input_a,
+    input input_b
+    
+    ){
+  
+  .clk(clk){
+    .rst(rst){
+      fsm state = {ALUFN,INPUT_A,INPUT_B,AUTO,DISPLAY};
+}
+    dff display_value[4][4]; // Size of LED segments
+    dff mode[5];
+
+        }
+
+  
+always {
+    value = display_value.q; // output value to be displayed on the segment 
+    modee = mode.q; // output mode
+    case (state.q) { // FSM case statement    
+      state.ALUFN: // Manual 
+          mode.d = 0;
+          // input_mode is connected to dip switch 23(last)       
+          if (input_mode) //When switch is HIGH, change over to AUTO mode 
+            {state.d = state.AUTO;}  
+          else if (fsm_send == 1)
+          {state.d = state.INPUT_A;}
+          else // if both SUM and CARRY value is HIGH
+            {display_value.d = {4d1, 4d9, 4d9, 4d9};} // Array represents the 4 digit to be displayed. 4d9 represents default value as 9 is not defined in digit_lut 
+
+      state.INPUT_A: // Manual 
+          mode.d = 1;
+          // input_mode is connected to dip switch 23(last)       
+          if (input_mode) //When switch is HIGH, change over to AUTO mode 
+            {state.d = state.AUTO;}  
+          else if (fsm_send == 1)
+          {state.d = state.INPUT_B;}
+          else // if both SUM and CARRY value is HIGH
+            {display_value.d = {4d2, 4d9, 4d9, 4d9};} // Array represents the 4 digit to be displayed. 4d9 represents default value as 9 is not defined in digit_lut 
+
+      state.INPUT_B: // Manual 
+          mode.d = 3;
+          // input_mode is connected to dip switch 23(last)       
+          if (input_mode) //When switch is HIGH, change over to AUTO mode 
+            {state.d = state.AUTO;}  
+          else if (fsm_send == 1)
+          {state.d = state.DISPLAY;}
+          else // if both SUM and CARRY value is HIGH
+            {display_value.d = {4d3, 4d9, 4d9, 4d9};} // Array represents the 4 digit to be displayed. 4d9 represents default value as 9 is not defined in digit_lut 
+      state.DISPLAY:
+          mode.d = 5;
+                  
+                   
+    }
+     }
+}

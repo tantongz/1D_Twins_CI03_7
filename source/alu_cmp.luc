@@ -1,0 +1,51 @@
+// Performs CMPEQ, CMPLT, CMPLE functions.
+
+module cmp ( 
+  
+  // Input from ALU.
+    
+  input alufn[4], 
+
+  input a[16],  
+  input b[16], 
+    
+  // Output to ALU.
+    
+  output cmp_out[16],
+  output z_,
+  output v,
+  output n
+   
+    
+) {
+  
+  adder adder;
+  
+  always {
+  
+    adder.a = a;
+    adder.b = b;
+    adder.alufn = 1; 
+  
+    case (alufn[2:1]) { // Values of alufn that define comparator function.
+    
+      b01: // Compare equal.
+        cmp_out[0] = adder.z_; 
+      b10: // Compare less than.
+        cmp_out[0] = adder.n ^ adder.v; // ^ represents XOR so n XOR V
+      b11: //compare less than equal
+        cmp_out[0] = adder.z_ | (adder.n ^ adder.v); // | represents OR
+      
+      default:
+        cmp_out[0] = 0; // Default needed.
+      
+      }
+    
+    cmp_out[15:1] = 15b0;
+    z_ = adder.z_;
+    n = adder.n;
+    v = adder.v;
+
+  }
+  
+}
