@@ -1,0 +1,88 @@
+module control (
+    input r,
+    input d[2],
+    input state[3],
+
+    output sel_level,
+    output sel_display,
+    output sel_start,
+    output sel_state,
+    output sel_map,
+    output sel_check,
+    output check_win,
+    output alufn[6],
+    output sel_new_pos,
+) {
+
+    always {
+        
+        case (state) {
+            // select level
+            1:  sel_level = -d;
+                sel_display = 0;
+                sel_start = 1;
+                sel_state = 0;
+                sel_map = z; // z-value if value dont matter.
+                sel_check = z;
+                check_win = z;
+                alufn = z;
+                sel_new_pos = z;
+
+            // make move
+            2:  sel_level = z;
+                sel_display = 1;
+                sel_start = -r;
+                sel_state = 0;
+                sel_map = z;
+                sel_check = z;
+                check_win = z;
+                alufn = z;
+                sel_new_pos = z;
+
+            // check map a
+            3:  sel_level = z;
+                sel_display = 1;
+                sel_start = -r;
+                sel_state = 1;
+                sel_map = 0;
+                sel_check = 0;
+                check_win = 0;
+                alufn = cmpeq; // !!! TO DO : replace with ALUFN
+                sel_new_pos = d;
+
+            // check map b
+            4:  sel_level = z;
+                sel_display = 1;
+                sel_start = -r;
+                sel_state = 1;
+                sel_map = 1;
+                sel_check = 0;
+                check_win = 1;
+                alufn = cmpeq; // !!! TO DO : replace with ALUFN
+                sel_new_pos = d;
+
+            // check for win
+            5:  sel_level = z;
+                sel_display = 1;
+                sel_start = -r;
+                sel_state = 0;
+                sel_map = z;
+                sel_check = 1;
+                check_win = 2;
+                alufn = sum; // !!! TO DO : replace with ALUFN
+                sel_new_pos = z;
+
+            // win procedure
+            6:  sel_level = z;
+                sel_display = 1;
+                sel_start = 0;
+                sel_state = z;
+                sel_map = z;
+                sel_check = z;
+                check_win = z;
+                alufn = z;
+                sel_new_pos = z;
+        }
+    }
+
+}

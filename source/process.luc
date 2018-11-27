@@ -1,0 +1,26 @@
+module process (
+    input button_in[],
+    input level[2],
+    input map_a[6][6],
+    input map_b[6][6],
+    input temp_pos_a[6],
+    input temp_pos_b[6],
+    input reg0[2],
+
+    output led[],
+) {
+
+    control ctrl;
+    board_generator board_gen;
+    data_memory data_mem;
+
+    always {
+
+        case (reg0) {
+            0: ctrl.state = 2;
+            1: ctrl.state = 2;
+            2: ctrl.state = 6;
+        }
+
+    }
+}
