@@ -2,6 +2,7 @@ module control (
     input r,
     input d[2],
     input state[3],
+
     output sel_level,
     output sel_display,
     output sel_start,
@@ -12,7 +13,9 @@ module control (
     output alufn[6],
     output sel_new_pos,
 ) {
+
     always {
+        
         case (state) {
             // select level
             1:  sel_level = -d;

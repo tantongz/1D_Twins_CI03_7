@@ -6,6 +6,7 @@
 
 module map_rom (
     input level_adr[2],
+    
     output map_a[6][6],
     output map_b[6][6],
     output sp_a[6],
