@@ -1,0 +1,65 @@
+module matrix_display (
+    
+    input clk,  // clock
+    input rst,  // reset_conditioner
+    
+    input green[8][8],
+    input red[8][8],
+    
+      // green/red expects a format:
+      // { b00000000, 
+      //   b00100100, 
+      //   b00100100, 
+      //   b00000000, 
+      //   b01000010, 
+      //   b00100100, 
+      //   b00011000, 
+      //   b00000000 };
+    
+    output r_red[8],
+    output r_green[8],
+    output col[8]  
+    
+    ) {
+  
+  .clk(clk) {
+    
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    
+  }
+  
+  // A counter goes from 0 to 7, using an output of 4 bits (0000 - 0111).
+  // TODO: see if 3 bits of output works.
+  
+  const FLIP = 16;
+  counter counter_r (.clk(clk),.rst(rst),#SIZE(4), #DIV(FLIP), #TOP(7));
+  sig cur_col[4];
+  var i;
+  
+  always {
+    
+    // Connect resistor between input port and input for the row.
+    // Edit pins in matrix.ucf to change the port to use.
+    
+    // Set the display to show nothing.
+    
+    r_red = b11111111;
+    r_green = b11111111; 
+    col = b00000000;  
+    
+    cur_col = counter_r.value; // Choose the column to flash in this iteration.
+
+    col[cur_col] = 1;     // Allow the selected column to possibly output something.
+    
+    // Iterate through each row, and allow the row to output if reflected in the input.
+    
+    for (i = 0; i <= 7; i++) {
+      
+      r_red[i] = ~red[i][7-cur_col];
+      r_green[i] = ~green[i][7-cur_col];
+      
+    }
+    
+  }
+}

@@ -12,20 +12,26 @@ module mojo_top (
     output avr_rx,          // AVR RX (FPGA TX).
     input avr_rx_busy,      // AVR RX buffer full.
     output io_led [24],   // LEDs on IO Shield.
-    input io_dip [24] // DIP switches on IO Shield.
+    input io_dip [24], // DIP switches on IO Shield.
+    output r_red[8],
+    output r_green[8],
+    output col[8]
 
 ) {
   
   // pipeline button_cond[1] (#DEPTH(5), .clk(clk)).
   sig rst;                  // Reset signal.
+  matrix_display mat_dis(.clk(clk), .rst(rst));
   
   .clk(clk) {
     
     reset_conditioner reset_cond;
 
-        .rst(rst) {
+      .rst(rst) {
       
-                }
+        
+      
+       }
   }
   
    always {
@@ -36,6 +42,30 @@ module mojo_top (
     spi_miso = bz;          // Not using SPI.
     spi_channel = bzzzz;    // Not using flags.
     avr_rx = bz;            // Not using serial port.
+    r_red = mat_dis.r_red;
+    r_green = mat_dis.r_green;
+    col = mat_dis.col;
+    mat_dis.green = {
+      b00000000, 
+      b00100100, 
+      b00100100, 
+      b00000000, 
+      b01000010, 
+      b00100100, 
+      b00011000, 
+      b00000000 
+    };
+    
+    mat_dis.red = {
+      b11111111, 
+      b10000001,
+      b10000001,
+      b10000001,
+      b10000001,
+      b10000001,
+      b10000001,
+      b11111111
+    };
 
   }
 }
