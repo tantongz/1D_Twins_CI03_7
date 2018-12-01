@@ -1,0 +1,56 @@
+module map_rom (
+    input sel_map,
+    input level_adr_i[2],
+    input sel_start,
+    input new_tp[6],
+    input R0_i[2]
+    
+    // to processing module
+    output level_adr[2],
+    output map_a[6][6],
+    output map_b[6][6],
+    output ep_a[6],
+    output ep_b[6],
+    output tp_a[6];
+    output tp_b[6];
+    output R0[2],
+
+    // to check module
+    output curr_map[6][6],
+    output curr_ep[6],
+    output curr_tp[6]
+) {
+
+    map_rom map_mem;
+
+    always {
+
+        // load address to ROM
+        map_mem.level_adr = level_adr_i;
+
+        // get map data using address
+        map_a = map_mem.map_a;
+        map_b = map_mem.map_b;
+        sp_a = map_mem.sp_a;
+        sp_b = map_mem.sp_b;
+        ep_a = map_mem.ep_a;
+        ep_b = map_mem.ep_b;
+
+        case (selStart) {
+            0:  // no write;
+
+            1:  tp_a = map_mem.sp_a;    // write data of SP to TP
+                tp_b = map_mem.sp_b;
+                // state change ? to 2
+        }
+
+        case (selMap) {
+            0: // process map a
+                // state change 3 to 4
+
+            1: // process map b
+                // state change 4 to 5
+        }
+
+    }
+}

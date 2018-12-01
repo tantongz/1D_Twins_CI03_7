@@ -10,10 +10,6 @@ module process (
     output led[],
 ) {
 
-    control ctrl;
-    board_generator board_gen;
-    data_memory data_mem;
-
     always {
 
         case (reg0) {

@@ -18,10 +18,10 @@ module control (
         
         case (state) {
             // select level
-            1:  sel_level = -d;
+            0:  sel_level = d;
                 sel_display = 0;
                 sel_start = 1;
-                sel_state = 0;
+                sel_state = 0; // no need anymore
                 sel_map = z; // z-value if value dont matter.
                 sel_check = z;
                 check_win = z;
@@ -29,7 +29,7 @@ module control (
                 sel_new_pos = z;
 
             // make move
-            2:  sel_level = z;
+            1:  sel_level = z;
                 sel_display = 1;
                 sel_start = -r;
                 sel_state = 0;
@@ -40,7 +40,7 @@ module control (
                 sel_new_pos = z;
 
             // check map a
-            3:  sel_level = z;
+            2:  sel_level = z;
                 sel_display = 1;
                 sel_start = -r;
                 sel_state = 1;
@@ -51,7 +51,7 @@ module control (
                 sel_new_pos = d;
 
             // check map b
-            4:  sel_level = z;
+            3:  sel_level = z;
                 sel_display = 1;
                 sel_start = -r;
                 sel_state = 1;
@@ -62,7 +62,7 @@ module control (
                 sel_new_pos = d;
 
             // check for win
-            5:  sel_level = z;
+            4:  sel_level = z;
                 sel_display = 1;
                 sel_start = -r;
                 sel_state = 0;
@@ -73,7 +73,7 @@ module control (
                 sel_new_pos = z;
 
             // win procedure
-            6:  sel_level = z;
+            5:  sel_level = z;
                 sel_display = 1;
                 sel_start = 0;
                 sel_state = z;

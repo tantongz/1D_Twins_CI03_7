@@ -1,0 +1,15 @@
+module check (
+    input r0_i,
+    input r1_i,
+    input r2_i,
+
+    output r0,
+    output r1,
+    output r2,
+) {
+    always {
+        r0 = r0_i;
+        r1 = r1_i;
+        r2 = r2_i;
+    }
+}
