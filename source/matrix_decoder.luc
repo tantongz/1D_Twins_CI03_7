@@ -1,0 +1,19 @@
+module matrix_decoder (
+    input clk,  // clock
+    input rst,  // reset
+    input tp[6], // position of particle
+    input mapdata[6][6], // map_array
+    output out
+  ) {
+  
+  sig x_pos[3];
+  sig y_pos[3];
+
+  always {
+    x_pos = tp[5:3];
+    y_pos = tp[2:0];
+    
+    out = mapdata[x_pos][y_pos];
+    
+  }
+}

@@ -1,0 +1,36 @@
+module map_to_display (
+    input clk,  // clock
+    input rst,  // reset
+    input tp_a[6], // position of particle
+    input ep_a[6], // end position of a
+    input map_a[6][6], // map_array
+    input tp_b[6], // position of particle
+    input ep_b[6], //end position of b
+    input map_b[6][6], // map_array
+    output out[8][8]
+  ) {
+  
+  var i; // x-axis
+  var j; // y-axis
+
+  always {
+  
+    // do we need to set all cells to 0 first?
+    
+    // set up map in display
+    for (i = 1; i < 4; i++){
+      for (j = 1; j < 4; j++){
+        out[i + 1][j - 1] = map_a[i][j];    // LED matrix starts counting from 0
+        out[i + 1][j + 3] = map_b[i][j]; 
+      }
+    }
+    
+    // set up temp positions
+    out[tp_a[5:3] + 1][tp_a[2:0] - 1] = 1; // some colour
+    out[tp_b[5:3] + 1][tp_b[2:0] + 3] = 1; // some colour
+    
+    // set up end positions
+    out[ep_a[5:3] + 1][ep_a[2:0] - 1] = 1; // some colour
+    out[ep_b[5:3] + 1][ep_b[2:0] + 3] = 1; // some colour
+  }
+}
