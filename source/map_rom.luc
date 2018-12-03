@@ -1,4 +1,4 @@
-// 000 000 . . . . . . . . . . . . . 101 000
+// 000 001 . . . . . . . . . . . . . 101 000
 // .       001 001 . . . . . 100 001	    .
 // .       .      COORDINATES       .       .
 // .       001 100 . . . . . 100 100	    .
@@ -12,8 +12,8 @@ module map_rom (
     output sp_a[6],
     output sp_b[6],
     output ep_a[6],
-    output ep_b[6],
-) {
+    output ep_b[6]
+    ){
 
     always {
         case (level_adr) {
@@ -92,6 +92,27 @@ module map_rom (
                 sp_b = b100001;
                 ep_a = b011100;
                 ep_b = b001100;
+        
+            //default -- currently using level 1
+            default: 
+                map_a = {b111111,
+                         b100001,
+                         b110101,
+                         b100001,
+                         b100101,
+                         b111111};  // map a, 1 if wall or obstacle
+
+                map_b = {b111111,
+                         b101001,
+                         b100001,
+                         b101001,
+                         b100001,
+                         b111111};  // map b, 1 if wall or obstacle
+
+                sp_a = b001100; // start position for map a
+                sp_b = b001100; // start position for map b
+                ep_a = b100001; // end position for map a
+                ep_b = b100001; // end position for map b
         }
     }
 }
