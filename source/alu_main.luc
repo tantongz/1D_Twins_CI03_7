@@ -1,4 +1,4 @@
-module alu (
+module alu_main (
 
   // Inputs from mojo_top.
     
