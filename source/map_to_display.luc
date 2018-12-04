@@ -1,6 +1,4 @@
 module map_to_display (
-    input clk,  // clock
-    input rst,  // reset
     input tp_a[6], // position of particle
     input ep_a[6], // end position of a
     input map_a[6][6], // map_array

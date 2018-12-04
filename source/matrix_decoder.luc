@@ -1,6 +1,4 @@
 module matrix_decoder (
-    input clk,  // clock
-    input rst,  // reset
     input tp[6], // position of particle
     input mapdata[6][6], // map_array
     output out

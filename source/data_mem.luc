@@ -1,57 +1,76 @@
 module data_mem (
+    input clk, // clock
     input sel_map,
     input level_adr_i[2],
     input sel_start,
+    input r0_i[16],
     input new_tp[6],
-    input r0_i[2],
     
     // to processing module
     output level_adr[2],
-    output map_a[6][6],
-    output map_b[6][6],
-    output ep_a[6],
-    output ep_b[6],
-    output tp_a[6],
-    output tp_b[6],
-    output r0[2],
-
+    output out[8][8],
+    output r0[16],
+    
     // to check module
     output curr_map[6][6],
     output curr_ep[6],
     output curr_tp[6]
-) {
+  ) {
   
-
-    map_rom map_mem;
-
-    always {
-
-        // load address to ROM
-        map_mem.level_adr = level_adr_i;
-
-        // get map data using address
-        map_a = map_mem.map_a;
-        map_b = map_mem.map_b;
-        tp_a = map_mem.sp_a;
-        tp_b = map_mem.sp_b;
-        ep_a = map_mem.ep_a;
-        ep_b = map_mem.ep_b;
-
-        case (selStart) {
-            0:  // no write;
-
-            1:  tp_a = map_mem.sp_a;    // write data of SP to TP
-                tp_b = map_mem.sp_b;
-                // state change ? to 2
-        }
-
-        case (selMap) {
-            0: // process map a
-                // state change 3 to 4
-
-            1: // process map b
-                // state change 4 to 5
-        }
-
+  .clk(clk){
+    dff reg_tp_a[6];
+    dff reg_tp_b[6];
+  }
+  
+  map_rom map_mem;
+  map_to_display  display_map_call;
+  
+  always {
+  
+    // write back to refreash
+    reg_tp_a.d = reg_tp_a.q;
+    reg_tp_b.d = reg_tp_b.q;
+    r0 = r0_i;
+    
+    // load address to ROM
+    map_mem.level_adr = level_adr_i;
+    
+    // load values to registers
+    if (sel_start == 1){
+      reg_tp_a.d = map_mem.sp_a;
+      reg_tp_b.d = map_mem.sp_b;
+      r0 = 0;
     }
+    else{
+      reg_tp_a.d = reg_tp_a.q;
+      reg_tp_b.d = reg_tp_b.q;
+      r0 = r0_i;
+    }
+    
+    // load values to check unit    
+    if (sel_map == 0){
+      curr_map = map_mem.map_a;
+      curr_ep = map_mem.ep_a;
+      curr_tp = reg_tp_a.q;
+      reg_tp_a.d = new_tp; // from decoder / check module
+    }
+    else{
+      curr_map = map_mem.map_b;
+      curr_ep = map_mem.ep_b;
+      curr_tp = reg_tp_b.q;
+      reg_tp_b.d = new_tp; // from decoder / check module
+    }
+    
+    // to processing module
+    level_adr = level_adr_i;
+    
+    // sorted map to LED matrix
+    display_map_call.map_a = map_mem.map_a;
+    display_map_call.map_b = map_mem.map_b;
+    display_map_call.tp_a = reg_tp_a.q;
+    display_map_call.tp_b = reg_tp_b.q;
+    display_map_call.ep_a = map_mem.ep_a;
+    display_map_call.ep_b = map_mem.ep_b;
+    out = display_map_call.out;
+  }
 }
