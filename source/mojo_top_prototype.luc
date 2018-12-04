@@ -13,44 +13,44 @@ module mojo_top (
     input avr_rx_busy,      // AVR RX buffer full.
     output io_led [24],   // LEDs on IO Shield.
     input io_dip [24], // DIP switches on IO Shield.
+    
+    // input buttons -- change when connected to IO
+    input up,
+    input down,
+    input left,
+    input right,
+    input reset,
+    input select,
+    
     output r_red[8],
     output r_green[8],
     output col[8]
-
-) {
-
-
-  // processing module to board generator
-  sig lx;
-
-  // data memory to decoder
-  sig tpmux;
-  
-  // registers
-  dff level[2],
-  dff r,
-  dff reg_d,
-  dff state,
-
-  // modules
-  board_generator board_gen_call,
-  control ctrl_call,
-  data_mem data_mem_call,
-  check check_call, // TO DO:  MAKE CHECK
-  alu alu_call,
-
-  .clk(clk) {
     
+  ) {
+  
+  sig rst;
+  
+  // modules
+  board_generator board_gen_call;
+  control ctrl_call;
+  data_mem data_mem_call(.clk(clk));
+  check check_call(.clk(clk));
+  alu_main alu_call;
+  matrix_decoder decoder;
+  
+  .clk(clk) {
     reset_conditioner reset_cond;
-
-      .rst(rst) {
-          
-          fsm state = {SELECT, WAIT, CHECKA, CHECKB, CHECKWIN, WIN};
-        
-       }
+    
+    // states
+    fsm state = {SELECT, WAIT, CHECKA, CHECKB, CHECKWIN, WIN};
+    
+    // registers
+    dff level[2];
+    dff reg_d;
+    dff reg_r;
   }
   
-   always {
+  always {
     
     io_led = io_dip; //led on the io shield are all connected to the io dip
     reset_cond.in = ~rst_n; // Input raw inverted reset signal.
@@ -58,182 +58,375 @@ module mojo_top (
     spi_miso = bz;          // Not using SPI.
     spi_channel = bzzzz;    // Not using flags.
     avr_rx = bz;            // Not using serial port.
-
-
+    
+    // connect buttons
+    /*
+    down = io_dip[];
+    up = io_dip[];
+    left = io_dip[];
+    right = io_dip[];
+    select = io_dip[];
+    reset = io_dip[];
+    */
+    
+    // do we need to initalise registers?
+    
     // d handler
-    if (up) { reg_d = 1 };
-    if (down) { reg_d = 0 };
-    if (left) { reg_d = 2 };
-    if (right) { reg_d = 3 };
-
-    if (reset) { ctrl_call.r = 1 }
-
+    if (down) { reg_d.d = 0; }
+    if (up) { reg_d.d = 1; }
+    if (left) { reg_d.d = 2; }
+    if (right) { reg_d.d = 3; }
+    
+    // if no direction buttons were pressed
+    else{reg_d.d = bz;}
+    
+    if (reset) { reg_r.d = 1; } // if pressed
+    else{reg_r.d = reg_r.q;} // if not pressed
+    
     case(state.q) {
-        state.SELECT:   ctrl_call.s = 0
-                        ctrl_call.r = z
-                        if (reg_d == 1 | reg_d == 3 ) {
-                            ctrl_call.d = 1;
-                        } else if (reg_d == 2 | reg_d == 0) {
-                            ctrl_call.d = 0;
-                        }
-
-                        // processing to board
-                        lx = ctrl_call.sel_level ? level + b01 : level - b01;
-                        board_gen_call.in = ctrl_call.sel_display ? level : lx;
-
-                        // board to data
-                        data_mem_call.level_adr_i = board_gen_call.out;
-
-                        // ctrl to data
-                        data_mem_call.sel_start = ctrl_call.sel_start;
-
-                        // led_decoder to get map data from data_mem_call
-
-                        if (select){
-                            state.d = state.WAIT
-                        }
-
-        state.WAIT:     ctrl_call.s = 1
-
-                        // processing to board
-                        board_gen_call.in = level;
-
-                        // board to data
-                        data_mem_call.level_adr_i = board_gen_call.out;
-
-                        // ctrl to data
-                        data_mem_call.sel_start = ctrl_call.sel_start;
-                        data_mem_call.sel_map = ctrl_call.sel_map;
-
-                        
-
-                        // led_decoder to get map data from data_mem_call
-
-                        if (up | down | left | right){
-                            state.d = state.CHECKA
-                        }
-
-        state.CHECKA:   ctrl_call.s = 2
-                        ctrl_call.d = reg_d;
-
-                        // processing to board
-                        board_gen_call.in = level;
-
-                        // board to data
-                        data_mem_call.level_adr_i = board_gen_call.out;
-
-                        // ctrl to data
-                        data_mem_call.sel_start = ctrl_call.sel_start;
-                        data_mem_call.sel_map = ctrl_call.sel_map;
-
-                        // data memory to decoder
-                        if(ctrl_call.sel_new_pos == 0){
-                            tpmux = data_mem_call.curr_tp - b000001;
-                        } else if(ctrl_call.sel_new_pos == 1){
-                            tpmux = data_mem_call.curr_tp + b000001;
-                        } else if(ctrl_call.sel_new_pos == 2){
-                            tpmux = data_mem_call.curr_tp - b001000;
-                        } else if(ctrl_call.sel_new_pos == 3){
-                            tpmux = data_mem_call.curr_tp + b001000;
-                        }
-
-                        decoder.tp = tpmux;
-
-                        decoder.mapdata = data_mem_call.curr_map;
-
-                        data_mem_call.new_tp = decoder.out ? data_mem_call.curr_tp : tpmux;
-
-                        // data memory to alu
-                        alu_call.alufn = ctrl_call.alufn
-                        alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
-                        alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.new_tp;
-                        
-                        if (ctrl_call.check_win == 0) {
-                            check_call.r1_i = alu_call.out;
-                        }
-
-                        // led_decoder to get map data from data_mem_call
-
-                        if (up | down | left | right){
-                            state.d = state.CHECKA
-                        }
-
-                        state.d = state.CHECKB
-
-        state.CHECKB:   ctrl_call.s = 3
-                        ctrl_call.d = reg_d;
-
-                        // processing to board
-                        board_gen_call.in = level;
-
-                        // board to data
-                        data_mem_call.level_adr_i = board_gen_call.out;
-
-                        // ctrl to data
-                        data_mem_call.sel_start = ctrl_call.sel_start;
-                        data_mem_call.sel_map = ctrl_call.sel_map;
-
-                        // data memory to decoder
-                        if(ctrl_call.sel_new_pos == 0){
-                            tpmux = data_mem_call.curr_tp - b000001;
-                        } else if(ctrl_call.sel_new_pos == 1){
-                            tpmux = data_mem_call.curr_tp + b000001;
-                        } else if(ctrl_call.sel_new_pos == 2){
-                            tpmux = data_mem_call.curr_tp - b001000;
-                        } else if(ctrl_call.sel_new_pos == 3){
-                            tpmux = data_mem_call.curr_tp + b001000;
-                        }
-
-                        decoder.tp = tpmux;
-
-                        decoder.mapdata = data_mem_call.curr_map;
-
-                        data_mem_call.new_tp = decoder.out ? data_mem_call.curr_tp : tpmux;
-
-                        // data memory to alu
-                        alu_call.alufn = ctrl_call.alufn
-                        alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
-                        alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.new_tp;
-                        
-                        if (ctrl_call.check_win == 1) {
-                            check_call.r2_i = alu_call.out;
-                        }
-
-                        // led_decoder to get map data from data_mem_call
-
-                        if (up | down | left | right){
-                            state.d = state.CHECKA
-                        }
-
-                        state.d = state.CHECKWIN
-
-        state.CHECKWIN: ctrl_call.s = 4
-
-                        // data memory to alu
-                        alu_call.alufn = ctrl_call.alufn
-                        alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
-                        alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.new_tp;
-                        
-                        if (ctrl_call.check_win == 2) {
-                            check_call.r0_i = alu_call.out;
-                        }
-
-                        if (check_call.r0 == 2) {
-                            state.d = state.WIN;
-                        } else if (check_call.r0 == 1) {
-                            ctrl_call.r = 1 // force reset
-                            state.d = state.MOVE;
-                        } else {
-                            state.d = state.MOVE;
-                        }
-
-        state.WIN:      ctrl_call.s = 3
-
-                        // some win stuff
-
-                        if (up | down | left | right | reset | select){
-                            state.d = state.SELECT
-                        }
+      state.SELECT:
+        // inputs for control module
+        ctrl_call.state = 0;
+        ctrl_call.r = reg_r.q;
+        ctrl_call.d = reg_d.q;
+        
+        // processing to board
+        board_gen_call.sel_level = ctrl_call.sel_level;
+        board_gen_call.sel_display = ctrl_call.sel_display;
+        board_gen_call.level_i = level.q;
+        level.d = board_gen_call.level_o;
+        
+        // board to data
+        data_mem_call.level_adr_i = level.q;
+        
+        // ctrl to data
+        data_mem_call.sel_start = ctrl_call.sel_start;
+        data_mem_call.sel_map = ctrl_call.sel_map;
+        
+        // ctrl to decoder
+        decoder.sel_new_pos = ctrl_call.sel_new_pos;
+        
+        // data memory to decoder
+        decoder.curr_tp = data_mem_call.curr_tp;
+        decoder.mapdata = data_mem_call.curr_map;
+        
+        // decoder to data memory
+        data_mem_call.new_tp_i = decoder.new_tp;
+        
+        // data to alu
+        alu_call.alufn = ctrl_call.alufn;
+      alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
+      alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.curr_tp;
+        
+        // check module
+        check_call.value = alu_call.alu;
+        check_call.check_win = ctrl_call.check_win;
+        
+        // check to data_mem
+        data_mem_call.r0_i = check_call.r0;
+        
+        // led_decoder to get map data from data_mem_call
+        //led_matrix = data_mem_call.out;
+        
+        // next state
+        if (select){
+          state.d = state.WAIT;
+        }
+      
+      state.WAIT:
+        ctrl_call.state = 1;
+        ctrl_call.d = reg_d.q;
+        ctrl_call.r = reg_r.q;
+        
+        // processing to board
+        board_gen_call.sel_level = ctrl_call.sel_level;
+        board_gen_call.sel_display = ctrl_call.sel_display;
+        board_gen_call.level_i = level.q;
+        level.d = board_gen_call.level_o;
+        
+        // board to data
+        data_mem_call.level_adr_i = level.q;
+        
+        // ctrl to data
+        data_mem_call.sel_start = ctrl_call.sel_start;
+        data_mem_call.sel_map = ctrl_call.sel_map;
+        
+        // ctrl to decoder
+        decoder.sel_new_pos = ctrl_call.sel_new_pos;
+        
+        // data memory to decoder
+        decoder.curr_tp = data_mem_call.curr_tp;
+        decoder.mapdata = data_mem_call.curr_map;
+        
+        // decoder to data memory
+        data_mem_call.new_tp_i = decoder.new_tp;
+        
+        // data to alu
+        alu_call.alufn = ctrl_call.alufn;
+      alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
+      alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.curr_tp;
+        
+        // check module
+        check_call.value = alu_call.alu;
+        check_call.check_win = ctrl_call.check_win;
+        
+        // check to data_mem
+        data_mem_call.r0_i = check_call.r0;
+        
+        // led_decoder to get map data from data_mem_call
+        //led_matrix = data_mem_call.out;
+        
+        if (up | down | left | right){
+          state.d = state.CHECKA;
+        }
+      
+      state.CHECKA:
+        ctrl_call.state = 2;
+        ctrl_call.d = reg_d.q;
+        ctrl_call.r = reg_r.q;
+        
+        // processing to board
+        board_gen_call.sel_level = ctrl_call.sel_level;
+        board_gen_call.sel_display = ctrl_call.sel_display;
+        board_gen_call.level_i = level.q;
+        level.d = board_gen_call.level_o;
+        
+        // board to data
+        data_mem_call.level_adr_i = level.q;
+        
+        // ctrl to data
+        data_mem_call.sel_start = ctrl_call.sel_start;
+        data_mem_call.sel_map = ctrl_call.sel_map;
+        
+        // data memory to decoder
+        decoder.curr_tp = data_mem_call.curr_tp;
+        decoder.mapdata = data_mem_call.curr_map;
+        
+        // ctrl to decoder
+        decoder.sel_new_pos = ctrl_call.sel_new_pos;
+        
+        // decoder to data memory
+        data_mem_call.new_tp_i = decoder.new_tp;
+        
+        // data to alu
+        alu_call.alufn = ctrl_call.alufn;
+      alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
+      alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.curr_tp;
+        
+        // check module
+        check_call.value = alu_call.alu;
+        check_call.check_win = ctrl_call.check_win;
+        
+        // check to data_mem
+        data_mem_call.r0_i = check_call.r0;
+        
+        // led_decoder to get map data from data_mem_call
+        //led_matrix = data_mem_call.out;
+        
+        // go straight to CHECKB
+        state.d = state.CHECKB;
+      
+      state.CHECKB:
+        ctrl_call.state = 3;
+        ctrl_call.d = reg_d.q;
+        ctrl_call.r = reg_r.q;
+        
+        // processing to board
+        board_gen_call.sel_level = ctrl_call.sel_level;
+        board_gen_call.sel_display = ctrl_call.sel_display;
+        board_gen_call.level_i = level.q;
+        level.d = board_gen_call.level_o;
+        
+        // board to data
+        data_mem_call.level_adr_i = level.q;
+        
+        // ctrl to data
+        data_mem_call.sel_start = ctrl_call.sel_start;
+        data_mem_call.sel_map = ctrl_call.sel_map;
+        
+        // data memory to decoder
+        decoder.curr_tp = data_mem_call.curr_tp;
+        decoder.mapdata = data_mem_call.curr_map;
+        
+        // ctrl to decoder
+        decoder.sel_new_pos = ctrl_call.sel_new_pos;
+        
+        // decoder to data memory
+        data_mem_call.new_tp_i = decoder.new_tp;
+        
+        // data to alu
+        alu_call.alufn = ctrl_call.alufn;
+      alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
+      alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.curr_tp;
+        
+        // check module
+        check_call.value = alu_call.alu;
+        check_call.check_win = ctrl_call.check_win;
+        
+        // check to data_mem
+        data_mem_call.r0_i = check_call.r0;
+        
+        // led_decoder to get map data from data_mem_call
+        //led_matrix = data_mem_call.out;
+        
+        // go straight to state CHECKWIN
+        state.d = state.CHECKWIN;
+      
+      state.CHECKWIN:
+        ctrl_call.state = 4;
+        ctrl_call.d = bz;
+        ctrl_call.r = bz;
+        
+        // processing to board
+        board_gen_call.sel_level = ctrl_call.sel_level;
+        board_gen_call.sel_display = ctrl_call.sel_display;
+        board_gen_call.level_i = level.q;
+        level.d = board_gen_call.level_o;
+        
+        // board to data
+        data_mem_call.level_adr_i = level.q;
+        
+        // ctrl to data
+        data_mem_call.sel_start = ctrl_call.sel_start;
+        data_mem_call.sel_map = ctrl_call.sel_map;
+        
+        // data memory to decoder
+        decoder.curr_tp = data_mem_call.curr_tp;
+        decoder.mapdata = data_mem_call.curr_map;
+        
+        // ctrl to decoder
+        decoder.sel_new_pos = ctrl_call.sel_new_pos;
+        
+        // decoder to data memory
+        data_mem_call.new_tp_i = decoder.new_tp;
+        
+        // data to alu
+        alu_call.alufn = ctrl_call.alufn;
+      alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
+      alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.curr_tp;
+        
+        // check module
+        check_call.value = alu_call.alu;
+        check_call.check_win = ctrl_call.check_win;
+        
+        // check to data_mem
+        data_mem_call.r0_i = check_call.r0;
+        
+        // led_decoder to get map data from data_mem_call
+        //led_matrix = data_mem_call.out;
+        
+        // check module
+        check_call.value = alu_call.alu;
+        check_call.check_win = ctrl_call.check_win;
+        
+        if (data_mem_call.r0 == 2) {
+          state.d = state.WIN;
+        } else if (data_mem_call.r0 == 1) {
+          reg_r.d = 1; // force reset
+          state.d = state.WAIT;
+        } else {
+          reg_r.d = 0;
+          state.d = state.WAIT;
+        }
+      
+      state.WIN:
+        ctrl_call.state = 5;
+        ctrl_call.d = reg_d.q;
+        ctrl_call.r = reg_r.q;
+        
+        // processing to board
+        board_gen_call.sel_level = ctrl_call.sel_level;
+        board_gen_call.sel_display = ctrl_call.sel_display;
+        board_gen_call.level_i = level.q;
+        level.d = board_gen_call.level_o;
+        
+        // board to data
+        data_mem_call.level_adr_i = level.q;
+        
+        // ctrl to data
+        data_mem_call.sel_start = ctrl_call.sel_start;
+        data_mem_call.sel_map = ctrl_call.sel_map;
+        
+        // data memory to decoder
+        decoder.curr_tp = data_mem_call.curr_tp;
+        decoder.mapdata = data_mem_call.curr_map;
+        
+        // ctrl to decoder
+        decoder.sel_new_pos = ctrl_call.sel_new_pos;
+        
+        // decoder to data memory
+        data_mem_call.new_tp_i = decoder.new_tp;
+        
+        // data to alu
+        alu_call.alufn = ctrl_call.alufn;
+      alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
+      alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.curr_tp;
+        
+        // check module
+        check_call.value = alu_call.alu;
+        check_call.check_win = ctrl_call.check_win;
+        
+        // check to data_mem
+        data_mem_call.r0_i = check_call.r0;
+        
+        // led_decoder to get map data from data_mem_call
+        //led_matrix = data_mem_call.out;
+        
+        // some win stuff
+        
+        if (up | down | left | right | reset | select){
+          state.d = state.SELECT;
+        }
+      
+      default:
+        ctrl_call.state = 0;
+        ctrl_call.r = reg_r.q;
+        ctrl_call.d = reg_d.q;
+        
+        // processing to board
+        board_gen_call.sel_level = ctrl_call.sel_level;
+        board_gen_call.sel_display = ctrl_call.sel_display;
+        board_gen_call.level_i = level.q;
+        level.d = board_gen_call.level_o;
+        
+        // board to data
+        data_mem_call.level_adr_i = level.q;
+        
+        // ctrl to data
+        data_mem_call.sel_start = ctrl_call.sel_start;
+        data_mem_call.sel_map = ctrl_call.sel_map;
+        
+        // ctrl to decoder
+        decoder.sel_new_pos = ctrl_call.sel_new_pos;
+        
+        // data memory to decoder
+        decoder.curr_tp = data_mem_call.curr_tp;
+        decoder.mapdata = data_mem_call.curr_map;
+        
+        // decoder to data memory
+        data_mem_call.new_tp_i = decoder.new_tp;
+        
+        // data to alu
+        alu_call.alufn = ctrl_call.alufn;
+      alu_call.a = ctrl_call.sel_check ? check_call.r1 : data_mem_call.curr_ep;
+      alu_call.b = ctrl_call.sel_check ? check_call.r2 : data_mem_call.curr_tp;
+        
+        // check module
+        check_call.value = alu_call.alu;
+        check_call.check_win = ctrl_call.check_win;
+        
+        // check to data_mem
+        data_mem_call.r0_i = check_call.r0;
+        
+        // led_decoder to get map data from data_mem_call
+        //led_matrix = data_mem_call.out;
+        
+        if (select){
+          state.d = state.WAIT;
+        }
+      
+      
+      
     }
   }
 }

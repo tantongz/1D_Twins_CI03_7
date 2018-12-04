@@ -4,7 +4,7 @@ module data_mem (
     input level_adr_i[2],
     input sel_start,
     input r0_i[16],
-    input new_tp[6],
+    input new_tp_i[6],
     
     // to processing module
     output level_adr[2],
@@ -15,6 +15,7 @@ module data_mem (
     output curr_map[6][6],
     output curr_ep[6],
     output curr_tp[6]
+    //output new_tp_o[6]
   ) {
   
   .clk(clk){
@@ -52,13 +53,17 @@ module data_mem (
       curr_map = map_mem.map_a;
       curr_ep = map_mem.ep_a;
       curr_tp = reg_tp_a.q;
-      reg_tp_a.d = new_tp; // from decoder / check module
+      reg_tp_a.d = new_tp_i; // from decoder
+      curr_tp = reg_tp_a.q; // update curr_tp, goes to alu
+      //new_tp_o = new_tp_i; // goes to alu, if above works remove
     }
     else{
       curr_map = map_mem.map_b;
       curr_ep = map_mem.ep_b;
       curr_tp = reg_tp_b.q;
-      reg_tp_b.d = new_tp; // from decoder / check module
+      reg_tp_b.d = new_tp_i; // from decoder 
+      curr_tp = reg_tp_b.q; // update curr_tp, goes to alu
+      //new_tp_o = new_tp_i; // goes to alu, if above works remove
     }
     
     // to processing module

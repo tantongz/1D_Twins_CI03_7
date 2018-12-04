@@ -1,7 +1,7 @@
 module matrix_decoder (
     input curr_tp[6], // position of particle
     input mapdata[6][6], // map_array
-    input sel_new_pos,
+    input sel_new_pos[2],
     output new_tp[6]
   ) {
   

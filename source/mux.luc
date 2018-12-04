@@ -3,7 +3,7 @@ module mux (
     input a,
     input b,
 
-    output out,
+    output out
 ) {
     always {
         out = sel ? b : a;
