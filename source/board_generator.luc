@@ -1,0 +1,33 @@
+module board_generator (
+    //input clk,  // clock
+    //input rst,  // reset
+    
+    input sel_level[2],
+    input sel_display,
+    input level_i[2],
+    
+    output level_o[2]
+  ) {
+  
+  sig lx[2];
+  
+  always {
+    
+    if (sel_level == 0 || sel_level == 2){
+      lx = level_i - 1;
+    }
+    else if(sel_level == 1 || sel_level == 3){
+      lx = level_i + 1;
+    }
+    else{
+      lx = bz;
+    }
+    
+    if (sel_display == 0){
+      level_o = lx;
+    }
+    else{
+      level_o = level_i;
+    }
+  }
+}
