@@ -1,17 +1,40 @@
 module matrix_decoder (
-    input tp[6], // position of particle
+    input curr_tp[6], // position of particle
     input mapdata[6][6], // map_array
-    output out
+    input sel_new_pos,
+    output new_tp[6]
   ) {
   
   sig x_pos[3];
   sig y_pos[3];
-
+  sig tpmux[6];
+  sig out;
+  
   always {
-    x_pos = tp[5:3];
-    y_pos = tp[2:0];
+    
+    if(sel_new_pos == 0){
+      tpmux = curr_tp - b000001;
+    } else if(sel_new_pos == 1){
+      tpmux = curr_tp + b000001;
+    } else if(sel_new_pos == 2){
+      tpmux = curr_tp - b001000;
+    } else if(sel_new_pos == 3){
+      tpmux = curr_tp + b001000;
+    } else{
+      tpmux = bz;
+    }
+    
+    x_pos = tpmux[5:3];
+    y_pos = tpmux[2:0];
     
     out = mapdata[x_pos][y_pos];
+    
+    if (out == 1){
+      new_tp = curr_tp;
+    }
+    else{
+      new_tp = tpmux;
+    }
     
   }
 }
