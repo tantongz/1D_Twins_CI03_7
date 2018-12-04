@@ -1,15 +1,46 @@
 module check (
-    input r0_i,
-    input r1_i,
-    input r2_i,
-
-    output r0,
-    output r1,
-    output r2,
-) {
-    always {
-        r0 = r0_i;
-        r1 = r1_i;
-        r2 = r2_i;
+    input clk,  // clock
+    input check_win,
+    input value[16],
+    /*
+       input r0_i[16],
+       input r1_i[16],
+       input r2_i[16],
+    */
+    
+    output r0[16],
+    output r1[16],
+    output r2[16]
+  ) {
+  
+  .clk(clk){
+    dff reg_r0[16];
+    dff reg_r1[16];
+    dff reg_r2[16];
+  }
+  
+  always {
+    
+    // registers should always store its previous values
+    reg_r0.d = reg_r0.q;
+    reg_r1.d = reg_r1.q;
+    reg_r2.d = reg_r2.q;
+    
+    // change when check_win is valid
+    if (check_win == 0){
+      reg_r1.d = value;
     }
+    if (check_win == 1){
+      reg_r2.d = value;
+    }
+    if (check_win == 2){
+      reg_r0.d = value;
+    }
+    
+    // connect registers to output
+    r0 = reg_r0.q;
+    r1 = reg_r1.q;
+    r2 = reg_r2.q;
+    
+  }
 }
