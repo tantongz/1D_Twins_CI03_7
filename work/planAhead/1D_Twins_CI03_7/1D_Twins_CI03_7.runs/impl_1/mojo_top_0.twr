@@ -28,16 +28,16 @@ INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on
 Timing constraint: TS_clk = PERIOD TIMEGRP "clk" 10 MHz HIGH 50%;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 3394 paths analyzed, 568 endpoints analyzed, 0 failing endpoints
+ 152138 paths analyzed, 804 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   5.121ns.
+ Minimum period is  10.966ns.
 --------------------------------------------------------------------------------
-Slack:                  94.879ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_2 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.034ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      5.049ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.037ns (0.715 - 0.752)
+  Data Path Delay:      10.906ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -48,33 +48,46 @@ Slack:                  94.879ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_2 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y25.CQ       Tcko                  0.525   up_conditioner/M_ctr_q[3]
-                                                       up_conditioner/M_ctr_q_2
-    SLICE_X1Y28.C2       net (fanout=2)        0.939   up_conditioner/M_ctr_q[2]
-    SLICE_X1Y28.C        Tilo                  0.259   out1_2
-                                                       up_conditioner/out1
-    SLICE_X14Y33.A1      net (fanout=3)        1.887   out_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.DMUX    Topbd                 0.695   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.C2      net (fanout=3)        0.939   decoder/Maddsub_n0039_Madd1_cy[4]
+    SLICE_X12Y45.CMUX    Tilo                  0.430   N44
+                                                       decoder/Sh1771_G
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      5.049ns (1.392ns logic, 3.657ns route)
-                                                       (27.6% logic, 72.4% route)
+    Total                                     10.906ns (2.746ns logic, 8.160ns route)
+                                                       (25.2% logic, 74.8% route)
 
 --------------------------------------------------------------------------------
-Slack:                  94.889ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_3 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.061ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      5.039ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.037ns (0.715 - 0.752)
+  Data Path Delay:      10.879ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -85,33 +98,46 @@ Slack:                  94.889ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_3 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y25.DQ       Tcko                  0.525   up_conditioner/M_ctr_q[3]
-                                                       up_conditioner/M_ctr_q_3
-    SLICE_X1Y28.C1       net (fanout=2)        0.929   up_conditioner/M_ctr_q[3]
-    SLICE_X1Y28.C        Tilo                  0.259   out1_2
-                                                       up_conditioner/out1
-    SLICE_X14Y33.A1      net (fanout=3)        1.887   out_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.C1      net (fanout=3)        1.158   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.DMUX    Topcd                 0.536   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Mmux__n00423_rs_xor<2>111
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.C2      net (fanout=3)        0.939   decoder/Maddsub_n0039_Madd1_cy[4]
+    SLICE_X12Y45.CMUX    Tilo                  0.430   N44
+                                                       decoder/Sh1771_G
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      5.039ns (1.392ns logic, 3.647ns route)
-                                                       (27.6% logic, 72.4% route)
+    Total                                     10.879ns (2.587ns logic, 8.292ns route)
+                                                       (23.8% logic, 76.2% route)
 
 --------------------------------------------------------------------------------
-Slack:                  94.900ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_15 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.106ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      5.021ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.044ns (0.715 - 0.759)
+  Data Path Delay:      10.834ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -122,33 +148,48 @@ Slack:                  94.900ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_15 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y28.DQ       Tcko                  0.525   up_conditioner/M_ctr_q[15]
-                                                       up_conditioner/M_ctr_q_15
-    SLICE_X1Y28.D1       net (fanout=2)        0.740   up_conditioner/M_ctr_q[15]
-    SLICE_X1Y28.D        Tilo                  0.259   out1_2
-                                                       up_conditioner/out2
-    SLICE_X14Y33.A2      net (fanout=3)        2.058   out1_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y43.C3      net (fanout=15)       0.843   decoder/Maddsub_n0039_3
+    SLICE_X12Y43.C       Tilo                  0.255   M_player_pos_b_q_0_1
+                                                       decoder/Maddsub_n0039_Madd_xor<3>11_SW0
+    SLICE_X13Y41.D1      net (fanout=1)        1.489   decoder/N82
+    SLICE_X13Y41.D       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777_SW1
+    SLICE_X13Y41.B2      net (fanout=1)        0.543   decoder/N19
+    SLICE_X13Y41.B       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777
+    SLICE_X12Y42.B5      net (fanout=12)       0.435   Sh1777
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      5.021ns (1.392ns logic, 3.629ns route)
-                                                       (27.7% logic, 72.3% route)
+    Total                                     10.834ns (2.599ns logic, 8.235ns route)
+                                                       (24.0% logic, 76.0% route)
 
 --------------------------------------------------------------------------------
-Slack:                  94.916ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_17 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.126ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      5.003ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.046ns (0.715 - 0.761)
+  Data Path Delay:      10.814ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -159,99 +200,46 @@ Slack:                  94.916ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_17 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y29.BQ       Tcko                  0.525   up_conditioner/M_ctr_q[19]
-                                                       up_conditioner/M_ctr_q_17
-    SLICE_X1Y28.D2       net (fanout=2)        0.722   up_conditioner/M_ctr_q[17]
-    SLICE_X1Y28.D        Tilo                  0.259   out1_2
-                                                       up_conditioner/out2
-    SLICE_X14Y33.A2      net (fanout=3)        2.058   out1_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.DMUX    Topbd                 0.695   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.D1      net (fanout=3)        0.821   decoder/Maddsub_n0039_Madd1_cy[4]
+    SLICE_X12Y45.CMUX    Topdc                 0.456   N44
+                                                       decoder/Sh1771_F
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      5.003ns (1.392ns logic, 3.611ns route)
-                                                       (27.8% logic, 72.2% route)
-
---------------------------------------------------------------------------------
-Slack:                  94.990ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               left_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          left_conditioner/M_ctr_q_19 (FF)
-  Requirement:          100.000ns
-  Data Path Delay:      4.857ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.118ns (0.686 - 0.804)
-  Source Clock:         clk_BUFGP rising at 0.000ns
-  Destination Clock:    clk_BUFGP rising at 100.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: left_conditioner/sync/M_pipe_q_1 to left_conditioner/M_ctr_q_19
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X4Y8.DQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       left_conditioner/sync/M_pipe_q_1
-    SLICE_X12Y23.D6      net (fanout=1)        1.773   left_conditioner/M_sync_out
-    SLICE_X12Y23.D       Tilo                  0.254   left_conditioner/M_sync_out_inv
-                                                       left_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X16Y35.SR      net (fanout=5)        1.835   left_conditioner/M_sync_out_inv
-    SLICE_X16Y35.CLK     Tsrck                 0.470   left_conditioner/M_ctr_q[19]
-                                                       left_conditioner/M_ctr_q_19
-    -------------------------------------------------  ---------------------------
-    Total                                      4.857ns (1.249ns logic, 3.608ns route)
-                                                       (25.7% logic, 74.3% route)
-
---------------------------------------------------------------------------------
-Slack:                  94.999ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               left_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          left_conditioner/M_ctr_q_18 (FF)
-  Requirement:          100.000ns
-  Data Path Delay:      4.848ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.118ns (0.686 - 0.804)
-  Source Clock:         clk_BUFGP rising at 0.000ns
-  Destination Clock:    clk_BUFGP rising at 100.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: left_conditioner/sync/M_pipe_q_1 to left_conditioner/M_ctr_q_18
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X4Y8.DQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       left_conditioner/sync/M_pipe_q_1
-    SLICE_X12Y23.D6      net (fanout=1)        1.773   left_conditioner/M_sync_out
-    SLICE_X12Y23.D       Tilo                  0.254   left_conditioner/M_sync_out_inv
-                                                       left_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X16Y35.SR      net (fanout=5)        1.835   left_conditioner/M_sync_out_inv
-    SLICE_X16Y35.CLK     Tsrck                 0.461   left_conditioner/M_ctr_q[19]
-                                                       left_conditioner/M_ctr_q_18
-    -------------------------------------------------  ---------------------------
-    Total                                      4.848ns (1.240ns logic, 3.608ns route)
+    Total                                     10.814ns (2.772ns logic, 8.042ns route)
                                                        (25.6% logic, 74.4% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.010ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               left_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          left_conditioner/M_ctr_q_17 (FF)
+Slack:                  89.142ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.837ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.118ns (0.686 - 0.804)
+  Data Path Delay:      10.798ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -262,29 +250,48 @@ Slack:                  95.010ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: left_conditioner/sync/M_pipe_q_1 to left_conditioner/M_ctr_q_17
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.DQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       left_conditioner/sync/M_pipe_q_1
-    SLICE_X12Y23.D6      net (fanout=1)        1.773   left_conditioner/M_sync_out
-    SLICE_X12Y23.D       Tilo                  0.254   left_conditioner/M_sync_out_inv
-                                                       left_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X16Y35.SR      net (fanout=5)        1.835   left_conditioner/M_sync_out_inv
-    SLICE_X16Y35.CLK     Tsrck                 0.450   left_conditioner/M_ctr_q[19]
-                                                       left_conditioner/M_ctr_q_17
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X8Y45.D2       net (fanout=15)       1.327   decoder/Maddsub_n0039_3
+    SLICE_X8Y45.D        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773_SW6_SW1
+    SLICE_X8Y45.A5       net (fanout=1)        0.373   decoder/N92
+    SLICE_X8Y45.A        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773_SW6
+    SLICE_X8Y45.B4       net (fanout=1)        0.435   decoder/N72
+    SLICE_X8Y45.B        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773
+    SLICE_X12Y42.B4      net (fanout=12)       1.150   Sh1773
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.837ns (1.229ns logic, 3.608ns route)
-                                                       (25.4% logic, 74.6% route)
+    Total                                     10.798ns (2.588ns logic, 8.210ns route)
+                                                       (24.0% logic, 76.0% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.029ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_10 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.153ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.894ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.042ns (0.715 - 0.757)
+  Data Path Delay:      10.787ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -295,33 +302,46 @@ Slack:                  95.029ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_10 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y27.CQ       Tcko                  0.525   up_conditioner/M_ctr_q[11]
-                                                       up_conditioner/M_ctr_q_10
-    SLICE_X1Y28.A3       net (fanout=2)        0.809   up_conditioner/M_ctr_q[10]
-    SLICE_X1Y28.A        Tilo                  0.259   out1_2
-                                                       up_conditioner/out3
-    SLICE_X14Y33.A6      net (fanout=3)        1.862   out2_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.C1      net (fanout=3)        1.158   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.DMUX    Topcd                 0.536   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Mmux__n00423_rs_xor<2>111
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.D1      net (fanout=3)        0.821   decoder/Maddsub_n0039_Madd1_cy[4]
+    SLICE_X12Y45.CMUX    Topdc                 0.456   N44
+                                                       decoder/Sh1771_F
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.894ns (1.392ns logic, 3.502ns route)
-                                                       (28.4% logic, 71.6% route)
+    Total                                     10.787ns (2.613ns logic, 8.174ns route)
+                                                       (24.2% logic, 75.8% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.032ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               left_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          left_conditioner/M_ctr_q_16 (FF)
+Slack:                  89.211ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.815ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.118ns (0.686 - 0.804)
+  Data Path Delay:      10.661ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -332,29 +352,46 @@ Slack:                  95.032ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: left_conditioner/sync/M_pipe_q_1 to left_conditioner/M_ctr_q_16
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.DQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       left_conditioner/sync/M_pipe_q_1
-    SLICE_X12Y23.D6      net (fanout=1)        1.773   left_conditioner/M_sync_out
-    SLICE_X12Y23.D       Tilo                  0.254   left_conditioner/M_sync_out_inv
-                                                       left_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X16Y35.SR      net (fanout=5)        1.835   left_conditioner/M_sync_out_inv
-    SLICE_X16Y35.CLK     Tsrck                 0.428   left_conditioner/M_ctr_q[19]
-                                                       left_conditioner/M_ctr_q_16
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.DMUX    Topbd                 0.695   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.C2      net (fanout=3)        0.939   decoder/Maddsub_n0039_Madd1_cy[4]
+    SLICE_X12Y45.CMUX    Tilo                  0.430   N44
+                                                       decoder/Sh1771_G
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.815ns (1.207ns logic, 3.608ns route)
-                                                       (25.1% logic, 74.9% route)
+    Total                                     10.661ns (2.788ns logic, 7.873ns route)
+                                                       (26.2% logic, 73.8% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.053ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_19 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.238ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.866ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.046ns (0.715 - 0.761)
+  Data Path Delay:      10.634ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -365,33 +402,46 @@ Slack:                  95.053ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_19 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y29.DQ       Tcko                  0.525   up_conditioner/M_ctr_q[19]
-                                                       up_conditioner/M_ctr_q_19
-    SLICE_X1Y28.D3       net (fanout=2)        0.585   up_conditioner/M_ctr_q[19]
-    SLICE_X1Y28.D        Tilo                  0.259   out1_2
-                                                       up_conditioner/out2
-    SLICE_X14Y33.A2      net (fanout=3)        2.058   out1_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.C1      net (fanout=3)        1.158   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.DMUX    Topcd                 0.536   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Mmux__n00423_rs_xor<2>111
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.C2      net (fanout=3)        0.939   decoder/Maddsub_n0039_Madd1_cy[4]
+    SLICE_X12Y45.CMUX    Tilo                  0.430   N44
+                                                       decoder/Sh1771_G
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.866ns (1.392ns logic, 3.474ns route)
-                                                       (28.6% logic, 71.4% route)
+    Total                                     10.634ns (2.629ns logic, 8.005ns route)
+                                                       (24.7% logic, 75.3% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.085ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_12 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.249ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.836ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.044ns (0.715 - 0.759)
+  Data Path Delay:      10.691ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -402,33 +452,46 @@ Slack:                  95.085ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_12 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y28.AQ       Tcko                  0.525   up_conditioner/M_ctr_q[15]
-                                                       up_conditioner/M_ctr_q_12
-    SLICE_X1Y28.A2       net (fanout=2)        0.751   up_conditioner/M_ctr_q[12]
-    SLICE_X1Y28.A        Tilo                  0.259   out1_2
-                                                       up_conditioner/out3
-    SLICE_X14Y33.A6      net (fanout=3)        1.862   out2_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.CMUX    Topbc                 0.650   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.C1      net (fanout=4)        0.769   decoder/Maddsub_n0039_4
+    SLICE_X12Y45.CMUX    Tilo                  0.430   N44
+                                                       decoder/Sh1771_G
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.836ns (1.392ns logic, 3.444ns route)
-                                                       (28.8% logic, 71.2% route)
+    Total                                     10.691ns (2.701ns logic, 7.990ns route)
+                                                       (25.3% logic, 74.7% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.105ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_9 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.272ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.818ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.042ns (0.715 - 0.757)
+  Data Path Delay:      10.668ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -439,33 +502,46 @@ Slack:                  95.105ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_9 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y27.BQ       Tcko                  0.525   up_conditioner/M_ctr_q[11]
-                                                       up_conditioner/M_ctr_q_9
-    SLICE_X1Y28.A1       net (fanout=2)        0.733   up_conditioner/M_ctr_q[9]
-    SLICE_X1Y28.A        Tilo                  0.259   out1_2
-                                                       up_conditioner/out3
-    SLICE_X14Y33.A6      net (fanout=3)        1.862   out2_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.C1      net (fanout=3)        1.158   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.CMUX    Topcc                 0.495   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Mmux__n00423_rs_xor<2>111
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.C1      net (fanout=4)        0.769   decoder/Maddsub_n0039_4
+    SLICE_X12Y45.CMUX    Tilo                  0.430   N44
+                                                       decoder/Sh1771_G
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.818ns (1.392ns logic, 3.426ns route)
-                                                       (28.9% logic, 71.1% route)
+    Total                                     10.668ns (2.546ns logic, 8.122ns route)
+                                                       (23.9% logic, 76.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.152ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_16 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.283ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.767ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.046ns (0.715 - 0.761)
+  Data Path Delay:      10.589ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -476,33 +552,48 @@ Slack:                  95.152ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_16 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y29.AQ       Tcko                  0.525   up_conditioner/M_ctr_q[19]
-                                                       up_conditioner/M_ctr_q_16
-    SLICE_X1Y28.D4       net (fanout=2)        0.486   up_conditioner/M_ctr_q[16]
-    SLICE_X1Y28.D        Tilo                  0.259   out1_2
-                                                       up_conditioner/out2
-    SLICE_X14Y33.A2      net (fanout=3)        2.058   out1_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y43.C3      net (fanout=15)       0.843   decoder/Maddsub_n0039_3
+    SLICE_X12Y43.C       Tilo                  0.255   M_player_pos_b_q_0_1
+                                                       decoder/Maddsub_n0039_Madd_xor<3>11_SW0
+    SLICE_X13Y41.D1      net (fanout=1)        1.489   decoder/N82
+    SLICE_X13Y41.D       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777_SW1
+    SLICE_X13Y41.B2      net (fanout=1)        0.543   decoder/N19
+    SLICE_X13Y41.B       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777
+    SLICE_X12Y42.B5      net (fanout=12)       0.435   Sh1777
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.767ns (1.392ns logic, 3.375ns route)
-                                                       (29.2% logic, 70.8% route)
+    Total                                     10.589ns (2.641ns logic, 7.948ns route)
+                                                       (24.9% logic, 75.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.166ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               right_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          right_conditioner/M_ctr_q_19 (FF)
+Slack:                  89.286ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.710ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.089ns (0.715 - 0.804)
+  Data Path Delay:      10.654ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -513,29 +604,95 @@ Slack:                  95.166ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: right_conditioner/sync/M_pipe_q_1 to right_conditioner/M_ctr_q_19
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.BQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       right_conditioner/sync/M_pipe_q_1
-    SLICE_X7Y25.A5       net (fanout=1)        1.424   right_conditioner/M_sync_out
-    SLICE_X7Y25.A        Tilo                  0.259   right_conditioner/M_sync_out_inv
-                                                       right_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X8Y35.SR       net (fanout=5)        2.032   right_conditioner/M_sync_out_inv
-    SLICE_X8Y35.CLK      Tsrck                 0.470   right_conditioner/M_ctr_q[19]
-                                                       right_conditioner/M_ctr_q_19
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X11Y45.B2      net (fanout=15)       1.611   decoder/Maddsub_n0039_3
+    SLICE_X11Y45.B       Tilo                  0.259   decoder/N71
+                                                       decoder/Maddsub_n0039_Madd_xor<4>11
+    SLICE_X8Y45.B5       net (fanout=2)        0.629   decoder/GND_6_o_GND_6_o_add_13_OUT<4>1
+    SLICE_X8Y45.B        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773
+    SLICE_X12Y42.B4      net (fanout=12)       1.150   Sh1773
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.710ns (1.254ns logic, 3.456ns route)
+    Total                                     10.654ns (2.339ns logic, 8.315ns route)
+                                                       (22.0% logic, 78.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  89.303ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
+  Requirement:          100.000ns
+  Data Path Delay:      10.569ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 100.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.DMUX    Topbd                 0.695   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.D1      net (fanout=3)        0.821   decoder/Maddsub_n0039_Madd1_cy[4]
+    SLICE_X12Y45.CMUX    Topdc                 0.456   N44
+                                                       decoder/Sh1771_F
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.569ns (2.814ns logic, 7.755ns route)
                                                        (26.6% logic, 73.4% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.175ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               right_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          right_conditioner/M_ctr_q_18 (FF)
+Slack:                  89.308ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.701ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.089ns (0.715 - 0.804)
+  Data Path Delay:      10.632ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -546,29 +703,48 @@ Slack:                  95.175ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: right_conditioner/sync/M_pipe_q_1 to right_conditioner/M_ctr_q_18
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.BQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       right_conditioner/sync/M_pipe_q_1
-    SLICE_X7Y25.A5       net (fanout=1)        1.424   right_conditioner/M_sync_out
-    SLICE_X7Y25.A        Tilo                  0.259   right_conditioner/M_sync_out_inv
-                                                       right_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X8Y35.SR       net (fanout=5)        2.032   right_conditioner/M_sync_out_inv
-    SLICE_X8Y35.CLK      Tsrck                 0.461   right_conditioner/M_ctr_q[19]
-                                                       right_conditioner/M_ctr_q_18
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X8Y45.C5       net (fanout=15)       0.967   decoder/Maddsub_n0039_3
+    SLICE_X8Y45.C        Tilo                  0.255   decoder/N92
+                                                       decoder/Sh1773_SW6_SW0
+    SLICE_X8Y45.A1       net (fanout=1)        0.566   decoder/N91
+    SLICE_X8Y45.A        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773_SW6
+    SLICE_X8Y45.B4       net (fanout=1)        0.435   decoder/N72
+    SLICE_X8Y45.B        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773
+    SLICE_X12Y42.B4      net (fanout=12)       1.150   Sh1773
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.701ns (1.245ns logic, 3.456ns route)
-                                                       (26.5% logic, 73.5% route)
+    Total                                     10.632ns (2.589ns logic, 8.043ns route)
+                                                       (24.4% logic, 75.6% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.179ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               left_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          left_conditioner/M_ctr_q_15 (FF)
+Slack:                  89.319ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.670ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.116ns (0.688 - 0.804)
+  Data Path Delay:      10.553ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -579,29 +755,48 @@ Slack:                  95.179ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: left_conditioner/sync/M_pipe_q_1 to left_conditioner/M_ctr_q_15
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.DQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       left_conditioner/sync/M_pipe_q_1
-    SLICE_X12Y23.D6      net (fanout=1)        1.773   left_conditioner/M_sync_out
-    SLICE_X12Y23.D       Tilo                  0.254   left_conditioner/M_sync_out_inv
-                                                       left_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X16Y34.SR      net (fanout=5)        1.648   left_conditioner/M_sync_out_inv
-    SLICE_X16Y34.CLK     Tsrck                 0.470   left_conditioner/M_ctr_q[15]
-                                                       left_conditioner/M_ctr_q_15
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X8Y45.D2       net (fanout=15)       1.327   decoder/Maddsub_n0039_3
+    SLICE_X8Y45.D        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773_SW6_SW1
+    SLICE_X8Y45.A5       net (fanout=1)        0.373   decoder/N92
+    SLICE_X8Y45.A        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773_SW6
+    SLICE_X8Y45.B4       net (fanout=1)        0.435   decoder/N72
+    SLICE_X8Y45.B        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773
+    SLICE_X12Y42.B4      net (fanout=12)       1.150   Sh1773
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.670ns (1.249ns logic, 3.421ns route)
-                                                       (26.7% logic, 73.3% route)
+    Total                                     10.553ns (2.630ns logic, 7.923ns route)
+                                                       (24.9% logic, 75.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.186ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               right_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          right_conditioner/M_ctr_q_17 (FF)
+Slack:                  89.330ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.690ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.089ns (0.715 - 0.804)
+  Data Path Delay:      10.542ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -612,29 +807,246 @@ Slack:                  95.186ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: right_conditioner/sync/M_pipe_q_1 to right_conditioner/M_ctr_q_17
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.BQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       right_conditioner/sync/M_pipe_q_1
-    SLICE_X7Y25.A5       net (fanout=1)        1.424   right_conditioner/M_sync_out
-    SLICE_X7Y25.A        Tilo                  0.259   right_conditioner/M_sync_out_inv
-                                                       right_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X8Y35.SR       net (fanout=5)        2.032   right_conditioner/M_sync_out_inv
-    SLICE_X8Y35.CLK      Tsrck                 0.450   right_conditioner/M_ctr_q[19]
-                                                       right_conditioner/M_ctr_q_17
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.C1      net (fanout=3)        1.158   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.DMUX    Topcd                 0.536   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Mmux__n00423_rs_xor<2>111
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.D1      net (fanout=3)        0.821   decoder/Maddsub_n0039_Madd1_cy[4]
+    SLICE_X12Y45.CMUX    Topdc                 0.456   N44
+                                                       decoder/Sh1771_F
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.690ns (1.234ns logic, 3.456ns route)
+    Total                                     10.542ns (2.655ns logic, 7.887ns route)
+                                                       (25.2% logic, 74.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  89.372ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_a_q_0 (FF)
+  Requirement:          100.000ns
+  Data Path Delay:      10.533ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.060ns (0.593 - 0.653)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 100.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_a_q_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y43.C3      net (fanout=15)       0.843   decoder/Maddsub_n0039_3
+    SLICE_X12Y43.C       Tilo                  0.255   M_player_pos_b_q_0_1
+                                                       decoder/Maddsub_n0039_Madd_xor<3>11_SW0
+    SLICE_X13Y41.D1      net (fanout=1)        1.489   decoder/N82
+    SLICE_X13Y41.D       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777_SW1
+    SLICE_X13Y41.B2      net (fanout=1)        0.543   decoder/N19
+    SLICE_X13Y41.B       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777
+    SLICE_X14Y42.A1      net (fanout=12)       1.018   Sh1777
+    SLICE_X14Y42.CLK     Tas                   0.349   M_player_pos_a_q[3]
+                                                       Mmux__n019311
+                                                       M_player_pos_a_q_0
+    -------------------------------------------------  ---------------------------
+    Total                                     10.533ns (2.580ns logic, 7.953ns route)
+                                                       (24.5% logic, 75.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  89.402ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
+  Requirement:          100.000ns
+  Data Path Delay:      10.538ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 100.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.CMUX    Topbc                 0.650   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.D3      net (fanout=4)        0.590   decoder/Maddsub_n0039_4
+    SLICE_X12Y45.CMUX    Topdc                 0.456   N44
+                                                       decoder/Sh1771_F
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.538ns (2.727ns logic, 7.811ns route)
+                                                       (25.9% logic, 74.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  89.425ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
+  Requirement:          100.000ns
+  Data Path Delay:      10.515ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 100.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.C1      net (fanout=3)        1.158   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.CMUX    Topcc                 0.495   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Mmux__n00423_rs_xor<2>111
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.D3      net (fanout=4)        0.590   decoder/Maddsub_n0039_4
+    SLICE_X12Y45.CMUX    Topdc                 0.456   N44
+                                                       decoder/Sh1771_F
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.515ns (2.572ns logic, 7.943ns route)
+                                                       (24.5% logic, 75.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  89.426ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
+  Requirement:          100.000ns
+  Data Path Delay:      10.446ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 100.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.CMUX    Topbc                 0.650   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.C1      net (fanout=4)        0.769   decoder/Maddsub_n0039_4
+    SLICE_X12Y45.CMUX    Tilo                  0.430   N44
+                                                       decoder/Sh1771_G
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
+    -------------------------------------------------  ---------------------------
+    Total                                     10.446ns (2.743ns logic, 7.703ns route)
                                                        (26.3% logic, 73.7% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.188ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               left_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          left_conditioner/M_ctr_q_14 (FF)
+Slack:                  89.445ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_0_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.661ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.116ns (0.688 - 0.804)
+  Data Path Delay:      10.462ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.058ns (0.595 - 0.653)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -645,29 +1057,48 @@ Slack:                  95.188ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: left_conditioner/sync/M_pipe_q_1 to left_conditioner/M_ctr_q_14
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_0_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.DQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       left_conditioner/sync/M_pipe_q_1
-    SLICE_X12Y23.D6      net (fanout=1)        1.773   left_conditioner/M_sync_out
-    SLICE_X12Y23.D       Tilo                  0.254   left_conditioner/M_sync_out_inv
-                                                       left_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X16Y34.SR      net (fanout=5)        1.648   left_conditioner/M_sync_out_inv
-    SLICE_X16Y34.CLK     Tsrck                 0.461   left_conditioner/M_ctr_q[15]
-                                                       left_conditioner/M_ctr_q_14
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y43.C3      net (fanout=15)       0.843   decoder/Maddsub_n0039_3
+    SLICE_X12Y43.C       Tilo                  0.255   M_player_pos_b_q_0_1
+                                                       decoder/Maddsub_n0039_Madd_xor<3>11_SW0
+    SLICE_X13Y41.D1      net (fanout=1)        1.489   decoder/N82
+    SLICE_X13Y41.D       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777_SW1
+    SLICE_X13Y41.B2      net (fanout=1)        0.543   decoder/N19
+    SLICE_X13Y41.B       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777
+    SLICE_X12Y42.A5      net (fanout=12)       0.471   Sh1777
+    SLICE_X12Y42.A       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d11
+    SLICE_X12Y43.AX      net (fanout=1)        0.486   M_player_pos_b_d[0]
+    SLICE_X12Y43.CLK     Tdick                 0.085   M_player_pos_b_q_0_1
+                                                       M_player_pos_b_q_0_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.661ns (1.240ns logic, 3.421ns route)
-                                                       (26.6% logic, 73.4% route)
+    Total                                     10.462ns (2.570ns logic, 7.892ns route)
+                                                       (24.6% logic, 75.4% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.199ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               left_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          left_conditioner/M_ctr_q_13 (FF)
+Slack:                  89.449ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.650ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.116ns (0.688 - 0.804)
+  Data Path Delay:      10.423ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -678,29 +1109,46 @@ Slack:                  95.199ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: left_conditioner/sync/M_pipe_q_1 to left_conditioner/M_ctr_q_13
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.DQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       left_conditioner/sync/M_pipe_q_1
-    SLICE_X12Y23.D6      net (fanout=1)        1.773   left_conditioner/M_sync_out
-    SLICE_X12Y23.D       Tilo                  0.254   left_conditioner/M_sync_out_inv
-                                                       left_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X16Y34.SR      net (fanout=5)        1.648   left_conditioner/M_sync_out_inv
-    SLICE_X16Y34.CLK     Tsrck                 0.450   left_conditioner/M_ctr_q[15]
-                                                       left_conditioner/M_ctr_q_13
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.C1      net (fanout=3)        1.158   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.CMUX    Topcc                 0.495   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Mmux__n00423_rs_xor<2>111
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y45.C1      net (fanout=4)        0.769   decoder/Maddsub_n0039_4
+    SLICE_X12Y45.CMUX    Tilo                  0.430   N44
+                                                       decoder/Sh1771_G
+                                                       decoder/Sh1771
+    SLICE_X13Y46.D5      net (fanout=12)       0.491   decoder/Sh1771
+    SLICE_X13Y46.D       Tilo                  0.259   N41
+                                                       decoder/Sh1778_SW8
+    SLICE_X12Y42.B2      net (fanout=1)        1.805   N41
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.650ns (1.229ns logic, 3.421ns route)
-                                                       (26.4% logic, 73.6% route)
+    Total                                     10.423ns (2.588ns logic, 7.835ns route)
+                                                       (24.8% logic, 75.2% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.208ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               right_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          right_conditioner/M_ctr_q_16 (FF)
+Slack:                  89.454ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.668ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.089ns (0.715 - 0.804)
+  Data Path Delay:      10.486ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -711,29 +1159,45 @@ Slack:                  95.208ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: right_conditioner/sync/M_pipe_q_1 to right_conditioner/M_ctr_q_16
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.BQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       right_conditioner/sync/M_pipe_q_1
-    SLICE_X7Y25.A5       net (fanout=1)        1.424   right_conditioner/M_sync_out
-    SLICE_X7Y25.A        Tilo                  0.259   right_conditioner/M_sync_out_inv
-                                                       right_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X8Y35.SR       net (fanout=5)        2.032   right_conditioner/M_sync_out_inv
-    SLICE_X8Y35.CLK      Tsrck                 0.428   right_conditioner/M_ctr_q[19]
-                                                       right_conditioner/M_ctr_q_16
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X11Y45.B2      net (fanout=15)       1.611   decoder/Maddsub_n0039_3
+    SLICE_X11Y45.B       Tilo                  0.259   decoder/N71
+                                                       decoder/Maddsub_n0039_Madd_xor<4>11
+    SLICE_X13Y41.B5      net (fanout=2)        1.171   decoder/GND_6_o_GND_6_o_add_13_OUT<4>1
+    SLICE_X13Y41.B       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777
+    SLICE_X12Y42.B5      net (fanout=12)       0.435   Sh1777
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.668ns (1.212ns logic, 3.456ns route)
-                                                       (26.0% logic, 74.0% route)
+    Total                                     10.486ns (2.344ns logic, 8.142ns route)
+                                                       (22.4% logic, 77.6% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.221ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               left_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          left_conditioner/M_ctr_q_12 (FF)
+Slack:                  89.460ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.628ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.116ns (0.688 - 0.804)
+  Data Path Delay:      10.480ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -744,29 +1208,48 @@ Slack:                  95.221ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: left_conditioner/sync/M_pipe_q_1 to left_conditioner/M_ctr_q_12
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.DQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       left_conditioner/sync/M_pipe_q_1
-    SLICE_X12Y23.D6      net (fanout=1)        1.773   left_conditioner/M_sync_out
-    SLICE_X12Y23.D       Tilo                  0.254   left_conditioner/M_sync_out_inv
-                                                       left_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X16Y34.SR      net (fanout=5)        1.648   left_conditioner/M_sync_out_inv
-    SLICE_X16Y34.CLK     Tsrck                 0.428   left_conditioner/M_ctr_q[15]
-                                                       left_conditioner/M_ctr_q_12
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X13Y45.C4      net (fanout=15)       0.557   decoder/Maddsub_n0039_3
+    SLICE_X13Y45.C       Tilo                  0.259   M_level_q[0]
+                                                       decoder/Sh1773_SW6_SW2
+    SLICE_X8Y45.A4       net (fanout=1)        0.820   decoder/N93
+    SLICE_X8Y45.A        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773_SW6
+    SLICE_X8Y45.B4       net (fanout=1)        0.435   decoder/N72
+    SLICE_X8Y45.B        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773
+    SLICE_X12Y42.B4      net (fanout=12)       1.150   Sh1773
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.628ns (1.207ns logic, 3.421ns route)
-                                                       (26.1% logic, 73.9% route)
+    Total                                     10.480ns (2.593ns logic, 7.887ns route)
+                                                       (24.7% logic, 75.3% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.233ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_4 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.463ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.693ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.039ns (0.715 - 0.754)
+  Data Path Delay:      10.409ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -777,33 +1260,45 @@ Slack:                  95.233ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_4 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y26.AQ       Tcko                  0.525   up_conditioner/M_ctr_q[7]
-                                                       up_conditioner/M_ctr_q_4
-    SLICE_X1Y28.C3       net (fanout=2)        0.583   up_conditioner/M_ctr_q[4]
-    SLICE_X1Y28.C        Tilo                  0.259   out1_2
-                                                       up_conditioner/out1
-    SLICE_X14Y33.A1      net (fanout=3)        1.887   out_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X11Y45.B2      net (fanout=15)       1.611   decoder/Maddsub_n0039_3
+    SLICE_X11Y45.B       Tilo                  0.259   decoder/N71
+                                                       decoder/Maddsub_n0039_Madd_xor<4>11
+    SLICE_X8Y45.B5       net (fanout=2)        0.629   decoder/GND_6_o_GND_6_o_add_13_OUT<4>1
+    SLICE_X8Y45.B        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773
+    SLICE_X12Y42.B4      net (fanout=12)       1.150   Sh1773
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.693ns (1.392ns logic, 3.301ns route)
-                                                       (29.7% logic, 70.3% route)
+    Total                                     10.409ns (2.381ns logic, 8.028ns route)
+                                                       (22.9% logic, 77.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.271ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_5 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.485ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.655ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.039ns (0.715 - 0.754)
+  Data Path Delay:      10.387ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.093ns (0.621 - 0.714)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -814,33 +1309,48 @@ Slack:                  95.271ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_5 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y26.BQ       Tcko                  0.525   up_conditioner/M_ctr_q[7]
-                                                       up_conditioner/M_ctr_q_5
-    SLICE_X1Y28.C4       net (fanout=2)        0.545   up_conditioner/M_ctr_q[5]
-    SLICE_X1Y28.C        Tilo                  0.259   out1_2
-                                                       up_conditioner/out1
-    SLICE_X14Y33.A1      net (fanout=3)        1.887   out_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X8Y45.C5       net (fanout=15)       0.967   decoder/Maddsub_n0039_3
+    SLICE_X8Y45.C        Tilo                  0.255   decoder/N92
+                                                       decoder/Sh1773_SW6_SW0
+    SLICE_X8Y45.A1       net (fanout=1)        0.566   decoder/N91
+    SLICE_X8Y45.A        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773_SW6
+    SLICE_X8Y45.B4       net (fanout=1)        0.435   decoder/N72
+    SLICE_X8Y45.B        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773
+    SLICE_X12Y42.B4      net (fanout=12)       1.150   Sh1773
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.655ns (1.392ns logic, 3.263ns route)
-                                                       (29.9% logic, 70.1% route)
+    Total                                     10.387ns (2.631ns logic, 7.756ns route)
+                                                       (25.3% logic, 74.7% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.301ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_18 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.519ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_0_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.618ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.046ns (0.715 - 0.761)
+  Data Path Delay:      10.388ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.058ns (0.595 - 0.653)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -851,33 +1361,48 @@ Slack:                  95.301ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_18 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_0_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y29.CQ       Tcko                  0.525   up_conditioner/M_ctr_q[19]
-                                                       up_conditioner/M_ctr_q_18
-    SLICE_X1Y28.D6       net (fanout=2)        0.337   up_conditioner/M_ctr_q[18]
-    SLICE_X1Y28.D        Tilo                  0.259   out1_2
-                                                       up_conditioner/out2
-    SLICE_X14Y33.A2      net (fanout=3)        2.058   out1_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X8Y45.D2       net (fanout=15)       1.327   decoder/Maddsub_n0039_3
+    SLICE_X8Y45.D        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773_SW6_SW1
+    SLICE_X8Y45.A5       net (fanout=1)        0.373   decoder/N92
+    SLICE_X8Y45.A        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773_SW6
+    SLICE_X8Y45.B4       net (fanout=1)        0.435   decoder/N72
+    SLICE_X8Y45.B        Tilo                  0.254   decoder/N92
+                                                       decoder/Sh1773
+    SLICE_X12Y42.A2      net (fanout=12)       1.148   Sh1773
+    SLICE_X12Y42.A       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d11
+    SLICE_X12Y43.AX      net (fanout=1)        0.486   M_player_pos_b_d[0]
+    SLICE_X12Y43.CLK     Tdick                 0.085   M_player_pos_b_q_0_1
+                                                       M_player_pos_b_q_0_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.618ns (1.392ns logic, 3.226ns route)
-                                                       (30.1% logic, 69.9% route)
+    Total                                     10.388ns (2.559ns logic, 7.829ns route)
+                                                       (24.6% logic, 75.4% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.346ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/M_ctr_q_11 (FF)
-  Destination:          M_reg_d_q_2 (FF)
+Slack:                  89.521ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_a_q_4 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.577ns (Levels of Logic = 3)
-  Clock Path Skew:      -0.042ns (0.715 - 0.757)
+  Data Path Delay:      10.384ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.060ns (0.593 - 0.653)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -888,33 +1413,46 @@ Slack:                  95.346ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: up_conditioner/M_ctr_q_11 to M_reg_d_q_2
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_a_q_4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X0Y27.DQ       Tcko                  0.525   up_conditioner/M_ctr_q[11]
-                                                       up_conditioner/M_ctr_q_11
-    SLICE_X1Y28.A4       net (fanout=2)        0.492   up_conditioner/M_ctr_q[11]
-    SLICE_X1Y28.A        Tilo                  0.259   out1_2
-                                                       up_conditioner/out3
-    SLICE_X14Y33.A6      net (fanout=3)        1.862   out2_2
-    SLICE_X14Y33.A       Tilo                  0.235   M_last_q_1
-                                                       up_conditioner/out4
-    SLICE_X11Y33.C4      net (fanout=1)        0.831   M_up_conditioner_out
-    SLICE_X11Y33.CLK     Tas                   0.373   M_reg_d_q[2]
-                                                       M_reg_d_q_2_glue_rst
-                                                       M_reg_d_q_2
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y43.C3      net (fanout=15)       0.843   decoder/Maddsub_n0039_3
+    SLICE_X12Y43.C       Tilo                  0.255   M_player_pos_b_q_0_1
+                                                       decoder/Maddsub_n0039_Madd_xor<3>11_SW0
+    SLICE_X13Y41.D1      net (fanout=1)        1.489   decoder/N82
+    SLICE_X13Y41.D       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777_SW1
+    SLICE_X13Y41.B2      net (fanout=1)        0.543   decoder/N19
+    SLICE_X13Y41.B       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777
+    SLICE_X15Y42.A3      net (fanout=12)       0.845   Sh1777
+    SLICE_X15Y42.CLK     Tas                   0.373   M_player_pos_a_q[5]
+                                                       Mmux__n019351
+                                                       M_player_pos_a_q_4
     -------------------------------------------------  ---------------------------
-    Total                                      4.577ns (1.392ns logic, 3.185ns route)
-                                                       (30.4% logic, 69.6% route)
+    Total                                     10.384ns (2.604ns logic, 7.780ns route)
+                                                       (25.1% logic, 74.9% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.355ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               right_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          right_conditioner/M_ctr_q_15 (FF)
+Slack:                  89.556ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_see_q_0 (FF)
+  Destination:          M_player_pos_a_q_0 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.523ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.087ns (0.717 - 0.804)
+  Data Path Delay:      10.288ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.121ns (0.593 - 0.714)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -925,29 +1463,46 @@ Slack:                  95.355ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: right_conditioner/sync/M_pipe_q_1 to right_conditioner/M_ctr_q_15
+  Maximum Data Path at Slow Process Corner: M_see_q_0 to M_player_pos_a_q_0
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.BQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       right_conditioner/sync/M_pipe_q_1
-    SLICE_X7Y25.A5       net (fanout=1)        1.424   right_conditioner/M_sync_out
-    SLICE_X7Y25.A        Tilo                  0.259   right_conditioner/M_sync_out_inv
-                                                       right_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X8Y34.SR       net (fanout=5)        1.845   right_conditioner/M_sync_out_inv
-    SLICE_X8Y34.CLK      Tsrck                 0.470   right_conditioner/M_ctr_q[15]
-                                                       right_conditioner/M_ctr_q_15
+    SLICE_X11Y48.AMUX    Tshcko                0.518   _n0188_inv
+                                                       M_see_q_0
+    SLICE_X13Y46.A1      net (fanout=2)        1.491   M_see_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y43.C3      net (fanout=15)       0.843   decoder/Maddsub_n0039_3
+    SLICE_X12Y43.C       Tilo                  0.255   M_player_pos_b_q_0_1
+                                                       decoder/Maddsub_n0039_Madd_xor<3>11_SW0
+    SLICE_X13Y41.D1      net (fanout=1)        1.489   decoder/N82
+    SLICE_X13Y41.D       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777_SW1
+    SLICE_X13Y41.B2      net (fanout=1)        0.543   decoder/N19
+    SLICE_X13Y41.B       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777
+    SLICE_X14Y42.A1      net (fanout=12)       1.018   Sh1777
+    SLICE_X14Y42.CLK     Tas                   0.349   M_player_pos_a_q[3]
+                                                       Mmux__n019311
+                                                       M_player_pos_a_q_0
     -------------------------------------------------  ---------------------------
-    Total                                      4.523ns (1.254ns logic, 3.269ns route)
-                                                       (27.7% logic, 72.3% route)
+    Total                                     10.288ns (2.622ns logic, 7.666ns route)
+                                                       (25.5% logic, 74.5% route)
 
 --------------------------------------------------------------------------------
-Slack:                  95.364ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               right_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          right_conditioner/M_ctr_q_14 (FF)
+Slack:                  89.564ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_reg_d_q_0 (FF)
+  Destination:          M_player_pos_b_q_1_1 (FF)
   Requirement:          100.000ns
-  Data Path Delay:      4.514ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.087ns (0.717 - 0.804)
+  Data Path Delay:      10.376ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.025ns (0.316 - 0.341)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 100.000ns
   Clock Uncertainty:    0.035ns
@@ -958,120 +1513,40 @@ Slack:                  95.364ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: right_conditioner/sync/M_pipe_q_1 to right_conditioner/M_ctr_q_14
+  Maximum Data Path at Slow Process Corner: M_reg_d_q_0 to M_player_pos_b_q_1_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X4Y8.BQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       right_conditioner/sync/M_pipe_q_1
-    SLICE_X7Y25.A5       net (fanout=1)        1.424   right_conditioner/M_sync_out
-    SLICE_X7Y25.A        Tilo                  0.259   right_conditioner/M_sync_out_inv
-                                                       right_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X8Y34.SR       net (fanout=5)        1.845   right_conditioner/M_sync_out_inv
-    SLICE_X8Y34.CLK      Tsrck                 0.461   right_conditioner/M_ctr_q[15]
-                                                       right_conditioner/M_ctr_q_14
+    SLICE_X6Y42.AQ       Tcko                  0.476   M_reg_d_q[1]
+                                                       M_reg_d_q_0
+    SLICE_X13Y46.A3      net (fanout=5)        1.778   M_reg_d_q[0]
+    SLICE_X13Y46.A       Tilo                  0.259   N41
+                                                       Mmux_M_ctrl_direction11
+    SLICE_X11Y47.D2      net (fanout=9)        1.256   M_ctrl_direction[0]
+    SLICE_X11Y47.D       Tilo                  0.259   M_state_q_FSM_FFd3_3
+                                                       decoder/Mmux__n00423_rs_lut<2>1
+    SLICE_X12Y46.B1      net (fanout=3)        1.026   decoder/Mmux__n00423_rs_lut[2]
+    SLICE_X12Y46.BMUX    Topbb                 0.464   decoder/Maddsub_n0039_Madd1_cy[4]
+                                                       decoder/Maddsub_n0039_Madd1_lut<3>
+                                                       decoder/Maddsub_n0039_Madd1_cy<4>
+    SLICE_X12Y43.D4      net (fanout=15)       0.774   decoder/Maddsub_n0039_3
+    SLICE_X12Y43.D       Tilo                  0.254   M_player_pos_b_q_0_1
+                                                       decoder/Maddsub_n0039_Madd_xor<3>11_SW1
+    SLICE_X13Y41.D6      net (fanout=1)        1.101   decoder/N83
+    SLICE_X13Y41.D       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777_SW1
+    SLICE_X13Y41.B2      net (fanout=1)        0.543   decoder/N19
+    SLICE_X13Y41.B       Tilo                  0.259   M_player_pos_b_q[5]
+                                                       decoder/Sh1777
+    SLICE_X12Y42.B5      net (fanout=12)       0.435   Sh1777
+    SLICE_X12Y42.B       Tilo                  0.254   M_player_pos_b_q[3]
+                                                       Mmux_M_player_pos_b_d21
+    SLICE_X11Y42.DX      net (fanout=1)        0.865   M_player_pos_b_d[1]
+    SLICE_X11Y42.CLK     Tdick                 0.114   M_player_pos_b_q_1_1
+                                                       M_player_pos_b_q_1_1
     -------------------------------------------------  ---------------------------
-    Total                                      4.514ns (1.245ns logic, 3.269ns route)
-                                                       (27.6% logic, 72.4% route)
-
---------------------------------------------------------------------------------
-Slack:                  95.374ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               left_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          left_conditioner/M_ctr_q_11 (FF)
-  Requirement:          100.000ns
-  Data Path Delay:      4.476ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.115ns (0.689 - 0.804)
-  Source Clock:         clk_BUFGP rising at 0.000ns
-  Destination Clock:    clk_BUFGP rising at 100.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: left_conditioner/sync/M_pipe_q_1 to left_conditioner/M_ctr_q_11
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X4Y8.DQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       left_conditioner/sync/M_pipe_q_1
-    SLICE_X12Y23.D6      net (fanout=1)        1.773   left_conditioner/M_sync_out
-    SLICE_X12Y23.D       Tilo                  0.254   left_conditioner/M_sync_out_inv
-                                                       left_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X16Y33.SR      net (fanout=5)        1.454   left_conditioner/M_sync_out_inv
-    SLICE_X16Y33.CLK     Tsrck                 0.470   left_conditioner/M_ctr_q[11]
-                                                       left_conditioner/M_ctr_q_11
-    -------------------------------------------------  ---------------------------
-    Total                                      4.476ns (1.249ns logic, 3.227ns route)
-                                                       (27.9% logic, 72.1% route)
-
---------------------------------------------------------------------------------
-Slack:                  95.375ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               right_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          right_conditioner/M_ctr_q_13 (FF)
-  Requirement:          100.000ns
-  Data Path Delay:      4.503ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.087ns (0.717 - 0.804)
-  Source Clock:         clk_BUFGP rising at 0.000ns
-  Destination Clock:    clk_BUFGP rising at 100.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: right_conditioner/sync/M_pipe_q_1 to right_conditioner/M_ctr_q_13
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X4Y8.BQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       right_conditioner/sync/M_pipe_q_1
-    SLICE_X7Y25.A5       net (fanout=1)        1.424   right_conditioner/M_sync_out
-    SLICE_X7Y25.A        Tilo                  0.259   right_conditioner/M_sync_out_inv
-                                                       right_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X8Y34.SR       net (fanout=5)        1.845   right_conditioner/M_sync_out_inv
-    SLICE_X8Y34.CLK      Tsrck                 0.450   right_conditioner/M_ctr_q[15]
-                                                       right_conditioner/M_ctr_q_13
-    -------------------------------------------------  ---------------------------
-    Total                                      4.503ns (1.234ns logic, 3.269ns route)
-                                                       (27.4% logic, 72.6% route)
-
---------------------------------------------------------------------------------
-Slack:                  95.381ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               up_conditioner/sync/M_pipe_q_1 (FF)
-  Destination:          up_conditioner/M_ctr_q_19 (FF)
-  Requirement:          100.000ns
-  Data Path Delay:      4.517ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.067ns (0.644 - 0.711)
-  Source Clock:         clk_BUFGP rising at 0.000ns
-  Destination Clock:    clk_BUFGP rising at 100.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: up_conditioner/sync/M_pipe_q_1 to up_conditioner/M_ctr_q_19
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X4Y8.CQ        Tcko                  0.525   left_conditioner/M_sync_out
-                                                       up_conditioner/sync/M_pipe_q_1
-    SLICE_X1Y21.A4       net (fanout=1)        1.575   up_conditioner/M_sync_out
-    SLICE_X1Y21.A        Tilo                  0.259   up_conditioner/M_sync_out_inv
-                                                       up_conditioner/M_sync_out_inv1_INV_0
-    SLICE_X0Y29.SR       net (fanout=5)        1.688   up_conditioner/M_sync_out_inv
-    SLICE_X0Y29.CLK      Tsrck                 0.470   up_conditioner/M_ctr_q[19]
-                                                       up_conditioner/M_ctr_q_19
-    -------------------------------------------------  ---------------------------
-    Total                                      4.517ns (1.254ns logic, 3.263ns route)
-                                                       (27.8% logic, 72.2% route)
+    Total                                     10.376ns (2.598ns logic, 7.778ns route)
+                                                       (25.0% logic, 75.0% route)
 
 --------------------------------------------------------------------------------
 
@@ -1085,204 +1560,44 @@ Slack: 97.334ns (period - min period limit)
   Location pin: BUFGMUX_X2Y11.I0
   Clock network: clk_BUFGP/IBUFG
 --------------------------------------------------------------------------------
-Slack: 97.751ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 2.249ns (444.642MHz) (Tockper)
-  Physical resource: M_see_q[1]/CLK0
-  Logical resource: M_see_q_1/CK0
-  Location pin: OLOGIC_X6Y62.CLK0
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
 Slack: 98.601ns (period - min period limit)
   Period: 100.000ns
   Min period limit: 1.399ns (714.796MHz) (Tcp)
-  Physical resource: left_conditioner/M_sync_out/CLK
-  Logical resource: down_conditioner/sync/Mshreg_M_pipe_q_1/CLK
-  Location pin: SLICE_X4Y8.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 98.601ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 1.399ns (714.796MHz) (Tcp)
-  Physical resource: left_conditioner/M_sync_out/CLK
-  Logical resource: right_conditioner/sync/Mshreg_M_pipe_q_1/CLK
-  Location pin: SLICE_X4Y8.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 98.601ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 1.399ns (714.796MHz) (Tcp)
-  Physical resource: left_conditioner/M_sync_out/CLK
-  Logical resource: up_conditioner/sync/Mshreg_M_pipe_q_1/CLK
-  Location pin: SLICE_X4Y8.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 98.601ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 1.399ns (714.796MHz) (Tcp)
-  Physical resource: left_conditioner/M_sync_out/CLK
+  Physical resource: start_conditioner/M_sync_out/CLK
   Logical resource: left_conditioner/sync/Mshreg_M_pipe_q_1/CLK
-  Location pin: SLICE_X4Y8.CLK
+  Location pin: SLICE_X0Y18.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
+Slack: 98.601ns (period - min period limit)
   Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[3]/CLK
-  Logical resource: left_conditioner/M_ctr_q_0/CK
-  Location pin: SLICE_X16Y31.CLK
+  Min period limit: 1.399ns (714.796MHz) (Tcp)
+  Physical resource: start_conditioner/M_sync_out/CLK
+  Logical resource: down_conditioner/sync/Mshreg_M_pipe_q_1/CLK
+  Location pin: SLICE_X0Y18.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
+Slack: 98.601ns (period - min period limit)
   Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[3]/CLK
-  Logical resource: left_conditioner/M_ctr_q_1/CK
-  Location pin: SLICE_X16Y31.CLK
+  Min period limit: 1.399ns (714.796MHz) (Tcp)
+  Physical resource: start_conditioner/M_sync_out/CLK
+  Logical resource: right_conditioner/sync/Mshreg_M_pipe_q_1/CLK
+  Location pin: SLICE_X0Y18.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
+Slack: 98.601ns (period - min period limit)
   Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[3]/CLK
-  Logical resource: left_conditioner/M_ctr_q_2/CK
-  Location pin: SLICE_X16Y31.CLK
+  Min period limit: 1.399ns (714.796MHz) (Tcp)
+  Physical resource: start_conditioner/M_sync_out/CLK
+  Logical resource: up_conditioner/sync/Mshreg_M_pipe_q_1/CLK
+  Location pin: SLICE_X0Y18.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
+Slack: 98.601ns (period - min period limit)
   Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[3]/CLK
-  Logical resource: left_conditioner/M_ctr_q_3/CK
-  Location pin: SLICE_X16Y31.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[7]/CLK
-  Logical resource: left_conditioner/M_ctr_q_4/CK
-  Location pin: SLICE_X16Y32.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[7]/CLK
-  Logical resource: left_conditioner/M_ctr_q_5/CK
-  Location pin: SLICE_X16Y32.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[7]/CLK
-  Logical resource: left_conditioner/M_ctr_q_6/CK
-  Location pin: SLICE_X16Y32.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[7]/CLK
-  Logical resource: left_conditioner/M_ctr_q_7/CK
-  Location pin: SLICE_X16Y32.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[11]/CLK
-  Logical resource: left_conditioner/M_ctr_q_8/CK
-  Location pin: SLICE_X16Y33.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[11]/CLK
-  Logical resource: left_conditioner/M_ctr_q_9/CK
-  Location pin: SLICE_X16Y33.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[11]/CLK
-  Logical resource: left_conditioner/M_ctr_q_10/CK
-  Location pin: SLICE_X16Y33.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[11]/CLK
-  Logical resource: left_conditioner/M_ctr_q_11/CK
-  Location pin: SLICE_X16Y33.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[15]/CLK
-  Logical resource: left_conditioner/M_ctr_q_12/CK
-  Location pin: SLICE_X16Y34.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[15]/CLK
-  Logical resource: left_conditioner/M_ctr_q_13/CK
-  Location pin: SLICE_X16Y34.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[15]/CLK
-  Logical resource: left_conditioner/M_ctr_q_14/CK
-  Location pin: SLICE_X16Y34.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[15]/CLK
-  Logical resource: left_conditioner/M_ctr_q_15/CK
-  Location pin: SLICE_X16Y34.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[19]/CLK
-  Logical resource: left_conditioner/M_ctr_q_16/CK
-  Location pin: SLICE_X16Y35.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[19]/CLK
-  Logical resource: left_conditioner/M_ctr_q_17/CK
-  Location pin: SLICE_X16Y35.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[19]/CLK
-  Logical resource: left_conditioner/M_ctr_q_18/CK
-  Location pin: SLICE_X16Y35.CLK
-  Clock network: clk_BUFGP
---------------------------------------------------------------------------------
-Slack: 99.520ns (period - min period limit)
-  Period: 100.000ns
-  Min period limit: 0.480ns (2083.333MHz) (Tcp)
-  Physical resource: left_conditioner/M_ctr_q[19]/CLK
-  Logical resource: left_conditioner/M_ctr_q_19/CK
-  Location pin: SLICE_X16Y35.CLK
+  Min period limit: 1.399ns (714.796MHz) (Tcp)
+  Physical resource: start_conditioner/M_sync_out/CLK
+  Logical resource: start_conditioner/sync/Mshreg_M_pipe_q_1/CLK
+  Location pin: SLICE_X0Y18.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 Slack: 99.520ns (period - min period limit)
@@ -1290,7 +1605,7 @@ Slack: 99.520ns (period - min period limit)
   Min period limit: 0.480ns (2083.333MHz) (Tcp)
   Physical resource: up_conditioner/M_ctr_q[3]/CLK
   Logical resource: up_conditioner/M_ctr_q_0/CK
-  Location pin: SLICE_X0Y25.CLK
+  Location pin: SLICE_X0Y28.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 Slack: 99.520ns (period - min period limit)
@@ -1298,7 +1613,7 @@ Slack: 99.520ns (period - min period limit)
   Min period limit: 0.480ns (2083.333MHz) (Tcp)
   Physical resource: up_conditioner/M_ctr_q[3]/CLK
   Logical resource: up_conditioner/M_ctr_q_1/CK
-  Location pin: SLICE_X0Y25.CLK
+  Location pin: SLICE_X0Y28.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 Slack: 99.520ns (period - min period limit)
@@ -1306,7 +1621,7 @@ Slack: 99.520ns (period - min period limit)
   Min period limit: 0.480ns (2083.333MHz) (Tcp)
   Physical resource: up_conditioner/M_ctr_q[3]/CLK
   Logical resource: up_conditioner/M_ctr_q_2/CK
-  Location pin: SLICE_X0Y25.CLK
+  Location pin: SLICE_X0Y28.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 Slack: 99.520ns (period - min period limit)
@@ -1314,7 +1629,167 @@ Slack: 99.520ns (period - min period limit)
   Min period limit: 0.480ns (2083.333MHz) (Tcp)
   Physical resource: up_conditioner/M_ctr_q[3]/CLK
   Logical resource: up_conditioner/M_ctr_q_3/CK
-  Location pin: SLICE_X0Y25.CLK
+  Location pin: SLICE_X0Y28.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[7]/CLK
+  Logical resource: up_conditioner/M_ctr_q_4/CK
+  Location pin: SLICE_X0Y29.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[7]/CLK
+  Logical resource: up_conditioner/M_ctr_q_5/CK
+  Location pin: SLICE_X0Y29.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[7]/CLK
+  Logical resource: up_conditioner/M_ctr_q_6/CK
+  Location pin: SLICE_X0Y29.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[7]/CLK
+  Logical resource: up_conditioner/M_ctr_q_7/CK
+  Location pin: SLICE_X0Y29.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[11]/CLK
+  Logical resource: up_conditioner/M_ctr_q_8/CK
+  Location pin: SLICE_X0Y30.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[11]/CLK
+  Logical resource: up_conditioner/M_ctr_q_9/CK
+  Location pin: SLICE_X0Y30.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[11]/CLK
+  Logical resource: up_conditioner/M_ctr_q_10/CK
+  Location pin: SLICE_X0Y30.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[11]/CLK
+  Logical resource: up_conditioner/M_ctr_q_11/CK
+  Location pin: SLICE_X0Y30.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[15]/CLK
+  Logical resource: up_conditioner/M_ctr_q_12/CK
+  Location pin: SLICE_X0Y31.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[15]/CLK
+  Logical resource: up_conditioner/M_ctr_q_13/CK
+  Location pin: SLICE_X0Y31.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[15]/CLK
+  Logical resource: up_conditioner/M_ctr_q_14/CK
+  Location pin: SLICE_X0Y31.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[15]/CLK
+  Logical resource: up_conditioner/M_ctr_q_15/CK
+  Location pin: SLICE_X0Y31.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[19]/CLK
+  Logical resource: up_conditioner/M_ctr_q_16/CK
+  Location pin: SLICE_X0Y32.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[19]/CLK
+  Logical resource: up_conditioner/M_ctr_q_17/CK
+  Location pin: SLICE_X0Y32.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[19]/CLK
+  Logical resource: up_conditioner/M_ctr_q_18/CK
+  Location pin: SLICE_X0Y32.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: up_conditioner/M_ctr_q[19]/CLK
+  Logical resource: up_conditioner/M_ctr_q_19/CK
+  Location pin: SLICE_X0Y32.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: right_conditioner/M_ctr_q[3]/CLK
+  Logical resource: right_conditioner/M_ctr_q_0/CK
+  Location pin: SLICE_X0Y38.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: right_conditioner/M_ctr_q[3]/CLK
+  Logical resource: right_conditioner/M_ctr_q_1/CK
+  Location pin: SLICE_X0Y38.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: right_conditioner/M_ctr_q[3]/CLK
+  Logical resource: right_conditioner/M_ctr_q_2/CK
+  Location pin: SLICE_X0Y38.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 99.520ns (period - min period limit)
+  Period: 100.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: right_conditioner/M_ctr_q[3]/CLK
+  Logical resource: right_conditioner/M_ctr_q_3/CK
+  Location pin: SLICE_X0Y38.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 
@@ -1331,7 +1806,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    5.121|         |         |         |
+clk            |   10.966|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -1340,23 +1815,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 3394 paths, 0 nets, and 398 connections
+Constraints cover 152138 paths, 0 nets, and 1023 connections
 
 Design statistics:
-   Minimum period:   5.121ns{1}   (Maximum frequency: 195.274MHz)
+   Minimum period:  10.966ns{1}   (Maximum frequency:  91.191MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Thu Dec  6 17:23:01 2018 
+Analysis completed Thu Dec  6 19:51:06 2018 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 138 MB
+Peak Memory Usage: 139 MB
 
 
 

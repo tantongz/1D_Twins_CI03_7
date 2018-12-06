@@ -2,8 +2,13 @@ module control_n (
     input direction[2],
     input state[3],
     
+    // Map selection.
     output sel_level,
-    output sel_display
+
+    // Waiting.
+    output sel_display, 
+    
+    output sel_new_pos[2]
     
   ) {
 
@@ -14,10 +19,24 @@ module control_n (
     case (state) {
       1:sel_level = direction[0];
         sel_display = 0;
+        sel_new_pos = 0;
+        
+      2:sel_level = 0;
+        sel_display = 0;
+        sel_new_pos = 0;
+        
+      3: sel_level = 0;
+         sel_display = 0;
+         sel_new_pos = direction;
+      
+      4: sel_level = 0;
+         sel_display = 0;
+         sel_new_pos = direction;
         
       default:
         sel_level = bz;
         sel_display = bz;
+        sel_new_pos = bz;
     }
   }
 }

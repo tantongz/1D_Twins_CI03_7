@@ -4,11 +4,12 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module control_n_4 (
+module control_n_5 (
     input [1:0] direction,
     input [2:0] state,
     output reg sel_level,
-    output reg sel_display
+    output reg sel_display,
+    output reg [1:0] sel_new_pos
   );
   
   
@@ -20,10 +21,27 @@ module control_n_4 (
       1'h1: begin
         sel_level = direction[0+0-:1];
         sel_display = 1'h0;
+        sel_new_pos = 1'h0;
+      end
+      2'h2: begin
+        sel_level = 1'h0;
+        sel_display = 1'h0;
+        sel_new_pos = 1'h0;
+      end
+      2'h3: begin
+        sel_level = 1'h0;
+        sel_display = 1'h0;
+        sel_new_pos = direction;
+      end
+      3'h4: begin
+        sel_level = 1'h0;
+        sel_display = 1'h0;
+        sel_new_pos = direction;
       end
       default: begin
         sel_level = 1'bz;
         sel_display = 1'bz;
+        sel_new_pos = 1'bz;
       end
     endcase
   end

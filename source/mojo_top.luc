@@ -32,6 +32,7 @@ module mojo_top (
   matrix_display mat_dis(.clk(clk), .rst(rst));
   map_rom map;
   map_to_display map_to_dis;
+  matrix_decoder decoder;
   
   control_n ctrl;
   // board_generator board_gen;
@@ -43,35 +44,39 @@ module mojo_top (
     reset_conditioner reset_cond;
     
     // Setup of edge detectors for buttons.
-    edge_detector right_edge_detector(#RISE(1), #FALL(0));
-    edge_detector left_edge_detector(#RISE(1), #FALL(0));
-    edge_detector up_edge_detector(#RISE(1), #FALL(0));
-    edge_detector down_edge_detector(#RISE(1), #FALL(0));
+    edge_detector right_edge_detector(#RISE(0), #FALL(1));
+    edge_detector left_edge_detector(#RISE(0), #FALL(1));
+    edge_detector up_edge_detector(#RISE(0), #FALL(1));
+    edge_detector down_edge_detector(#RISE(0), #FALL(1));
     
     button_conditioner right_conditioner;
     button_conditioner left_conditioner;
     button_conditioner up_conditioner;
     button_conditioner down_conditioner;
     
-    edge_detector reset_edge_detector(#RISE(1), #FALL(0));
-    edge_detector start_edge_detector(#RISE(1), #FALL(0));
+    edge_detector reset_edge_detector(#RISE(0), #FALL(1));
+    edge_detector start_edge_detector(#RISE(0), #FALL(1));
     
     button_conditioner reset_conditioner;
     button_conditioner start_conditioner;
     
-    fsm state(#INIT(MENU_WAIT)) = {MENU_WAIT, MENU_UPDATE};
+    fsm state(#INIT(MENU_WAIT)) = {MENU_WAIT, MENU_UPDATE, WAIT,CHECKA,CHECKB};
     
-    dff level[2](#INIT(3));
+    dff level[2](#INIT(0));
     dff reg_d[3](#INIT(4));
     
     dff see[3];
     
     .rst(rst) {
-    
+      dff reg_s;
+      dff player_pos_a[6];
+      dff player_pos_b[6];
     }
   }
   
   sig lx[2];
+  sig temp_pos[6];
+  sig out;
   
   always {
     
@@ -93,17 +98,24 @@ module mojo_top (
     map_to_dis.map_a = map.map_a;
     map_to_dis.map_b = map.map_b;
     
-    map_to_dis.tp_a = map.sp_a;
-    map_to_dis.tp_b = map.sp_b;
+    
+    map_to_dis.tp_a = player_pos_a.q;
+    map_to_dis.tp_b = player_pos_b.q;
     
     map_to_dis.ep_a = map.ep_a;
     map_to_dis.ep_b = map.ep_b;
     
+    decoder.curr_pos = b000000;    
+    decoder.sel_new_pos = ctrl.sel_new_pos;
+    decoder.mapdata = map.map_a;
+
     
     led = b00000000;
     led = see.q;
     ctrl.state = 0;
     ctrl.direction = 0;
+    
+    reg_s.d = 0;
     
     case(state.q) {
       state.MENU_WAIT:
@@ -116,20 +128,36 @@ module mojo_top (
           reg_d.d = 1;
         } else if (down_edge_detector.out) {
           reg_d.d = 0;
-        } else {        
+        } else {
           reg_d.d = 4;
         }
         
+        player_pos_a.d = map.sp_a;
+        player_pos_b.d = map.sp_b;
+        
+        
         if (reg_d.q != 4) {
-          state.d = state.MENU_UPDATE; 
+          state.d = state.MENU_UPDATE;
           
-          // Prepare control signals for next state.    
-          ctrl.state = 1;         
+          // Prepare control signals for next state.
+          ctrl.state = 1;
           ctrl.direction = reg_d.q;
           see.d = reg_d.q;
           // reg_d.q will be cleared in the next iteration, so save it in see
           // to use it in MENU_UPDATE.
         }
+        
+        // Start/select button!
+        if (start_edge_detector.out) {
+          reg_s.d = 1;
+        } else {
+          reg_s.d = 0;
+        }
+        
+        if (reg_s.q == 1) {
+          state.d = state.WAIT;
+        }
+      
       
       state.MENU_UPDATE:
         ctrl.state = 1;
@@ -138,12 +166,61 @@ module mojo_top (
         if (ctrl.sel_level) {
           level.d = level.q + 1;
         } else {
-          level.d = level.q - 1; 
+          level.d = level.q - 1;
         }
         
         reg_d.d = 4;
         see.d = 4;
         state.d = state.MENU_WAIT;
+      
+      state.WAIT:
+        ctrl.state = 2;
+        led = b11000011;
+        
+        if (right_edge_detector.out) {
+          reg_d.d = 3;
+        } else if (left_edge_detector.out) {
+          reg_d.d = 2;
+        } else if (up_edge_detector.out) {
+          reg_d.d = 1;
+        } else if (down_edge_detector.out) {
+          reg_d.d = 0;
+        } else {
+          reg_d.d = 4;
+        }
+        
+        
+        if (reg_d.q != 4) {
+          state.d = state.CHECKA;
+          
+          // Prepare control signals for next state.
+          ctrl.state = 3;
+          ctrl.direction = reg_d.q;
+          see.d = reg_d.q;
+        }
+      
+      state.CHECKA:
+        ctrl.state = 3;
+        ctrl.direction = see.q;
+        
+        decoder.curr_pos = player_pos_a.q;
+        decoder.mapdata = map.map_a;
+        player_pos_a.d = decoder.new_pos;
+        
+        state.d = state.CHECKB;
+        see.d = see.q;
+      
+      state.CHECKB: //To move and check for Map B
+        ctrl.state = 3;
+        ctrl.direction = see.q;
+        
+        decoder.curr_pos = player_pos_b.q;
+        decoder.mapdata = map.map_b;
+        player_pos_b.d = decoder.new_pos;
+        
+        
+        state.d = state.WAIT;
+      
     }
     
     // Button logic.
