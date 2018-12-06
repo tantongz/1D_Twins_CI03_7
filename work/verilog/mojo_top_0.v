@@ -94,138 +94,166 @@ module mojo_top_0 (
     .new_pos(M_decoder_new_pos)
   );
   
+  wire [16-1:0] M_alu_alu;
+  wire [1-1:0] M_alu_z_;
+  wire [1-1:0] M_alu_v;
+  wire [1-1:0] M_alu_n;
+  reg [6-1:0] M_alu_alufn;
+  reg [16-1:0] M_alu_a;
+  reg [16-1:0] M_alu_b;
+  alu_main_5 alu (
+    .alufn(M_alu_alufn),
+    .a(M_alu_a),
+    .b(M_alu_b),
+    .alu(M_alu_alu),
+    .z_(M_alu_z_),
+    .v(M_alu_v),
+    .n(M_alu_n)
+  );
+  
+  wire [1-1:0] M_ctrl_sel_map;
   wire [1-1:0] M_ctrl_sel_level;
   wire [1-1:0] M_ctrl_sel_display;
   wire [2-1:0] M_ctrl_sel_new_pos;
+  wire [6-1:0] M_ctrl_alufn;
+  wire [1-1:0] M_ctrl_sel_check;
   reg [2-1:0] M_ctrl_direction;
   reg [3-1:0] M_ctrl_state;
-  control_n_5 ctrl (
+  control_n_6 ctrl (
     .direction(M_ctrl_direction),
     .state(M_ctrl_state),
+    .sel_map(M_ctrl_sel_map),
     .sel_level(M_ctrl_sel_level),
     .sel_display(M_ctrl_sel_display),
-    .sel_new_pos(M_ctrl_sel_new_pos)
+    .sel_new_pos(M_ctrl_sel_new_pos),
+    .alufn(M_ctrl_alufn),
+    .sel_check(M_ctrl_sel_check)
   );
   
   wire [1-1:0] M_reset_cond_out;
   reg [1-1:0] M_reset_cond_in;
-  reset_conditioner_6 reset_cond (
+  reset_conditioner_7 reset_cond (
     .clk(clk),
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
   );
   wire [1-1:0] M_right_edge_detector_out;
   reg [1-1:0] M_right_edge_detector_in;
-  edge_detector_7 right_edge_detector (
+  edge_detector_8 right_edge_detector (
     .clk(clk),
     .in(M_right_edge_detector_in),
     .out(M_right_edge_detector_out)
   );
   wire [1-1:0] M_left_edge_detector_out;
   reg [1-1:0] M_left_edge_detector_in;
-  edge_detector_7 left_edge_detector (
+  edge_detector_8 left_edge_detector (
     .clk(clk),
     .in(M_left_edge_detector_in),
     .out(M_left_edge_detector_out)
   );
   wire [1-1:0] M_up_edge_detector_out;
   reg [1-1:0] M_up_edge_detector_in;
-  edge_detector_7 up_edge_detector (
+  edge_detector_8 up_edge_detector (
     .clk(clk),
     .in(M_up_edge_detector_in),
     .out(M_up_edge_detector_out)
   );
   wire [1-1:0] M_down_edge_detector_out;
   reg [1-1:0] M_down_edge_detector_in;
-  edge_detector_7 down_edge_detector (
+  edge_detector_8 down_edge_detector (
     .clk(clk),
     .in(M_down_edge_detector_in),
     .out(M_down_edge_detector_out)
   );
   wire [1-1:0] M_right_conditioner_out;
   reg [1-1:0] M_right_conditioner_in;
-  button_conditioner_11 right_conditioner (
+  button_conditioner_12 right_conditioner (
     .clk(clk),
     .in(M_right_conditioner_in),
     .out(M_right_conditioner_out)
   );
   wire [1-1:0] M_left_conditioner_out;
   reg [1-1:0] M_left_conditioner_in;
-  button_conditioner_11 left_conditioner (
+  button_conditioner_12 left_conditioner (
     .clk(clk),
     .in(M_left_conditioner_in),
     .out(M_left_conditioner_out)
   );
   wire [1-1:0] M_up_conditioner_out;
   reg [1-1:0] M_up_conditioner_in;
-  button_conditioner_11 up_conditioner (
+  button_conditioner_12 up_conditioner (
     .clk(clk),
     .in(M_up_conditioner_in),
     .out(M_up_conditioner_out)
   );
   wire [1-1:0] M_down_conditioner_out;
   reg [1-1:0] M_down_conditioner_in;
-  button_conditioner_11 down_conditioner (
+  button_conditioner_12 down_conditioner (
     .clk(clk),
     .in(M_down_conditioner_in),
     .out(M_down_conditioner_out)
   );
   wire [1-1:0] M_reset_edge_detector_out;
   reg [1-1:0] M_reset_edge_detector_in;
-  edge_detector_7 reset_edge_detector (
+  edge_detector_8 reset_edge_detector (
     .clk(clk),
     .in(M_reset_edge_detector_in),
     .out(M_reset_edge_detector_out)
   );
   wire [1-1:0] M_start_edge_detector_out;
   reg [1-1:0] M_start_edge_detector_in;
-  edge_detector_7 start_edge_detector (
+  edge_detector_8 start_edge_detector (
     .clk(clk),
     .in(M_start_edge_detector_in),
     .out(M_start_edge_detector_out)
   );
   wire [1-1:0] M_reset_conditioner_out;
   reg [1-1:0] M_reset_conditioner_in;
-  button_conditioner_11 reset_conditioner (
+  button_conditioner_12 reset_conditioner (
     .clk(clk),
     .in(M_reset_conditioner_in),
     .out(M_reset_conditioner_out)
   );
   wire [1-1:0] M_start_conditioner_out;
   reg [1-1:0] M_start_conditioner_in;
-  button_conditioner_11 start_conditioner (
+  button_conditioner_12 start_conditioner (
     .clk(clk),
     .in(M_start_conditioner_in),
     .out(M_start_conditioner_out)
   );
-  localparam MENU_WAIT_state = 3'd0;
-  localparam MENU_UPDATE_state = 3'd1;
-  localparam WAIT_state = 3'd2;
-  localparam CHECKA_state = 3'd3;
-  localparam CHECKB_state = 3'd4;
+  localparam MENU_WAIT_state = 4'd0;
+  localparam MENU_UPDATE_state = 4'd1;
+  localparam SETUP_state = 4'd2;
+  localparam WAIT_state = 4'd3;
+  localparam CHECKA_state = 4'd4;
+  localparam CHECKB_state = 4'd5;
+  localparam CHECKWIN_state = 4'd6;
+  localparam CHECKRESTART_state = 4'd7;
+  localparam WIN_state = 4'd8;
   
-  reg [2:0] M_state_d, M_state_q = MENU_WAIT_state;
+  reg [3:0] M_state_d, M_state_q = MENU_WAIT_state;
   reg [1:0] M_level_d, M_level_q = 1'h0;
   reg [2:0] M_reg_d_d, M_reg_d_q = 3'h4;
   reg [2:0] M_see_d, M_see_q = 1'h0;
   reg M_reg_s_d, M_reg_s_q = 1'h0;
   reg [5:0] M_player_pos_a_d, M_player_pos_a_q = 1'h0;
   reg [5:0] M_player_pos_b_d, M_player_pos_b_q = 1'h0;
+  reg [15:0] M_r0_d, M_r0_q = 1'h0;
+  reg [15:0] M_r1_d, M_r1_q = 1'h0;
+  reg [15:0] M_r2_d, M_r2_q = 1'h0;
   
-  reg [1:0] lx;
-  
-  reg [5:0] temp_pos;
-  
-  reg out;
+  reg result;
   
   always @* begin
     M_state_d = M_state_q;
+    M_r2_d = M_r2_q;
     M_player_pos_a_d = M_player_pos_a_q;
     M_player_pos_b_d = M_player_pos_b_q;
     M_see_d = M_see_q;
     M_level_d = M_level_q;
     M_reg_d_d = M_reg_d_q;
     M_reg_s_d = M_reg_s_q;
+    M_r1_d = M_r1_q;
     
     M_map_level_adr = M_level_q;
     M_reset_cond_in = ~rst_n;
@@ -247,11 +275,28 @@ module mojo_top_0 (
     M_decoder_curr_pos = 6'h00;
     M_decoder_sel_new_pos = M_ctrl_sel_new_pos;
     M_decoder_mapdata = M_map_map_a;
+    M_alu_a = 8'h00;
+    M_alu_b = 8'h00;
+    M_alu_alufn = M_ctrl_alufn;
     led = 8'h00;
-    led = M_see_q;
+    led = M_r1_q;
     M_ctrl_state = 1'h0;
     M_ctrl_direction = 1'h0;
     M_reg_s_d = 1'h0;
+    if (M_ctrl_sel_check == 1'h0) begin
+      M_alu_a = M_decoder_new_pos;
+      if (M_ctrl_sel_map == 1'h0) begin
+        M_alu_b = M_map_ep_a;
+        M_r1_d = M_alu_alu;
+      end else begin
+        M_alu_b = M_map_ep_b;
+        M_r2_d = M_alu_alu;
+      end
+    end else begin
+      M_alu_a = M_r1_q;
+      M_alu_b = M_r2_q;
+    end
+    result = M_alu_alu[0+0-:1];
     
     case (M_state_q)
       MENU_WAIT_state: begin
@@ -301,9 +346,16 @@ module mojo_top_0 (
         M_see_d = 3'h4;
         M_state_d = MENU_WAIT_state;
       end
+      SETUP_state: begin
+        M_ctrl_state = 4'h8;
+        led = 8'h80;
+        M_player_pos_a_d = M_map_sp_a;
+        M_player_pos_b_d = M_map_sp_b;
+        M_state_d = WAIT_state;
+      end
       WAIT_state: begin
         M_ctrl_state = 2'h2;
-        led = 8'hc3;
+        led = 8'h81;
         if (M_right_edge_detector_out) begin
           M_reg_d_d = 2'h3;
         end else begin
@@ -338,12 +390,31 @@ module mojo_top_0 (
         M_see_d = M_see_q;
       end
       CHECKB_state: begin
-        M_ctrl_state = 2'h3;
+        M_ctrl_state = 3'h4;
         M_ctrl_direction = M_see_q;
         M_decoder_curr_pos = M_player_pos_b_q;
         M_decoder_mapdata = M_map_map_b;
         M_player_pos_b_d = M_decoder_new_pos;
-        M_state_d = WAIT_state;
+        M_state_d = CHECKWIN_state;
+      end
+      CHECKWIN_state: begin
+        M_ctrl_state = 3'h5;
+        if (result == 1'h1) begin
+          M_state_d = WIN_state;
+        end else begin
+          M_state_d = CHECKRESTART_state;
+        end
+      end
+      CHECKRESTART_state: begin
+        M_ctrl_state = 3'h6;
+        if (result == 1'h1) begin
+          M_state_d = SETUP_state;
+        end else begin
+          M_state_d = WAIT_state;
+        end
+      end
+      WIN_state: begin
+        led = 8'hff;
       end
     endcase
     M_right_conditioner_in = right_btn;
@@ -370,10 +441,16 @@ module mojo_top_0 (
       M_reg_s_q <= 1'h0;
       M_player_pos_a_q <= 1'h0;
       M_player_pos_b_q <= 1'h0;
+      M_r0_q <= 1'h0;
+      M_r1_q <= 1'h0;
+      M_r2_q <= 1'h0;
     end else begin
       M_reg_s_q <= M_reg_s_d;
       M_player_pos_a_q <= M_player_pos_a_d;
       M_player_pos_b_q <= M_player_pos_b_d;
+      M_r0_q <= M_r0_d;
+      M_r1_q <= M_r1_d;
+      M_r2_q <= M_r2_d;
     end
   end
   

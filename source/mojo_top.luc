@@ -33,6 +33,7 @@ module mojo_top (
   map_rom map;
   map_to_display map_to_dis;
   matrix_decoder decoder;
+  alu_main alu;
   
   control_n ctrl;
   // board_generator board_gen;
@@ -60,7 +61,7 @@ module mojo_top (
     button_conditioner reset_conditioner;
     button_conditioner start_conditioner;
     
-    fsm state(#INIT(MENU_WAIT)) = {MENU_WAIT, MENU_UPDATE, WAIT,CHECKA,CHECKB};
+    fsm state(#INIT(MENU_WAIT)) = {MENU_WAIT, MENU_UPDATE, SETUP, WAIT,CHECKA,CHECKB, CHECKWIN, CHECKRESTART, WIN};
     
     dff level[2](#INIT(0));
     dff reg_d[3](#INIT(4));
@@ -71,12 +72,13 @@ module mojo_top (
       dff reg_s;
       dff player_pos_a[6];
       dff player_pos_b[6];
+      dff r0[16];
+      dff r1[16];
+      dff r2[16];
     }
   }
   
-  sig lx[2];
-  sig temp_pos[6];
-  sig out;
+  sig result;
   
   always {
     
@@ -105,18 +107,41 @@ module mojo_top (
     map_to_dis.ep_a = map.ep_a;
     map_to_dis.ep_b = map.ep_b;
     
-    decoder.curr_pos = b000000;    
+    decoder.curr_pos = b000000;
     decoder.sel_new_pos = ctrl.sel_new_pos;
     decoder.mapdata = map.map_a;
-
+    
+    alu.a = b00000000;
+    alu.b = b00000000;
+    alu.alufn = ctrl.alufn;
+    
     
     led = b00000000;
-    led = see.q;
+    led = r1.q;
     ctrl.state = 0;
     ctrl.direction = 0;
     
     reg_s.d = 0;
     
+    if (ctrl.sel_check == 0) {
+      alu.a = decoder.new_pos;
+      
+      if (ctrl.sel_map == 0) {
+        alu.b = map.ep_a;
+        r1.d = alu.alu;
+      } else {
+        alu.b = map.ep_b;
+        r2.d = alu.alu;
+      }
+      
+    } else {
+      alu.a = r1.q;
+      alu.b = r2.q;  
+    }
+    
+    result = alu.alu[0];
+    
+ 
     case(state.q) {
       state.MENU_WAIT:
         
@@ -173,9 +198,17 @@ module mojo_top (
         see.d = 4;
         state.d = state.MENU_WAIT;
       
+      state.SETUP:
+        ctrl.state = 8;
+        led = b10000000;
+        player_pos_a.d = map.sp_a;
+        player_pos_b.d = map.sp_b;
+        
+        state.d = state.WAIT;
+      
       state.WAIT:
         ctrl.state = 2;
-        led = b11000011;
+        led = b10000001;
         
         if (right_edge_detector.out) {
           reg_d.d = 3;
@@ -211,15 +244,35 @@ module mojo_top (
         see.d = see.q;
       
       state.CHECKB: //To move and check for Map B
-        ctrl.state = 3;
+        ctrl.state = 4;
         ctrl.direction = see.q;
         
         decoder.curr_pos = player_pos_b.q;
         decoder.mapdata = map.map_b;
         player_pos_b.d = decoder.new_pos;
         
+        state.d = state.CHECKWIN;
+      
+      state.CHECKWIN:
+        ctrl.state = 5;
         
-        state.d = state.WAIT;
+        if (result == 1) {
+          state.d = state.WIN;
+        } else {
+          state.d = state.CHECKRESTART;
+        }
+      
+      state.CHECKRESTART:
+        ctrl.state = 6;
+        
+        if (result == 1) {
+          state.d = state.SETUP;
+        } else {
+          state.d = state.WAIT;
+        }
+      
+      state.WIN:
+        led = b11111111;
       
     }
     
