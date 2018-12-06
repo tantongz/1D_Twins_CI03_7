@@ -1,0 +1,16 @@
+module select #(
+    SPEED = 26 : SPEED > 1 // number of stages
+  )(
+    input clk,  // clock
+    input rst,  // reset
+    input inp,
+    output out
+  ) {
+  dff counter[SPEED](.clk(clk),.rst(rst), #INIT(0));
+
+  always {
+    out = 0;
+    counter.d = counter.q + 1;
+    if (counter.q[SPEED-1] == 1) out = inp;
+  }
+}

@@ -47,177 +47,161 @@ module mojo_top_0 (
     .col(M_mat_dis_col)
   );
   
-  wire [2-1:0] M_ctrl_sel_level;
+  wire [36-1:0] M_map_map_a;
+  wire [36-1:0] M_map_map_b;
+  wire [6-1:0] M_map_sp_a;
+  wire [6-1:0] M_map_sp_b;
+  wire [6-1:0] M_map_ep_a;
+  wire [6-1:0] M_map_ep_b;
+  reg [2-1:0] M_map_level_adr;
+  map_rom_2 map (
+    .level_adr(M_map_level_adr),
+    .map_a(M_map_map_a),
+    .map_b(M_map_map_b),
+    .sp_a(M_map_sp_a),
+    .sp_b(M_map_sp_b),
+    .ep_a(M_map_ep_a),
+    .ep_b(M_map_ep_b)
+  );
+  
+  wire [64-1:0] M_map_to_dis_red;
+  wire [64-1:0] M_map_to_dis_green;
+  reg [6-1:0] M_map_to_dis_tp_a;
+  reg [6-1:0] M_map_to_dis_ep_a;
+  reg [36-1:0] M_map_to_dis_map_a;
+  reg [6-1:0] M_map_to_dis_tp_b;
+  reg [6-1:0] M_map_to_dis_ep_b;
+  reg [36-1:0] M_map_to_dis_map_b;
+  map_to_display_3 map_to_dis (
+    .tp_a(M_map_to_dis_tp_a),
+    .ep_a(M_map_to_dis_ep_a),
+    .map_a(M_map_to_dis_map_a),
+    .tp_b(M_map_to_dis_tp_b),
+    .ep_b(M_map_to_dis_ep_b),
+    .map_b(M_map_to_dis_map_b),
+    .red(M_map_to_dis_red),
+    .green(M_map_to_dis_green)
+  );
+  
+  wire [1-1:0] M_ctrl_sel_level;
   wire [1-1:0] M_ctrl_sel_display;
-  wire [1-1:0] M_ctrl_sel_start;
-  wire [1-1:0] M_ctrl_sel_state;
-  wire [1-1:0] M_ctrl_sel_map;
-  wire [1-1:0] M_ctrl_sel_check;
-  wire [1-1:0] M_ctrl_check_win;
-  wire [6-1:0] M_ctrl_alufn;
-  wire [2-1:0] M_ctrl_sel_new_pos;
-  wire [3-1:0] M_ctrl_state_output;
-  reg [1-1:0] M_ctrl_r;
-  reg [2-1:0] M_ctrl_d;
+  reg [2-1:0] M_ctrl_direction;
   reg [3-1:0] M_ctrl_state;
-  control_2 ctrl (
-    .r(M_ctrl_r),
-    .d(M_ctrl_d),
+  control_n_4 ctrl (
+    .direction(M_ctrl_direction),
     .state(M_ctrl_state),
     .sel_level(M_ctrl_sel_level),
-    .sel_display(M_ctrl_sel_display),
-    .sel_start(M_ctrl_sel_start),
-    .sel_state(M_ctrl_sel_state),
-    .sel_map(M_ctrl_sel_map),
-    .sel_check(M_ctrl_sel_check),
-    .check_win(M_ctrl_check_win),
-    .alufn(M_ctrl_alufn),
-    .sel_new_pos(M_ctrl_sel_new_pos),
-    .state_output(M_ctrl_state_output)
-  );
-  
-  wire [16-1:0] M_chk_r0;
-  wire [16-1:0] M_chk_r1;
-  wire [16-1:0] M_chk_r2;
-  reg [1-1:0] M_chk_check_win;
-  reg [16-1:0] M_chk_value;
-  check_3 chk (
-    .clk(clk),
-    .check_win(M_chk_check_win),
-    .value(M_chk_value),
-    .r0(M_chk_r0),
-    .r1(M_chk_r1),
-    .r2(M_chk_r2)
-  );
-  
-  wire [16-1:0] M_alu_alu;
-  wire [1-1:0] M_alu_z_;
-  wire [1-1:0] M_alu_v;
-  wire [1-1:0] M_alu_n;
-  reg [6-1:0] M_alu_alufn;
-  reg [16-1:0] M_alu_a;
-  reg [16-1:0] M_alu_b;
-  alu_main_4 alu (
-    .alufn(M_alu_alufn),
-    .a(M_alu_a),
-    .b(M_alu_b),
-    .alu(M_alu_alu),
-    .z_(M_alu_z_),
-    .v(M_alu_v),
-    .n(M_alu_n)
-  );
-  
-  wire [2-1:0] M_data_mem_call_level_adr;
-  wire [64-1:0] M_data_mem_call_red;
-  wire [64-1:0] M_data_mem_call_green;
-  wire [16-1:0] M_data_mem_call_r0;
-  wire [36-1:0] M_data_mem_call_curr_map;
-  wire [6-1:0] M_data_mem_call_curr_ep;
-  wire [6-1:0] M_data_mem_call_curr_tp;
-  wire [6-1:0] M_data_mem_call_cur_a;
-  wire [6-1:0] M_data_mem_call_cur_b;
-  reg [1-1:0] M_data_mem_call_sel_map;
-  reg [2-1:0] M_data_mem_call_level_adr_i;
-  reg [1-1:0] M_data_mem_call_sel_start;
-  reg [16-1:0] M_data_mem_call_r0_i;
-  reg [6-1:0] M_data_mem_call_new_tp_i;
-  data_mem_5 data_mem_call (
-    .clk(clk),
-    .sel_map(M_data_mem_call_sel_map),
-    .level_adr_i(M_data_mem_call_level_adr_i),
-    .sel_start(M_data_mem_call_sel_start),
-    .r0_i(M_data_mem_call_r0_i),
-    .new_tp_i(M_data_mem_call_new_tp_i),
-    .level_adr(M_data_mem_call_level_adr),
-    .red(M_data_mem_call_red),
-    .green(M_data_mem_call_green),
-    .r0(M_data_mem_call_r0),
-    .curr_map(M_data_mem_call_curr_map),
-    .curr_ep(M_data_mem_call_curr_ep),
-    .curr_tp(M_data_mem_call_curr_tp),
-    .cur_a(M_data_mem_call_cur_a),
-    .cur_b(M_data_mem_call_cur_b)
-  );
-  
-  wire [6-1:0] M_decoder_new_tp;
-  reg [6-1:0] M_decoder_curr_tp;
-  reg [36-1:0] M_decoder_mapdata;
-  reg [3-1:0] M_decoder_sel_new_pos;
-  matrix_decoder_6 decoder (
-    .curr_tp(M_decoder_curr_tp),
-    .mapdata(M_decoder_mapdata),
-    .sel_new_pos(M_decoder_sel_new_pos),
-    .new_tp(M_decoder_new_tp)
+    .sel_display(M_ctrl_sel_display)
   );
   
   wire [1-1:0] M_reset_cond_out;
   reg [1-1:0] M_reset_cond_in;
-  reset_conditioner_7 reset_cond (
+  reset_conditioner_5 reset_cond (
     .clk(clk),
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
   );
   wire [1-1:0] M_right_edge_detector_out;
   reg [1-1:0] M_right_edge_detector_in;
-  edge_detector_8 right_edge_detector (
+  edge_detector_6 right_edge_detector (
     .clk(clk),
     .in(M_right_edge_detector_in),
     .out(M_right_edge_detector_out)
   );
   wire [1-1:0] M_left_edge_detector_out;
   reg [1-1:0] M_left_edge_detector_in;
-  edge_detector_8 left_edge_detector (
+  edge_detector_6 left_edge_detector (
     .clk(clk),
     .in(M_left_edge_detector_in),
     .out(M_left_edge_detector_out)
   );
   wire [1-1:0] M_up_edge_detector_out;
   reg [1-1:0] M_up_edge_detector_in;
-  edge_detector_8 up_edge_detector (
+  edge_detector_6 up_edge_detector (
     .clk(clk),
     .in(M_up_edge_detector_in),
     .out(M_up_edge_detector_out)
   );
   wire [1-1:0] M_down_edge_detector_out;
   reg [1-1:0] M_down_edge_detector_in;
-  edge_detector_8 down_edge_detector (
+  edge_detector_6 down_edge_detector (
     .clk(clk),
     .in(M_down_edge_detector_in),
     .out(M_down_edge_detector_out)
   );
+  wire [1-1:0] M_right_conditioner_out;
+  reg [1-1:0] M_right_conditioner_in;
+  button_conditioner_10 right_conditioner (
+    .clk(clk),
+    .in(M_right_conditioner_in),
+    .out(M_right_conditioner_out)
+  );
+  wire [1-1:0] M_left_conditioner_out;
+  reg [1-1:0] M_left_conditioner_in;
+  button_conditioner_10 left_conditioner (
+    .clk(clk),
+    .in(M_left_conditioner_in),
+    .out(M_left_conditioner_out)
+  );
+  wire [1-1:0] M_up_conditioner_out;
+  reg [1-1:0] M_up_conditioner_in;
+  button_conditioner_10 up_conditioner (
+    .clk(clk),
+    .in(M_up_conditioner_in),
+    .out(M_up_conditioner_out)
+  );
+  wire [1-1:0] M_down_conditioner_out;
+  reg [1-1:0] M_down_conditioner_in;
+  button_conditioner_10 down_conditioner (
+    .clk(clk),
+    .in(M_down_conditioner_in),
+    .out(M_down_conditioner_out)
+  );
   wire [1-1:0] M_reset_edge_detector_out;
   reg [1-1:0] M_reset_edge_detector_in;
-  edge_detector_8 reset_edge_detector (
+  edge_detector_6 reset_edge_detector (
     .clk(clk),
     .in(M_reset_edge_detector_in),
     .out(M_reset_edge_detector_out)
   );
   wire [1-1:0] M_start_edge_detector_out;
   reg [1-1:0] M_start_edge_detector_in;
-  edge_detector_8 start_edge_detector (
+  edge_detector_6 start_edge_detector (
     .clk(clk),
     .in(M_start_edge_detector_in),
     .out(M_start_edge_detector_out)
   );
-  localparam START_state = 3'd0;
-  localparam WAIT_state = 3'd1;
-  localparam CHECKA_state = 3'd2;
-  localparam CHECKB_state = 3'd3;
-  localparam CHECKWIN_state = 3'd4;
-  localparam WIN_state = 3'd5;
-  localparam WAIT2_state = 3'd6;
+  wire [1-1:0] M_reset_conditioner_out;
+  reg [1-1:0] M_reset_conditioner_in;
+  button_conditioner_10 reset_conditioner (
+    .clk(clk),
+    .in(M_reset_conditioner_in),
+    .out(M_reset_conditioner_out)
+  );
+  wire [1-1:0] M_start_conditioner_out;
+  reg [1-1:0] M_start_conditioner_in;
+  button_conditioner_10 start_conditioner (
+    .clk(clk),
+    .in(M_start_conditioner_in),
+    .out(M_start_conditioner_out)
+  );
+  localparam MENU_WAIT_state = 1'd0;
+  localparam MENU_UPDATE_state = 1'd1;
   
-  reg [2:0] M_state_d, M_state_q = START_state;
-  reg [1:0] M_level_d, M_level_q = 1'h0;
-  reg [2:0] M_reg_d_d, M_reg_d_q = 1'h0;
-  reg M_reg_r_d, M_reg_r_q = 1'h0;
+  reg M_state_d, M_state_q = MENU_WAIT_state;
+  reg [1:0] M_level_d, M_level_q = 2'h3;
+  reg [2:0] M_reg_d_d, M_reg_d_q = 3'h4;
+  reg [2:0] M_see_d, M_see_q = 1'h0;
+  
+  reg [1:0] lx;
   
   always @* begin
     M_state_d = M_state_q;
-    M_reg_r_d = M_reg_r_q;
+    M_see_d = M_see_q;
     M_level_d = M_level_q;
     M_reg_d_d = M_reg_d_q;
     
+    M_map_level_adr = M_level_q;
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
     spi_miso = 1'bz;
@@ -226,95 +210,76 @@ module mojo_top_0 (
     r_red = M_mat_dis_r_red;
     r_green = M_mat_dis_r_green;
     col = M_mat_dis_col;
-    M_ctrl_state = 1'h0;
-    M_ctrl_d = M_reg_d_q;
-    M_ctrl_r = M_reg_r_q;
-    M_level_d = 1'h0;
-    M_data_mem_call_level_adr_i = M_level_q;
-    M_chk_value = M_alu_alu;
-    M_chk_check_win = M_ctrl_check_win;
-    M_data_mem_call_sel_start = M_ctrl_sel_start;
-    M_data_mem_call_sel_map = M_ctrl_sel_map;
-    M_decoder_sel_new_pos = M_ctrl_sel_new_pos;
-    M_data_mem_call_r0_i = M_chk_r0;
-    M_decoder_curr_tp = M_data_mem_call_curr_tp;
-    M_decoder_mapdata = M_data_mem_call_curr_map;
-    M_data_mem_call_new_tp_i = M_decoder_new_tp;
-    M_alu_alufn = M_ctrl_alufn;
-    M_alu_a = M_ctrl_sel_check ? M_chk_r1 : M_data_mem_call_curr_ep;
-    M_alu_b = M_ctrl_sel_check ? M_chk_r2 : M_data_mem_call_curr_tp;
+    M_mat_dis_red = M_map_to_dis_red;
+    M_mat_dis_green = M_map_to_dis_green;
+    M_map_to_dis_map_a = M_map_map_a;
+    M_map_to_dis_map_b = M_map_map_b;
+    M_map_to_dis_tp_a = M_map_sp_a;
+    M_map_to_dis_tp_b = M_map_sp_b;
+    M_map_to_dis_ep_a = M_map_ep_a;
+    M_map_to_dis_ep_b = M_map_ep_b;
     led = 8'h00;
-    led = M_data_mem_call_cur_b;
+    led = M_see_q;
+    M_ctrl_state = 1'h0;
+    M_ctrl_direction = 1'h0;
     
     case (M_state_q)
-      START_state: begin
-        M_ctrl_state = 1'h0;
-        led = 8'hff;
-        if (M_start_edge_detector_out) begin
-          M_state_d = WAIT_state;
-        end
-      end
-      WAIT_state: begin
-        M_ctrl_state = 1'h1;
-      end
-      CHECKA_state: begin
-        M_ctrl_state = 2'h2;
-        M_state_d = CHECKB_state;
-      end
-      CHECKB_state: begin
-        M_ctrl_state = 2'h3;
-        M_state_d = CHECKWIN_state;
-      end
-      CHECKWIN_state: begin
-        M_ctrl_state = 3'h4;
-        M_reg_d_d = 1'bz;
-        if (M_start_edge_detector_out) begin
-          if (M_data_mem_call_r0 == 2'h2) begin
-            M_state_d = WIN_state;
+      MENU_WAIT_state: begin
+        if (M_right_edge_detector_out) begin
+          M_reg_d_d = 2'h3;
+        end else begin
+          if (M_left_edge_detector_out) begin
+            M_reg_d_d = 2'h2;
           end else begin
-            if (M_data_mem_call_r0 == 1'h1) begin
-              M_state_d = WAIT_state;
-              M_reg_r_d = 1'h1;
+            if (M_up_edge_detector_out) begin
+              M_reg_d_d = 1'h1;
             end else begin
-              M_state_d = WAIT_state;
+              if (M_down_edge_detector_out) begin
+                M_reg_d_d = 1'h0;
+              end else begin
+                M_reg_d_d = 3'h4;
+              end
             end
           end
         end
+        if (M_reg_d_q != 3'h4) begin
+          M_state_d = MENU_UPDATE_state;
+          M_ctrl_state = 1'h1;
+          M_ctrl_direction = M_reg_d_q;
+          M_see_d = M_reg_d_q;
+        end
       end
-      WIN_state: begin
-        M_ctrl_state = 3'h5;
+      MENU_UPDATE_state: begin
+        M_ctrl_state = 1'h1;
+        M_ctrl_direction = M_see_q;
+        if (M_ctrl_sel_level) begin
+          M_level_d = M_level_q + 1'h1;
+        end else begin
+          M_level_d = M_level_q - 1'h1;
+        end
+        M_reg_d_d = 3'h4;
+        M_see_d = 3'h4;
+        M_state_d = MENU_WAIT_state;
       end
     endcase
-    M_right_edge_detector_in = right_btn;
-    M_left_edge_detector_in = left_btn;
-    M_up_edge_detector_in = up_btn;
-    M_down_edge_detector_in = down_btn;
-    M_reset_edge_detector_in = reset_btn;
-    M_start_edge_detector_in = start_btn;
-    if (M_right_edge_detector_out) begin
-      M_reg_d_d = 3'h4;
-    end
-    if (M_left_edge_detector_out) begin
-      M_reg_d_d = 2'h3;
-    end
-    if (M_up_edge_detector_out) begin
-      M_reg_d_d = 2'h2;
-    end
-    if (M_down_edge_detector_out) begin
-      M_reg_d_d = 1'h1;
-    end
-    M_reg_r_d = 1'h0;
-    if (M_reset_edge_detector_out) begin
-      M_reg_r_d = 1'h1;
-    end
-    M_mat_dis_red = M_data_mem_call_red;
-    M_mat_dis_green = M_data_mem_call_green;
+    M_right_conditioner_in = right_btn;
+    M_left_conditioner_in = left_btn;
+    M_up_conditioner_in = up_btn;
+    M_down_conditioner_in = down_btn;
+    M_right_edge_detector_in = M_right_conditioner_out;
+    M_left_edge_detector_in = M_left_conditioner_out;
+    M_up_edge_detector_in = M_up_conditioner_out;
+    M_down_edge_detector_in = M_down_conditioner_out;
+    M_reset_conditioner_in = reset_btn;
+    M_start_conditioner_in = start_btn;
+    M_reset_edge_detector_in = M_reset_conditioner_out;
+    M_start_edge_detector_in = M_start_conditioner_out;
   end
   
   always @(posedge clk) begin
     M_level_q <= M_level_d;
     M_reg_d_q <= M_reg_d_d;
-    M_reg_r_q <= M_reg_r_d;
+    M_see_q <= M_see_d;
     M_state_q <= M_state_d;
   end
   

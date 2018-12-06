@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module map_rom_19 (
+module map_rom_2 (
     input [1:0] level_adr,
     output reg [35:0] map_a,
     output reg [35:0] map_b,

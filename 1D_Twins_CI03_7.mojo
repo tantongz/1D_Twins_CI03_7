@@ -7,11 +7,12 @@
     <src>data_mem.luc</src>
     <src>matrix_display.luc</src>
     <src>check.luc</src>
-    <src>input_fsm.luc</src>
+    <src>control_n.luc</src>
     <src>alu_boole.luc</src>
     <src top="true">mojo_top.luc</src>
     <src>board_generator.luc</src>
     <src>alu_shift.luc</src>
+    <src>select.luc</src>
     <src>alu_main.luc</src>
     <src>matrix_decoder.luc</src>
     <src>control.luc</src>

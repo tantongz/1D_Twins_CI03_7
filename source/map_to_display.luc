@@ -50,13 +50,13 @@ module map_to_display (
     green[tp_a[2:0] + 1][tp_a[5:3] + 3] = 1;
     
     green[tp_b[2:0] + 1][tp_b[5:3] - 1] = 1;
-    red[tp_b[2:0] + 1][tp_b[5:3] - 1] = 1;
+    //red[tp_b[2:0] + 1][tp_b[5:3] - 1] = 1;
     
     // Show end locations.
-    //red[ep_a[2:0] + 1][ep_a[5:3] + 3] = 1;
-    //red[ep_b[2:0] + 1][ep_b[5:3] - 1] = 1;
+    red[ep_a[2:0] + 1][ep_a[5:3] + 3] = 1;
+    red[ep_b[2:0] + 1][ep_b[5:3] - 1] = 1;
     
-    //green[ep_a[2:0] + 1][ep_a[5:3] + 3] = 1;
-    //green[ep_b[2:0] + 1][ep_b[5:3] - 1] = 1;
+    green[ep_a[2:0] + 1][ep_a[5:3] + 3] = 1;
+    green[ep_b[2:0] + 1][ep_b[5:3] - 1] = 1;
   }
 }

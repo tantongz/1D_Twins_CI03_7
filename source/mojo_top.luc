@@ -24,22 +24,19 @@ module mojo_top (
     output r_green[8],
     output col[8],
     output led[8] //built-in leds
-
-) {
+    
+  ) {
   
   // pipeline button_cond[1] (#DEPTH(5), .clk(clk)).
   sig rst;                  // Reset signal.
   matrix_display mat_dis(.clk(clk), .rst(rst));
+  map_rom map;
+  map_to_display map_to_dis;
   
-  control ctrl;
-  
-  check chk(.clk(clk));
-  alu_main alu;
-  data_mem data_mem_call(.clk(clk));
-  matrix_decoder decoder;
+  control_n ctrl;
   // board_generator board_gen;
-
-
+  
+  
   
   .clk(clk) {
     
@@ -51,22 +48,35 @@ module mojo_top (
     edge_detector up_edge_detector(#RISE(1), #FALL(0));
     edge_detector down_edge_detector(#RISE(1), #FALL(0));
     
+    button_conditioner right_conditioner;
+    button_conditioner left_conditioner;
+    button_conditioner up_conditioner;
+    button_conditioner down_conditioner;
+    
     edge_detector reset_edge_detector(#RISE(1), #FALL(0));
     edge_detector start_edge_detector(#RISE(1), #FALL(0));
     
-    fsm state = {START, WAIT, CHECKA, CHECKB, CHECKWIN, WIN, WAIT2};
-  
-    dff level[2];
-    dff reg_d[3];
-    dff reg_r;
-
-      .rst(rst) {
-
-       }
+    button_conditioner reset_conditioner;
+    button_conditioner start_conditioner;
+    
+    fsm state(#INIT(MENU_WAIT)) = {MENU_WAIT, MENU_UPDATE};
+    
+    dff level[2](#INIT(3));
+    dff reg_d[3](#INIT(4));
+    
+    dff see[3];
+    
+    .rst(rst) {
+    
+    }
   }
   
-   always {
-   
+  sig lx[2];
+  
+  always {
+    
+    map.level_adr = level.q;
+    
     reset_cond.in = ~rst_n; // Input raw inverted reset signal.
     rst = reset_cond.out;   // Conditioned reset.
     spi_miso = bz;          // Not using SPI.
@@ -77,111 +87,81 @@ module mojo_top (
     r_green = mat_dis.r_green;
     col = mat_dis.col;
     
-    ctrl.state = 0;
-    ctrl.d = reg_d.q;
-    ctrl.r = reg_r.q;
-   
-    level.d = 0;
+    mat_dis.red = map_to_dis.red;
+    mat_dis.green = map_to_dis.green;
     
-    data_mem_call.level_adr_i = level.q;
+    map_to_dis.map_a = map.map_a;
+    map_to_dis.map_b = map.map_b;
     
-    chk.value = alu.alu;
-    chk.check_win = ctrl.check_win;
+    map_to_dis.tp_a = map.sp_a;
+    map_to_dis.tp_b = map.sp_b;
     
-    // ctrl to data
-    data_mem_call.sel_start = ctrl.sel_start;
-    data_mem_call.sel_map = ctrl.sel_map;
-        
-    // ctrl to decoder
-    decoder.sel_new_pos = ctrl.sel_new_pos;
+    map_to_dis.ep_a = map.ep_a;
+    map_to_dis.ep_b = map.ep_b;
     
-    data_mem_call.r0_i = chk.r0;
-        
-    // data memory to decoder
-    decoder.curr_tp = data_mem_call.curr_tp;
-    decoder.mapdata = data_mem_call.curr_map;
-    
-    // decoder to data memory
-    data_mem_call.new_tp_i = decoder.new_tp;
-
-    alu.alufn = ctrl.alufn;
-    alu.a = ctrl.sel_check ? chk.r1 : data_mem_call.curr_ep;
-    alu.b = ctrl.sel_check ? chk.r2 : data_mem_call.curr_tp;
     
     led = b00000000;
-    led = data_mem_call.cur_b;
+    led = see.q;
+    ctrl.state = 0;
+    ctrl.direction = 0;
     
     case(state.q) {
-      state.START:
-        ctrl.state = 0;
-        led = b11111111;
-        if (start_edge_detector.out) {
-          state.d = state.WAIT;
+      state.MENU_WAIT:
+        
+        if (right_edge_detector.out) {
+          reg_d.d = 3;
+        } else if (left_edge_detector.out) {
+          reg_d.d = 2;
+        } else if (up_edge_detector.out) {
+          reg_d.d = 1;
+        } else if (down_edge_detector.out) {
+          reg_d.d = 0;
+        } else {        
+          reg_d.d = 4;
         }
         
-      state.WAIT:
-        ctrl.state = 1;
-        //if (reg_d.q != bz) {
-         // state.d = state.CHECKA;
-        //}
-
-      state.CHECKA:
-        ctrl.state = 2;
-        state.d = state.CHECKB;
-        
-      state.CHECKB:
-        ctrl.state = 3;
-        state.d = state.CHECKWIN;
-        
-      state.CHECKWIN:
-        ctrl.state = 4;
-        reg_d.d = bz;
-        
-        if (start_edge_detector.out) {
-          if (data_mem_call.r0 == 2) {
-            state.d = state.WIN;
-          } else if (data_mem_call.r0 == 1) {
-            state.d = state.WAIT;
-            reg_r.d = 1;
-          } else {
-            state.d = state.WAIT;
-          }
+        if (reg_d.q != 4) {
+          state.d = state.MENU_UPDATE; 
+          
+          // Prepare control signals for next state.    
+          ctrl.state = 1;         
+          ctrl.direction = reg_d.q;
+          see.d = reg_d.q;
+          // reg_d.q will be cleared in the next iteration, so save it in see
+          // to use it in MENU_UPDATE.
         }
-        
-      state.WIN:
-        ctrl.state = 5;
       
+      state.MENU_UPDATE:
+        ctrl.state = 1;
+        ctrl.direction = see.q;
+        
+        if (ctrl.sel_level) {
+          level.d = level.q + 1;
+        } else {
+          level.d = level.q - 1; 
+        }
+        
+        reg_d.d = 4;
+        see.d = 4;
+        state.d = state.MENU_WAIT;
     }
     
     // Button logic.
-    right_edge_detector.in = right_btn;
-    left_edge_detector.in = left_btn;
-    up_edge_detector.in = up_btn;
-    down_edge_detector.in = down_btn;
+    right_conditioner.in = right_btn;
+    left_conditioner.in = left_btn;
+    up_conditioner.in = up_btn;
+    down_conditioner.in = down_btn;
     
-    reset_edge_detector.in = reset_btn;
-    start_edge_detector.in = start_btn;
-   
+    right_edge_detector.in = right_conditioner.out;
+    left_edge_detector.in = left_conditioner.out;
+    up_edge_detector.in = up_conditioner.out;
+    down_edge_detector.in = down_conditioner.out;
     
-    if (right_edge_detector.out)
-      reg_d.d = 4;
+    reset_conditioner.in = reset_btn;
+    start_conditioner.in = start_btn;
     
-    if (left_edge_detector.out)
-      reg_d.d = 3;
+    reset_edge_detector.in = reset_conditioner.out;
+    start_edge_detector.in = start_conditioner.out;
     
-    if (up_edge_detector.out)
-      reg_d.d = 2;
-    
-    if (down_edge_detector.out)
-      reg_d.d = 1;
-    
-    reg_r.d = 0;
-    
-    if (reset_edge_detector.out)
-      reg_r.d = 1;
-    
-    mat_dis.red = data_mem_call.red;
-    mat_dis.green = data_mem_call.green;
-
   }
 }

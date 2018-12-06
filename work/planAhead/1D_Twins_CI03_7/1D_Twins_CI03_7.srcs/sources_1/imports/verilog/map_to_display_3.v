@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module map_to_display_20 (
+module map_to_display_3 (
     input [5:0] tp_a,
     input [5:0] ep_a,
     input [35:0] map_a,
@@ -32,6 +32,9 @@ module map_to_display_20 (
     end
     green[(tp_a[0+2-:3] + 1'h1)*8+(tp_a[3+2-:3] + 2'h3)*1+0-:1] = 1'h1;
     green[(tp_b[0+2-:3] + 1'h1)*8+(tp_b[3+2-:3] - 1'h1)*1+0-:1] = 1'h1;
-    red[(tp_b[0+2-:3] + 1'h1)*8+(tp_b[3+2-:3] - 1'h1)*1+0-:1] = 1'h1;
+    red[(ep_a[0+2-:3] + 1'h1)*8+(ep_a[3+2-:3] + 2'h3)*1+0-:1] = 1'h1;
+    red[(ep_b[0+2-:3] + 1'h1)*8+(ep_b[3+2-:3] - 1'h1)*1+0-:1] = 1'h1;
+    green[(ep_a[0+2-:3] + 1'h1)*8+(ep_a[3+2-:3] + 2'h3)*1+0-:1] = 1'h1;
+    green[(ep_b[0+2-:3] + 1'h1)*8+(ep_b[3+2-:3] - 1'h1)*1+0-:1] = 1'h1;
   end
 endmodule

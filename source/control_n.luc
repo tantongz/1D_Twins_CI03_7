@@ -1,0 +1,23 @@
+module control_n (
+    input direction[2],
+    input state[3],
+    
+    output sel_level,
+    output sel_display
+    
+  ) {
+
+  always {
+    
+    sel_level = 0;
+    
+    case (state) {
+      1:sel_level = direction[0];
+        sel_display = 0;
+        
+      default:
+        sel_level = bz;
+        sel_display = bz;
+    }
+  }
+}
