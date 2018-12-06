@@ -21,17 +21,17 @@ module map_rom_2 (
     case (level_adr)
       1'h0: begin
         map_a = 36'hfe1d6197f;
-        map_b = 36'hfe1d6197f;
-        sp_a = 6'h21;
-        sp_b = 6'h21;
-        ep_a = 6'h0c;
-        ep_b = 6'h0c;
+        map_b = 36'hfe986987f;
+        sp_a = 6'h0c;
+        sp_b = 6'h0c;
+        ep_a = 6'h21;
+        ep_b = 6'h21;
       end
       1'h1: begin
         map_a = 36'hfe5c6b87f;
         map_b = 36'hfe5c6587f;
-        sp_a = 6'h0c;
-        sp_b = 6'h0c;
+        sp_a = 6'h21;
+        sp_b = 6'h21;
         ep_a = 6'h09;
         ep_b = 6'h09;
       end
@@ -41,23 +41,23 @@ module map_rom_2 (
         sp_a = 6'h09;
         sp_b = 6'h09;
         ep_a = 6'h24;
-        ep_b = 6'h21;
+        ep_b = 6'h0c;
       end
       2'h3: begin
         map_a = 36'hfe186187f;
         map_b = 36'hfe1a6187f;
-        sp_a = 6'h13;
-        sp_b = 6'h21;
-        ep_a = 6'h1c;
-        ep_b = 6'h0c;
+        sp_a = 6'h1a;
+        sp_b = 6'h0c;
+        ep_a = 6'h23;
+        ep_b = 6'h21;
       end
       default: begin
         map_a = 36'hfe1d6197f;
         map_b = 36'hfe986987f;
-        sp_a = 6'h0c;
-        sp_b = 6'h0c;
-        ep_a = 6'h21;
-        ep_b = 6'h21;
+        sp_a = 6'h21;
+        sp_b = 6'h21;
+        ep_a = 6'h0c;
+        ep_b = 6'h0c;
       end
     endcase
   end

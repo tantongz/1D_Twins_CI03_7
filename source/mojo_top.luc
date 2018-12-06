@@ -70,6 +70,7 @@ module mojo_top (
     
     .rst(rst) {
       dff reg_s;
+      dff reg_r;
       dff player_pos_a[6];
       dff player_pos_b[6];
       dff r0[16];
@@ -230,6 +231,17 @@ module mojo_top (
           ctrl.state = 3;
           ctrl.direction = reg_d.q;
           see.d = reg_d.q;
+        }
+        
+        // Reset button!
+        if (reset_edge_detector.out) {
+          reg_r.d = 1;
+        } else {
+          reg_r.d = 0;
+        }
+        
+        if (reg_r.q == 1) {
+          state.d = state.SETUP;
         }
       
       state.CHECKA:

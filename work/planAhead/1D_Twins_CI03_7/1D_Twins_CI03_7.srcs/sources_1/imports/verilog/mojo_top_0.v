@@ -236,6 +236,7 @@ module mojo_top_0 (
   reg [2:0] M_reg_d_d, M_reg_d_q = 3'h4;
   reg [2:0] M_see_d, M_see_q = 1'h0;
   reg M_reg_s_d, M_reg_s_q = 1'h0;
+  reg M_reg_r_d, M_reg_r_q = 1'h0;
   reg [5:0] M_player_pos_a_d, M_player_pos_a_q = 1'h0;
   reg [5:0] M_player_pos_b_d, M_player_pos_b_q = 1'h0;
   reg [15:0] M_r0_d, M_r0_q = 1'h0;
@@ -250,6 +251,7 @@ module mojo_top_0 (
     M_player_pos_a_d = M_player_pos_a_q;
     M_player_pos_b_d = M_player_pos_b_q;
     M_see_d = M_see_q;
+    M_reg_r_d = M_reg_r_q;
     M_level_d = M_level_q;
     M_reg_d_d = M_reg_d_q;
     M_reg_s_d = M_reg_s_q;
@@ -379,6 +381,14 @@ module mojo_top_0 (
           M_ctrl_direction = M_reg_d_q;
           M_see_d = M_reg_d_q;
         end
+        if (M_reset_edge_detector_out) begin
+          M_reg_r_d = 1'h1;
+        end else begin
+          M_reg_r_d = 1'h0;
+        end
+        if (M_reg_r_q == 1'h1) begin
+          M_state_d = SETUP_state;
+        end
       end
       CHECKA_state: begin
         M_ctrl_state = 2'h3;
@@ -439,6 +449,7 @@ module mojo_top_0 (
     
     if (rst == 1'b1) begin
       M_reg_s_q <= 1'h0;
+      M_reg_r_q <= 1'h0;
       M_player_pos_a_q <= 1'h0;
       M_player_pos_b_q <= 1'h0;
       M_r0_q <= 1'h0;
@@ -446,6 +457,7 @@ module mojo_top_0 (
       M_r2_q <= 1'h0;
     end else begin
       M_reg_s_q <= M_reg_s_d;
+      M_reg_r_q <= M_reg_r_d;
       M_player_pos_a_q <= M_player_pos_a_d;
       M_player_pos_b_q <= M_player_pos_b_d;
       M_r0_q <= M_r0_d;

@@ -14,6 +14,9 @@ module control_n (
     
     output alufn[6],
     
+    // Determines whether the alu will get its input from:
+    // 0: decoder + ep_a or ep_b.
+    // 1: r1 + r2. 
     output sel_check
     
   ) {
@@ -61,7 +64,7 @@ module control_n (
       5: sel_level = 0;
         sel_display = 0;
         sel_new_pos = direction;
-        sel_check = 0;
+        sel_check = 1;
         sel_map = 0;
         alufn = b011000; // AND.
       

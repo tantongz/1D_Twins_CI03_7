@@ -12,11 +12,9 @@
     <src top="true">mojo_top.luc</src>
     <src>board_generator.luc</src>
     <src>alu_shift.luc</src>
-    <src>select.luc</src>
     <src>alu_main.luc</src>
     <src>matrix_decoder.luc</src>
     <src>control.luc</src>
-    <src>process.luc</src>
     <src>bin_to_dec_mod.luc</src>
     <src>map_to_display.luc</src>
     <src>alu_cmp.luc</src>

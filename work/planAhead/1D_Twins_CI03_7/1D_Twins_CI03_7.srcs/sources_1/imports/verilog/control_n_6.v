@@ -58,7 +58,7 @@ module control_n_6 (
         sel_level = 1'h0;
         sel_display = 1'h0;
         sel_new_pos = direction;
-        sel_check = 1'h0;
+        sel_check = 1'h1;
         sel_map = 1'h0;
         alufn = 6'h18;
       end

@@ -4,7 +4,7 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.02 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Reading design: mojo_top_0.prj
@@ -129,17 +129,14 @@ Elaborating module <edge_detector_8>.
 Elaborating module <button_conditioner_12>.
 
 Elaborating module <pipeline_25>.
-WARNING:HDLCompiler:1127 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 201: Assignment to M_reset_edge_detector_out ignored, since the identifier is never used
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 282: Result of 16-bit expression is truncated to fit in 8-bit target.
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 325: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 339: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 350: Result of 4-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 379: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 385: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 394: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:1127 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 434: Assignment to M_r0_q ignored, since the identifier is never used
-WARNING:Xst:2972 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 198. All outputs of instance <reset_edge_detector> of block <edge_detector_8> are unconnected in block <mojo_top_0>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 212. All outputs of instance <reset_conditioner> of block <button_conditioner_12> are unconnected in block <mojo_top_0>. Underlying logic will be removed.
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 284: Result of 16-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 327: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 341: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 352: Result of 4-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 381: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 395: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 404: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:1127 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 444: Assignment to M_r0_q ignored, since the identifier is never used
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -157,11 +154,11 @@ INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7
 INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 104: Output port <v> of the instance <alu> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 104: Output port <n> of the instance <alu> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 122: Output port <sel_display> of the instance <ctrl> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 198: Output port <out> of the instance <reset_edge_detector> is unconnected or connected to loadless signal.
     Found 3-bit register for signal <M_reg_d_q>.
     Found 3-bit register for signal <M_see_q>.
     Found 4-bit register for signal <M_state_q>.
     Found 1-bit register for signal <M_reg_s_q>.
+    Found 1-bit register for signal <M_reg_r_q>.
     Found 6-bit register for signal <M_player_pos_a_q>.
     Found 6-bit register for signal <M_player_pos_b_q>.
     Found 16-bit register for signal <M_r1_q>.
@@ -170,25 +167,25 @@ INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7
     Found finite state machine <FSM_0> for signal <M_state_q>.
     -----------------------------------------------------------------------
     | States             | 9                                              |
-    | Transitions        | 14                                             |
-    | Inputs             | 3                                              |
+    | Transitions        | 15                                             |
+    | Inputs             | 4                                              |
     | Outputs            | 9                                              |
     | Clock              | clk (rising_edge)                              |
     | Power Up State     | 0000                                           |
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 2-bit subtractor for signal <M_level_q[1]_GND_1_o_sub_22_OUT> created at line 343.
-    Found 2-bit adder for signal <M_level_q[1]_GND_1_o_add_20_OUT> created at line 341.
-    Found 1-bit tristate buffer for signal <spi_miso> created at line 247
-    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 247
-    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 247
-    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 247
-    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 247
-    Found 1-bit tristate buffer for signal <avr_rx> created at line 247
+    Found 2-bit subtractor for signal <M_level_q[1]_GND_1_o_sub_22_OUT> created at line 345.
+    Found 2-bit adder for signal <M_level_q[1]_GND_1_o_add_20_OUT> created at line 343.
+    Found 1-bit tristate buffer for signal <spi_miso> created at line 248
+    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 248
+    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 248
+    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 248
+    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 248
+    Found 1-bit tristate buffer for signal <avr_rx> created at line 248
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  53 D-type flip-flop(s).
+	inferred  54 D-type flip-flop(s).
 	inferred  30 Multiplexer(s).
 	inferred   6 Tristate(s).
 	inferred   1 Finite State Machine(s).
@@ -481,14 +478,14 @@ Macro Statistics
 # Multipliers                                          : 3
  16x16-bit multiplier                                  : 2
  3x3-bit multiplier                                    : 1
-# Adders/Subtractors                                   : 117
+# Adders/Subtractors                                   : 118
  16-bit addsub                                         : 2
  16-bit subtractor                                     : 4
  17-bit adder                                          : 6
  18-bit adder                                          : 4
  19-bit adder                                          : 4
  2-bit addsub                                          : 1
- 20-bit adder                                          : 10
+ 20-bit adder                                          : 11
  21-bit adder                                          : 4
  22-bit adder                                          : 4
  23-bit adder                                          : 4
@@ -508,11 +505,11 @@ Macro Statistics
  6-bit adder                                           : 1
  6-bit addsub                                          : 1
  7-bit adder                                           : 2
-# Registers                                            : 25
- 1-bit register                                        : 6
+# Registers                                            : 29
+ 1-bit register                                        : 8
  16-bit register                                       : 2
- 2-bit register                                        : 6
- 20-bit register                                       : 6
+ 2-bit register                                        : 7
+ 20-bit register                                       : 7
  3-bit register                                        : 2
  4-bit register                                        : 1
  6-bit register                                        : 2
@@ -633,11 +630,11 @@ Macro Statistics
  5-bit subtractor                                      : 1
  6-bit adder                                           : 11
  6-bit addsub                                          : 1
-# Counters                                             : 7
+# Counters                                             : 8
  2-bit updown counter                                  : 1
- 20-bit up counter                                     : 6
-# Registers                                            : 69
- Flip-Flops                                            : 69
+ 20-bit up counter                                     : 7
+# Registers                                            : 73
+ Flip-Flops                                            : 73
 # Comparators                                          : 34
  16-bit comparator greater                             : 2
  17-bit comparator greater                             : 2
@@ -691,11 +688,11 @@ Optimizing FSM <FSM_0> on signal <M_state_q[1:4]> with user encoding.
  0001  | 0001
  0011  | 0011
  0100  | 0100
+ 0010  | 0010
  0101  | 0101
  0110  | 0110
  0111  | 0111
  1000  | 1000
- 0010  | 0010
 -------------------
 WARNING:Xst:2042 - Unit control_n_6: 3 internal tristates are replaced by logic (pull-up yes): sel_display, sel_level, sel_new_pos<0>.
 
@@ -740,19 +737,15 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_r1_q_10> has a co
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_r1_q_9> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_r1_q_8> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_r1_q_7> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_r1_q_4> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 13.
-FlipFlop M_player_pos_a_q_0 has been replicated 2 time(s)
-FlipFlop M_player_pos_a_q_1 has been replicated 2 time(s)
-FlipFlop M_player_pos_b_q_0 has been replicated 2 time(s)
-FlipFlop M_player_pos_b_q_1 has been replicated 1 time(s)
-FlipFlop M_player_pos_b_q_2 has been replicated 1 time(s)
+FlipFlop M_player_pos_b_q_0 has been replicated 1 time(s)
 FlipFlop M_state_q_FSM_FFd1 has been replicated 1 time(s)
-FlipFlop M_state_q_FSM_FFd2 has been replicated 1 time(s)
-FlipFlop M_state_q_FSM_FFd3 has been replicated 2 time(s)
-FlipFlop M_state_q_FSM_FFd4 has been replicated 2 time(s)
+FlipFlop M_state_q_FSM_FFd3 has been replicated 1 time(s)
+FlipFlop M_state_q_FSM_FFd4 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -761,6 +754,7 @@ Processing Unit <mojo_top_0> :
 	Found 2-bit shift register for signal <left_conditioner/sync/M_pipe_q_1>.
 	Found 2-bit shift register for signal <up_conditioner/sync/M_pipe_q_1>.
 	Found 2-bit shift register for signal <down_conditioner/sync/M_pipe_q_1>.
+	Found 2-bit shift register for signal <reset_conditioner/sync/M_pipe_q_1>.
 	Found 2-bit shift register for signal <start_conditioner/sync/M_pipe_q_1>.
 INFO:Xst:741 - HDL ADVISOR - A 4-bit shift register was found for signal <reset_cond/M_stage_q_3> and currently occupies 4 logic cells (2 slices). Removing the set/reset logic would take advantage of SRL32 (and derived) primitives and reduce this to 1 logic cells (1 slices). Evaluate if the set/reset can be removed for this simple shift register. The majority of simple pipeline structures do not need to be set/reset operationally.
 Unit <mojo_top_0> processed.
@@ -769,10 +763,10 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 174
- Flip-Flops                                            : 174
-# Shift Registers                                      : 5
- 2-bit shift register                                  : 5
+# Registers                                            : 185
+ Flip-Flops                                            : 185
+# Shift Registers                                      : 6
+ 2-bit shift register                                  : 6
 
 =========================================================================
 
@@ -795,31 +789,31 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 896
-#      GND                         : 18
-#      INV                         : 13
-#      LUT1                        : 113
-#      LUT2                        : 13
-#      LUT3                        : 22
-#      LUT4                        : 40
-#      LUT5                        : 118
-#      LUT6                        : 234
-#      MUXCY                       : 137
-#      MUXF7                       : 28
-#      VCC                         : 15
-#      XORCY                       : 145
-# FlipFlops/Latches                : 179
-#      FD                          : 15
-#      FDE                         : 12
+# BELS                             : 906
+#      GND                         : 20
+#      INV                         : 15
+#      LUT1                        : 132
+#      LUT2                        : 6
+#      LUT3                        : 27
+#      LUT4                        : 37
+#      LUT5                        : 106
+#      LUT6                        : 215
+#      MUXCY                       : 156
+#      MUXF7                       : 12
+#      VCC                         : 16
+#      XORCY                       : 164
+# FlipFlops/Latches                : 191
+#      FD                          : 13
+#      FDE                         : 13
 #      FDR                         : 20
-#      FDRE                        : 128
+#      FDRE                        : 141
 #      FDS                         : 4
-# Shift Registers                  : 5
-#      SRLC16E                     : 5
+# Shift Registers                  : 6
+#      SRLC16E                     : 6
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 44
-#      IBUF                        : 6
+# IO Buffers                       : 45
+#      IBUF                        : 7
 #      OBUF                        : 32
 #      OBUFT                       : 6
 # DSPs                             : 1
@@ -832,22 +826,22 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             179  out of  11440     1%  
- Number of Slice LUTs:                  558  out of   5720     9%  
-    Number used as Logic:               553  out of   5720     9%  
-    Number used as Memory:                5  out of   1440     0%  
-       Number used as SRL:                5
+ Number of Slice Registers:             191  out of  11440     1%  
+ Number of Slice LUTs:                  544  out of   5720     9%  
+    Number used as Logic:               538  out of   5720     9%  
+    Number used as Memory:                6  out of   1440     0%  
+       Number used as SRL:                6
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    577
-   Number with an unused Flip Flop:     398  out of    577    68%  
-   Number with an unused LUT:            19  out of    577     3%  
-   Number of fully used LUT-FF pairs:   160  out of    577    27%  
-   Number of unique control sets:        26
+ Number of LUT Flip Flop pairs used:    563
+   Number with an unused Flip Flop:     372  out of    563    66%  
+   Number with an unused LUT:            19  out of    563     3%  
+   Number of fully used LUT-FF pairs:   172  out of    563    30%  
+   Number of unique control sets:        30
 
 IO Utilization: 
  Number of IOs:                          52
- Number of bonded IOBs:                  45  out of    102    44%  
+ Number of bonded IOBs:                  46  out of    102    45%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
@@ -874,7 +868,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 184   |
+clk                                | BUFGP                  | 197   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -885,9 +879,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 16.758ns (Maximum Frequency: 59.673MHz)
+   Minimum period: 17.939ns (Maximum Frequency: 55.744MHz)
    Minimum input arrival time before clock: 3.526ns
-   Maximum output required time after clock: 11.037ns
+   Maximum output required time after clock: 10.915ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -896,10 +890,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 16.758ns (frequency: 59.673MHz)
-  Total number of paths / destination ports: 47200585 / 461
+  Clock period: 17.939ns (frequency: 55.744MHz)
+  Total number of paths / destination ports: 26109500 / 499
 -------------------------------------------------------------------------
-Delay:               16.758ns (Levels of Logic = 19)
+Delay:               17.939ns (Levels of Logic = 20)
   Source:            M_reg_d_q_1 (FF)
   Destination:       M_state_q_FSM_FFd4 (FF)
   Source Clock:      clk rising
@@ -909,38 +903,39 @@ Delay:               16.758ns (Levels of Logic = 19)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              8   0.525   1.220  M_reg_d_q_1 (M_reg_d_q_1)
-     begin scope: 'decoder:M_reg_d_q_1'
-     LUT4:I0->O            5   0.254   0.841  Mmux__n00423_rs_lut<1>1_SW1 (N161)
-     LUT6:I5->O            5   0.254   1.069  Mmux__n00423_AS11 (Mmux__n00423_rs_AS)
-     LUT6:I3->O           11   0.235   1.039  Mmux__n00423_rs_cy<2>12 (Mmux__n00423_rs_cy<2>)
-     LUT4:I3->O           16   0.254   1.410  Mmux__n00423_rs_xor<4>11 (temp_pos<4>)
-     LUT5:I2->O            2   0.235   0.726  Maddsub_n0039_Madd_xor<3>11 (GND_6_o_GND_6_o_add_13_OUT<3>1)
-     LUT5:I4->O            1   0.254   0.682  Sh1776_SW3 (N46)
-     LUT6:I5->O            8   0.254   1.052  Sh1776 (Sh1776)
-     LUT6:I4->O           12   0.250   1.069  Sh1778 (Sh177)
-     end scope: 'decoder:Sh177'
-     begin scope: 'alu:Sh177'
-     begin scope: 'alu/cmp_call:Sh177'
-     begin scope: 'alu/cmp_call/adder:Sh177'
-     LUT6:I5->O            1   0.254   0.000  Mmux_sum1_rs_lut<0> (Mmux_sum1_rs_lut<0>)
-     MUXCY:S->O            1   0.215   0.000  Mmux_sum1_rs_cy<0> (Mmux_sum1_rs_cy<0>)
+     FDE:C->Q              7   0.525   1.018  M_reg_d_q_1 (M_reg_d_q_1)
+     LUT3:I1->O           19   0.250   1.261  n0021<2>1 (n0021)
+     LUT5:I4->O           24   0.254   1.380  Mmux_M_ctrl_state11 (M_ctrl_state<0>)
+     begin scope: 'decoder:M_ctrl_state<0>'
+     LUT6:I5->O            3   0.254   0.874  Mmux__n00423_rs_lut<4>1 (Mmux__n00423_rs_lut<4>)
+     LUT5:I3->O            7   0.250   1.340  Maddsub_n0039_Madd_lut<1>1 (GND_6_o_GND_6_o_add_13_OUT<1>1)
+     LUT5:I0->O            1   0.254   0.790  Maddsub_n0039_Madd_xor<3>11 (GND_6_o_GND_6_o_add_13_OUT<3>1)
+     LUT6:I4->O            1   0.250   0.682  Sh1771 (Sh1771)
+     LUT5:I4->O            1   0.254   0.000  Sh1779_F (N188)
+     MUXF7:I0->O          17   0.163   1.209  Sh1779 (Sh1779)
+     end scope: 'decoder:Sh1779'
+     LUT6:I5->O            5   0.254   0.840  Mmux_M_alu_a11 (M_alu_a<0>)
+     begin scope: 'alu:a<0>'
+     begin scope: 'alu/cmp_call:a<0>'
+     begin scope: 'alu/cmp_call/adder:a<0>'
+     MUXCY:DI->O           1   0.181   0.000  Mmux_sum1_rs_cy<0> (Mmux_sum1_rs_cy<0>)
      XORCY:CI->O           1   0.206   0.958  Mmux_sum1_rs_xor<1> (Mmux_sum3_split<1>)
      end scope: 'alu/cmp_call/adder:Mmux_sum3_split<1>'
      end scope: 'alu/cmp_call:Mmux_sum3_split<1>'
      LUT6:I2->O            1   0.254   0.682  Mmux_alu33 (Mmux_alu32)
-     LUT6:I5->O            8   0.254   0.944  Mmux_alu34 (Mmux_alu33)
-     end scope: 'alu:Mmux_alu33'
-     LUT6:I5->O            1   0.254   0.790  M_state_q_FSM_FFd2-In1_SW0 (N77)
-     LUT5:I3->O            2   0.250   0.000  M_state_q_FSM_FFd2-In1 (M_state_q_FSM_FFd2-In)
+     LUT6:I5->O            6   0.254   0.876  Mmux_alu34 (Mmux_alu33)
+     LUT5:I4->O            4   0.254   0.804  Mmux_alu313_SW3_SW0 (N146)
+     LUT6:I5->O            1   0.254   0.790  Mmux_alu313_SW3 (N69)
+     end scope: 'alu:N69'
+     LUT6:I4->O            1   0.250   0.000  M_state_q_FSM_FFd2-In1 (M_state_q_FSM_FFd2-In)
      FD:D                      0.074          M_state_q_FSM_FFd2
     ----------------------------------------
-    Total                     16.758ns (4.276ns logic, 12.482ns route)
-                                       (25.5% logic, 74.5% route)
+    Total                     17.939ns (4.435ns logic, 13.504ns route)
+                                       (24.7% logic, 75.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 9 / 9
+  Total number of paths / destination ports: 10 / 10
 -------------------------------------------------------------------------
 Offset:              3.526ns (Levels of Logic = 3)
   Source:            rst_n (PAD)
@@ -961,30 +956,30 @@ Offset:              3.526ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 1376 / 28
+  Total number of paths / destination ports: 1785 / 28
 -------------------------------------------------------------------------
-Offset:              11.037ns (Levels of Logic = 7)
-  Source:            M_player_pos_b_q_3 (FF)
-  Destination:       r_green<6> (PAD)
+Offset:              10.915ns (Levels of Logic = 7)
+  Source:            M_player_pos_b_q_4 (FF)
+  Destination:       r_green<1> (PAD)
   Source Clock:      clk rising
 
-  Data Path: M_player_pos_b_q_3 to r_green<6>
+  Data Path: M_player_pos_b_q_4 to r_green<1>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            39   0.525   1.745  M_player_pos_b_q_3 (M_player_pos_b_q_3)
-     begin scope: 'map_to_dis:tp_b<3>'
-     LUT3:I1->O           39   0.250   2.092  Msub_GND_5_o_GND_5_o_sub_6_OUT_xor<2>11 (GND_5_o_GND_5_o_sub_6_OUT<2>)
-     end scope: 'map_to_dis:GND_5_o_GND_5_o_sub_6_OUT<2>'
-     begin scope: 'mat_dis:GND_5_o_GND_5_o_sub_6_OUT<2>'
-     LUT6:I0->O            1   0.254   1.112  r_green<6>10 (r_green<6>9)
-     LUT6:I1->O            1   0.254   0.958  r_green<6>11 (r_green<6>10)
-     LUT6:I2->O            1   0.254   0.681  r_green<6>17 (r_green<6>)
-     end scope: 'mat_dis:r_green<6>'
-     OBUF:I->O                 2.912          r_green_6_OBUF (r_green<6>)
+     FDRE:C->Q            29   0.525   1.746  M_player_pos_b_q_4 (M_player_pos_b_q_4)
+     begin scope: 'map_to_dis:tp_b<4>'
+     LUT6:I2->O           52   0.254   2.292  Madd_n0316_Madd_xor<5>11 (n0316<5>)
+     end scope: 'map_to_dis:n0316<5>'
+     begin scope: 'mat_dis:n0316<5>'
+     LUT6:I0->O            1   0.254   0.958  r_green<1>15 (r_green<1>14)
+     LUT6:I2->O            1   0.254   0.790  r_green<1>16 (r_green<1>15)
+     LUT3:I1->O            1   0.250   0.681  r_green<1>17 (r_green<1>)
+     end scope: 'mat_dis:r_green<1>'
+     OBUF:I->O                 2.912          r_green_1_OBUF (r_green<1>)
     ----------------------------------------
-    Total                     11.037ns (4.449ns logic, 6.588ns route)
-                                       (40.3% logic, 59.7% route)
+    Total                     10.915ns (4.449ns logic, 6.466ns route)
+                                       (40.8% logic, 59.2% route)
 
 =========================================================================
 
@@ -996,21 +991,21 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |   16.758|         |         |         |
+clk            |   17.939|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 13.00 secs
-Total CPU time to Xst completion: 13.27 secs
+Total CPU time to Xst completion: 12.34 secs
  
 --> 
 
 
-Total memory usage is 145132 kilobytes
+Total memory usage is 145412 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   65 (   0 filtered)
-Number of infos    :   10 (   0 filtered)
+Number of warnings :   63 (   0 filtered)
+Number of infos    :    9 (   0 filtered)
 
