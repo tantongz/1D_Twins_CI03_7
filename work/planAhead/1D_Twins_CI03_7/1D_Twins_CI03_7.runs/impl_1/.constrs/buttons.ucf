@@ -14,6 +14,6 @@ NET "down_btn" PULLUP;
 NET "start_btn" LOC = P24;
 NET "start_btn" IOSTANDARD = LVTTL;
 NET "start_btn" PULLUP;
-NET "reset_btn" LOC = P22;
+NET "reset_btn" LOC = P27;
 NET "reset_btn" IOSTANDARD = LVTTL;
 NET "reset_btn" PULLUP;

@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Thu Dec 06 21:33:12 2018
+// Written by: Map P.20131013 on Fri Dec 07 02:00:01 2018
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -10,7 +10,7 @@ COMP "rst_n" LOCATE = SITE "P38" LEVEL 1;
 COMP "spi_sck" LOCATE = SITE "P43" LEVEL 1;
 COMP "avr_rx_busy" LOCATE = SITE "P39" LEVEL 1;
 COMP "right_btn" LOCATE = SITE "P41" LEVEL 1;
-COMP "reset_btn" LOCATE = SITE "P22" LEVEL 1;
+COMP "reset_btn" LOCATE = SITE "P27" LEVEL 1;
 COMP "col[0]" LOCATE = SITE "P57" LEVEL 1;
 COMP "col[1]" LOCATE = SITE "P58" LEVEL 1;
 COMP "col[2]" LOCATE = SITE "P66" LEVEL 1;
