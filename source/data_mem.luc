@@ -8,7 +8,8 @@ module data_mem (
     
     // to processing module
     output level_adr[2],
-    output out[8][8],
+    output red[8][8],
+    output green[8][8],
     output r0[16],
     
     // to check module
@@ -27,22 +28,16 @@ module data_mem (
   map_to_display  display_map_call;
   
   always {
-  
-    // write back to refreash
-    reg_tp_a.d = reg_tp_a.q;
-    reg_tp_b.d = reg_tp_b.q;
-    r0 = r0_i;
     
     // load address to ROM
     map_mem.level_adr = level_adr_i;
     
     // load values to registers
-    if (sel_start == 1){
+    if (sel_start == 1) {
       reg_tp_a.d = map_mem.sp_a;
       reg_tp_b.d = map_mem.sp_b;
       r0 = 0;
-    }
-    else{
+    } else {
       reg_tp_a.d = reg_tp_a.q;
       reg_tp_b.d = reg_tp_b.q;
       r0 = r0_i;
@@ -53,14 +48,15 @@ module data_mem (
       curr_map = map_mem.map_a;
       curr_ep = map_mem.ep_a;
       curr_tp = reg_tp_a.q;
+      
       reg_tp_a.d = new_tp_i; // from decoder
       curr_tp = reg_tp_a.q; // update curr_tp, goes to alu
       //new_tp_o = new_tp_i; // goes to alu, if above works remove
-    }
-    else{
+    } else {
       curr_map = map_mem.map_b;
       curr_ep = map_mem.ep_b;
       curr_tp = reg_tp_b.q;
+      
       reg_tp_b.d = new_tp_i; // from decoder 
       curr_tp = reg_tp_b.q; // update curr_tp, goes to alu
       //new_tp_o = new_tp_i; // goes to alu, if above works remove
@@ -76,6 +72,8 @@ module data_mem (
     display_map_call.tp_b = reg_tp_b.q;
     display_map_call.ep_a = map_mem.ep_a;
     display_map_call.ep_b = map_mem.ep_b;
-    out = display_map_call.out;
+    red = display_map_call.red;
+    green = display_map_call.green;
+    
   }
 }

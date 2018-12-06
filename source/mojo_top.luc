@@ -11,11 +11,19 @@ module mojo_top (
     input avr_tx,           // AVR TX (FPGA RX).
     output avr_rx,          // AVR RX (FPGA TX).
     input avr_rx_busy,      // AVR RX buffer full.
-    output io_led [24],   // LEDs on IO Shield.
-    input io_dip [24], // DIP switches on IO Shield.
+    
+    input right_btn,
+    input left_btn,
+    input up_btn,
+    input down_btn,
+    
+    input reset_btn,
+    input start_btn,
+    
     output r_red[8],
     output r_green[8],
-    output col[8]
+    output col[8],
+    output led[8] //built-in leds
 
 ) {
   
@@ -23,49 +31,156 @@ module mojo_top (
   sig rst;                  // Reset signal.
   matrix_display mat_dis(.clk(clk), .rst(rst));
   
+  control ctrl;
+  
+  check chk(.clk(clk));
+  alu_main alu;
+  data_mem data_mem_call(.clk(clk));
+  matrix_decoder decoder;
+  // board_generator board_gen;
+
+
+  
   .clk(clk) {
     
     reset_conditioner reset_cond;
+    
+    // Setup of edge detectors for buttons.
+    edge_detector right_edge_detector(#RISE(1), #FALL(0));
+    edge_detector left_edge_detector(#RISE(1), #FALL(0));
+    edge_detector up_edge_detector(#RISE(1), #FALL(0));
+    edge_detector down_edge_detector(#RISE(1), #FALL(0));
+    
+    edge_detector reset_edge_detector(#RISE(1), #FALL(0));
+    edge_detector start_edge_detector(#RISE(1), #FALL(0));
+    
+    fsm state = {START, WAIT, CHECKA, CHECKB, CHECKWIN, WIN};
+  
+    dff level[2];
+    dff reg_d[2];
+    dff reg_c[2];
+    dff reg_r;
 
       .rst(rst) {
-      
-        
-      
+
        }
   }
   
    always {
-    
-    io_led = io_dip; //led on the io shield are all connected to the io dip
+   
     reset_cond.in = ~rst_n; // Input raw inverted reset signal.
     rst = reset_cond.out;   // Conditioned reset.
     spi_miso = bz;          // Not using SPI.
     spi_channel = bzzzz;    // Not using flags.
     avr_rx = bz;            // Not using serial port.
+    
     r_red = mat_dis.r_red;
     r_green = mat_dis.r_green;
     col = mat_dis.col;
-    mat_dis.green = {
-      b00000000, 
-      b00100100, 
-      b00100100, 
-      b00000000, 
-      b01000010, 
-      b00100100, 
-      b00011000, 
-      b00000000 
-    };
     
-    mat_dis.red = {
-      b11111111, 
-      b10000001,
-      b10000001,
-      b10000001,
-      b10000001,
-      b10000001,
-      b10000001,
-      b11111111
-    };
+    ctrl.state = 0;
+    ctrl.d = reg_d.q;
+    ctrl.r = reg_r.q;
+   
+    level.d = 0;
+    
+    data_mem_call.level_adr_i = level.q;
+    
+    chk.value = alu.alu;
+    chk.check_win = ctrl.check_win;
+    
+    // ctrl to data
+    data_mem_call.sel_start = ctrl.sel_start;
+    data_mem_call.sel_map = ctrl.sel_map;
+        
+    // ctrl to decoder
+    decoder.sel_new_pos = ctrl.sel_new_pos;
+    
+    data_mem_call.r0_i = chk.r0;
+        
+    // data memory to decoder
+    decoder.curr_tp = data_mem_call.curr_tp;
+    decoder.mapdata = data_mem_call.curr_map;
+    
+    // decoder to data memory
+    data_mem_call.new_tp_i = decoder.new_tp;
+
+    alu.alufn = ctrl.alufn;
+    alu.a = ctrl.sel_check ? chk.r1 : data_mem_call.curr_ep;
+    alu.b = ctrl.sel_check ? chk.r2 : data_mem_call.curr_tp;
+    
+    led = b00000000;
+    led = ctrl.sel_new_pos;
+    
+    case(state.q) {
+      state.START:
+        ctrl.state = 0;
+        if (start_edge_detector.out) {
+          state.d = state.WAIT;
+        }
+        
+      state.WAIT:
+        ctrl.state = 1;
+        if (reg_d.q != bz) {
+          state.d = state.CHECKB;
+        }
+      state.CHECKA:
+        ctrl.state = 2;
+        state.d = state.WAIT;
+        
+      state.CHECKB:
+        ctrl.state = 3;
+        state.d = state.WAIT;
+        
+      state.CHECKWIN:
+        ctrl.state = 4;
+        reg_d.d = bz;
+        
+        if (start_edge_detector.out) {
+          if (data_mem_call.r0 == 2) {
+            state.d = state.WIN;
+          } else if (data_mem_call.r0 == 1) {
+            state.d = state.WAIT;
+            reg_r.d = 1;
+          } else {
+            state.d = state.WAIT;
+          }
+        }
+        
+      state.WIN:
+        ctrl.state = 5;
+      
+    }
+    
+    // Button logic.
+    right_edge_detector.in = right_btn;
+    left_edge_detector.in = left_btn;
+    up_edge_detector.in = up_btn;
+    down_edge_detector.in = down_btn;
+    
+    reset_edge_detector.in = reset_btn;
+    start_edge_detector.in = start_btn;
+   
+    
+    if (right_edge_detector.out)
+      reg_d.d = 3;
+    
+    if (left_edge_detector.out)
+      reg_d.d = 2;
+    
+    if (up_edge_detector.out)
+      reg_d.d = 1;
+    
+    if (down_edge_detector.out)
+      reg_d.d = 0;
+    
+    reg_r.d = 0;
+    
+    if (reset_edge_detector.out)
+      reg_r.d = 1;
+    
+    mat_dis.red = data_mem_call.red;
+    mat_dis.green = data_mem_call.green;
 
   }
 }

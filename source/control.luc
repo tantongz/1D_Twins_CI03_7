@@ -11,10 +11,14 @@ module control (
     output sel_check,
     output check_win,
     output alufn[6],
-    output sel_new_pos[2]
+    output sel_new_pos[2],
+    
+    output state_output[3]
 ) {  
 
     always {
+    
+        state_output = state;
         
         case (state) {
             // select level
@@ -42,7 +46,7 @@ module control (
             // check map a
             2:  sel_level = bz;
                 sel_display = 1;
-                sel_start = -r;
+                sel_start = ~r;
                 sel_state = 1;
                 sel_map = 0;
                 sel_check = 0;
@@ -53,7 +57,7 @@ module control (
             // check map b
             3:  sel_level = bz;
                 sel_display = 1;
-                sel_start = -r;
+                sel_start = ~r;
                 sel_state = 1;
                 sel_map = 1;
                 sel_check = 0;
@@ -64,7 +68,7 @@ module control (
             // check for win
             4:  sel_level = bz;
                 sel_display = 1;
-                sel_start = -r;
+                sel_start = ~r;
                 sel_state = 0;
                 sel_map = bz;
                 sel_check = 1;

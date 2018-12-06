@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="map" Owner="ZhiYao" Host="LAPTOP-TP4D2KUF" Pid="105052">
-    </Process>
-</ProcessHandle>
