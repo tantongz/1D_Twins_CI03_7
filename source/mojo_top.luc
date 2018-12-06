@@ -109,13 +109,12 @@ module mojo_top (
     alu.b = ctrl.sel_check ? chk.r2 : data_mem_call.curr_tp;
     
     led = b00000000;
-    led = reg_d.q;
-    if (reg_d.q == bz) 
-      led = b11111111;
+    led = data_mem_call.cur_b;
     
     case(state.q) {
       state.START:
         ctrl.state = 0;
+        led = b11111111;
         if (start_edge_detector.out) {
           state.d = state.WAIT;
         }

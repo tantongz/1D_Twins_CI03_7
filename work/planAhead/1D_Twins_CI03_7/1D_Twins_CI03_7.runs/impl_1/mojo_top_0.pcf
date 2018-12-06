@@ -1,0 +1,74 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Thu Dec 06 13:36:12 2018
+//! **************************************************************************
+
+SCHEMATIC START;
+CONFIG VCCAUX = "3.3";
+COMP "col[1]" LOCATE = SITE "P58" LEVEL 1;
+COMP "col[2]" LOCATE = SITE "P66" LEVEL 1;
+COMP "col[3]" LOCATE = SITE "P67" LEVEL 1;
+COMP "col[4]" LOCATE = SITE "P74" LEVEL 1;
+COMP "col[5]" LOCATE = SITE "P75" LEVEL 1;
+COMP "spi_sck" LOCATE = SITE "P43" LEVEL 1;
+COMP "col[6]" LOCATE = SITE "P78" LEVEL 1;
+COMP "col[7]" LOCATE = SITE "P79" LEVEL 1;
+COMP "clk" LOCATE = SITE "P56" LEVEL 1;
+COMP "avr_rx_busy" LOCATE = SITE "P39" LEVEL 1;
+COMP "r_red[0]" LOCATE = SITE "P92" LEVEL 1;
+COMP "r_red[1]" LOCATE = SITE "P93" LEVEL 1;
+COMP "r_red[2]" LOCATE = SITE "P94" LEVEL 1;
+COMP "r_red[3]" LOCATE = SITE "P95" LEVEL 1;
+COMP "start_btn" LOCATE = SITE "P24" LEVEL 1;
+COMP "r_red[4]" LOCATE = SITE "P97" LEVEL 1;
+COMP "r_red[5]" LOCATE = SITE "P98" LEVEL 1;
+COMP "r_red[6]" LOCATE = SITE "P99" LEVEL 1;
+COMP "r_red[7]" LOCATE = SITE "P100" LEVEL 1;
+COMP "left_btn" LOCATE = SITE "P51" LEVEL 1;
+COMP "spi_mosi" LOCATE = SITE "P44" LEVEL 1;
+COMP "right_btn" LOCATE = SITE "P41" LEVEL 1;
+COMP "up_btn" LOCATE = SITE "P35" LEVEL 1;
+COMP "led[0]" LOCATE = SITE "P134" LEVEL 1;
+COMP "led[1]" LOCATE = SITE "P133" LEVEL 1;
+COMP "led[2]" LOCATE = SITE "P132" LEVEL 1;
+COMP "r_green[0]" LOCATE = SITE "P80" LEVEL 1;
+COMP "spi_ss" LOCATE = SITE "P48" LEVEL 1;
+COMP "led[3]" LOCATE = SITE "P131" LEVEL 1;
+COMP "r_green[1]" LOCATE = SITE "P81" LEVEL 1;
+COMP "led[4]" LOCATE = SITE "P127" LEVEL 1;
+COMP "r_green[2]" LOCATE = SITE "P82" LEVEL 1;
+COMP "avr_tx" LOCATE = SITE "P55" LEVEL 1;
+COMP "led[5]" LOCATE = SITE "P126" LEVEL 1;
+COMP "r_green[3]" LOCATE = SITE "P83" LEVEL 1;
+COMP "led[6]" LOCATE = SITE "P124" LEVEL 1;
+COMP "r_green[4]" LOCATE = SITE "P84" LEVEL 1;
+COMP "rst_n" LOCATE = SITE "P38" LEVEL 1;
+COMP "led[7]" LOCATE = SITE "P123" LEVEL 1;
+COMP "r_green[5]" LOCATE = SITE "P85" LEVEL 1;
+COMP "r_green[6]" LOCATE = SITE "P87" LEVEL 1;
+COMP "r_green[7]" LOCATE = SITE "P88" LEVEL 1;
+COMP "cclk" LOCATE = SITE "P70" LEVEL 1;
+COMP "col[0]" LOCATE = SITE "P57" LEVEL 1;
+COMP "down_btn" LOCATE = SITE "P33" LEVEL 1;
+COMP "reset_btn" LOCATE = SITE "P22" LEVEL 1;
+TIMEGRP clk = BEL "M_reg_r_q" BEL "M_state_q_FSM_FFd1" BEL
+        "data_mem_call/M_reg_tp_a_q_5" BEL "data_mem_call/M_reg_tp_b_q_1" BEL
+        "data_mem_call/M_reg_tp_b_q_0" BEL "data_mem_call/M_reg_tp_b_q_1_1"
+        BEL "data_mem_call/M_reg_tp_b_q_0_1" BEL
+        "data_mem_call/M_reg_tp_a_q_5_1" BEL "data_mem_call/M_reg_tp_b_q_1_2"
+        BEL "data_mem_call/M_reg_tp_a_q_5_2" BEL "clk_BUFGP/BUFG" BEL
+        "reset_cond/M_stage_q_3" BEL "reset_cond/M_stage_q_2" BEL
+        "reset_cond/M_stage_q_1" BEL "reset_cond/M_stage_q_0" BEL
+        "reset_edge_detector/M_last_q" BEL "start_edge_detector/M_last_q" BEL
+        "mat_dis/counter_r/M_ctr_q_18" BEL "mat_dis/counter_r/M_ctr_q_17" BEL
+        "mat_dis/counter_r/M_ctr_q_16" BEL "mat_dis/counter_r/M_ctr_q_15" BEL
+        "mat_dis/counter_r/M_ctr_q_14" BEL "mat_dis/counter_r/M_ctr_q_13" BEL
+        "mat_dis/counter_r/M_ctr_q_12" BEL "mat_dis/counter_r/M_ctr_q_11" BEL
+        "mat_dis/counter_r/M_ctr_q_10" BEL "mat_dis/counter_r/M_ctr_q_9" BEL
+        "mat_dis/counter_r/M_ctr_q_8" BEL "mat_dis/counter_r/M_ctr_q_7" BEL
+        "mat_dis/counter_r/M_ctr_q_6" BEL "mat_dis/counter_r/M_ctr_q_5" BEL
+        "mat_dis/counter_r/M_ctr_q_4" BEL "mat_dis/counter_r/M_ctr_q_3" BEL
+        "mat_dis/counter_r/M_ctr_q_2" BEL "mat_dis/counter_r/M_ctr_q_1" BEL
+        "mat_dis/counter_r/M_ctr_q_0";
+TS_clk = PERIOD TIMEGRP "clk" 10 MHz HIGH 50%;
+SCHEMATIC END;
+
