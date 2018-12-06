@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Dec 07 02:00:01 2018
+// Written by: Map P.20131013 on Fri Dec 07 03:10:18 2018
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -62,7 +62,10 @@ TIMEGRP clk = BEL "M_player_pos_b_q_0" BEL "M_player_pos_b_q_1" BEL
         "M_state_q_FSM_FFd2" BEL "M_level_q_0" BEL "M_level_q_1" BEL
         "M_state_q_FSM_FFd1" BEL "M_player_pos_b_q_0_1" BEL
         "M_state_q_FSM_FFd1_1" BEL "M_state_q_FSM_FFd3_1" BEL
-        "M_state_q_FSM_FFd4_1" BEL "clk_BUFGP/BUFG" BEL
+        "M_state_q_FSM_FFd4_1" BEL "M_player_pos_b_q_4_1" BEL
+        "M_state_q_FSM_FFd4_2" BEL "M_state_q_FSM_FFd2_1" BEL
+        "M_state_q_FSM_FFd3_2" BEL "M_player_pos_b_q_0_2" BEL
+        "M_player_pos_a_q_0_1" BEL "clk_BUFGP/BUFG" BEL
         "down_edge_detector/M_last_q" BEL "reset_edge_detector/M_last_q" BEL
         "right_edge_detector/M_last_q" BEL "up_edge_detector/M_last_q" BEL
         "left_edge_detector/M_last_q" BEL "start_edge_detector/M_last_q" BEL

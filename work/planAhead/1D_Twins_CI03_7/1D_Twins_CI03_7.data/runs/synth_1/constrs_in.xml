@@ -5,7 +5,7 @@
     <File Path="$PSRCDIR/constrs_1/imports/constraint/buttons.ucf">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../constraint/buttons.ucf"/>
-        <Attr Name="ImportTime" Val="1544119152"/>
+        <Attr Name="ImportTime" Val="1544121380"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
       </FileInfo>
@@ -13,7 +13,7 @@
     <File Path="$PSRCDIR/constrs_1/imports/constraint/mojo.ucf">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../constraint/mojo.ucf"/>
-        <Attr Name="ImportTime" Val="1544083258"/>
+        <Attr Name="ImportTime" Val="1544121380"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
       </FileInfo>

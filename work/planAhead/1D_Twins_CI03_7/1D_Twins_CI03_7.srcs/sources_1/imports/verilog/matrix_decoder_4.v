@@ -36,10 +36,6 @@ module matrix_decoder_4 (
       end
     end
     out = mapdata[(temp_pos[0+2-:3])*6+(temp_pos[3+2-:3])*1+0-:1];
-    if (out != 1'h1) begin
-      new_pos = temp_pos;
-    end else begin
-      new_pos = curr_pos;
-    end
+    new_pos = out ? curr_pos : temp_pos;
   end
 endmodule

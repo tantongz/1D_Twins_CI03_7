@@ -1,10 +1,16 @@
 module matrix_decoder (
     
-    input curr_pos[6], // Current position of the player.
-    input mapdata[6][6], // Array of the map.
-    input sel_new_pos[3], // Input representing direction.
+    // Current position of the player.
+    input curr_pos[6], 
     
-    output new_pos[6] // The new position of the player.
+    // Array of the map being processed.
+    input mapdata[6][6], 
+    
+    // Input representing direction.
+    input sel_new_pos[3], 
+    
+    // The new position of the player.
+    output new_pos[6]
     
   ) {
   
@@ -12,6 +18,9 @@ module matrix_decoder (
   sig out;
   
   always {
+    
+    // Calculate the potential position of the player, based
+    // on the directional input provided.
     
     if (sel_new_pos == 0) {
       // Down.
@@ -31,15 +40,15 @@ module matrix_decoder (
       
     } else {
       temp_pos = b000000;
+      
     }
+    
+    // Check if the potential position is on an obstacle,
+    // and update the current position if it is not obstructed.
     
     out = mapdata[temp_pos[2:0]][temp_pos[5:3]];
     
-    if (out != 1) {
-      new_pos = temp_pos;
-    } else {
-      new_pos = curr_pos;
-    }
+    new_pos = out ? curr_pos : temp_pos;
     
   }
   

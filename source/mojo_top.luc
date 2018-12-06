@@ -26,19 +26,14 @@ module mojo_top (
     output led[8] //built-in leds
     
   ) {
-  
-  // pipeline button_cond[1] (#DEPTH(5), .clk(clk)).
+    
   sig rst;                  // Reset signal.
   matrix_display mat_dis(.clk(clk), .rst(rst));
   map_rom map;
   map_to_display map_to_dis;
   matrix_decoder decoder;
   alu_main alu;
-  
-  control_n ctrl;
-  // board_generator board_gen;
-  
-  
+  control ctrl;
   
   .clk(clk) {
     
@@ -73,16 +68,16 @@ module mojo_top (
       dff reg_r;
       dff player_pos_a[6];
       dff player_pos_b[6];
-      dff r0[16];
+
       dff r1[16];
       dff r2[16];
     }
   }
   
-  sig result;
+  sig r0;
   
   always {
-    
+        
     map.level_adr = level.q;
     
     reset_cond.in = ~rst_n; // Input raw inverted reset signal.
@@ -90,6 +85,8 @@ module mojo_top (
     spi_miso = bz;          // Not using SPI.
     spi_channel = bzzzz;    // Not using flags.
     avr_rx = bz;            // Not using serial port.
+    
+    // Setup of various control signals.
     
     r_red = mat_dis.r_red;
     r_green = mat_dis.r_green;
@@ -116,7 +113,6 @@ module mojo_top (
     alu.b = b00000000;
     alu.alufn = ctrl.alufn;
     
-    
     led = b00000000;
     led = r1.q;
     ctrl.state = 0;
@@ -140,12 +136,19 @@ module mojo_top (
       alu.b = r2.q;  
     }
     
-    result = alu.alu[0];
+    r0 = alu.alu[0];
     
  
     case(state.q) {
+      
       state.MENU_WAIT:
+        // Waits for the user to choose a map to play.
         
+        // Load player location.
+        player_pos_a.d = map.sp_a;
+        player_pos_b.d = map.sp_b;
+        
+        // Listen for direction input.
         if (right_edge_detector.out) {
           reg_d.d = 3;
         } else if (left_edge_detector.out) {
@@ -156,16 +159,11 @@ module mojo_top (
           reg_d.d = 0;
         } else {
           reg_d.d = 4;
-        }
-        
-        player_pos_a.d = map.sp_a;
-        player_pos_b.d = map.sp_b;
-        
+        } 
         
         if (reg_d.q != 4) {
           state.d = state.MENU_UPDATE;
           
-          // Prepare control signals for next state.
           ctrl.state = 1;
           ctrl.direction = reg_d.q;
           see.d = reg_d.q;
@@ -174,43 +172,44 @@ module mojo_top (
         }
         
         // Start/select button!
-        if (start_edge_detector.out) {
-          reg_s.d = 1;
-        } else {
-          reg_s.d = 0;
-        }
+        reg_s.d = start_edge_detector.out ? 1 : 0;
         
-        if (reg_s.q == 1) {
+        if (reg_s.q == 1) 
           state.d = state.WAIT;
-        }
+        
       
       
       state.MENU_UPDATE:
+        // Scrolls through to the next map.
+        
         ctrl.state = 1;
         ctrl.direction = see.q;
         
-        if (ctrl.sel_level) {
-          level.d = level.q + 1;
-        } else {
-          level.d = level.q - 1;
-        }
+        level.d = ctrl.sel_level ? level.q + 1 : level.q -1;
         
         reg_d.d = 4;
         see.d = 4;
         state.d = state.MENU_WAIT;
       
       state.SETUP:
+        // Loads the player location onto the selected map.
+        // Acts as the 'reset' state as well.
+        
         ctrl.state = 8;
         led = b10000000;
+        
         player_pos_a.d = map.sp_a;
         player_pos_b.d = map.sp_b;
         
         state.d = state.WAIT;
       
       state.WAIT:
+        // Waits for a movement input from the player.
+        
         ctrl.state = 2;
         led = b10000001;
         
+        // Listen for a directional input.
         if (right_edge_detector.out) {
           reg_d.d = 3;
         } else if (left_edge_detector.out) {
@@ -226,36 +225,38 @@ module mojo_top (
         
         if (reg_d.q != 4) {
           state.d = state.CHECKA;
-          
-          // Prepare control signals for next state.
           ctrl.state = 3;
           ctrl.direction = reg_d.q;
           see.d = reg_d.q;
         }
         
         // Reset button!
-        if (reset_edge_detector.out) {
-          reg_r.d = 1;
-        } else {
-          reg_r.d = 0;
-        }
+        reg_r.d = reset_edge_detector.out ? 1 : 0;
         
-        if (reg_r.q == 1) {
+        if (reg_r.q == 1)
           state.d = state.SETUP;
-        }
+   
       
       state.CHECKA:
+        // Check if the player in A can move in the specified direction.
+        // Checks if the new position is an endpoint, and loads the result
+        // of the ALU opration to R1. (See above).
+        
         ctrl.state = 3;
         ctrl.direction = see.q;
         
-        decoder.curr_pos = player_pos_a.q;
         decoder.mapdata = map.map_a;
+        decoder.curr_pos = player_pos_a.q;
         player_pos_a.d = decoder.new_pos;
         
         state.d = state.CHECKB;
         see.d = see.q;
       
-      state.CHECKB: //To move and check for Map B
+      state.CHECKB:
+        // Check if the player in B can move in the specified direction.
+        // Checks if the new position is an endpoint, and loads the result
+        // of the ALU opration to R2. (See above).
+        
         ctrl.state = 4;
         ctrl.direction = see.q;
         
@@ -266,25 +267,30 @@ module mojo_top (
         state.d = state.CHECKWIN;
       
       state.CHECKWIN:
+        // Check if R0 and R1 are both 1, meaning both players have stepped
+        // on the endpoint at the same time.
+        
         ctrl.state = 5;
         
-        if (result == 1) {
-          state.d = state.WIN;
-        } else {
-          state.d = state.CHECKRESTART;
-        }
+        state.d = r0 ? state.WIN : state.CHECKRESTART;
       
       state.CHECKRESTART:
+        // Check if either R1 or R2 are 1, meaning one player has stepped on
+        // the endpoint. If that is the case, restart the map.
+        // If it is not, go back to waiting for a user input.
+    
         ctrl.state = 6;
         
-        if (result == 1) {
-          state.d = state.SETUP;
-        } else {
-          state.d = state.WAIT;
-        }
+        state.d = r0 ? state.SETUP : state.WAIT;
       
       state.WIN:
         led = b11111111;
+        
+        // Reset button!
+        reg_r.d = reset_edge_detector.out ? 1 : 0;
+        
+        if (reg_r.q == 1)
+          state.d = state.MENU_WAIT;
       
     }
     

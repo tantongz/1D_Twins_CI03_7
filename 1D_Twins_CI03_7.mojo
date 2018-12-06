@@ -3,18 +3,13 @@
   <files>
     <src>map_rom.luc</src>
     <src>alu_adder.luc</src>
-    <src>mux.luc</src>
-    <src>data_mem.luc</src>
     <src>matrix_display.luc</src>
-    <src>check.luc</src>
     <src>control_n.luc</src>
     <src>alu_boole.luc</src>
     <src top="true">mojo_top.luc</src>
-    <src>board_generator.luc</src>
     <src>alu_shift.luc</src>
     <src>alu_main.luc</src>
     <src>matrix_decoder.luc</src>
-    <src>control.luc</src>
     <src>bin_to_dec_mod.luc</src>
     <src>map_to_display.luc</src>
     <src>alu_cmp.luc</src>

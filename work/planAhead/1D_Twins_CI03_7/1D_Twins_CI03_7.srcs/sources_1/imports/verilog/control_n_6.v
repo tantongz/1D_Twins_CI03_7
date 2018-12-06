@@ -4,15 +4,14 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module control_n_6 (
+module control_6 (
     input [1:0] direction,
     input [2:0] state,
-    output reg sel_map,
-    output reg sel_level,
-    output reg sel_display,
     output reg [1:0] sel_new_pos,
     output reg [5:0] alufn,
-    output reg sel_check
+    output reg sel_level,
+    output reg sel_check,
+    output reg sel_map
   );
   
   
@@ -20,27 +19,21 @@ module control_n_6 (
   always @* begin
     sel_level = 1'h0;
     sel_check = 1'h0;
+    sel_map = 1'h0;
     
     case (state)
       1'h1: begin
         sel_level = direction[0+0-:1];
-        sel_display = 1'h0;
         sel_new_pos = 1'h0;
-        sel_check = 1'h0;
-        sel_map = 1'h0;
         alufn = 6'h00;
       end
       2'h2: begin
         sel_level = 1'h0;
-        sel_display = 1'h0;
         sel_new_pos = 1'h0;
-        sel_check = 1'h0;
-        sel_map = 1'h0;
         alufn = 6'h00;
       end
       2'h3: begin
         sel_level = 1'h0;
-        sel_display = 1'h0;
         sel_new_pos = direction;
         sel_check = 1'h0;
         sel_map = 1'h0;
@@ -48,7 +41,6 @@ module control_n_6 (
       end
       3'h4: begin
         sel_level = 1'h0;
-        sel_display = 1'h0;
         sel_new_pos = direction;
         sel_check = 1'h0;
         sel_map = 1'h1;
@@ -56,34 +48,25 @@ module control_n_6 (
       end
       3'h5: begin
         sel_level = 1'h0;
-        sel_display = 1'h0;
         sel_new_pos = direction;
         sel_check = 1'h1;
-        sel_map = 1'h0;
         alufn = 6'h18;
       end
       3'h6: begin
         sel_level = 1'h0;
-        sel_display = 1'h0;
         sel_new_pos = direction;
         sel_check = 1'h1;
-        sel_map = 1'h0;
         alufn = 6'h1e;
       end
       4'h8: begin
         sel_level = 1'h0;
-        sel_display = 1'h0;
         sel_new_pos = 1'h0;
-        sel_check = 1'h1;
-        sel_map = 1'h0;
         alufn = 6'h00;
       end
       default: begin
         sel_level = 1'bz;
-        sel_display = 1'bz;
         sel_new_pos = 1'bz;
         alufn = 6'h00;
-        sel_map = 1'h0;
       end
     endcase
   end
