@@ -27,13 +27,13 @@ module check (
     reg_r2.d = reg_r2.q;
     
     // change when check_win is valid
-    if (check_win == 0){
+    if (check_win == 0) {
       reg_r1.d = value;
     }
-    if (check_win == 1){
+    if (check_win == 1) {
       reg_r2.d = value;
     }
-    if (check_win == 2){
+    if (check_win == 2) {
       reg_r0.d = value;
     }
     

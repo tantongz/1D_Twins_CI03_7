@@ -23,13 +23,20 @@ module map_rom (
                          b100001,
                          b100101,
                          b111111};  // map a, 1 if wall or obstacle
-
+        
                 map_b = {b111111,
-                         b101001,
                          b100001,
-                         b101001,
+                         b110101,
                          b100001,
-                         b111111};  // map b, 1 if wall or obstacle
+                         b100101,
+                         b111111};
+
+                //map_b = {b111111,
+                         //b101001,
+                         //b100001,
+                         //b101001,
+                         //b100001,
+                         //b111111};  // map b, 1 if wall or obstacle
 
                 sp_a = b100001; // start position for map a b001100
                 sp_b = b100001; // start position for map b b001100

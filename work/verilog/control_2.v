@@ -40,11 +40,11 @@ module control_2 (
       1'h1: begin
         sel_level = 1'bz;
         sel_display = 1'h1;
-        sel_start = -r;
+        sel_start = ~r;
         sel_state = 1'h0;
         sel_map = 1'bz;
         sel_check = 1'bz;
-        check_win = 1'bz;
+        check_win = 1'h0;
         alufn = 1'bz;
         sel_new_pos = 1'bz;
       end

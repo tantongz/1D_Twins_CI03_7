@@ -54,11 +54,10 @@ module mojo_top (
     edge_detector reset_edge_detector(#RISE(1), #FALL(0));
     edge_detector start_edge_detector(#RISE(1), #FALL(0));
     
-    fsm state = {START, WAIT, CHECKA, CHECKB, CHECKWIN, WIN};
+    fsm state = {START, WAIT, CHECKA, CHECKB, CHECKWIN, WIN, WAIT2};
   
     dff level[2];
-    dff reg_d[2];
-    dff reg_c[2];
+    dff reg_d[3];
     dff reg_r;
 
       .rst(rst) {
@@ -110,7 +109,9 @@ module mojo_top (
     alu.b = ctrl.sel_check ? chk.r2 : data_mem_call.curr_tp;
     
     led = b00000000;
-    led = ctrl.sel_new_pos;
+    led = reg_d.q;
+    if (reg_d.q == bz) 
+      led = b11111111;
     
     case(state.q) {
       state.START:
@@ -121,16 +122,17 @@ module mojo_top (
         
       state.WAIT:
         ctrl.state = 1;
-        if (reg_d.q != bz) {
-          state.d = state.CHECKB;
-        }
+        //if (reg_d.q != bz) {
+         // state.d = state.CHECKA;
+        //}
+
       state.CHECKA:
         ctrl.state = 2;
-        state.d = state.WAIT;
+        state.d = state.CHECKB;
         
       state.CHECKB:
         ctrl.state = 3;
-        state.d = state.WAIT;
+        state.d = state.CHECKWIN;
         
       state.CHECKWIN:
         ctrl.state = 4;
@@ -163,16 +165,16 @@ module mojo_top (
    
     
     if (right_edge_detector.out)
-      reg_d.d = 3;
+      reg_d.d = 4;
     
     if (left_edge_detector.out)
-      reg_d.d = 2;
+      reg_d.d = 3;
     
     if (up_edge_detector.out)
-      reg_d.d = 1;
+      reg_d.d = 2;
     
     if (down_edge_detector.out)
-      reg_d.d = 0;
+      reg_d.d = 1;
     
     reg_r.d = 0;
     

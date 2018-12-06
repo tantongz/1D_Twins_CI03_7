@@ -17,7 +17,9 @@ module data_mem_5 (
     output reg [15:0] r0,
     output reg [35:0] curr_map,
     output reg [5:0] curr_ep,
-    output reg [5:0] curr_tp
+    output reg [5:0] curr_tp,
+    output reg [5:0] cur_a,
+    output reg [5:0] cur_b
   );
   
   
@@ -65,6 +67,8 @@ module data_mem_5 (
     M_reg_tp_b_d = M_reg_tp_b_q;
     M_reg_tp_a_d = M_reg_tp_a_q;
     
+    cur_a = M_reg_tp_a_q;
+    cur_b = M_reg_tp_b_q;
     M_map_mem_level_adr = level_adr_i;
     if (sel_start == 1'h1) begin
       M_reg_tp_a_d = M_map_mem_sp_a;
@@ -75,6 +79,9 @@ module data_mem_5 (
       M_reg_tp_b_d = M_reg_tp_b_q;
       r0 = r0_i;
     end
+    curr_map = M_map_mem_map_a;
+    curr_ep = M_map_mem_ep_a;
+    curr_tp = M_reg_tp_a_q;
     if (sel_map == 1'h0) begin
       curr_map = M_map_mem_map_a;
       curr_ep = M_map_mem_ep_a;

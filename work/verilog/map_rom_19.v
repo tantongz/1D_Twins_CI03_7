@@ -21,7 +21,7 @@ module map_rom_19 (
     case (level_adr)
       1'h0: begin
         map_a = 36'hfe1d6197f;
-        map_b = 36'hfe986987f;
+        map_b = 36'hfe1d6197f;
         sp_a = 6'h21;
         sp_b = 6'h21;
         ep_a = 6'h0c;

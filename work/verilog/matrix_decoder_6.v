@@ -7,7 +7,7 @@
 module matrix_decoder_6 (
     input [5:0] curr_tp,
     input [35:0] mapdata,
-    input [1:0] sel_new_pos,
+    input [2:0] sel_new_pos,
     output reg [5:0] new_tp
   );
   
@@ -22,16 +22,16 @@ module matrix_decoder_6 (
   reg out;
   
   always @* begin
-    if (sel_new_pos == 1'h0) begin
+    if (sel_new_pos == 1'h1) begin
       tpmux = curr_tp - 6'h01;
     end else begin
-      if (sel_new_pos == 1'h1) begin
+      if (sel_new_pos == 2'h2) begin
         tpmux = curr_tp + 6'h01;
       end else begin
-        if (sel_new_pos == 2'h2) begin
+        if (sel_new_pos == 2'h3) begin
           tpmux = curr_tp + 6'h08;
         end else begin
-          if (sel_new_pos == 2'h3) begin
+          if (sel_new_pos == 3'h4) begin
             tpmux = curr_tp - 6'h08;
           end else begin
             tpmux = 1'bz;

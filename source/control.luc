@@ -32,14 +32,14 @@ module control (
                 alufn = bz;
                 sel_new_pos = bz;
 
-            // make move
+            // make move. WAIT
             1:  sel_level = bz;
                 sel_display = 1;
-                sel_start = -r;
+                sel_start = ~r;
                 sel_state = 0;
                 sel_map = bz;
                 sel_check = bz;
-                check_win = bz;
+                check_win = 0; // was bz.
                 alufn = bz;
                 sel_new_pos = bz;
 

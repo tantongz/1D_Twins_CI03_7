@@ -2,7 +2,7 @@ module matrix_decoder (
     
     input curr_tp[6], // Current position of the player.
     input mapdata[6][6], // Array of the map.
-    input sel_new_pos[2], // Input representing direction.
+    input sel_new_pos[3], // Input representing direction.
     
     output new_tp[6] // The new position of the player.
     
@@ -15,19 +15,19 @@ module matrix_decoder (
   
   always {
     
-    if (sel_new_pos == 0) {
+    if (sel_new_pos == 1) {
       // Down.
       tpmux = curr_tp - b000001;
       
-    } else if(sel_new_pos == 1) {
+    } else if(sel_new_pos == 2) {
       // Up.
       tpmux = curr_tp + b000001;
       
-    } else if(sel_new_pos == 2) {
+    } else if(sel_new_pos == 3) {
       // Left.
       tpmux = curr_tp + b001000;
       
-    } else if(sel_new_pos == 3) {
+    } else if(sel_new_pos == 4) {
       // Right.
       tpmux = curr_tp - b001000;
       

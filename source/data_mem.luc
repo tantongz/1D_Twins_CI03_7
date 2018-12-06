@@ -15,8 +15,13 @@ module data_mem (
     // to check module
     output curr_map[6][6],
     output curr_ep[6],
-    output curr_tp[6]
+    output curr_tp[6],
     //output new_tp_o[6]
+    
+    // Just want to see the coordinates of a and b.
+    output cur_a[6],
+    output cur_b[6]
+    
   ) {
   
   .clk(clk){
@@ -29,22 +34,34 @@ module data_mem (
   
   always {
     
+    cur_a = reg_tp_a.q;
+    cur_b = reg_tp_b.q;
+    
     // load address to ROM
     map_mem.level_adr = level_adr_i;
     
     // load values to registers
     if (sel_start == 1) {
+      
       reg_tp_a.d = map_mem.sp_a;
       reg_tp_b.d = map_mem.sp_b;
       r0 = 0;
+      
     } else {
+      
       reg_tp_a.d = reg_tp_a.q;
       reg_tp_b.d = reg_tp_b.q;
       r0 = r0_i;
+      
     }
     
+    curr_map = map_mem.map_a;
+    curr_ep = map_mem.ep_a;
+    curr_tp = reg_tp_a.q;
+    
     // load values to check unit    
-    if (sel_map == 0){
+    if (sel_map == 0) {
+      
       curr_map = map_mem.map_a;
       curr_ep = map_mem.ep_a;
       curr_tp = reg_tp_a.q;
@@ -52,7 +69,9 @@ module data_mem (
       reg_tp_a.d = new_tp_i; // from decoder
       curr_tp = reg_tp_a.q; // update curr_tp, goes to alu
       //new_tp_o = new_tp_i; // goes to alu, if above works remove
+      
     } else {
+      
       curr_map = map_mem.map_b;
       curr_ep = map_mem.ep_b;
       curr_tp = reg_tp_b.q;
@@ -60,6 +79,7 @@ module data_mem (
       reg_tp_b.d = new_tp_i; // from decoder 
       curr_tp = reg_tp_b.q; // update curr_tp, goes to alu
       //new_tp_o = new_tp_i; // goes to alu, if above works remove
+      
     }
     
     // to processing module

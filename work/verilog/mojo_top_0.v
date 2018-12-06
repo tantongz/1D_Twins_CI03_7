@@ -114,6 +114,8 @@ module mojo_top_0 (
   wire [36-1:0] M_data_mem_call_curr_map;
   wire [6-1:0] M_data_mem_call_curr_ep;
   wire [6-1:0] M_data_mem_call_curr_tp;
+  wire [6-1:0] M_data_mem_call_cur_a;
+  wire [6-1:0] M_data_mem_call_cur_b;
   reg [1-1:0] M_data_mem_call_sel_map;
   reg [2-1:0] M_data_mem_call_level_adr_i;
   reg [1-1:0] M_data_mem_call_sel_start;
@@ -132,13 +134,15 @@ module mojo_top_0 (
     .r0(M_data_mem_call_r0),
     .curr_map(M_data_mem_call_curr_map),
     .curr_ep(M_data_mem_call_curr_ep),
-    .curr_tp(M_data_mem_call_curr_tp)
+    .curr_tp(M_data_mem_call_curr_tp),
+    .cur_a(M_data_mem_call_cur_a),
+    .cur_b(M_data_mem_call_cur_b)
   );
   
   wire [6-1:0] M_decoder_new_tp;
   reg [6-1:0] M_decoder_curr_tp;
   reg [36-1:0] M_decoder_mapdata;
-  reg [2-1:0] M_decoder_sel_new_pos;
+  reg [3-1:0] M_decoder_sel_new_pos;
   matrix_decoder_6 decoder (
     .curr_tp(M_decoder_curr_tp),
     .mapdata(M_decoder_mapdata),
@@ -201,11 +205,11 @@ module mojo_top_0 (
   localparam CHECKB_state = 3'd3;
   localparam CHECKWIN_state = 3'd4;
   localparam WIN_state = 3'd5;
+  localparam WAIT2_state = 3'd6;
   
   reg [2:0] M_state_d, M_state_q = START_state;
   reg [1:0] M_level_d, M_level_q = 1'h0;
-  reg [1:0] M_reg_d_d, M_reg_d_q = 1'h0;
-  reg [1:0] M_reg_c_d, M_reg_c_q = 1'h0;
+  reg [2:0] M_reg_d_d, M_reg_d_q = 1'h0;
   reg M_reg_r_d, M_reg_r_q = 1'h0;
   
   always @* begin
@@ -240,7 +244,10 @@ module mojo_top_0 (
     M_alu_a = M_ctrl_sel_check ? M_chk_r1 : M_data_mem_call_curr_ep;
     M_alu_b = M_ctrl_sel_check ? M_chk_r2 : M_data_mem_call_curr_tp;
     led = 8'h00;
-    led = M_ctrl_sel_new_pos;
+    led = M_reg_d_q;
+    if (M_reg_d_q == 1'bz) begin
+      led = 8'hff;
+    end
     
     case (M_state_q)
       START_state: begin
@@ -251,17 +258,14 @@ module mojo_top_0 (
       end
       WAIT_state: begin
         M_ctrl_state = 1'h1;
-        if (M_reg_d_q != 1'bz) begin
-          M_state_d = CHECKB_state;
-        end
       end
       CHECKA_state: begin
         M_ctrl_state = 2'h2;
-        M_state_d = WAIT_state;
+        M_state_d = CHECKB_state;
       end
       CHECKB_state: begin
         M_ctrl_state = 2'h3;
-        M_state_d = WAIT_state;
+        M_state_d = CHECKWIN_state;
       end
       CHECKWIN_state: begin
         M_ctrl_state = 3'h4;
@@ -290,16 +294,16 @@ module mojo_top_0 (
     M_reset_edge_detector_in = reset_btn;
     M_start_edge_detector_in = start_btn;
     if (M_right_edge_detector_out) begin
-      M_reg_d_d = 2'h3;
+      M_reg_d_d = 3'h4;
     end
     if (M_left_edge_detector_out) begin
-      M_reg_d_d = 2'h2;
+      M_reg_d_d = 2'h3;
     end
     if (M_up_edge_detector_out) begin
-      M_reg_d_d = 1'h1;
+      M_reg_d_d = 2'h2;
     end
     if (M_down_edge_detector_out) begin
-      M_reg_d_d = 1'h0;
+      M_reg_d_d = 1'h1;
     end
     M_reg_r_d = 1'h0;
     if (M_reset_edge_detector_out) begin
@@ -312,7 +316,6 @@ module mojo_top_0 (
   always @(posedge clk) begin
     M_level_q <= M_level_d;
     M_reg_d_q <= M_reg_d_d;
-    M_reg_c_q <= M_reg_c_d;
     M_reg_r_q <= M_reg_r_d;
     M_state_q <= M_state_d;
   end
