@@ -5,30 +5,58 @@ module map_to_display (
     input tp_b[6], // position of particle
     input ep_b[6], //end position of b
     input map_b[6][6], // map_array
-    output out[8][8]
+    output red[8][8],
+    output green[8][8]
   ) {
   
-  var i; // x-axis
-  var j; // y-axis
+  var x; // x-axis
+  var y; // y-axis
 
   always {
   
-    // do we need to set all cells to 0 first?
+    // Clear both sets of LEDS>
     
-    // set up map in display
-    for (i = 1; i < 4; i++){
-      for (j = 1; j < 4; j++){
-        out[i + 1][j - 1] = map_a[i][j];    // LED matrix starts counting from 0
-        out[i + 1][j + 3] = map_b[i][j]; 
+    green = {
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000       
+    };
+    
+    red = {
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000,
+      b00000000 
+    };
+    
+    // Port individual maps to main 8x8 matrix.
+    for (x = 1; x <= 4; x++) {
+      for (y = 1; y <= 4; y++) {
+        red[y + 1][x + 3] = map_a[y][x];
+        red[y + 1][x - 1] = map_b[y][x];
       }
     }
     
-    // set up temp positions
-    out[tp_a[5:3] + 1][tp_a[2:0] - 1] = 1; // some colour
-    out[tp_b[5:3] + 1][tp_b[2:0] + 3] = 1; // some colour
+    // Show player locations.
+    green[tp_a[2:0] + 1][tp_a[5:3] + 3] = 1;
     
-    // set up end positions
-    out[ep_a[5:3] + 1][ep_a[2:0] - 1] = 1; // some colour
-    out[ep_b[5:3] + 1][ep_b[2:0] + 3] = 1; // some colour
+    green[tp_b[2:0] + 1][tp_b[5:3] - 1] = 1;
+    //red[tp_b[2:0] + 1][tp_b[5:3] - 1] = 1;
+    
+    // Show end locations.
+    red[ep_a[2:0] + 1][ep_a[5:3] + 3] = 1;
+    red[ep_b[2:0] + 1][ep_b[5:3] - 1] = 1;
+    
+    green[ep_a[2:0] + 1][ep_a[5:3] + 3] = 1;
+    green[ep_b[2:0] + 1][ep_b[5:3] - 1] = 1;
   }
 }

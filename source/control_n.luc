@@ -1,0 +1,86 @@
+module control (
+    
+    // Directional input.
+    input direction[2],
+    
+    // The current state (based on the fsm in mojo_top).
+    input state[3],
+    
+    // Determines which direction to increment in check_a
+    // and check_b.
+    output sel_new_pos[2],
+    
+    // Determines which ALU function is to be executed.
+    output alufn[6],
+    
+    // Determines whether the next map to be shown is the
+    // next or previous one in the list.
+    output sel_level,
+    
+    // Determines whether the alu will get its input from:
+    // 0: decoder + ep_a or ep_b.
+    // 1: r1 + r2. 
+    output sel_check,
+    
+    // Determines which map is currently being processed.
+    // 0: map a.
+    // 1: map b.
+    output sel_map
+    
+  ) {
+  
+  always {
+    
+    sel_level = 0;
+    sel_check = 0;
+    sel_map = 0;
+    
+    case (state) {
+      // MENU WAIT.
+      1: sel_level = direction[0];
+         sel_new_pos = 0;
+         alufn = b000000;
+      
+      // MENU UPDATE.
+      2: sel_level = 0;
+         sel_new_pos = 0;
+         alufn = b000000;
+      
+      // CHECKA.
+      3: sel_level = 0;
+         sel_new_pos = direction;
+         sel_check = 0;
+         sel_map = 0;
+         alufn = b110011; // CMPEQ.
+      
+      // CHECKB.
+      4: sel_level = 0;
+         sel_new_pos = direction;
+         sel_check = 0;
+         sel_map = 1;
+         alufn = b110011; // CMPEQ.
+      
+      // CHECKWIN.
+      5: sel_level = 0;
+        sel_new_pos = direction;
+        sel_check = 1;
+        alufn = b011000; // AND.
+      
+      // CHECKRESTART
+      6: sel_level = 0;
+        sel_new_pos = direction;
+        sel_check = 1;
+        alufn = b011110; // OR.
+      
+      // SETUP
+      8: sel_level = 0;
+        sel_new_pos = 0;
+        alufn = b000000;
+      
+      default:
+        sel_level = bz;
+        sel_new_pos = bz;
+        alufn = b000000;
+    }
+  }
+}

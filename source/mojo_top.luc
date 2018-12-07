@@ -11,61 +11,305 @@ module mojo_top (
     input avr_tx,           // AVR TX (FPGA RX).
     output avr_rx,          // AVR RX (FPGA TX).
     input avr_rx_busy,      // AVR RX buffer full.
-    output io_led [24],   // LEDs on IO Shield.
-    input io_dip [24], // DIP switches on IO Shield.
+    
+    input right_btn,
+    input left_btn,
+    input up_btn,
+    input down_btn,
+    
+    input reset_btn,
+    input start_btn,
+    
     output r_red[8],
     output r_green[8],
-    output col[8]
-
-) {
-  
-  // pipeline button_cond[1] (#DEPTH(5), .clk(clk)).
+    output col[8],
+    output led[8] //built-in leds
+    
+  ) {
+    
   sig rst;                  // Reset signal.
   matrix_display mat_dis(.clk(clk), .rst(rst));
+  map_rom map;
+  map_to_display map_to_dis;
+  matrix_decoder decoder;
+  alu_main alu;
+  control ctrl;
   
   .clk(clk) {
     
     reset_conditioner reset_cond;
+    
+    // Setup of edge detectors for buttons.
+    edge_detector right_edge_detector(#RISE(0), #FALL(1));
+    edge_detector left_edge_detector(#RISE(0), #FALL(1));
+    edge_detector up_edge_detector(#RISE(0), #FALL(1));
+    edge_detector down_edge_detector(#RISE(0), #FALL(1));
+    
+    button_conditioner right_conditioner;
+    button_conditioner left_conditioner;
+    button_conditioner up_conditioner;
+    button_conditioner down_conditioner;
+    
+    edge_detector reset_edge_detector(#RISE(0), #FALL(1));
+    edge_detector start_edge_detector(#RISE(0), #FALL(1));
+    
+    button_conditioner reset_conditioner;
+    button_conditioner start_conditioner;
+    
+    fsm state(#INIT(MENU_WAIT)) = {MENU_WAIT, MENU_UPDATE, SETUP, WAIT,CHECKA,CHECKB, CHECKWIN, CHECKRESTART, WIN};
+    
+    dff level[2](#INIT(0));
+    dff reg_d[3](#INIT(4));
+    
+    dff see[3];
+    
+    .rst(rst) {
+      dff reg_s;
+      dff reg_r;
+      dff player_pos_a[6];
+      dff player_pos_b[6];
 
-      .rst(rst) {
-      
-        
-      
-       }
+      dff r1[16];
+      dff r2[16];
+    }
   }
   
-   always {
+  sig r0;
+  
+  always {
+        
+    map.level_adr = level.q;
     
-    io_led = io_dip; //led on the io shield are all connected to the io dip
     reset_cond.in = ~rst_n; // Input raw inverted reset signal.
     rst = reset_cond.out;   // Conditioned reset.
     spi_miso = bz;          // Not using SPI.
     spi_channel = bzzzz;    // Not using flags.
     avr_rx = bz;            // Not using serial port.
+    
+    // Setup of various control signals.
+    
     r_red = mat_dis.r_red;
     r_green = mat_dis.r_green;
     col = mat_dis.col;
-    mat_dis.green = {
-      b00000000, 
-      b00100100, 
-      b00100100, 
-      b00000000, 
-      b01000010, 
-      b00100100, 
-      b00011000, 
-      b00000000 
-    };
     
-    mat_dis.red = {
-      b11111111, 
-      b10000001,
-      b10000001,
-      b10000001,
-      b10000001,
-      b10000001,
-      b10000001,
-      b11111111
-    };
-
+    mat_dis.red = map_to_dis.red;
+    mat_dis.green = map_to_dis.green;
+    
+    map_to_dis.map_a = map.map_a;
+    map_to_dis.map_b = map.map_b;
+    
+    
+    map_to_dis.tp_a = player_pos_a.q;
+    map_to_dis.tp_b = player_pos_b.q;
+    
+    map_to_dis.ep_a = map.ep_a;
+    map_to_dis.ep_b = map.ep_b;
+    
+    decoder.curr_pos = b000000;
+    decoder.sel_new_pos = ctrl.sel_new_pos;
+    decoder.mapdata = map.map_a;
+    
+    alu.a = b00000000;
+    alu.b = b00000000;
+    alu.alufn = ctrl.alufn;
+    
+    led = b00000000;
+    led = r1.q;
+    ctrl.state = 0;
+    ctrl.direction = 0;
+    
+    reg_s.d = 0;
+    
+    if (ctrl.sel_check == 0) {
+      alu.a = decoder.new_pos;
+      
+      if (ctrl.sel_map == 0) {
+        alu.b = map.ep_a;
+        r1.d = alu.alu;
+      } else {
+        alu.b = map.ep_b;
+        r2.d = alu.alu;
+      }
+      
+    } else {
+      alu.a = r1.q;
+      alu.b = r2.q;  
+    }
+    
+    r0 = alu.alu[0];
+    
+ 
+    case(state.q) {
+      
+      state.MENU_WAIT:
+        // Waits for the user to choose a map to play.
+        
+        // Load player location.
+        player_pos_a.d = map.sp_a;
+        player_pos_b.d = map.sp_b;
+        
+        // Listen for direction input.
+        if (right_edge_detector.out) {
+          reg_d.d = 3;
+        } else if (left_edge_detector.out) {
+          reg_d.d = 2;
+        } else if (up_edge_detector.out) {
+          reg_d.d = 1;
+        } else if (down_edge_detector.out) {
+          reg_d.d = 0;
+        } else {
+          reg_d.d = 4;
+        } 
+        
+        if (reg_d.q != 4) {
+          state.d = state.MENU_UPDATE;
+          
+          ctrl.state = 1;
+          ctrl.direction = reg_d.q;
+          see.d = reg_d.q;
+          // reg_d.q will be cleared in the next iteration, so save it in see
+          // to use it in MENU_UPDATE.
+        }
+        
+        // Start/select button!
+        reg_s.d = start_edge_detector.out ? 1 : 0;
+        
+        if (reg_s.q == 1) 
+          state.d = state.WAIT;
+        
+      
+      
+      state.MENU_UPDATE:
+        // Scrolls through to the next map.
+        
+        ctrl.state = 1;
+        ctrl.direction = see.q;
+        
+        level.d = ctrl.sel_level ? level.q + 1 : level.q -1;
+        
+        reg_d.d = 4;
+        see.d = 4;
+        state.d = state.MENU_WAIT;
+      
+      state.SETUP:
+        // Loads the player location onto the selected map.
+        // Acts as the 'reset' state as well.
+        
+        ctrl.state = 8;
+        led = b10000000;
+        
+        player_pos_a.d = map.sp_a;
+        player_pos_b.d = map.sp_b;
+        
+        state.d = state.WAIT;
+      
+      state.WAIT:
+        // Waits for a movement input from the player.
+        
+        ctrl.state = 2;
+        led = b10000001;
+        
+        // Listen for a directional input.
+        if (right_edge_detector.out) {
+          reg_d.d = 3;
+        } else if (left_edge_detector.out) {
+          reg_d.d = 2;
+        } else if (up_edge_detector.out) {
+          reg_d.d = 1;
+        } else if (down_edge_detector.out) {
+          reg_d.d = 0;
+        } else {
+          reg_d.d = 4;
+        }
+        
+        
+        if (reg_d.q != 4) {
+          state.d = state.CHECKA;
+          ctrl.state = 3;
+          ctrl.direction = reg_d.q;
+          see.d = reg_d.q;
+        }
+        
+        // Reset button!
+        reg_r.d = reset_edge_detector.out ? 1 : 0;
+        
+        if (reg_r.q == 1)
+          state.d = state.SETUP;
+   
+      
+      state.CHECKA:
+        // Check if the player in A can move in the specified direction.
+        // Checks if the new position is an endpoint, and loads the result
+        // of the ALU opration to R1. (See above).
+        
+        ctrl.state = 3;
+        ctrl.direction = see.q;
+        
+        decoder.mapdata = map.map_a;
+        decoder.curr_pos = player_pos_a.q;
+        player_pos_a.d = decoder.new_pos;
+        
+        state.d = state.CHECKB;
+        see.d = see.q;
+      
+      state.CHECKB:
+        // Check if the player in B can move in the specified direction.
+        // Checks if the new position is an endpoint, and loads the result
+        // of the ALU opration to R2. (See above).
+        
+        ctrl.state = 4;
+        ctrl.direction = see.q;
+        
+        decoder.curr_pos = player_pos_b.q;
+        decoder.mapdata = map.map_b;
+        player_pos_b.d = decoder.new_pos;
+        
+        state.d = state.CHECKWIN;
+      
+      state.CHECKWIN:
+        // Check if R0 and R1 are both 1, meaning both players have stepped
+        // on the endpoint at the same time.
+        
+        ctrl.state = 5;
+        
+        state.d = r0 ? state.WIN : state.CHECKRESTART;
+      
+      state.CHECKRESTART:
+        // Check if either R1 or R2 are 1, meaning one player has stepped on
+        // the endpoint. If that is the case, restart the map.
+        // If it is not, go back to waiting for a user input.
+    
+        ctrl.state = 6;
+        
+        state.d = r0 ? state.SETUP : state.WAIT;
+      
+      state.WIN:
+        led = b11111111;
+        
+        // Reset button!
+        reg_r.d = reset_edge_detector.out ? 1 : 0;
+        
+        if (reg_r.q == 1)
+          state.d = state.MENU_WAIT;
+      
+    }
+    
+    // Button logic.
+    right_conditioner.in = right_btn;
+    left_conditioner.in = left_btn;
+    up_conditioner.in = up_btn;
+    down_conditioner.in = down_btn;
+    
+    right_edge_detector.in = right_conditioner.out;
+    left_edge_detector.in = left_conditioner.out;
+    up_edge_detector.in = up_conditioner.out;
+    down_edge_detector.in = down_conditioner.out;
+    
+    reset_conditioner.in = reset_btn;
+    start_conditioner.in = start_btn;
+    
+    reset_edge_detector.in = reset_conditioner.out;
+    start_edge_detector.in = start_conditioner.out;
+    
   }
 }
