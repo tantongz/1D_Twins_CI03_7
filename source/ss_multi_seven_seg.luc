@@ -1,0 +1,40 @@
+// With reference to the book "Learning FPGAs"- Alongside with decoder 
+// and digit_lut, numbers can be displayed on the led segment easily. 
+
+module multi_seven_seg #(
+    
+  DIGITS = 4 : DIGITS > 0,
+  DIV = 16 : DIV >= 0
+    
+)(
+    
+  input clk, // Clock.
+  input rst, // Reset.
+  input values [DIGITS][4], // Values to show.
+  input decimal [DIGITS], // Decimal points.
+  output seg [8], // LED segments.
+  output sel [DIGITS] // Digit select.
+    
+) {
+  
+// Number of bits required to store DIGITS-1.
+  
+  const DIGIT_BITS = $clog2(DIGITS);
+  
+  .clk(clk), .rst(rst) {
+    counter ctr (#DIV(DIV), #SIZE(DIGIT_BITS), #TOP(DIGITS-1));
+  }
+  
+  digit_lut seg_dec; // Segment decoder.
+  decoder digit_dec (#WIDTH(DIGIT_BITS)); // Digit decoder.
+  
+  always {
+    
+    seg_dec.value = values[ctr.value]; // Select value for active digit.
+    seg = c{decimal[ctr.value], seg_dec.segs}; // Output the decoded value.
+    digit_dec.in = ctr.value; // Decode active digit to one-hot.
+    sel = digit_dec.out; // Output the active digit.
+    
+  }
+  
+}

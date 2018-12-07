@@ -1,4 +1,4 @@
-Release 14.7 Map P.20131013 (lin)
+Release 14.7 Map P.20131013 (nt)
 Xilinx Mapping Report File for Design 'mojo_top_0'
 
 Design Information
@@ -8,12 +8,10 @@ Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Thu Dec  6 21:33:04 2018
+Mapped Date    : Fri Dec 07 08:40:37 2018
 
-Design Summary
---------------
-Number of errors:      0
-Number of warnings:    6
+Interim Summary
+---------------
 Slice Logic Utilization:
   Number of Slice Registers:                   191 out of  11,440    1%
     Number used as Flip Flops:                 191
@@ -39,12 +37,11 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   177 out of   1,430   12%
   Number of MUXCYs used:                       168 out of   2,860    5%
-  Number of LUT Flip Flop pairs used:          514
-    Number with an unused Flip Flop:           328 out of     514   63%
-    Number with an unused LUT:                   5 out of     514    1%
-    Number of fully used LUT-FF pairs:         181 out of     514   35%
+  Number of LUT Flip Flop pairs used:          528
+    Number with an unused Flip Flop:           342 out of     528   64%
+    Number with an unused LUT:                  19 out of     528    3%
+    Number of fully used LUT-FF pairs:         167 out of     528   31%
     Number of unique control sets:              19
     Number of slice register sites lost
       to control set restrictions:              83 out of  11,440    1%
@@ -57,7 +54,7 @@ Slice Logic Distribution:
 
 IO Utilization:
   Number of bonded IOBs:                        46 out of     102   45%
-    Number of LOCed IOBs:                       46 out of      46  100%
+    Number of LOCed IOBs:                       44 out of      46   95%
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                         0 out of      32    0%
@@ -84,30 +81,32 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                4.02
 
-Peak Memory Usage:  258 MB
-Total REAL time to MAP completion:  8 secs 
-Total CPU time to MAP completion (all processors):   8 secs 
-
-Table of Contents
------------------
-Section 1 - Errors
-Section 2 - Warnings
-Section 3 - Informational
-Section 4 - Removed Logic Summary
-Section 5 - Removed Logic
-Section 6 - IOB Properties
-Section 7 - RPMs
-Section 8 - Guide Report
-Section 9 - Area Group and Partition Summary
-Section 10 - Timing Report
-Section 11 - Configuration String Information
-Section 12 - Control Set Information
-Section 13 - Utilization by Hierarchy
+Design Summary
+--------------
+Number of errors   :   2
+Number of warnings :   6
 
 Section 1 - Errors
 ------------------
+ERROR:Place:866 - Not enough valid sites to place the following IOBs:
+   IO Standard: Name = LVCMOS25, VREF = NR, VCCO = 2.50, TERM = NONE, DIR =
+   OUTPUT, DRIVE_STR = 12
+   	col[5]
+
+   This may be due to either an insufficient number of sites available on the
+   device, too many prohibited sites,
+   or incompatible I/O Standards locked or range constrained to I/O Banks with
+   valid sites.
+       This situation could possibly be resolved by one (or all) of the
+   following actions:
+   a) Grouping IOBs of similar standards into a minimum amount of I/O Banks by
+   using LOC or range constraints.
+   b) Maximizing available I/O Banks resources for special IOBs by choosing
+   lower capacity I/O Banks if possible.
+   c) If applicable, decreasing the number of user prohibited sites or using a
+   larger device.
+ERROR:Pack:1654 - The timing-driven placement phase encountered an error.
 
 Section 2 - Warnings
 --------------------
@@ -148,7 +147,9 @@ INFO:Pack:1720 - Initializing voltage to 1.140 Volts. (default - Range: 1.140 to
    1.260 Volts)
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
-INFO:Pack:1650 - Map created a placed design.
+INFO:Place:834 - Only a subset of IOs are locked. Out of 46 IOs, 44 are locked
+   and 2 are not locked. If you would like to print the names of these IOs,
+   please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
 
 Section 4 - Removed Logic Summary
 ---------------------------------
@@ -239,105 +240,10 @@ VCC 		up_conditioner/sync/XST_VCC
 To enable printing of redundant blocks removed and signals merged, set the
 detailed map report option and rerun map.
 
-Section 6 - IOB Properties
---------------------------
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
-|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| avr_rx_busy                        | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
-| avr_tx                             | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
-| cclk                               | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
-| clk                                | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
-| col[0]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| col[1]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| col[2]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| col[3]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| col[4]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| col[5]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| col[6]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| col[7]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| down_btn                           | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLUP   |          |
-| led[0]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| led[1]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| led[2]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| led[3]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| led[4]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| led[5]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| led[6]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| led[7]                             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| left_btn                           | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLUP   |          |
-| r_green[0]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_green[1]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_green[2]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_green[3]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_green[4]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_green[5]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_green[6]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_green[7]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_red[0]                           | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_red[1]                           | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_red[2]                           | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_red[3]                           | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_red[4]                           | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_red[5]                           | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_red[6]                           | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| r_red[7]                           | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| reset_btn                          | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLUP   |          |
-| right_btn                          | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLUP   |          |
-| rst_n                              | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
-| spi_mosi                           | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
-| spi_sck                            | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
-| spi_ss                             | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
-| start_btn                          | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLUP   |          |
-| up_btn                             | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLUP   |          |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-Section 7 - RPMs
-----------------
-
-Section 8 - Guide Report
-------------------------
-Guide not run on this design.
-
-Section 9 - Area Group and Partition Summary
---------------------------------------------
-
-Partition Implementation Status
--------------------------------
-
-  No Partitions were found in this design.
-
--------------------------------
-
-Area Group Information
-----------------------
-
-  No area groups were found in this design.
-
-----------------------
-
-Section 10 - Timing Report
---------------------------
-A logic-level (pre-route) timing report can be generated by using Xilinx static
-timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
-mapped NCD and PCF files. Please note that this timing report will be generated
-using estimated delay information. For accurate numbers, please generate a
-timing report with the post Place and Route NCD file.
-
-For more information about the Timing Analyzer, consult the Xilinx Timing
-Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
-Command Line Tools User Guide "TRACE" chapter.
-
-Section 11 - Configuration String Details
+Section 12 - Configuration String Details
 -----------------------------------------
 Use the "-detail" map option to print out Configuration Strings
 
-Section 12 - Control Set Information
+Section 13 - Control Set Information
 ------------------------------------
 Use the "-detail" map option to print out Control Set Information.
-
-Section 13 - Utilization by Hierarchy
--------------------------------------
-Use the "-detail" map option to print out the Utilization by Hierarchy section.

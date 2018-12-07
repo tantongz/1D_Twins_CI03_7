@@ -247,15 +247,15 @@ module mojo_top_0 (
   
   always @* begin
     M_state_d = M_state_q;
-    M_r2_d = M_r2_q;
     M_player_pos_a_d = M_player_pos_a_q;
     M_player_pos_b_d = M_player_pos_b_q;
-    M_see_d = M_see_q;
-    M_reg_r_d = M_reg_r_q;
     M_level_d = M_level_q;
+    M_reg_r_d = M_reg_r_q;
+    M_see_d = M_see_q;
     M_reg_d_d = M_reg_d_q;
-    M_reg_s_d = M_reg_s_q;
     M_r1_d = M_r1_q;
+    M_reg_s_d = M_reg_s_q;
+    M_r2_d = M_r2_q;
     
     M_map_level_adr = M_level_q;
     M_reset_cond_in = ~rst_n;
