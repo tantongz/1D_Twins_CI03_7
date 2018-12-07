@@ -13,106 +13,106 @@ module map_rom (
     output sp_b[6],
     output ep_a[6],
     output ep_b[6]
-  ){
-  
-  always {
-    case (level_adr) {
-      0:  map_a = {b111111,
-          b100001,
-          b110101,
-          b100001,
-          b100101,
-          b111111};  // map a, 1 if wall or obstacle
+    ){
+
+    always {
+        case (level_adr) {
+            0:  map_a = {b111111,
+                         b100001,
+                         b110101,
+                         b100001,
+                         b100101,
+                         b111111};  // map a, 1 if wall or obstacle
+
+                map_b = {b111111,
+                         b101001,
+                         b100001,
+                         b101001,
+                         b100001,
+                         b111111};  // map b, 1 if wall or obstacle
+
+                sp_a = b100001; // start position for map a
+                sp_b = b100001; // start position for map b
+                ep_a = b001100; // end position for map a
+                ep_b = b001100; // end position for map b
+
+            1:  map_a = {b111111,
+                         b100101,
+                         b110001,
+                         b101011,
+                         b100001,
+                         b111111};
+
+                map_b = {b111111,
+                         b100101,
+                         b110001,
+                         b100101,
+                         b100001,
+                         b111111};
+
+                sp_a = b100001;
+                sp_b = b100001;
+                ep_a = b100100;
+                ep_b = b100100;
+
+            2:  map_a = {b111111,
+                         b100001,
+                         b101001,
+                         b110011,
+                         b101001,
+                         b111111};
+
+                map_b = {b111111,
+                         b100001,
+                         b100101,
+                         b110011,
+                         b100101,
+                         b111111};
+
+                sp_a = b100100;
+                sp_b = b100100;
+                ep_a = b001001;
+                ep_b = b001100;
+
+            3:  map_a = {b111111,
+                         b100001,
+                         b100001,
+                         b100001,
+                         b100001,
+                         b111111};
+
+                map_b = {b111111,
+                         b100001,
+                         b101001,
+                         b100001,
+                         b100001,
+                         b111111};
+
+                sp_a = b011010;
+                sp_b = b001100;
+                ep_a = b010001;
+                ep_b = b100001;
         
-        map_b = {b111111,
-          b101001,
-          b100001,
-          b101001,
-          b100001,
-          b111111};  // map b, 1 if wall or obstacle
-        
-        sp_a = b001100; // start position for map a b001100
-        sp_b = b001100; // start position for map b b001100
-        ep_a = b100001; // end position for map a b100001
-        ep_b = b100001; // end position for map b b100001
-      
-      1:  map_a = {b111111,
-          b100101,
-          b110001,
-          b101011,
-          b100001,
-          b111111};
-        
-        map_b = {b111111,
-          b100101,
-          b110001,
-          b100101,
-          b100001,
-          b111111};
-        
-        sp_a = b100001;
-        sp_b = b100001;
-        ep_a = b001001;
-        ep_b = b001001;
-      
-      2:  map_a = {b111111,
-          b100001,
-          b101001,
-          b110011,
-          b101001,
-          b111111};
-        
-        map_b = {b111111,
-          b100001,
-          b100101,
-          b110011,
-          b100101,
-          b111111};
-        
-        sp_a = b001001;
-        sp_b = b001001;
-        ep_a = b100100;
-        ep_b = b001100;
-      
-      3:  map_a = {b111111,
-          b100001,
-          b100001,
-          b100001,
-          b100001,
-          b111111};
-        
-        map_b = {b111111,
-          b100001,
-          b101001,
-          b100001,
-          b100001,
-          b111111};
-        
-        sp_a = b011010;
-        sp_b = b001100;
-        ep_a = b100011;
-        ep_b = b100001;
-      
-      //default -- currently using level 1
-      default:
-        map_a = {b111111,
-          b100001,
-          b110101,
-          b100001,
-          b100101,
-          b111111};  // map a, 1 if wall or obstacle
-        
-        map_b = {b111111,
-          b101001,
-          b100001,
-          b101001,
-          b100001,
-          b111111};  // map b, 1 if wall or obstacle
-        
-        sp_a = b100001; // start position for map a
-        sp_b = b100001; // start position for map b
-        ep_a = b001100; // end position for map a
-        ep_b = b001100; // end position for map b
+            //default -- currently using level 1
+            default: 
+                map_a = {b111111,
+                         b100001,
+                         b110101,
+                         b100001,
+                         b100101,
+                         b111111};  // map a, 1 if wall or obstacle
+
+                map_b = {b111111,
+                         b101001,
+                         b100001,
+                         b101001,
+                         b100001,
+                         b111111};  // map b, 1 if wall or obstacle
+
+                sp_a = b001100; // start position for map a
+                sp_b = b001100; // start position for map b
+                ep_a = b100001; // end position for map a
+                ep_b = b100001; // end position for map b
+        }
     }
-  }
 }
