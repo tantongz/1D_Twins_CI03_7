@@ -5,40 +5,43 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/alu_cmp_22.v" Line 30: Assignment to <arg fmt="%s" index="1">M_adder_sum_out</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/alu_cmp_23.v" Line 30: Assignment to <arg fmt="%s" index="1">M_adder_sum_out</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 109: Assignment to <arg fmt="%s" index="1">M_alu_z_</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 111: Assignment to <arg fmt="%s" index="1">M_alu_z_</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 110: Assignment to <arg fmt="%s" index="1">M_alu_v</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 112: Assignment to <arg fmt="%s" index="1">M_alu_v</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 111: Assignment to <arg fmt="%s" index="1">M_alu_n</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 113: Assignment to <arg fmt="%s" index="1">M_alu_n</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="295" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/control_n_6.v" Line 61: case condition never applies
+<msg type="warning" file="HDLCompiler" num="295" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/control_n_6.v" Line 61: case condition never applies
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 281: Result of <arg fmt="%d" index="1">16</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">8</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/multi_seven_seg_20.v" Line 50: Result of <arg fmt="%d" index="1">9</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">8</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 324: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 300: Result of <arg fmt="%d" index="1">16</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">8</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 334: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 344: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 341: Result of <arg fmt="%d" index="1">4</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 354: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 370: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 361: Result of <arg fmt="%d" index="1">4</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 380: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 390: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="new" >"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 389: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 400: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="413" delta="new" >"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 409: Result of <arg fmt="%d" index="1">3</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">2</arg>-bit target.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">cclk</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -59,13 +62,13 @@
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">avr_rx_busy</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v</arg>&quot; line <arg fmt="%s" index="2">104</arg>: Output port &lt;<arg fmt="%s" index="3">z_</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v</arg>&quot; line <arg fmt="%s" index="2">106</arg>: Output port &lt;<arg fmt="%s" index="3">z_</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v</arg>&quot; line <arg fmt="%s" index="2">104</arg>: Output port &lt;<arg fmt="%s" index="3">v</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v</arg>&quot; line <arg fmt="%s" index="2">106</arg>: Output port &lt;<arg fmt="%s" index="3">v</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v</arg>&quot; line <arg fmt="%s" index="2">104</arg>: Output port &lt;<arg fmt="%s" index="3">n</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v</arg>&quot; line <arg fmt="%s" index="2">106</arg>: Output port &lt;<arg fmt="%s" index="3">n</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">map_a&lt;6:0&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -107,10 +110,13 @@
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">alufn&lt;3:3&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/alu_cmp_22.v</arg>&quot; line <arg fmt="%s" index="2">26</arg>: Output port &lt;<arg fmt="%s" index="3">sum_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">adder</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/alu_cmp_23.v</arg>&quot; line <arg fmt="%s" index="2">26</arg>: Output port &lt;<arg fmt="%s" index="3">sum_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">adder</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">alufn&lt;3:2&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">decimal</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="info" file="Xst" num="1767" delta="new" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -119,10 +125,69 @@
 <msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram__n0022</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
 </msg>
 
+<msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram__n0056</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+</msg>
+
 <msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram__n0017</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">M_see_q_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">M_display_value_q_12</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">mojo_top_0</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">M_display_value_q_9</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">mojo_top_0</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">M_display_value_q_5</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">mojo_top_0</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">M_display_value_q_4</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">mojo_top_0</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">M_display_value_q_2</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">mojo_top_0</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_0</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_1</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_3</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_6</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_7</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_8</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_10</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_11</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_13</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_14</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_15</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">M_display_value_q_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">4 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;M_display_value_q_4&gt; &lt;M_display_value_q_5&gt; &lt;M_display_value_q_9&gt; &lt;M_display_value_q_12&gt; </arg>
 </msg>
 
 <msg type="warning" file="Xst" num="2042" delta="new" >Unit <arg fmt="%s" index="1">control_6</arg>: <arg fmt="%d" index="2">2</arg> internal tristates are replaced by logic (pull-up <arg fmt="%s" index="3">yes</arg>): </msg>
@@ -205,7 +270,58 @@
 <msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_r1_q_7</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">M_r1_q_4</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_1&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_2&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_3&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_4</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_4&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_5&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_6&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_7&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_8</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_8&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_9</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_9&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_10</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_10&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_11</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_11&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_12</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_12&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_13</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_13&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_14</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_14&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_15</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_15&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_16</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_16&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">seg_display/ctr/M_ctr_q_17</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mat_dis/counter_r/M_ctr_q_17&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="741" delta="new" >HDL ADVISOR - A <arg fmt="%d" index="1">4</arg>-bit shift register was found for signal &lt;<arg fmt="%s" index="2">reset_cond/M_stage_q_3</arg>&gt; and currently occupies <arg fmt="%d" index="3">4</arg> logic cells (<arg fmt="%d" index="4">2</arg> slices). Removing the set/reset logic would take advantage of SRL<arg fmt="%d" index="5">32</arg> (and derived) primitives and reduce this to 1 logic cells (1 slices). Evaluate if the set/reset can be removed for this simple shift register. The majority of simple pipeline structures do not need to be set/reset operationally.

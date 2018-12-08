@@ -23,10 +23,12 @@ module mojo_top (
     output r_red[8],
     output r_green[8],
     output col[8],
-    output led[8] //built-in leds
+    output led[8], //built-in leds
+    output io_seg [8],      // 7-segment LEDs on IO Shield.
+    output io_sel [4]      // Digit select on IO Shield.
     
   ) {
-    
+  
   sig rst;                  // Reset signal.
   matrix_display mat_dis(.clk(clk), .rst(rst));
   map_rom map;
@@ -64,22 +66,27 @@ module mojo_top (
     dff see[3];
     
     .rst(rst) {
+      multi_seven_seg seg_display; // Connecting to multi_seven_seg which would help displaying on the segment.
+      
       dff reg_s;
       dff reg_r;
       dff player_pos_a[6];
       dff player_pos_b[6];
-
       dff r1[16];
       dff r2[16];
     }
+    dff display_value[4][4]; // Size of LED segments.
+    
   }
   
   sig r0;
   
   always {
-        
-    map.level_adr = level.q;
+    seg_display.decimal = 4b1111; //To control decimal point.
     
+    map.level_adr = level.q;
+    io_seg = ~seg_display.seg;
+    io_sel = ~seg_display.sel;
     reset_cond.in = ~rst_n; // Input raw inverted reset signal.
     rst = reset_cond.out;   // Conditioned reset.
     spi_miso = bz;          // Not using SPI.
@@ -133,17 +140,16 @@ module mojo_top (
       
     } else {
       alu.a = r1.q;
-      alu.b = r2.q;  
+      alu.b = r2.q;
     }
     
     r0 = alu.alu[0];
     
- 
     case(state.q) {
       
       state.MENU_WAIT:
         // Waits for the user to choose a map to play.
-        
+        display_value.d = {4d1, 4d2, 4d3, 4d4};
         // Load player location.
         player_pos_a.d = map.sp_a;
         player_pos_b.d = map.sp_b;
@@ -159,7 +165,7 @@ module mojo_top (
           reg_d.d = 0;
         } else {
           reg_d.d = 4;
-        } 
+        }
         
         if (reg_d.q != 4) {
           state.d = state.MENU_UPDATE;
@@ -170,13 +176,13 @@ module mojo_top (
           // reg_d.q will be cleared in the next iteration, so save it in see
           // to use it in MENU_UPDATE.
         }
+      
+      // Start/select button!
+      reg_s.d = start_edge_detector.out ? 1 : 0;
         
-        // Start/select button!
-        reg_s.d = start_edge_detector.out ? 1 : 0;
-        
-        if (reg_s.q == 1) 
+        if (reg_s.q == 1)
           state.d = state.WAIT;
-        
+      
       
       
       state.MENU_UPDATE:
@@ -184,8 +190,8 @@ module mojo_top (
         
         ctrl.state = 1;
         ctrl.direction = see.q;
-        
-        level.d = ctrl.sel_level ? level.q + 1 : level.q -1;
+      
+      level.d = ctrl.sel_level ? level.q + 1 : level.q -1;
         
         reg_d.d = 4;
         see.d = 4;
@@ -229,13 +235,13 @@ module mojo_top (
           ctrl.direction = reg_d.q;
           see.d = reg_d.q;
         }
-        
-        // Reset button!
-        reg_r.d = reset_edge_detector.out ? 1 : 0;
+      
+      // Reset button!
+      reg_r.d = reset_edge_detector.out ? 1 : 0;
         
         if (reg_r.q == 1)
           state.d = state.SETUP;
-   
+      
       
       state.CHECKA:
         // Check if the player in A can move in the specified direction.
@@ -271,23 +277,23 @@ module mojo_top (
         // on the endpoint at the same time.
         
         ctrl.state = 5;
-        
-        state.d = r0 ? state.WIN : state.CHECKRESTART;
+      
+      state.d = r0 ? state.WIN : state.CHECKRESTART;
       
       state.CHECKRESTART:
         // Check if either R1 or R2 are 1, meaning one player has stepped on
         // the endpoint. If that is the case, restart the map.
         // If it is not, go back to waiting for a user input.
-    
-        ctrl.state = 6;
         
-        state.d = r0 ? state.SETUP : state.WAIT;
+        ctrl.state = 6;
+      
+      state.d = r0 ? state.SETUP : state.WAIT;
       
       state.WIN:
         led = b11111111;
-        
-        // Reset button!
-        reg_r.d = reset_edge_detector.out ? 1 : 0;
+      
+      // Reset button!
+      reg_r.d = reset_edge_detector.out ? 1 : 0;
         
         if (reg_r.q == 1)
           state.d = state.MENU_WAIT;
@@ -310,6 +316,7 @@ module mojo_top (
     
     reset_edge_detector.in = reset_conditioner.out;
     start_edge_detector.in = start_conditioner.out;
+    seg_display.values = display_value.q; //Displaying value from the state_machine on the seven segments.
     
   }
 }

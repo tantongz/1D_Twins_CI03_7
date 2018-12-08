@@ -1,4 +1,4 @@
-Release 14.7 Map P.20131013 (lin)
+Release 14.7 Map P.20131013 (nt)
 Xilinx Map Application Log File for Design 'mojo_top_0'
 
 Design Information
@@ -8,9 +8,33 @@ Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Fri Dec  7 03:10:10 2018
+Mapped Date    : Fri Dec 07 22:15:49 2018
 
 Mapping design into LUTs...
+WARNING:MapLib:23 - Short on signal r_red[7] detected.
+WARNING:MapLib:23 - Short on signal r_red[6] detected.
+WARNING:MapLib:23 - Short on signal r_red[1] detected.
+WARNING:MapLib:23 - Short on signal r_red[0] detected.
+WARNING:MapLib:23 - Short on signal r_red[7] detected.
+WARNING:MapLib:23 - Short on signal r_red[6] detected.
+WARNING:MapLib:23 - Short on signal r_red[1] detected.
+WARNING:MapLib:23 - Short on signal r_red[0] detected.
+WARNING:MapLib:23 - Short on signal r_red[7] detected.
+WARNING:MapLib:23 - Short on signal r_red[6] detected.
+WARNING:MapLib:23 - Short on signal r_red[1] detected.
+WARNING:MapLib:23 - Short on signal r_red[0] detected.
+WARNING:MapLib:23 - Short on signal r_red[7] detected.
+WARNING:MapLib:23 - Short on signal r_red[6] detected.
+WARNING:MapLib:23 - Short on signal r_red[1] detected.
+WARNING:MapLib:23 - Short on signal r_red[0] detected.
+WARNING:MapLib:23 - Short on signal r_red[0] detected.
+WARNING:MapLib:23 - Short on signal r_red[0] detected.
+WARNING:MapLib:23 - Short on signal r_red[1] detected.
+WARNING:MapLib:23 - Short on signal r_red[1] detected.
+WARNING:MapLib:23 - Short on signal r_red[6] detected.
+WARNING:MapLib:23 - Short on signal r_red[6] detected.
+WARNING:MapLib:23 - Short on signal r_red[7] detected.
+WARNING:MapLib:23 - Short on signal r_red[7] detected.
 WARNING:MapLib:701 - Signal spi_channel[3] connected to top level port
    spi_channel(3) has been removed.
 WARNING:MapLib:701 - Signal spi_channel[2] connected to top level port
@@ -29,74 +53,82 @@ Updating timing models...
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
 Running timing-driven placement...
-Total REAL time at the beginning of Placer: 4 secs 
-Total CPU  time at the beginning of Placer: 4 secs 
+Total REAL time at the beginning of Placer: 9 secs 
+Total CPU  time at the beginning of Placer: 7 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:16d56b2c) REAL time: 5 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:a9b672d9) REAL time: 10 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:16d56b2c) REAL time: 5 secs 
+Phase 2.7  Design Feasibility Check (Checksum:a9b672d9) REAL time: 10 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:16d56b2c) REAL time: 5 secs 
+Phase 3.31  Local Placement Optimization (Checksum:a9b672d9) REAL time: 10 secs 
 
 Phase 4.2  Initial Placement for Architecture Specific Features
 
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:6c6429dc) REAL time: 7 secs 
+(Checksum:d01cc429) REAL time: 15 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:6c6429dc) REAL time: 7 secs 
+Phase 5.36  Local Placement Optimization (Checksum:d01cc429) REAL time: 15 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:6c6429dc) REAL time: 7 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:d01cc429) REAL time: 15 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:6c6429dc) REAL time: 7 secs 
+Phase 7.3  Local Placement Optimization (Checksum:d01cc429) REAL time: 15 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:6c6429dc) REAL time: 7 secs 
+Phase 8.5  Local Placement Optimization (Checksum:d01cc429) REAL time: 15 secs 
 
 Phase 9.8  Global Placement
-.......................................
-................
-Phase 9.8  Global Placement (Checksum:d69b2532) REAL time: 7 secs 
+...............
+...................
+Phase 9.8  Global Placement (Checksum:152f82b3) REAL time: 16 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:d69b2532) REAL time: 7 secs 
+Phase 10.5  Local Placement Optimization (Checksum:152f82b3) REAL time: 16 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:fdc3cd32) REAL time: 7 secs 
+Phase 11.18  Placement Optimization (Checksum:1bc99efb) REAL time: 17 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:fdc3cd32) REAL time: 7 secs 
+Phase 12.5  Local Placement Optimization (Checksum:1bc99efb) REAL time: 17 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:fc361a87) REAL time: 8 secs 
+Phase 13.34  Placement Validation (Checksum:1bc99efb) REAL time: 17 secs 
 
-Total REAL time to Placer completion: 8 secs 
-Total CPU  time to Placer completion: 8 secs 
+Total REAL time to Placer completion: 17 secs 
+Total CPU  time to Placer completion: 14 secs 
 Running post-placement packing...
 Writing output files...
+WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
+   r_red[2]_PULLDOWN is set but the tri state is not configured. 
+WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
+   r_red[3]_PULLDOWN is set but the tri state is not configured. 
+WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
+   r_red[4]_PULLDOWN is set but the tri state is not configured. 
+WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
+   r_red[5]_PULLDOWN is set but the tri state is not configured. 
 
 Design Summary
 --------------
 
 Design Summary:
 Number of errors:      0
-Number of warnings:    6
+Number of warnings:   34
 Slice Logic Utilization:
-  Number of Slice Registers:                   197 out of  11,440    1%
-    Number used as Flip Flops:                 197
+  Number of Slice Registers:                   199 out of  11,440    1%
+    Number used as Flip Flops:                 199
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        508 out of   5,720    8%
-    Number used as logic:                      496 out of   5,720    8%
-      Number using O6 output only:             324
-      Number using O5 output only:             125
-      Number using O5 and O6:                   47
+  Number of Slice LUTs:                        540 out of   5,720    9%
+    Number used as logic:                      528 out of   5,720    9%
+      Number using O6 output only:             334
+      Number using O5 output only:             141
+      Number using O5 and O6:                   53
       Number used as ROM:                        0
     Number used as Memory:                       4 out of   1,440    1%
       Number used as Dual Port RAM:              0
@@ -112,14 +144,14 @@ Slice Logic Utilization:
 
 Slice Logic Distribution:
   Number of occupied Slices:                   181 out of   1,430   12%
-  Number of MUXCYs used:                       168 out of   2,860    5%
-  Number of LUT Flip Flop pairs used:          515
-    Number with an unused Flip Flop:           323 out of     515   62%
-    Number with an unused LUT:                   7 out of     515    1%
-    Number of fully used LUT-FF pairs:         185 out of     515   35%
-    Number of unique control sets:              19
+  Number of MUXCYs used:                       188 out of   2,860    6%
+  Number of LUT Flip Flop pairs used:          543
+    Number with an unused Flip Flop:           350 out of     543   64%
+    Number with an unused LUT:                   3 out of     543    1%
+    Number of fully used LUT-FF pairs:         190 out of     543   34%
+    Number of unique control sets:              21
     Number of slice register sites lost
-      to control set restrictions:              85 out of  11,440    1%
+      to control set restrictions:              99 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -128,8 +160,8 @@ Slice Logic Distribution:
   over-mapped for a non-slice resource or if Placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                        46 out of     102   45%
-    Number of LOCed IOBs:                       46 out of      46  100%
+  Number of bonded IOBs:                        58 out of     102   56%
+    Number of LOCed IOBs:                       58 out of      58  100%
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                         0 out of      32    0%
@@ -156,11 +188,11 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                3.99
+Average Fanout of Non-Clock Nets:                3.95
 
-Peak Memory Usage:  258 MB
-Total REAL time to MAP completion:  8 secs 
-Total CPU time to MAP completion (all processors):   8 secs 
+Peak Memory Usage:  360 MB
+Total REAL time to MAP completion:  18 secs 
+Total CPU time to MAP completion (all processors):   15 secs 
 
 Mapping completed.
 See MAP report file "mojo_top_0.mrp" for details.

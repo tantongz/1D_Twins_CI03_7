@@ -25,7 +25,9 @@ module mojo_top_0 (
     output reg [7:0] r_red,
     output reg [7:0] r_green,
     output reg [7:0] col,
-    output reg [7:0] led
+    output reg [7:0] led,
+    output reg [7:0] io_seg,
+    output reg [3:0] io_sel
   );
   
   
@@ -233,28 +235,45 @@ module mojo_top_0 (
   reg [1:0] M_level_d, M_level_q = 1'h0;
   reg [2:0] M_reg_d_d, M_reg_d_q = 3'h4;
   reg [2:0] M_see_d, M_see_q = 1'h0;
+  wire [8-1:0] M_seg_display_seg;
+  wire [4-1:0] M_seg_display_sel;
+  reg [16-1:0] M_seg_display_values;
+  reg [4-1:0] M_seg_display_decimal;
+  multi_seven_seg_20 seg_display (
+    .clk(clk),
+    .rst(rst),
+    .values(M_seg_display_values),
+    .decimal(M_seg_display_decimal),
+    .seg(M_seg_display_seg),
+    .sel(M_seg_display_sel)
+  );
   reg M_reg_s_d, M_reg_s_q = 1'h0;
   reg M_reg_r_d, M_reg_r_q = 1'h0;
   reg [5:0] M_player_pos_a_d, M_player_pos_a_q = 1'h0;
   reg [5:0] M_player_pos_b_d, M_player_pos_b_q = 1'h0;
   reg [15:0] M_r1_d, M_r1_q = 1'h0;
   reg [15:0] M_r2_d, M_r2_q = 1'h0;
+  reg [15:0] M_display_value_d, M_display_value_q = 1'h0;
   
   reg r0;
   
   always @* begin
     M_state_d = M_state_q;
-    M_r2_d = M_r2_q;
     M_player_pos_a_d = M_player_pos_a_q;
     M_player_pos_b_d = M_player_pos_b_q;
-    M_see_d = M_see_q;
-    M_reg_r_d = M_reg_r_q;
     M_level_d = M_level_q;
+    M_display_value_d = M_display_value_q;
+    M_reg_r_d = M_reg_r_q;
+    M_see_d = M_see_q;
     M_reg_d_d = M_reg_d_q;
-    M_reg_s_d = M_reg_s_q;
     M_r1_d = M_r1_q;
+    M_reg_s_d = M_reg_s_q;
+    M_r2_d = M_r2_q;
     
+    M_seg_display_decimal = 4'hf;
     M_map_level_adr = M_level_q;
+    io_seg = ~M_seg_display_seg;
+    io_sel = ~M_seg_display_sel;
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
     spi_miso = 1'bz;
@@ -299,6 +318,7 @@ module mojo_top_0 (
     
     case (M_state_q)
       MENU_WAIT_state: begin
+        M_display_value_d = 16'h1234;
         M_player_pos_a_d = M_map_sp_a;
         M_player_pos_b_d = M_map_sp_b;
         if (M_right_edge_detector_out) begin
@@ -420,12 +440,14 @@ module mojo_top_0 (
     M_start_conditioner_in = start_btn;
     M_reset_edge_detector_in = M_reset_conditioner_out;
     M_start_edge_detector_in = M_start_conditioner_out;
+    M_seg_display_values = M_display_value_q;
   end
   
   always @(posedge clk) begin
     M_level_q <= M_level_d;
     M_reg_d_q <= M_reg_d_d;
     M_see_q <= M_see_d;
+    M_display_value_q <= M_display_value_d;
     M_state_q <= M_state_d;
     
     if (rst == 1'b1) begin

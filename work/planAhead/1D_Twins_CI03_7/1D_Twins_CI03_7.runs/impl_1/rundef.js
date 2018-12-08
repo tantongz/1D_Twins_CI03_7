@@ -4,17 +4,13 @@
 // Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
 //
 
-echo "This script was generated under a different operating system."
-echo "Please update the PATH variable below, before executing this script"
-exit
-
 var WshShell = new ActiveXObject( "WScript.Shell" );
 var ProcEnv = WshShell.Environment( "Process" );
 var PathVal = ProcEnv("PATH");
 if ( PathVal.length == 0 ) {
-  PathVal = "/opt/Xilinx/14.7/ISE_DS/EDK/bin/lin:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin:/opt/Xilinx/14.7/ISE_DS/common/bin/lin;/opt/Xilinx/14.7/ISE_DS/EDK/lib/lin:/opt/Xilinx/14.7/ISE_DS/ISE/lib/lin:/opt/Xilinx/14.7/ISE_DS/common/lib/lin;/opt/Xilinx/14.7/ISE_DS/PlanAhead/bin;";
+  PathVal = "C:/Xilinx/14.7/ISE_DS/EDK/bin/nt;C:/Xilinx/14.7/ISE_DS/EDK/lib/nt;C:/Xilinx/14.7/ISE_DS/ISE/bin/nt;C:/Xilinx/14.7/ISE_DS/ISE/lib/nt;C:/Xilinx/14.7/ISE_DS/common/bin/nt;C:/Xilinx/14.7/ISE_DS/common/lib/nt;C:/Xilinx/14.7/ISE_DS/PlanAhead/bin;";
 } else {
-  PathVal = "/opt/Xilinx/14.7/ISE_DS/EDK/bin/lin:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin:/opt/Xilinx/14.7/ISE_DS/common/bin/lin;/opt/Xilinx/14.7/ISE_DS/EDK/lib/lin:/opt/Xilinx/14.7/ISE_DS/ISE/lib/lin:/opt/Xilinx/14.7/ISE_DS/common/lib/lin;/opt/Xilinx/14.7/ISE_DS/PlanAhead/bin;" + PathVal;
+  PathVal = "C:/Xilinx/14.7/ISE_DS/EDK/bin/nt;C:/Xilinx/14.7/ISE_DS/EDK/lib/nt;C:/Xilinx/14.7/ISE_DS/ISE/bin/nt;C:/Xilinx/14.7/ISE_DS/ISE/lib/nt;C:/Xilinx/14.7/ISE_DS/common/bin/nt;C:/Xilinx/14.7/ISE_DS/common/lib/nt;C:/Xilinx/14.7/ISE_DS/PlanAhead/bin;" + PathVal;
 }
 
 ProcEnv("PATH") = PathVal;

@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module cmp_22 (
+module cmp_23 (
     input [3:0] alufn,
     input [15:0] a,
     input [15:0] b,
@@ -23,7 +23,7 @@ module cmp_22 (
   reg [4-1:0] M_adder_alufn;
   reg [16-1:0] M_adder_a;
   reg [16-1:0] M_adder_b;
-  adder_21 adder (
+  adder_22 adder (
     .alufn(M_adder_alufn),
     .a(M_adder_a),
     .b(M_adder_b),

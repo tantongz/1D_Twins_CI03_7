@@ -20,7 +20,7 @@ module matrix_display_1 (
   localparam FLIP = 5'h10;
   
   wire [4-1:0] M_counter_r_value;
-  counter_20 counter_r (
+  counter_21 counter_r (
     .clk(clk),
     .rst(rst),
     .value(M_counter_r_value)
