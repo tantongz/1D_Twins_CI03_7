@@ -19,14 +19,14 @@
     <ucf>buttons.ucf</ucf>
     <ucf>mojo.ucf</ucf>
     <component>decoder.luc</component>
-    <component>bin_to_dec.luc</component>
     <component>spi_slave.luc</component>
+    <component>bin_to_dec.luc</component>
     <component>uart_rx.luc</component>
     <component>cclk_detector.luc</component>
     <component>reset_conditioner.luc</component>
-    <component>uart_tx.luc</component>
-    <component>avr_interface.luc</component>
     <component>pipeline.luc</component>
+    <component>avr_interface.luc</component>
+    <component>uart_tx.luc</component>
     <component>button_conditioner.luc</component>
     <component>counter.luc</component>
     <component>edge_detector.luc</component>

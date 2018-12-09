@@ -64,16 +64,16 @@ module mojo_top (
     dff reg_d[3](#INIT(4));
     
     dff see[3];
-    
+    dff reg_s;
+    dff reg_r;
+    dff player_pos_a[6];
+    dff player_pos_b[6];
+    dff r1[16];
+    dff r2[16];
     .rst(rst) {
       multi_seven_seg seg_display; // Connecting to multi_seven_seg which would help displaying on the segment.
       
-      dff reg_s;
-      dff reg_r;
-      dff player_pos_a[6];
-      dff player_pos_b[6];
-      dff r1[16];
-      dff r2[16];
+      
     }
     dff display_value[4][4]; // Size of LED segments.
     
@@ -95,8 +95,8 @@ module mojo_top (
     
     // Setup of various control signals.
     
-    r_red = mat_dis.r_red;
-    r_green = mat_dis.r_green;
+    r_red = mat_dis.row_red;
+    r_green = mat_dis.row_green;
     col = mat_dis.col;
     
     mat_dis.red = map_to_dis.red;
@@ -144,7 +144,13 @@ module mojo_top (
     }
     
     r0 = alu.alu[0];
+    led = b00000000;
+    led = r1.q;
     
+    
+    ctrl.state = 0;
+    ctrl.direction = 0;
+    reg_s.d = 0;
     case(state.q) {
       
       state.MENU_WAIT:
