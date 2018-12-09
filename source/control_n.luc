@@ -19,14 +19,15 @@ module control (
     
     // Determines whether the alu will get its input from:
     // 0: decoder + ep_a or ep_b.
-    // 1: r1 + r2. 
+    // 1: r1 + r2.
     output sel_check,
     
     // Determines which map is currently being processed.
     // 0: map a.
     // 1: map b.
-    output sel_map
-    
+    output sel_map,
+    output fill_border_red,
+    output fill_border_green
   ) {
   
   always {
@@ -34,31 +35,32 @@ module control (
     sel_level = 0;
     sel_check = 0;
     sel_map = 0;
-    
+    fill_border_green = 0;
+    fill_border_red = 0;
     case (state) {
       // MENU WAIT.
       1: sel_level = direction[0];
-         sel_new_pos = 0;
-         alufn = b000000;
+        sel_new_pos = 0;
+        alufn = b000000;
       
       // MENU UPDATE.
       2: sel_level = 0;
-         sel_new_pos = 0;
-         alufn = b000000;
+        sel_new_pos = 0;
+        alufn = b000000;
       
       // CHECKA.
       3: sel_level = 0;
-         sel_new_pos = direction;
-         sel_check = 0;
-         sel_map = 0;
-         alufn = b110011; // CMPEQ.
+        sel_new_pos = direction;
+        sel_check = 0;
+        sel_map = 0;
+        alufn = b110011; // CMPEQ.
       
       // CHECKB.
       4: sel_level = 0;
-         sel_new_pos = direction;
-         sel_check = 0;
-         sel_map = 1;
-         alufn = b110011; // CMPEQ.
+        sel_new_pos = direction;
+        sel_check = 0;
+        sel_map = 1;
+        alufn = b110011; // CMPEQ.
       
       // CHECKWIN.
       5: sel_level = 0;
@@ -71,6 +73,12 @@ module control (
         sel_new_pos = direction;
         sel_check = 1;
         alufn = b011110; // OR.
+        
+      // WIN
+      7: sel_level = 0;
+        sel_new_pos = direction;
+        alufn = b000000;
+        fill_border_green = 1;
       
       // SETUP
       8: sel_level = 0;

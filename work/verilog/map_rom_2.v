@@ -5,7 +5,7 @@
 */
 
 module map_rom_2 (
-    input [1:0] level_adr,
+    input [3:0] level_adr,
     output reg [35:0] map_a,
     output reg [35:0] map_b,
     output reg [5:0] sp_a,
@@ -50,6 +50,54 @@ module map_rom_2 (
         sp_b = 6'h0c;
         ep_a = 6'h11;
         ep_b = 6'h21;
+      end
+      3'h4: begin
+        map_a = 36'hfe186187f;
+        map_b = 36'hfe1861a7f;
+        sp_a = 6'h21;
+        sp_b = 6'h23;
+        ep_a = 6'h1c;
+        ep_b = 6'h0c;
+      end
+      3'h5: begin
+        map_a = 36'hff186187f;
+        map_b = 36'hfe1a61a7f;
+        sp_a = 6'h23;
+        sp_b = 6'h23;
+        ep_a = 6'h1a;
+        ep_b = 6'h0a;
+      end
+      3'h6: begin
+        map_a = 36'hfe1c6187f;
+        map_b = 36'hfe1a6187f;
+        sp_a = 6'h1a;
+        sp_b = 6'h1a;
+        ep_a = 6'h0b;
+        ep_b = 6'h22;
+      end
+      3'h7: begin
+        map_a = 36'hfe987187f;
+        map_b = 36'hfe1a6187f;
+        sp_a = 6'h1a;
+        sp_b = 6'h1c;
+        ep_a = 6'h09;
+        ep_b = 6'h21;
+      end
+      4'h8: begin
+        map_a = 36'hfe1a6397f;
+        map_b = 36'hfe586187f;
+        sp_a = 6'h21;
+        sp_b = 6'h21;
+        ep_a = 6'h14;
+        ep_b = 6'h12;
+      end
+      4'h9: begin
+        map_a = 36'hfe1a6587f;
+        map_b = 36'hfe196987f;
+        sp_a = 6'h1a;
+        sp_b = 6'h12;
+        ep_a = 6'h13;
+        ep_b = 6'h1b;
       end
       default: begin
         map_a = 36'hfe1d6197f;

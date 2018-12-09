@@ -11,6 +11,8 @@ module map_to_display_3 (
     input [5:0] tp_b,
     input [5:0] ep_b,
     input [35:0] map_b,
+    input fill_border_green,
+    input fill_border_red,
     output reg [63:0] red,
     output reg [63:0] green
   );
@@ -36,5 +38,17 @@ module map_to_display_3 (
     red[(ep_b[0+2-:3] + 1'h1)*8+(ep_b[3+2-:3] - 1'h1)*1+0-:1] = 1'h1;
     green[(ep_a[0+2-:3] + 1'h1)*8+(ep_a[3+2-:3] + 2'h3)*1+0-:1] = 1'h1;
     green[(ep_b[0+2-:3] + 1'h1)*8+(ep_b[3+2-:3] - 1'h1)*1+0-:1] = 1'h1;
+    if (fill_border_green) begin
+      green[0+7-:8] = 8'hff;
+      green[8+7-:8] = 8'hff;
+      green[48+7-:8] = 8'hff;
+      green[56+7-:8] = 8'hff;
+    end
+    if (fill_border_red) begin
+      red[0+7-:8] = 8'hff;
+      red[8+7-:8] = 8'hff;
+      red[48+7-:8] = 8'hff;
+      red[56+7-:8] = 8'hff;
+    end
   end
 endmodule

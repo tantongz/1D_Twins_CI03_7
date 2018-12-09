@@ -11,7 +11,9 @@ module control_6 (
     output reg [5:0] alufn,
     output reg sel_level,
     output reg sel_check,
-    output reg sel_map
+    output reg sel_map,
+    output reg fill_border_red,
+    output reg fill_border_green
   );
   
   
@@ -20,6 +22,8 @@ module control_6 (
     sel_level = 1'h0;
     sel_check = 1'h0;
     sel_map = 1'h0;
+    fill_border_green = 1'h0;
+    fill_border_red = 1'h0;
     
     case (state)
       1'h1: begin
@@ -57,6 +61,12 @@ module control_6 (
         sel_new_pos = direction;
         sel_check = 1'h1;
         alufn = 6'h1e;
+      end
+      3'h7: begin
+        sel_level = 1'h0;
+        sel_new_pos = direction;
+        alufn = 6'h00;
+        fill_border_green = 1'h1;
       end
       4'h8: begin
         sel_level = 1'h0;

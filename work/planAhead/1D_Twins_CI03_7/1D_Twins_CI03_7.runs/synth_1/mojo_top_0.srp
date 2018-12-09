@@ -2,8 +2,8 @@ Release 14.7 - xst P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.29 secs
  
 --> Reading design: mojo_top_0.prj
 
@@ -120,12 +120,12 @@ WARNING:HDLCompiler:1127 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/wor
 Elaborating module <boole_24>.
 
 Elaborating module <shift_25>.
-WARNING:HDLCompiler:1127 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 111: Assignment to M_alu_z_ ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 112: Assignment to M_alu_v ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 113: Assignment to M_alu_n ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 115: Assignment to M_alu_z_ ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 116: Assignment to M_alu_v ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 117: Assignment to M_alu_n ignored, since the identifier is never used
 
 Elaborating module <control_6>.
-WARNING:HDLCompiler:295 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/control_n_6.v" Line 61: case condition never applies
+WARNING:HDLCompiler:295 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/control_n_6.v" Line 71: case condition never applies
 
 Elaborating module <reset_conditioner_7>.
 
@@ -143,13 +143,14 @@ Elaborating module <digit_lut_33>.
 
 Elaborating module <decoder_34>.
 WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/multi_seven_seg_20.v" Line 50: Result of 9-bit expression is truncated to fit in 8-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 300: Result of 16-bit expression is truncated to fit in 8-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 344: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 354: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 361: Result of 4-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 390: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 400: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 409: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 310: Result of 16-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 329: Result of 16-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 359: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 369: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 376: Result of 4-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 405: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 415: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 424: Result of 3-bit expression is truncated to fit in 2-bit target.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -163,73 +164,73 @@ WARNING:Xst:647 - Input <spi_mosi> is never used. This port will be preserved an
 WARNING:Xst:647 - Input <spi_sck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_tx> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 106: Output port <z_> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 106: Output port <v> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 106: Output port <n> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 110: Output port <z_> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 110: Output port <v> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 110: Output port <n> of the instance <alu> is unconnected or connected to loadless signal.
     Found 3-bit register for signal <M_reg_d_q>.
     Found 3-bit register for signal <M_see_q>.
-    Found 16-bit register for signal <M_display_value_q>.
-    Found 4-bit register for signal <M_state_q>.
     Found 1-bit register for signal <M_reg_s_q>.
     Found 1-bit register for signal <M_reg_r_q>.
     Found 6-bit register for signal <M_player_pos_a_q>.
     Found 6-bit register for signal <M_player_pos_b_q>.
     Found 16-bit register for signal <M_r1_q>.
     Found 16-bit register for signal <M_r2_q>.
-    Found 2-bit register for signal <M_level_q>.
+    Found 16-bit register for signal <M_display_value_q>.
+    Found 4-bit register for signal <M_state_q>.
+    Found 4-bit register for signal <M_level_q>.
     Found finite state machine <FSM_0> for signal <M_state_q>.
     -----------------------------------------------------------------------
     | States             | 9                                              |
     | Transitions        | 16                                             |
     | Inputs             | 4                                              |
-    | Outputs            | 9                                              |
+    | Outputs            | 6                                              |
     | Clock              | clk (rising_edge)                              |
     | Power Up State     | 0000                                           |
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 2-bit subtractor for signal <M_level_q[1]_GND_1_o_sub_24_OUT> created at line 355.
-    Found 2-bit adder for signal <M_level_q[1]_GND_1_o_add_22_OUT> created at line 355.
-    Found 1-bit tristate buffer for signal <spi_miso> created at line 260
-    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 260
-    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 260
-    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 260
-    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 260
-    Found 1-bit tristate buffer for signal <avr_rx> created at line 260
+    Found 4-bit subtractor for signal <M_level_q[3]_GND_1_o_sub_24_OUT> created at line 370.
+    Found 4-bit adder for signal <M_level_q[3]_GND_1_o_add_22_OUT> created at line 370.
+    Found 1-bit tristate buffer for signal <spi_miso> created at line 268
+    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 268
+    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 268
+    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 268
+    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 268
+    Found 1-bit tristate buffer for signal <avr_rx> created at line 268
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  70 D-type flip-flop(s).
-	inferred  30 Multiplexer(s).
+	inferred  72 D-type flip-flop(s).
+	inferred  24 Multiplexer(s).
 	inferred   6 Tristate(s).
 	inferred   1 Finite State Machine(s).
 Unit <mojo_top_0> synthesized.
 
 Synthesizing Unit <matrix_display_1>.
     Related source file is "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/matrix_display_1.v".
-    Found 5-bit subtractor for signal <GND_2_o_GND_2_o_sub_42_OUT> created at line 40.
-    Found 32-bit adder for signal <n0047> created at line 40.
-    Found 32-bit adder for signal <n0050> created at line 40.
-    Found 32-bit adder for signal <n0053> created at line 40.
-    Found 32-bit adder for signal <n0056> created at line 40.
-    Found 32-bit adder for signal <n0059> created at line 40.
-    Found 32-bit adder for signal <n0062> created at line 40.
-    Found 32-bit adder for signal <n0066> created at line 40.
-    Found 127-bit shifter logical right for signal <n0045> created at line 40
-    Found 127-bit shifter logical right for signal <n0046> created at line 41
-    Found 127-bit shifter logical right for signal <n0048> created at line 40
-    Found 127-bit shifter logical right for signal <n0049> created at line 41
-    Found 127-bit shifter logical right for signal <n0051> created at line 40
-    Found 127-bit shifter logical right for signal <n0052> created at line 41
-    Found 127-bit shifter logical right for signal <n0054> created at line 40
-    Found 127-bit shifter logical right for signal <n0055> created at line 41
-    Found 127-bit shifter logical right for signal <n0057> created at line 40
-    Found 127-bit shifter logical right for signal <n0058> created at line 41
-    Found 127-bit shifter logical right for signal <n0060> created at line 40
-    Found 127-bit shifter logical right for signal <n0061> created at line 41
-    Found 127-bit shifter logical right for signal <n0063> created at line 40
-    Found 127-bit shifter logical right for signal <n0064> created at line 41
-    Found 127-bit shifter logical right for signal <n0067> created at line 40
-    Found 127-bit shifter logical right for signal <n0068> created at line 41
+    Found 5-bit subtractor for signal <GND_2_o_GND_2_o_sub_42_OUT> created at line 52.
+    Found 32-bit adder for signal <n0047> created at line 52.
+    Found 32-bit adder for signal <n0050> created at line 52.
+    Found 32-bit adder for signal <n0053> created at line 52.
+    Found 32-bit adder for signal <n0056> created at line 52.
+    Found 32-bit adder for signal <n0059> created at line 52.
+    Found 32-bit adder for signal <n0062> created at line 52.
+    Found 32-bit adder for signal <n0066> created at line 52.
+    Found 127-bit shifter logical right for signal <n0045> created at line 52
+    Found 127-bit shifter logical right for signal <n0046> created at line 53
+    Found 127-bit shifter logical right for signal <n0048> created at line 52
+    Found 127-bit shifter logical right for signal <n0049> created at line 53
+    Found 127-bit shifter logical right for signal <n0051> created at line 52
+    Found 127-bit shifter logical right for signal <n0052> created at line 53
+    Found 127-bit shifter logical right for signal <n0054> created at line 52
+    Found 127-bit shifter logical right for signal <n0055> created at line 53
+    Found 127-bit shifter logical right for signal <n0057> created at line 52
+    Found 127-bit shifter logical right for signal <n0058> created at line 53
+    Found 127-bit shifter logical right for signal <n0060> created at line 52
+    Found 127-bit shifter logical right for signal <n0061> created at line 53
+    Found 127-bit shifter logical right for signal <n0063> created at line 52
+    Found 127-bit shifter logical right for signal <n0064> created at line 53
+    Found 127-bit shifter logical right for signal <n0067> created at line 52
+    Found 127-bit shifter logical right for signal <n0068> created at line 53
     Summary:
 	inferred   8 Adder/Subtractor(s).
 	inferred  16 Combinational logic shifter(s).
@@ -247,7 +248,7 @@ Unit <counter_21> synthesized.
 
 Synthesizing Unit <map_rom_2>.
     Related source file is "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/map_rom_2.v".
-    Found 4x96-bit Read Only RAM for signal <_n0017>
+    Found 16x96-bit Read Only RAM for signal <_n0029>
     Summary:
 	inferred   1 RAM(s).
 Unit <map_rom_2> synthesized.
@@ -264,21 +265,21 @@ WARNING:Xst:647 - Input <map_b<12:11>> is never used. This port will be preserve
 WARNING:Xst:647 - Input <map_b<18:17>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <map_b<24:23>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <map_b<35:29>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 4-bit subtractor for signal <GND_5_o_GND_5_o_sub_6_OUT> created at line 34.
-    Found 4-bit subtractor for signal <GND_5_o_GND_5_o_sub_14_OUT> created at line 36.
-    Found 4-bit adder for signal <n0339[3:0]> created at line 33.
-    Found 4-bit adder for signal <n0341[3:0]> created at line 33.
-    Found 7-bit adder for signal <n0312> created at line 33.
-    Found 4-bit adder for signal <n0346[3:0]> created at line 34.
-    Found 32-bit adder for signal <n0316> created at line 34.
-    Found 4-bit adder for signal <n0351[3:0]> created at line 35.
-    Found 4-bit adder for signal <n0353[3:0]> created at line 35.
-    Found 7-bit adder for signal <n0320> created at line 35.
-    Found 4-bit adder for signal <n0358[3:0]> created at line 36.
-    Found 32-bit adder for signal <n0324> created at line 36.
+    Found 4-bit subtractor for signal <GND_5_o_GND_5_o_sub_6_OUT> created at line 36.
+    Found 4-bit subtractor for signal <GND_5_o_GND_5_o_sub_14_OUT> created at line 38.
+    Found 4-bit adder for signal <n0403[3:0]> created at line 35.
+    Found 4-bit adder for signal <n0405[3:0]> created at line 35.
+    Found 7-bit adder for signal <n0376> created at line 35.
+    Found 4-bit adder for signal <n0410[3:0]> created at line 36.
+    Found 32-bit adder for signal <n0380> created at line 36.
+    Found 4-bit adder for signal <n0415[3:0]> created at line 37.
+    Found 4-bit adder for signal <n0417[3:0]> created at line 37.
+    Found 7-bit adder for signal <n0384> created at line 37.
+    Found 4-bit adder for signal <n0422[3:0]> created at line 38.
+    Found 32-bit adder for signal <n0388> created at line 38.
     Summary:
 	inferred  12 Adder/Subtractor(s).
-	inferred 288 Multiplexer(s).
+	inferred 352 Multiplexer(s).
 Unit <map_to_display_3> synthesized.
 
 Synthesizing Unit <matrix_decoder_4>.
@@ -441,12 +442,12 @@ Unit <shift_25> synthesized.
 
 Synthesizing Unit <control_6>.
     Related source file is "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/control_n_6.v".
-    Found 8x9-bit Read Only RAM for signal <_n0022>
-    Found 1-bit tristate buffer for signal <sel_level> created at line 19
-    Found 1-bit tristate buffer for signal <sel_new_pos<0>> created at line 19
+    Found 8x10-bit Read Only RAM for signal <_n0024>
+    Found 1-bit tristate buffer for signal <sel_level> created at line 21
+    Found 1-bit tristate buffer for signal <sel_new_pos<0>> created at line 21
     Summary:
 	inferred   1 RAM(s).
-	inferred   7 Multiplexer(s).
+	inferred   5 Multiplexer(s).
 	inferred   2 Tristate(s).
 Unit <control_6> synthesized.
 
@@ -502,9 +503,7 @@ Unit <counter_32> synthesized.
 
 Synthesizing Unit <digit_lut_33>.
     Related source file is "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/digit_lut_33.v".
-    Found 32x8-bit Read Only RAM for signal <_n0056>
     Summary:
-	inferred   1 RAM(s).
 	inferred   1 Multiplexer(s).
 Unit <digit_lut_33> synthesized.
 
@@ -518,10 +517,9 @@ Unit <decoder_34> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 3
- 32x8-bit single-port Read Only RAM                    : 1
- 4x96-bit single-port Read Only RAM                    : 1
- 8x9-bit single-port Read Only RAM                     : 1
+# RAMs                                                 : 2
+ 16x96-bit single-port Read Only RAM                   : 1
+ 8x10-bit single-port Read Only RAM                    : 1
 # Multipliers                                          : 3
  16x16-bit multiplier                                  : 2
  3x3-bit multiplier                                    : 1
@@ -531,7 +529,6 @@ Macro Statistics
  17-bit adder                                          : 6
  18-bit adder                                          : 5
  19-bit adder                                          : 4
- 2-bit addsub                                          : 1
  20-bit adder                                          : 11
  21-bit adder                                          : 4
  22-bit adder                                          : 4
@@ -547,6 +544,7 @@ Macro Statistics
  31-bit adder                                          : 4
  32-bit adder                                          : 13
  4-bit adder                                           : 7
+ 4-bit addsub                                          : 1
  4-bit subtractor                                      : 2
  5-bit subtractor                                      : 1
  6-bit adder                                           : 1
@@ -556,10 +554,10 @@ Macro Statistics
  1-bit register                                        : 8
  16-bit register                                       : 3
  18-bit register                                       : 1
- 2-bit register                                        : 7
+ 2-bit register                                        : 6
  20-bit register                                       : 7
  3-bit register                                        : 2
- 4-bit register                                        : 1
+ 4-bit register                                        : 2
  6-bit register                                        : 2
 # Comparators                                          : 34
  16-bit comparator greater                             : 2
@@ -579,16 +577,16 @@ Macro Statistics
  30-bit comparator greater                             : 2
  31-bit comparator greater                             : 2
  32-bit comparator greater                             : 2
-# Multiplexers                                         : 861
- 1-bit 2-to-1 multiplexer                              : 788
+# Multiplexers                                         : 917
+ 1-bit 2-to-1 multiplexer                              : 851
  1-bit 4-to-1 multiplexer                              : 17
  16-bit 2-to-1 multiplexer                             : 16
  16-bit 4-to-1 multiplexer                             : 2
  17-bit 2-to-1 multiplexer                             : 2
  18-bit 2-to-1 multiplexer                             : 1
- 2-bit 2-to-1 multiplexer                              : 8
+ 2-bit 2-to-1 multiplexer                              : 6
  20-bit 2-to-1 multiplexer                             : 1
- 3-bit 2-to-1 multiplexer                              : 12
+ 3-bit 2-to-1 multiplexer                              : 7
  36-bit 2-to-1 multiplexer                             : 1
  6-bit 2-to-1 multiplexer                              : 6
  8-bit 2-to-1 multiplexer                              : 7
@@ -618,12 +616,12 @@ The following registers are absorbed into counter <M_ctr_q>: 1 register on signa
 Unit <button_conditioner_12> synthesized (advanced).
 
 Synthesizing (advanced) Unit <control_6>.
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0022> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0024> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
     | Port A                                                              |
-    |     aspect ratio   | 8-word x 9-bit                      |          |
+    |     aspect ratio   | 8-word x 10-bit                     |          |
     |     weA            | connected to signal <GND>           | high     |
     |     addrA          | connected to signal <state>         |          |
     |     diA            | connected to signal <GND>           |          |
@@ -639,27 +637,13 @@ Synthesizing (advanced) Unit <counter_32>.
 The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
 Unit <counter_32> synthesized (advanced).
 
-Synthesizing (advanced) Unit <digit_lut_33>.
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0056> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
-    -----------------------------------------------------------------------
-    | ram_type           | Distributed                         |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 32-word x 8-bit                     |          |
-    |     weA            | connected to signal <GND>           | high     |
-    |     addrA          | connected to signal <value<4:0>>    |          |
-    |     diA            | connected to signal <GND>           |          |
-    |     doA            | connected to internal node          |          |
-    -----------------------------------------------------------------------
-Unit <digit_lut_33> synthesized (advanced).
-
 Synthesizing (advanced) Unit <map_rom_2>.
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0017> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0029> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
     | Port A                                                              |
-    |     aspect ratio   | 4-word x 96-bit                     |          |
+    |     aspect ratio   | 16-word x 96-bit                    |          |
     |     weA            | connected to signal <GND>           | high     |
     |     addrA          | connected to signal <level_adr>     |          |
     |     diA            | connected to signal <GND>           |          |
@@ -680,10 +664,9 @@ WARNING:Xst:2677 - Node <M_see_q_2> of sequential type is unconnected in block <
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 3
- 32x8-bit single-port distributed Read Only RAM        : 1
- 4x96-bit single-port distributed Read Only RAM        : 1
- 8x9-bit single-port distributed Read Only RAM         : 1
+# RAMs                                                 : 2
+ 16x96-bit single-port distributed Read Only RAM       : 1
+ 8x10-bit single-port distributed Read Only RAM        : 1
 # MACs                                                 : 1
  3x3-to-6-bit MAC                                      : 1
 # Multipliers                                          : 2
@@ -701,8 +684,8 @@ Macro Statistics
  6-bit addsub                                          : 1
 # Counters                                             : 9
  18-bit up counter                                     : 1
- 2-bit updown counter                                  : 1
  20-bit up counter                                     : 7
+ 4-bit updown counter                                  : 1
 # Registers                                            : 89
  Flip-Flops                                            : 89
 # Comparators                                          : 34
@@ -723,14 +706,14 @@ Macro Statistics
  30-bit comparator greater                             : 2
  31-bit comparator greater                             : 2
  32-bit comparator greater                             : 2
-# Multiplexers                                         : 864
- 1-bit 2-to-1 multiplexer                              : 794
+# Multiplexers                                         : 920
+ 1-bit 2-to-1 multiplexer                              : 857
  1-bit 4-to-1 multiplexer                              : 17
  16-bit 2-to-1 multiplexer                             : 16
  16-bit 4-to-1 multiplexer                             : 2
  17-bit 2-to-1 multiplexer                             : 2
- 2-bit 2-to-1 multiplexer                              : 8
- 3-bit 2-to-1 multiplexer                              : 12
+ 2-bit 2-to-1 multiplexer                              : 6
+ 3-bit 2-to-1 multiplexer                              : 7
  36-bit 2-to-1 multiplexer                             : 1
  6-bit 2-to-1 multiplexer                              : 5
  8-bit 2-to-1 multiplexer                              : 7
@@ -750,28 +733,18 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_12 hinder the constant cleaning in the block mojo_top_0.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_9 hinder the constant cleaning in the block mojo_top_0.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_5 hinder the constant cleaning in the block mojo_top_0.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_4 hinder the constant cleaning in the block mojo_top_0.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_2 hinder the constant cleaning in the block mojo_top_0.
-   You should achieve better results by setting this init to 1.
 WARNING:Xst:1293 - FF/Latch <M_display_value_q_0> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_4> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_5> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_6> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_7> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_8> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_9> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_10> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_11> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_13> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_14> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_15> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <M_display_value_q_2> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <M_display_value_q_4> <M_display_value_q_5> <M_display_value_q_9> <M_display_value_q_12> 
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <FSM_0> on signal <M_state_q[1:4]> with user encoding.
 -------------------
@@ -851,14 +824,8 @@ INFO:Xst:2261 - The FF/Latch <seg_display/ctr/M_ctr_q_17> in Unit <mojo_top_0> i
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 13.
-FlipFlop M_player_pos_b_q_0 has been replicated 2 time(s)
-FlipFlop M_player_pos_b_q_1 has been replicated 1 time(s)
-FlipFlop M_player_pos_b_q_2 has been replicated 1 time(s)
-FlipFlop M_player_pos_b_q_4 has been replicated 1 time(s)
-FlipFlop M_state_q_FSM_FFd1 has been replicated 2 time(s)
-FlipFlop M_state_q_FSM_FFd2 has been replicated 1 time(s)
-FlipFlop M_state_q_FSM_FFd3 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 16.
+FlipFlop M_state_q_FSM_FFd1 has been replicated 1 time(s)
 FlipFlop M_state_q_FSM_FFd4 has been replicated 1 time(s)
 
 Final Macro Processing ...
@@ -877,8 +844,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 193
- Flip-Flops                                            : 193
+# Registers                                            : 190
+ Flip-Flops                                            : 190
 # Shift Registers                                      : 6
  2-bit shift register                                  : 6
 
@@ -903,24 +870,24 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 954
-#      GND                         : 20
+# BELS                             : 1111
+#      GND                         : 21
 #      INV                         : 16
 #      LUT1                        : 149
-#      LUT2                        : 9
-#      LUT3                        : 28
-#      LUT4                        : 37
-#      LUT5                        : 119
-#      LUT6                        : 214
+#      LUT2                        : 7
+#      LUT3                        : 48
+#      LUT4                        : 79
+#      LUT5                        : 132
+#      LUT6                        : 292
 #      MUXCY                       : 173
-#      MUXF7                       : 7
-#      VCC                         : 17
+#      MUXF7                       : 10
+#      VCC                         : 19
 #      XORCY                       : 165
-# FlipFlops/Latches                : 199
-#      FD                          : 15
-#      FDE                         : 14
+# FlipFlops/Latches                : 196
+#      FD                          : 12
+#      FDE                         : 40
 #      FDR                         : 20
-#      FDRE                        : 146
+#      FDRE                        : 120
 #      FDS                         : 4
 # Shift Registers                  : 6
 #      SRLC16E                     : 6
@@ -940,17 +907,17 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             199  out of  11440     1%  
- Number of Slice LUTs:                  578  out of   5720    10%  
-    Number used as Logic:               572  out of   5720    10%  
+ Number of Slice Registers:             196  out of  11440     1%  
+ Number of Slice LUTs:                  729  out of   5720    12%  
+    Number used as Logic:               723  out of   5720    12%  
     Number used as Memory:                6  out of   1440     0%  
        Number used as SRL:                6
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    603
-   Number with an unused Flip Flop:     404  out of    603    66%  
-   Number with an unused LUT:            25  out of    603     4%  
-   Number of fully used LUT-FF pairs:   174  out of    603    28%  
+ Number of LUT Flip Flop pairs used:    750
+   Number with an unused Flip Flop:     554  out of    750    73%  
+   Number with an unused LUT:            21  out of    750     2%  
+   Number of fully used LUT-FF pairs:   175  out of    750    23%  
    Number of unique control sets:        32
 
 IO Utilization: 
@@ -982,7 +949,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 205   |
+clk                                | BUFGP                  | 202   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -993,9 +960,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 16.247ns (Maximum Frequency: 61.550MHz)
+   Minimum period: 18.337ns (Maximum Frequency: 54.535MHz)
    Minimum input arrival time before clock: 3.526ns
-   Maximum output required time after clock: 10.741ns
+   Maximum output required time after clock: 12.464ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -1004,41 +971,53 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 16.247ns (frequency: 61.550MHz)
-  Total number of paths / destination ports: 25752889 / 517
+  Clock period: 18.337ns (frequency: 54.535MHz)
+  Total number of paths / destination ports: 28776065 / 489
 -------------------------------------------------------------------------
-Delay:               16.247ns (Levels of Logic = 14)
-  Source:            M_reg_d_q_1 (FF)
-  Destination:       M_r1_q_0 (FF)
+Delay:               18.337ns (Levels of Logic = 24)
+  Source:            M_reg_d_q_2 (FF)
+  Destination:       M_state_q_FSM_FFd1 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: M_reg_d_q_1 to M_r1_q_0
+  Data Path: M_reg_d_q_2 to M_state_q_FSM_FFd1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              8   0.525   1.052  M_reg_d_q_1 (M_reg_d_q_1)
-     LUT3:I1->O           16   0.250   1.182  n0023<2>1 (n0023)
-     LUT5:I4->O            2   0.254   0.726  Mmux_M_ctrl_state11_1 (Mmux_M_ctrl_state11)
-     begin scope: 'decoder:Mmux_M_ctrl_state11'
-     LUT6:I5->O            4   0.254   0.804  Mmux__n00403_rs_lut<4>1 (Mmux__n00403_rs_lut<4>)
-     LUT5:I4->O            6   0.254   1.152  Maddsub_n0037_Madd_lut<1>1 (GND_6_o_GND_6_o_add_13_OUT<1>1)
-     LUT5:I1->O            1   0.254   0.790  Maddsub_n0037_Madd_xor<3>11 (GND_6_o_GND_6_o_add_13_OUT<3>1)
-     LUT6:I4->O            1   0.250   0.682  Sh1771 (Sh1771)
-     LUT5:I4->O            1   0.254   0.000  Sh1779_F (N191)
-     MUXF7:I0->O          17   0.163   1.209  Sh1779 (Sh1779)
-     end scope: 'decoder:Sh1779'
-     LUT6:I5->O            6   0.254   0.875  Mmux_M_alu_a111 (M_alu_a<4>)
-     begin scope: 'alu:a<4>'
-     begin scope: 'alu/add_call:a<4>'
-     DSP48A1:B4->M0        5   3.894   0.841  Mmult_n0022 (n0022<0>)
-     end scope: 'alu/add_call:n0022<0>'
-     end scope: 'alu:n0022<0>'
-     LUT6:I5->O            2   0.254   0.000  M_state_q_FSM_FFd2-In1 (M_state_q_FSM_FFd2-In)
+     FDE:C->Q              1   0.525   0.910  M_reg_d_q_2 (M_reg_d_q_2)
+     LUT3:I0->O           15   0.235   1.155  n0023<2>1 (n0023)
+     begin scope: 'ctrl:n0023'
+     LUT6:I5->O           15   0.254   1.155  Mmux_sel_new_pos1 (sel_new_pos<1>)
+     end scope: 'ctrl:sel_new_pos<1>'
+     begin scope: 'decoder:sel_new_pos<1>'
+     LUT6:I5->O            4   0.254   0.912  Mmux__n00403_rs_lut<1>1 (Mmux__n00403_rs_lut<1>)
+     LUT6:I4->O           14   0.250   1.127  Mmux__n00403_rs_cy<2>12 (Mmux__n00403_rs_cy<2>)
+     LUT6:I5->O            4   0.254   1.032  Maddsub_n0037_Madd_lut<1>1 (GND_6_o_GND_6_o_add_13_OUT<1>1)
+     LUT6:I3->O           19   0.235   1.261  Maddsub_n0037_Madd_xor<4>11 (GND_6_o_GND_6_o_add_13_OUT<4>1)
+     LUT6:I5->O            1   0.254   0.682  Sh17712 (Sh17712)
+     LUT5:I4->O           18   0.254   1.235  Sh17713 (Sh17713)
+     end scope: 'decoder:Sh17713'
+     LUT6:I5->O            6   0.254   0.875  Mmux_M_alu_a11 (M_alu_a<0>)
+     begin scope: 'alu:a<0>'
+     begin scope: 'alu/cmp_call:a<0>'
+     begin scope: 'alu/cmp_call/adder:a<0>'
+     MUXCY:DI->O           1   0.181   0.000  Mmux_sum1_rs_cy<0> (Mmux_sum1_rs_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  Mmux_sum1_rs_cy<1> (Mmux_sum1_rs_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  Mmux_sum1_rs_cy<2> (Mmux_sum1_rs_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  Mmux_sum1_rs_cy<3> (Mmux_sum1_rs_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  Mmux_sum1_rs_cy<4> (Mmux_sum1_rs_cy<4>)
+     XORCY:CI->O           1   0.206   1.137  Mmux_sum1_rs_xor<5> (Mmux_sum3_split<5>)
+     end scope: 'alu/cmp_call/adder:Mmux_sum3_split<5>'
+     end scope: 'alu/cmp_call:Mmux_sum3_split<5>'
+     LUT6:I0->O            1   0.254   0.682  Mmux_alu35 (Mmux_alu34)
+     LUT6:I5->O            8   0.254   0.944  Mmux_alu313_SW1 (N15)
+     LUT6:I5->O            1   0.254   0.910  Mmux_alu313_SW6 (N88)
+     end scope: 'alu:N88'
+     LUT6:I3->O            1   0.235   0.000  M_state_q_FSM_FFd2-In1 (M_state_q_FSM_FFd2-In)
      FD:D                      0.074          M_state_q_FSM_FFd2
     ----------------------------------------
-    Total                     16.247ns (6.934ns logic, 9.313ns route)
-                                       (42.7% logic, 57.3% route)
+    Total                     18.337ns (4.320ns logic, 14.017ns route)
+                                       (23.6% logic, 76.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
@@ -1063,30 +1042,34 @@ Offset:              3.526ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 1207 / 38
+  Total number of paths / destination ports: 7028 / 43
 -------------------------------------------------------------------------
-Offset:              10.741ns (Levels of Logic = 7)
-  Source:            M_player_pos_b_q_3 (FF)
-  Destination:       r_green<5> (PAD)
+Offset:              12.464ns (Levels of Logic = 10)
+  Source:            M_level_q_3 (FF)
+  Destination:       r_red<0> (PAD)
   Source Clock:      clk rising
 
-  Data Path: M_player_pos_b_q_3 to r_green<5>
+  Data Path: M_level_q_3 to r_red<0>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            41   0.525   1.779  M_player_pos_b_q_3 (M_player_pos_b_q_3)
-     begin scope: 'map_to_dis:tp_b<3>'
-     LUT3:I1->O           34   0.250   1.983  Msub_GND_5_o_GND_5_o_sub_6_OUT_xor<2>11 (GND_5_o_GND_5_o_sub_6_OUT<2>)
-     end scope: 'map_to_dis:GND_5_o_GND_5_o_sub_6_OUT<2>'
-     begin scope: 'mat_dis:GND_5_o_GND_5_o_sub_6_OUT<2>'
-     LUT6:I1->O            1   0.254   0.958  r_green<2>11 (r_green<2>10)
-     LUT5:I1->O            1   0.254   0.910  r_green<2>14 (r_green<2>13)
-     LUT6:I3->O            1   0.235   0.681  r_green<2>15 (r_green<2>)
-     end scope: 'mat_dis:r_green<2>'
-     OBUF:I->O                 2.912          r_green_2_OBUF (r_green<2>)
+     FDE:C->Q             49   0.525   2.080  M_level_q_3 (M_level_q_3)
+     begin scope: 'map:level_adr<3>'
+     LUT4:I0->O           16   0.254   1.637  Mram__n0029891 (ep_a<5>)
+     end scope: 'map:ep_a<5>'
+     begin scope: 'map_to_dis:ep_a<5>'
+     LUT6:I0->O           16   0.254   1.290  _n1494<5>11 (_n1494<5>1)
+     end scope: 'map_to_dis:_n1494<5>1'
+     begin scope: 'mat_dis:_n1494<5>1'
+     LUT5:I3->O            1   0.250   1.112  row_red<0>7 (row_red<0>6)
+     LUT6:I1->O            1   0.254   0.790  row_red<0>8 (row_red<0>7)
+     LUT3:I1->O            1   0.250   0.000  row_red<0>9_G (N157)
+     MUXF7:I1->O           1   0.175   0.681  row_red<0>9 (row_red<0>)
+     end scope: 'mat_dis:row_red<0>'
+     OBUF:I->O                 2.912          r_red_0_OBUF (r_red<0>)
     ----------------------------------------
-    Total                     10.741ns (4.430ns logic, 6.311ns route)
-                                       (41.2% logic, 58.8% route)
+    Total                     12.464ns (4.874ns logic, 7.590ns route)
+                                       (39.1% logic, 60.9% route)
 
 =========================================================================
 
@@ -1098,20 +1081,20 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |   16.247|         |         |         |
+clk            |   18.337|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 26.00 secs
-Total CPU time to Xst completion: 25.85 secs
+Total REAL time to Xst completion: 15.00 secs
+Total CPU time to Xst completion: 14.16 secs
  
 --> 
 
-Total memory usage is 276648 kilobytes
+Total memory usage is 276520 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   78 (   0 filtered)
-Number of infos    :   28 (   0 filtered)
+Number of warnings :   75 (   0 filtered)
+Number of infos    :   26 (   0 filtered)
 

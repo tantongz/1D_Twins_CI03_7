@@ -47,24 +47,6 @@ module digit_lut_33 (
       4'ha: begin
         segs = 7'h7f;
       end
-      4'hb: begin
-        segs = 7'h08;
-      end
-      4'hc: begin
-        segs = 7'h47;
-      end
-      4'hd: begin
-        segs = 7'h41;
-      end
-      4'he: begin
-        segs = 7'h03;
-      end
-      4'hf: begin
-        segs = 7'h0c;
-      end
-      5'h10: begin
-        segs = 7'h06;
-      end
       default: begin
         segs = 7'h3f;
       end

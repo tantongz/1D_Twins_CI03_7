@@ -60,7 +60,7 @@ module mojo_top (
     
     fsm state(#INIT(MENU_WAIT)) = {MENU_WAIT, MENU_UPDATE, SETUP, WAIT,CHECKA,CHECKB, CHECKWIN, CHECKRESTART, WIN};
     
-    dff level[2](#INIT(0));
+    dff level[4](#INIT(0));
     dff reg_d[3](#INIT(4));
     
     dff see[3];
@@ -105,9 +105,11 @@ module mojo_top (
     map_to_dis.map_a = map.map_a;
     map_to_dis.map_b = map.map_b;
     
-    
     map_to_dis.tp_a = player_pos_a.q;
     map_to_dis.tp_b = player_pos_b.q;
+    
+    map_to_dis.fill_border_green = ctrl.fill_border_green;
+    map_to_dis.fill_border_red = ctrl.fill_border_red;
     
     map_to_dis.ep_a = map.ep_a;
     map_to_dis.ep_b = map.ep_b;
@@ -155,11 +157,10 @@ module mojo_top (
       
       state.MENU_WAIT:
         // Waits for the user to choose a map to play.
-        display_value.d = {4d1, 4d2, 4d3, 4d4};
         // Load player location.
         player_pos_a.d = map.sp_a;
         player_pos_b.d = map.sp_b;
-        
+        display_value.d = {level.q , 4d0, 4d0, 4d0};
         // Listen for direction input.
         if (right_edge_detector.out) {
           reg_d.d = 3;
@@ -190,15 +191,13 @@ module mojo_top (
           state.d = state.WAIT;
       
       
-      
       state.MENU_UPDATE:
         // Scrolls through to the next map.
         
         ctrl.state = 1;
         ctrl.direction = see.q;
       
-      level.d = ctrl.sel_level ? level.q + 1 : level.q -1;
-        
+        level.d = ctrl.sel_level ? level.q + 1 : level.q -1;
         reg_d.d = 4;
         see.d = 4;
         state.d = state.MENU_WAIT;
@@ -296,6 +295,7 @@ module mojo_top (
       state.d = r0 ? state.SETUP : state.WAIT;
       
       state.WIN:
+        ctrl.state = 7;
         led = b11111111;
       
       // Reset button!

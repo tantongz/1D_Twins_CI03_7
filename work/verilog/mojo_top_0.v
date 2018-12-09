@@ -34,8 +34,8 @@ module mojo_top_0 (
   
   reg rst;
   
-  wire [8-1:0] M_mat_dis_r_red;
-  wire [8-1:0] M_mat_dis_r_green;
+  wire [8-1:0] M_mat_dis_row_red;
+  wire [8-1:0] M_mat_dis_row_green;
   wire [8-1:0] M_mat_dis_col;
   reg [64-1:0] M_mat_dis_green;
   reg [64-1:0] M_mat_dis_red;
@@ -44,8 +44,8 @@ module mojo_top_0 (
     .rst(rst),
     .green(M_mat_dis_green),
     .red(M_mat_dis_red),
-    .r_red(M_mat_dis_r_red),
-    .r_green(M_mat_dis_r_green),
+    .row_red(M_mat_dis_row_red),
+    .row_green(M_mat_dis_row_green),
     .col(M_mat_dis_col)
   );
   
@@ -55,7 +55,7 @@ module mojo_top_0 (
   wire [6-1:0] M_map_sp_b;
   wire [6-1:0] M_map_ep_a;
   wire [6-1:0] M_map_ep_b;
-  reg [2-1:0] M_map_level_adr;
+  reg [4-1:0] M_map_level_adr;
   map_rom_2 map (
     .level_adr(M_map_level_adr),
     .map_a(M_map_map_a),
@@ -74,6 +74,8 @@ module mojo_top_0 (
   reg [6-1:0] M_map_to_dis_tp_b;
   reg [6-1:0] M_map_to_dis_ep_b;
   reg [36-1:0] M_map_to_dis_map_b;
+  reg [1-1:0] M_map_to_dis_fill_border_green;
+  reg [1-1:0] M_map_to_dis_fill_border_red;
   map_to_display_3 map_to_dis (
     .tp_a(M_map_to_dis_tp_a),
     .ep_a(M_map_to_dis_ep_a),
@@ -81,6 +83,8 @@ module mojo_top_0 (
     .tp_b(M_map_to_dis_tp_b),
     .ep_b(M_map_to_dis_ep_b),
     .map_b(M_map_to_dis_map_b),
+    .fill_border_green(M_map_to_dis_fill_border_green),
+    .fill_border_red(M_map_to_dis_fill_border_red),
     .red(M_map_to_dis_red),
     .green(M_map_to_dis_green)
   );
@@ -118,6 +122,8 @@ module mojo_top_0 (
   wire [1-1:0] M_ctrl_sel_level;
   wire [1-1:0] M_ctrl_sel_check;
   wire [1-1:0] M_ctrl_sel_map;
+  wire [1-1:0] M_ctrl_fill_border_red;
+  wire [1-1:0] M_ctrl_fill_border_green;
   reg [2-1:0] M_ctrl_direction;
   reg [3-1:0] M_ctrl_state;
   control_6 ctrl (
@@ -127,7 +133,9 @@ module mojo_top_0 (
     .alufn(M_ctrl_alufn),
     .sel_level(M_ctrl_sel_level),
     .sel_check(M_ctrl_sel_check),
-    .sel_map(M_ctrl_sel_map)
+    .sel_map(M_ctrl_sel_map),
+    .fill_border_red(M_ctrl_fill_border_red),
+    .fill_border_green(M_ctrl_fill_border_green)
   );
   
   wire [1-1:0] M_reset_cond_out;
@@ -232,9 +240,15 @@ module mojo_top_0 (
   localparam WIN_state = 4'd8;
   
   reg [3:0] M_state_d, M_state_q = MENU_WAIT_state;
-  reg [1:0] M_level_d, M_level_q = 1'h0;
+  reg [3:0] M_level_d, M_level_q = 1'h0;
   reg [2:0] M_reg_d_d, M_reg_d_q = 3'h4;
   reg [2:0] M_see_d, M_see_q = 1'h0;
+  reg M_reg_s_d, M_reg_s_q = 1'h0;
+  reg M_reg_r_d, M_reg_r_q = 1'h0;
+  reg [5:0] M_player_pos_a_d, M_player_pos_a_q = 1'h0;
+  reg [5:0] M_player_pos_b_d, M_player_pos_b_q = 1'h0;
+  reg [15:0] M_r1_d, M_r1_q = 1'h0;
+  reg [15:0] M_r2_d, M_r2_q = 1'h0;
   wire [8-1:0] M_seg_display_seg;
   wire [4-1:0] M_seg_display_sel;
   reg [16-1:0] M_seg_display_values;
@@ -247,12 +261,6 @@ module mojo_top_0 (
     .seg(M_seg_display_seg),
     .sel(M_seg_display_sel)
   );
-  reg M_reg_s_d, M_reg_s_q = 1'h0;
-  reg M_reg_r_d, M_reg_r_q = 1'h0;
-  reg [5:0] M_player_pos_a_d, M_player_pos_a_q = 1'h0;
-  reg [5:0] M_player_pos_b_d, M_player_pos_b_q = 1'h0;
-  reg [15:0] M_r1_d, M_r1_q = 1'h0;
-  reg [15:0] M_r2_d, M_r2_q = 1'h0;
   reg [15:0] M_display_value_d, M_display_value_q = 1'h0;
   
   reg r0;
@@ -279,8 +287,8 @@ module mojo_top_0 (
     spi_miso = 1'bz;
     spi_channel = 4'bzzzz;
     avr_rx = 1'bz;
-    r_red = M_mat_dis_r_red;
-    r_green = M_mat_dis_r_green;
+    r_red = M_mat_dis_row_red;
+    r_green = M_mat_dis_row_green;
     col = M_mat_dis_col;
     M_mat_dis_red = M_map_to_dis_red;
     M_mat_dis_green = M_map_to_dis_green;
@@ -288,6 +296,8 @@ module mojo_top_0 (
     M_map_to_dis_map_b = M_map_map_b;
     M_map_to_dis_tp_a = M_player_pos_a_q;
     M_map_to_dis_tp_b = M_player_pos_b_q;
+    M_map_to_dis_fill_border_green = M_ctrl_fill_border_green;
+    M_map_to_dis_fill_border_red = M_ctrl_fill_border_red;
     M_map_to_dis_ep_a = M_map_ep_a;
     M_map_to_dis_ep_b = M_map_ep_b;
     M_decoder_curr_pos = 6'h00;
@@ -315,12 +325,17 @@ module mojo_top_0 (
       M_alu_b = M_r2_q;
     end
     r0 = M_alu_alu[0+0-:1];
+    led = 8'h00;
+    led = M_r1_q;
+    M_ctrl_state = 1'h0;
+    M_ctrl_direction = 1'h0;
+    M_reg_s_d = 1'h0;
     
     case (M_state_q)
       MENU_WAIT_state: begin
-        M_display_value_d = 16'h1234;
         M_player_pos_a_d = M_map_sp_a;
         M_player_pos_b_d = M_map_sp_b;
+        M_display_value_d = {M_level_q, 4'h0, 4'h0, 4'h0};
         if (M_right_edge_detector_out) begin
           M_reg_d_d = 2'h3;
         end else begin
@@ -421,6 +436,7 @@ module mojo_top_0 (
         M_state_d = r0 ? SETUP_state : WAIT_state;
       end
       WIN_state: begin
+        M_ctrl_state = 3'h7;
         led = 8'hff;
         M_reg_r_d = M_reset_edge_detector_out ? 1'h1 : 1'h0;
         if (M_reg_r_q == 1'h1) begin
@@ -447,24 +463,14 @@ module mojo_top_0 (
     M_level_q <= M_level_d;
     M_reg_d_q <= M_reg_d_d;
     M_see_q <= M_see_d;
+    M_reg_s_q <= M_reg_s_d;
+    M_reg_r_q <= M_reg_r_d;
+    M_player_pos_a_q <= M_player_pos_a_d;
+    M_player_pos_b_q <= M_player_pos_b_d;
+    M_r1_q <= M_r1_d;
+    M_r2_q <= M_r2_d;
     M_display_value_q <= M_display_value_d;
     M_state_q <= M_state_d;
-    
-    if (rst == 1'b1) begin
-      M_reg_s_q <= 1'h0;
-      M_reg_r_q <= 1'h0;
-      M_player_pos_a_q <= 1'h0;
-      M_player_pos_b_q <= 1'h0;
-      M_r1_q <= 1'h0;
-      M_r2_q <= 1'h0;
-    end else begin
-      M_reg_s_q <= M_reg_s_d;
-      M_reg_r_q <= M_reg_r_d;
-      M_player_pos_a_q <= M_player_pos_a_d;
-      M_player_pos_b_q <= M_player_pos_b_d;
-      M_r1_q <= M_r1_d;
-      M_r2_q <= M_r2_d;
-    end
   end
   
 endmodule
