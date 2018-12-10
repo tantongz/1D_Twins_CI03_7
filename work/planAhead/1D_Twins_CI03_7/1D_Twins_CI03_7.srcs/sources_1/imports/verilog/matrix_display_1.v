@@ -24,7 +24,7 @@ module matrix_display_1 (
   reg [63:0] rotated_red;
   
   wire [4-1:0] M_counter_r_value;
-  counter_21 counter_r (
+  counter_23 counter_r (
     .clk(clk),
     .rst(rst),
     .value(M_counter_r_value)

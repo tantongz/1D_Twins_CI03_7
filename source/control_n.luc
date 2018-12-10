@@ -4,7 +4,9 @@ module control (
     input direction[2],
     
     // The current state (based on the fsm in mojo_top).
-    input state[3],
+    input state[4],
+    
+    input cur_level[4],
     
     // Determines which direction to increment in check_a
     // and check_b.
@@ -27,8 +29,16 @@ module control (
     // 1: map b.
     output sel_map,
     output fill_border_red,
-    output fill_border_green
+    output fill_border_green,
+    output show_splashscreen,
+    output hide_screen,
+    
+    output text[4][5]
+    
   ) {
+  
+  sig next_level[4];
+  sig display_level[4][5];
   
   always {
     
@@ -37,16 +47,36 @@ module control (
     sel_map = 0;
     fill_border_green = 0;
     fill_border_red = 0;
+    show_splashscreen = 0;
+    hide_screen = 0;
+    
+    next_level = cur_level + 1;
+    
+    if(next_level > 4d9) {
+      display_level = {5d0, 5d1, 5d11, 5d14};
+    } else {
+      display_level = {0 + next_level, 5d0, 5d11, 5d14};
+    }
+    text = {5d14, 5d14, 5d14, 5d14};
+    
     case (state) {
+      // SPLASHSCREEN.
+      0: sel_level = direction[0];
+        sel_new_pos = 0;
+        alufn = b000000;
+        show_splashscreen = 1;
+      
       // MENU WAIT.
       1: sel_level = direction[0];
         sel_new_pos = 0;
         alufn = b000000;
+        text = display_level;
       
-      // MENU UPDATE.
+      // WAIT.
       2: sel_level = 0;
         sel_new_pos = 0;
         alufn = b000000;
+        text = display_level;
       
       // CHECKA.
       3: sel_level = 0;
@@ -73,22 +103,32 @@ module control (
         sel_new_pos = direction;
         sel_check = 1;
         alufn = b011110; // OR.
-        
+      
       // WIN
       7: sel_level = 0;
         sel_new_pos = direction;
         alufn = b000000;
         fill_border_green = 1;
+        text = {5d12, 5d15, 5d12, 5d14};
       
       // SETUP
       8: sel_level = 0;
         sel_new_pos = 0;
         alufn = b000000;
+        fill_border_red = 1;
+        text = {5d12, 5d15, 5d11, 5d13};
+      
+      // Reset
+      9: sel_level = 0;
+        sel_new_pos = 0;
+        alufn = b000000;
+        text = {5d16, 5d17, 5d16, 5d14};
       
       default:
         sel_level = bz;
         sel_new_pos = bz;
         alufn = b000000;
+        text = {5d17, 5d17, 5d17, 5d17};
     }
   }
 }

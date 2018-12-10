@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<document OS="nt" product="ISE" version="14.7">
+<document OS="lin" product="ISE" version="14.7">
 
   <!--The data in this file is primarily intended for consumption by Xilinx tools.
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Mon Dec 10 23:06:35 2018">
+  <application stringID="NgdBuild" timeStamp="Tue Dec 11 05:11:03 2018">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
-          <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\\lib\nt;C:\Xilinx\14.7\ISE_DS\ISE\\bin\nt;C:/Xilinx/14.7/ISE_DS/EDK/bin/nt;C:/Xilinx/14.7/ISE_DS/EDK/lib/nt;C:/Xilinx/14.7/ISE_DS/ISE/bin/nt;C:/Xilinx/14.7/ISE_DS/ISE/lib/nt;C:/Xilinx/14.7/ISE_DS/common/bin/nt;C:/Xilinx/14.7/ISE_DS/common/lib/nt;C:/Xilinx/14.7/ISE_DS/PlanAhead/bin;C:/Xilinx/14.7/ISE_DS/PlanAhead/lib/win32.o;C:/Xilinx/14.7/ISE_DS/PlanAhead/tps/win32/jre/bin/server;C:/Xilinx/14.7/ISE_DS/PlanAhead/tps/win32/jre/bin;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Python37\Scripts\;C:\Python37\;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MATLAB\R2017a\runtime\win64;C:\Program Files\MATLAB\R2017a\bin;C:\Program Files (x86)\PuTTY\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\CMake\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Intel\computer_vision_sdk_2018.1.265\opencv\x64\vc14\bin;C:\Intel\computer_vision_sdk_2018.1.265\openvx\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Cloud Foundry;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Microsoft VS Code\bin;C:\Users\ZhiYao\Anaconda3;C:\Users\ZhiYao\Anaconda3\Library\mingw-w64\bin;C:\Users\ZhiYao\Anaconda3\Library\usr\bin;C:\Users\ZhiYao\Anaconda3\Library\bin;C:\Users\ZhiYao\Anaconda3\Scripts;C:\Python36\Scripts\;C:\Python36\;C:\Users\ZhiYao\AppData\Local\Microsoft\WindowsApps;C:\Users\ZhiYao\AppData\Local\Programs\MiKTeX 2.9\miktex\bin\x64\;D:\IntelPython3;D:\IntelPython3\Scripts;C:\Users\ZhiYao\AppData\Local\atom\bin;C:\Users\ZhiYao\AppData\Roaming\npm;C:\Users\ZhiYao\AppData\Local\GitHubDesktop\bin;C:\Program Files\Mojo IDE\java\bin"/>
+          <item stringID="variable" value="XILINX_PLANAHEAD"/>
+          <item stringID="value" value="/opt/Xilinx/14.7/ISE_DS/PlanAhead"/>
         </row>
         <row stringID="row" value="1">
-          <item stringID="variable" value="PATHEXT"/>
-          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW"/>
+          <item stringID="variable" value="LD_LIBRARY_PATH"/>
+          <item stringID="value" value="/opt/Xilinx/14.7/ISE_DS/ISE//lib/lin:/opt/Xilinx/14.7/ISE_DS/EDK/lib/lin:/opt/Xilinx/14.7/ISE_DS/ISE/lib/lin:/opt/Xilinx/14.7/ISE_DS/common/lib/lin:/home/ryan/mojo-ide-B1.3.6/lib"/>
         </row>
         <row stringID="row" value="2">
-          <item stringID="variable" value="XILINX"/>
-          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\"/>
+          <item stringID="variable" value="XILINX_COMMON_TOOLS"/>
+          <item stringID="value" value="/opt/Xilinx/14.7/ISE_DS/common"/>
         </row>
         <row stringID="row" value="3">
-          <item stringID="variable" value="XILINX_COMMON_TOOLS"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/common"/>
+          <item stringID="variable" value="XILINX_EDK"/>
+          <item stringID="value" value="/opt/Xilinx/14.7/ISE_DS/EDK"/>
         </row>
         <row stringID="row" value="4">
-          <item stringID="variable" value="XILINX_DSP"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/ISE"/>
+          <item stringID="variable" value="XILINX"/>
+          <item stringID="value" value="/opt/Xilinx/14.7/ISE_DS/ISE/"/>
         </row>
         <row stringID="row" value="5">
-          <item stringID="variable" value="XILINX_EDK"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/EDK"/>
+          <item stringID="variable" value="PATH"/>
+          <item stringID="value" value="/opt/Xilinx/14.7/ISE_DS/ISE//bin/lin:/opt/Xilinx/14.7/ISE_DS/EDK/bin/lin:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin:/opt/Xilinx/14.7/ISE_DS/common/bin/lin:/opt/Xilinx/14.7/ISE_DS/PlanAhead/bin:/home/ryan/mojo-ide-B1.3.6/java/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"/>
         </row>
         <row stringID="row" value="6">
-          <item stringID="variable" value="XILINX_PLANAHEAD"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/PlanAhead"/>
+          <item stringID="variable" value="XILINX_DSP"/>
+          <item stringID="value" value="/opt/Xilinx/14.7/ISE_DS/ISE"/>
         </row>
       </table>
       <item stringID="User_EnvOs" value="OS Information">
-        <item stringID="User_EnvOsname" value="Microsoft , 64-bit"/>
-        <item stringID="User_EnvOsrelease" value="major release  (build 9200)"/>
+        <item stringID="User_EnvOsname" value="Debian"/>
+        <item stringID="User_EnvOsrelease" value="Debian GNU/Linux 9.6 (stretch)"/>
       </item>
-      <item stringID="User_EnvHost" value="LAPTOP-TP4D2KUF"/>
+      <item stringID="User_EnvHost" value="debian"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
-          <item stringID="arch" value="Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz"/>
-          <item stringID="speed" value="2904 MHz"/>
+          <item stringID="arch" value="Intel(R) Core(TM) i7-3720QM CPU @ 2.60GHz"/>
+          <item stringID="speed" value="2594.088 MHz"/>
         </row>
       </table>
     </section>
@@ -73,29 +73,29 @@
       <section stringID="NGDBUILD_POST_UNISIM_SUMMARY">
         <item dataType="int" stringID="NGDBUILD_NUM_BUFG" value="1"/>
         <item dataType="int" stringID="NGDBUILD_NUM_DSP48A1" value="1"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_FD" value="14"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_FDE" value="38"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_FDR" value="20"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_FDRE" value="124"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_FD" value="18"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_FDE" value="31"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_FDR" value="35"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_FDRE" value="133"/>
         <item dataType="int" stringID="NGDBUILD_NUM_FDS" value="4"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_GND" value="21"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_GND" value="22"/>
         <item dataType="int" stringID="NGDBUILD_NUM_IBUF" value="13"/>
         <item dataType="int" stringID="NGDBUILD_NUM_IBUFG" value="1"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT1" value="165"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT2" value="8"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT3" value="54"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT4" value="75"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT5" value="197"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT6" value="284"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_MUXCY" value="173"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_MUXF7" value="7"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT1" value="196"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT2" value="11"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT3" value="47"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT4" value="122"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT5" value="164"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT6" value="361"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_MUXCY" value="203"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_MUXF7" value="28"/>
         <item dataType="int" stringID="NGDBUILD_NUM_OBUF" value="44"/>
         <item dataType="int" stringID="NGDBUILD_NUM_OBUFT" value="6"/>
         <item dataType="int" stringID="NGDBUILD_NUM_PULLUP" value="6"/>
         <item dataType="int" stringID="NGDBUILD_NUM_SRL16E" value="6"/>
         <item dataType="int" stringID="NGDBUILD_NUM_TS_TIMESPEC" value="1"/>
         <item dataType="int" stringID="NGDBUILD_NUM_VCC" value="19"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_XORCY" value="165"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_XORCY" value="171"/>
       </section>
       <section stringID="NGDBUILD_CORE_GENERATION_SUMMARY">
         <section stringID="NGDBUILD_CORE_INSTANCES"/>

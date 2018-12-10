@@ -76,6 +76,8 @@ module mojo_top_0 (
   reg [36-1:0] M_map_to_dis_map_b;
   reg [1-1:0] M_map_to_dis_fill_border_green;
   reg [1-1:0] M_map_to_dis_fill_border_red;
+  reg [1-1:0] M_map_to_dis_slowclk;
+  reg [1-1:0] M_map_to_dis_show_splashscreen;
   map_to_display_3 map_to_dis (
     .tp_a(M_map_to_dis_tp_a),
     .ep_a(M_map_to_dis_ep_a),
@@ -85,6 +87,8 @@ module mojo_top_0 (
     .map_b(M_map_to_dis_map_b),
     .fill_border_green(M_map_to_dis_fill_border_green),
     .fill_border_red(M_map_to_dis_fill_border_red),
+    .slowclk(M_map_to_dis_slowclk),
+    .show_splashscreen(M_map_to_dis_show_splashscreen),
     .red(M_map_to_dis_red),
     .green(M_map_to_dis_green)
   );
@@ -124,18 +128,26 @@ module mojo_top_0 (
   wire [1-1:0] M_ctrl_sel_map;
   wire [1-1:0] M_ctrl_fill_border_red;
   wire [1-1:0] M_ctrl_fill_border_green;
+  wire [1-1:0] M_ctrl_show_splashscreen;
+  wire [1-1:0] M_ctrl_hide_screen;
+  wire [20-1:0] M_ctrl_text;
   reg [2-1:0] M_ctrl_direction;
-  reg [3-1:0] M_ctrl_state;
+  reg [4-1:0] M_ctrl_state;
+  reg [4-1:0] M_ctrl_cur_level;
   control_6 ctrl (
     .direction(M_ctrl_direction),
     .state(M_ctrl_state),
+    .cur_level(M_ctrl_cur_level),
     .sel_new_pos(M_ctrl_sel_new_pos),
     .alufn(M_ctrl_alufn),
     .sel_level(M_ctrl_sel_level),
     .sel_check(M_ctrl_sel_check),
     .sel_map(M_ctrl_sel_map),
     .fill_border_red(M_ctrl_fill_border_red),
-    .fill_border_green(M_ctrl_fill_border_green)
+    .fill_border_green(M_ctrl_fill_border_green),
+    .show_splashscreen(M_ctrl_show_splashscreen),
+    .hide_screen(M_ctrl_hide_screen),
+    .text(M_ctrl_text)
   );
   
   wire [1-1:0] M_reset_cond_out;
@@ -229,17 +241,19 @@ module mojo_top_0 (
     .in(M_start_conditioner_in),
     .out(M_start_conditioner_out)
   );
-  localparam MENU_WAIT_state = 4'd0;
-  localparam MENU_UPDATE_state = 4'd1;
-  localparam SETUP_state = 4'd2;
-  localparam WAIT_state = 4'd3;
-  localparam CHECKA_state = 4'd4;
-  localparam CHECKB_state = 4'd5;
-  localparam CHECKWIN_state = 4'd6;
-  localparam CHECKRESTART_state = 4'd7;
-  localparam WIN_state = 4'd8;
+  localparam SPLASHSCREEN_state = 4'd0;
+  localparam MENU_WAIT_state = 4'd1;
+  localparam MENU_UPDATE_state = 4'd2;
+  localparam SETUP_state = 4'd3;
+  localparam RESET_state = 4'd4;
+  localparam WAIT_state = 4'd5;
+  localparam CHECKA_state = 4'd6;
+  localparam CHECKB_state = 4'd7;
+  localparam CHECKWIN_state = 4'd8;
+  localparam CHECKRESTART_state = 4'd9;
+  localparam WIN_state = 4'd10;
   
-  reg [3:0] M_state_d, M_state_q = MENU_WAIT_state;
+  reg [3:0] M_state_d, M_state_q = SPLASHSCREEN_state;
   reg [3:0] M_level_d, M_level_q = 1'h0;
   reg [2:0] M_reg_d_d, M_reg_d_q = 3'h4;
   reg [3:0] M_leveltenth_d, M_leveltenth_q = 1'h0;
@@ -252,7 +266,7 @@ module mojo_top_0 (
   reg [15:0] M_r2_d, M_r2_q = 1'h0;
   wire [8-1:0] M_seg_display_seg;
   wire [4-1:0] M_seg_display_sel;
-  reg [16-1:0] M_seg_display_values;
+  reg [20-1:0] M_seg_display_values;
   reg [4-1:0] M_seg_display_decimal;
   multi_seven_seg_20 seg_display (
     .clk(clk),
@@ -262,22 +276,41 @@ module mojo_top_0 (
     .seg(M_seg_display_seg),
     .sel(M_seg_display_sel)
   );
-  reg [15:0] M_display_value_d, M_display_value_q = 1'h0;
+  wire [1-1:0] M_slowclk_value;
+  counter_21 slowclk (
+    .clk(clk),
+    .rst(rst),
+    .value(M_slowclk_value)
+  );
+  wire [1-1:0] M_midclock_value;
+  counter_22 midclock (
+    .clk(clk),
+    .rst(rst),
+    .value(M_midclock_value)
+  );
+  reg [19:0] M_display_value_d, M_display_value_q = 1'h0;
+  
+  reg [7:0] M_win_timer_d, M_win_timer_q = 1'h0;
+  
+  reg [7:0] M_wait_timer_d, M_wait_timer_q = 1'h0;
   
   reg r0;
   
+  reg [3:0] new_level;
+  
   always @* begin
     M_state_d = M_state_q;
+    M_r2_d = M_r2_q;
     M_player_pos_a_d = M_player_pos_a_q;
     M_player_pos_b_d = M_player_pos_b_q;
-    M_level_d = M_level_q;
-    M_display_value_d = M_display_value_q;
-    M_reg_r_d = M_reg_r_q;
     M_see_d = M_see_q;
+    M_reg_r_d = M_reg_r_q;
+    M_level_d = M_level_q;
+    M_win_timer_d = M_win_timer_q;
+    M_wait_timer_d = M_wait_timer_q;
     M_reg_d_d = M_reg_d_q;
-    M_r1_d = M_r1_q;
     M_reg_s_d = M_reg_s_q;
-    M_r2_d = M_r2_q;
+    M_r1_d = M_r1_q;
     
     M_seg_display_decimal = 4'hf;
     M_map_level_adr = M_level_q;
@@ -301,6 +334,8 @@ module mojo_top_0 (
     M_map_to_dis_fill_border_red = M_ctrl_fill_border_red;
     M_map_to_dis_ep_a = M_map_ep_a;
     M_map_to_dis_ep_b = M_map_ep_b;
+    M_map_to_dis_show_splashscreen = M_ctrl_show_splashscreen;
+    M_map_to_dis_slowclk = M_slowclk_value;
     M_decoder_curr_pos = 6'h00;
     M_decoder_sel_new_pos = M_ctrl_sel_new_pos;
     M_decoder_mapdata = M_map_map_a;
@@ -311,6 +346,7 @@ module mojo_top_0 (
     led = M_r1_q;
     M_ctrl_state = 1'h0;
     M_ctrl_direction = 1'h0;
+    M_ctrl_cur_level = M_level_q;
     M_reg_s_d = 1'h0;
     if (M_ctrl_sel_check == 1'h0) begin
       M_alu_a = M_decoder_new_pos;
@@ -331,16 +367,24 @@ module mojo_top_0 (
     M_ctrl_state = 1'h0;
     M_ctrl_direction = 1'h0;
     M_reg_s_d = 1'h0;
+    M_seg_display_values = M_ctrl_text;
+    M_wait_timer_d = 1'h0;
     
     case (M_state_q)
+      SPLASHSCREEN_state: begin
+        M_ctrl_state = 1'h0;
+        M_wait_timer_d = M_wait_timer_q + 1'h1;
+        if (M_wait_timer_q == 2'h3) begin
+          M_wait_timer_d = 1'h0;
+          M_state_d = MENU_WAIT_state;
+        end
+      end
       MENU_WAIT_state: begin
+        M_ctrl_state = 1'h1;
         M_player_pos_a_d = M_map_sp_a;
         M_player_pos_b_d = M_map_sp_b;
-        if (M_level_q > 4'h9) begin
-          M_display_value_d = 16'h01bf;
-        end else begin
-          M_display_value_d = {M_level_q, 4'h0, 4'hb, 4'hf};
-        end
+        M_wait_timer_d = 1'h0;
+        M_win_timer_d = 1'h0;
         if (M_right_edge_detector_out) begin
           M_reg_d_d = 2'h3;
         end else begin
@@ -366,16 +410,21 @@ module mojo_top_0 (
         end
         M_reg_s_d = M_start_edge_detector_out ? 1'h1 : 1'h0;
         if (M_reg_s_q == 1'h1) begin
-          M_state_d = WAIT_state;
+          M_state_d = SETUP_state;
         end
       end
       MENU_UPDATE_state: begin
         M_ctrl_state = 1'h1;
         M_ctrl_direction = M_see_q;
-        if (M_level_q == 4'ha) begin
-          M_level_d = M_ctrl_sel_level ? 1'h0 : M_level_q - 1'h1;
+        new_level = M_ctrl_sel_level ? M_level_q + 1'h1 : M_level_q - 1'h1;
+        if (new_level == 4'ha) begin
+          M_level_d = 4'h0;
         end else begin
-          M_level_d = M_ctrl_sel_level ? M_level_q + 1'h1 : M_level_q - 1'h1;
+          if (new_level == 4'hf) begin
+            M_level_d = 4'h9;
+          end else begin
+            M_level_d = new_level;
+          end
         end
         M_reg_d_d = 3'h4;
         M_see_d = 3'h4;
@@ -383,14 +432,28 @@ module mojo_top_0 (
       end
       SETUP_state: begin
         M_ctrl_state = 4'h8;
-        led = 8'h80;
         M_player_pos_a_d = M_map_sp_a;
         M_player_pos_b_d = M_map_sp_b;
-        M_state_d = WAIT_state;
+        M_wait_timer_d = M_wait_timer_q + 1'h1;
+        if (M_wait_timer_q == 3'h5) begin
+          M_wait_timer_d = 1'h0;
+          M_state_d = WAIT_state;
+        end
+      end
+      RESET_state: begin
+        M_ctrl_state = 4'h9;
+        M_player_pos_a_d = M_map_sp_a;
+        M_player_pos_b_d = M_map_sp_b;
+        M_wait_timer_d = M_wait_timer_q + 1'h1;
+        if (M_wait_timer_q == 3'h5) begin
+          M_wait_timer_d = 1'h0;
+          M_state_d = WAIT_state;
+        end
       end
       WAIT_state: begin
         M_ctrl_state = 2'h2;
         led = 8'h81;
+        M_wait_timer_d = 1'h0;
         if (M_right_edge_detector_out) begin
           M_reg_d_d = 2'h3;
         end else begin
@@ -442,11 +505,16 @@ module mojo_top_0 (
       end
       CHECKRESTART_state: begin
         M_ctrl_state = 3'h6;
-        M_state_d = r0 ? SETUP_state : WAIT_state;
+        M_state_d = r0 ? RESET_state : WAIT_state;
       end
       WIN_state: begin
         M_ctrl_state = 3'h7;
         led = 8'hff;
+        M_win_timer_d = M_win_timer_q + 1'h1;
+        if (M_win_timer_q == 2'h3) begin
+          M_win_timer_d = 1'h0;
+          M_state_d = MENU_WAIT_state;
+        end
         M_reg_r_d = M_reset_edge_detector_out ? 1'h1 : 1'h0;
         if (M_reg_r_q == 1'h1) begin
           M_state_d = MENU_WAIT_state;
@@ -465,8 +533,25 @@ module mojo_top_0 (
     M_start_conditioner_in = start_btn;
     M_reset_edge_detector_in = M_reset_conditioner_out;
     M_start_edge_detector_in = M_start_conditioner_out;
-    M_seg_display_values = M_display_value_q;
   end
+  
+  always @(posedge M_slowclk_value) begin
+    if (rst == 1'b1) begin
+      M_win_timer_q <= 1'h0;
+    end else begin
+      M_win_timer_q <= M_win_timer_d;
+    end
+  end
+  
+  
+  always @(posedge M_midclock_value) begin
+    if (rst == 1'b1) begin
+      M_wait_timer_q <= 1'h0;
+    end else begin
+      M_wait_timer_q <= M_wait_timer_d;
+    end
+  end
+  
   
   always @(posedge clk) begin
     M_level_q <= M_level_d;

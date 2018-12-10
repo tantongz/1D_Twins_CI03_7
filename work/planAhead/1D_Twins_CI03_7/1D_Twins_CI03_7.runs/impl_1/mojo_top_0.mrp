@@ -1,4 +1,4 @@
-Release 14.7 Map P.20131013 (nt)
+Release 14.7 Map P.20131013 (lin)
 Xilinx Mapping Report File for Design 'mojo_top_0'
 
 Design Information
@@ -8,23 +8,23 @@ Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Mon Dec 10 23:06:36 2018
+Mapped Date    : Tue Dec 11 05:11:05 2018
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    6
 Slice Logic Utilization:
-  Number of Slice Registers:                   200 out of  11,440    1%
-    Number used as Flip Flops:                 200
+  Number of Slice Registers:                   221 out of  11,440    1%
+    Number used as Flip Flops:                 221
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        735 out of   5,720   12%
-    Number used as logic:                      723 out of   5,720   12%
-      Number using O6 output only:             513
-      Number using O5 output only:             141
-      Number using O5 and O6:                   69
+  Number of Slice LUTs:                        845 out of   5,720   14%
+    Number used as logic:                      831 out of   5,720   14%
+      Number using O6 output only:             583
+      Number using O5 output only:             170
+      Number using O5 and O6:                   78
       Number used as ROM:                        0
     Number used as Memory:                       4 out of   1,440    1%
       Number used as Dual Port RAM:              0
@@ -33,21 +33,21 @@ Slice Logic Utilization:
         Number using O6 output only:             2
         Number using O5 output only:             0
         Number using O5 and O6:                  2
-    Number used exclusively as route-thrus:      8
+    Number used exclusively as route-thrus:     10
       Number with same-slice register load:      0
-      Number with same-slice carry load:         8
+      Number with same-slice carry load:        10
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   256 out of   1,430   17%
-  Number of MUXCYs used:                       188 out of   2,860    6%
-  Number of LUT Flip Flop pairs used:          739
-    Number with an unused Flip Flop:           544 out of     739   73%
-    Number with an unused LUT:                   4 out of     739    1%
-    Number of fully used LUT-FF pairs:         191 out of     739   25%
-    Number of unique control sets:              21
+  Number of occupied Slices:                   297 out of   1,430   20%
+  Number of MUXCYs used:                       220 out of   2,860    7%
+  Number of LUT Flip Flop pairs used:          845
+    Number with an unused Flip Flop:           632 out of     845   74%
+    Number with an unused LUT:                   0 out of     845    0%
+    Number of fully used LUT-FF pairs:         213 out of     845   25%
+    Number of unique control sets:              22
     Number of slice register sites lost
-      to control set restrictions:              90 out of  11,440    1%
+      to control set restrictions:              77 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -57,7 +57,7 @@ Slice Logic Distribution:
 
 IO Utilization:
   Number of bonded IOBs:                        58 out of     102   56%
-    Number of LOCed IOBs:                       57 out of      58   98%
+    Number of LOCed IOBs:                       58 out of      58  100%
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                         0 out of      32    0%
@@ -84,9 +84,9 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                4.14
+Average Fanout of Non-Clock Nets:                4.30
 
-Peak Memory Usage:  362 MB
+Peak Memory Usage:  262 MB
 Total REAL time to MAP completion:  10 secs 
 Total CPU time to MAP completion (all processors):   10 secs 
 
@@ -148,15 +148,12 @@ INFO:Pack:1720 - Initializing voltage to 1.140 Volts. (default - Range: 1.140 to
    1.260 Volts)
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
-INFO:Place:834 - Only a subset of IOs are locked. Out of 58 IOs, 57 are locked
-   and 1 are not locked. If you would like to print the names of these IOs,
-   please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
 INFO:Pack:1650 - Map created a placed design.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
   14 block(s) removed
-  38 block(s) optimized away
+  39 block(s) optimized away
    8 signal(s) removed
 
 Section 5 - Removed Logic
@@ -206,7 +203,6 @@ Optimized Block(s):
 TYPE 		BLOCK
 VCC 		XST_VCC
 GND 		alu/GND
-VCC 		alu/VCC
 GND 		alu/add_call/XST_GND
 VCC 		alu/add_call/XST_VCC
 VCC 		alu/cmp_call/adder/XST_VCC
@@ -221,8 +217,8 @@ GND 		left_conditioner/sync/XST_GND
 VCC 		left_conditioner/sync/XST_VCC
 VCC 		map_to_dis/XST_VCC
 GND 		mat_dis/XST_GND
-GND 		mat_dis/counter_r/XST_GND
-VCC 		mat_dis/counter_r/XST_VCC
+GND 		midclock/XST_GND
+VCC 		midclock/XST_VCC
 GND 		reset_cond/XST_GND
 GND 		reset_conditioner/XST_GND
 VCC 		reset_conditioner/XST_VCC
@@ -234,6 +230,8 @@ GND 		right_conditioner/sync/XST_GND
 VCC 		right_conditioner/sync/XST_VCC
 GND 		seg_display/ctr/XST_GND
 VCC 		seg_display/ctr/XST_VCC
+GND 		slowclk/XST_GND
+VCC 		slowclk/XST_VCC
 GND 		start_conditioner/XST_GND
 VCC 		start_conditioner/XST_VCC
 GND 		start_conditioner/sync/XST_GND

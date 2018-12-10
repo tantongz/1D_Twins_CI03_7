@@ -6,17 +6,25 @@
 
 module control_6 (
     input [1:0] direction,
-    input [2:0] state,
+    input [3:0] state,
+    input [3:0] cur_level,
     output reg [1:0] sel_new_pos,
     output reg [5:0] alufn,
     output reg sel_level,
     output reg sel_check,
     output reg sel_map,
     output reg fill_border_red,
-    output reg fill_border_green
+    output reg fill_border_green,
+    output reg show_splashscreen,
+    output reg hide_screen,
+    output reg [19:0] text
   );
   
   
+  
+  reg [3:0] next_level;
+  
+  reg [19:0] display_level;
   
   always @* begin
     sel_level = 1'h0;
@@ -24,17 +32,34 @@ module control_6 (
     sel_map = 1'h0;
     fill_border_green = 1'h0;
     fill_border_red = 1'h0;
+    show_splashscreen = 1'h0;
+    hide_screen = 1'h0;
+    next_level = cur_level + 1'h1;
+    if (next_level > 4'h9) begin
+      display_level = 20'h0056e;
+    end else begin
+      display_level = {1'h0 + next_level, 5'h00, 5'h0b, 5'h0e};
+    end
+    text = 20'h739ce;
     
     case (state)
+      1'h0: begin
+        sel_level = direction[0+0-:1];
+        sel_new_pos = 1'h0;
+        alufn = 6'h00;
+        show_splashscreen = 1'h1;
+      end
       1'h1: begin
         sel_level = direction[0+0-:1];
         sel_new_pos = 1'h0;
         alufn = 6'h00;
+        text = display_level;
       end
       2'h2: begin
         sel_level = 1'h0;
         sel_new_pos = 1'h0;
         alufn = 6'h00;
+        text = display_level;
       end
       2'h3: begin
         sel_level = 1'h0;
@@ -67,16 +92,26 @@ module control_6 (
         sel_new_pos = direction;
         alufn = 6'h00;
         fill_border_green = 1'h1;
+        text = 20'h63d8e;
       end
       4'h8: begin
         sel_level = 1'h0;
         sel_new_pos = 1'h0;
         alufn = 6'h00;
+        fill_border_red = 1'h1;
+        text = 20'h63d6d;
+      end
+      4'h9: begin
+        sel_level = 1'h0;
+        sel_new_pos = 1'h0;
+        alufn = 6'h00;
+        text = 20'h8460e;
       end
       default: begin
         sel_level = 1'bz;
         sel_new_pos = 1'bz;
         alufn = 6'h00;
+        text = 20'h8c631;
       end
     endcase
   end

@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module digit_lut_33 (
+module digit_lut_35 (
     input [5:0] value,
     output reg [7:0] segs
   );
@@ -47,8 +47,23 @@ module digit_lut_33 (
       4'ha: begin
         segs = 7'h7f;
       end
+      4'hf: begin
+        segs = 7'h08;
+      end
       4'hb: begin
         segs = 7'h47;
+      end
+      4'hd: begin
+        segs = 7'h0c;
+      end
+      4'hc: begin
+        segs = 7'h11;
+      end
+      5'h10: begin
+        segs = 7'h21;
+      end
+      5'h11: begin
+        segs = 7'h06;
       end
       default: begin
         segs = 7'h7f;

@@ -10,7 +10,7 @@ module multi_seven_seg #(
     
   input clk, // Clock.
   input rst, // Reset.
-  input values [DIGITS][4], // Values to show.
+  input values [DIGITS][5], // Values to show.
   input decimal [DIGITS], // Decimal points.
   output seg [8], // LED segments.
   output sel [DIGITS] // Digit select.

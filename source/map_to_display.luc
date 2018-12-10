@@ -5,8 +5,10 @@ module map_to_display (
     input tp_b[6], // position of particle
     input ep_b[6], //end position of b
     input map_b[6][6], // map_array
-        input fill_border_green,
+    input fill_border_green,
     input fill_border_red,
+    input slowclk,
+    input show_splashscreen,
     
     output red[8][8],
     output green[8][8]
@@ -66,7 +68,7 @@ module map_to_display (
     // Fill the border (area of the matrix hidden by the case)
     // if needed. 
     
-    if (fill_border_green) {
+    if (fill_border_green & slowclk) {
       green[0] = b11111111;
       green[1] = b11111111;
       green[6] = b11111111;
@@ -78,6 +80,30 @@ module map_to_display (
       red[1] = b11111111;
       red[6] = b11111111;
       red[7] = b11111111; 
+    }
+    
+    if (show_splashscreen) {
+        green = {
+        b00000000,
+        b00000000,
+        b11100000,
+        b01000000,
+        b01000000,
+        b01000000,
+        b00000000,
+        b00000000       
+        };
+      
+      red = {
+        b00000000,
+        b00000000,
+        b00000000,
+        b00010101,
+        b00010101,
+        b00001010,
+        b00000000,
+        b00000000 
+      };
     }
     
   }

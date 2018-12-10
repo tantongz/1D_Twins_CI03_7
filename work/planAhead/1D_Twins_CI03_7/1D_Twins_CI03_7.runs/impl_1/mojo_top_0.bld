@@ -1,15 +1,15 @@
-Release 14.7 ngdbuild P.20131013 (nt)
+Release 14.7 ngdbuild P.20131013 (lin)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Command Line: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\ngdbuild.exe -intstyle
+Command Line: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin/unwrapped/ngdbuild -intstyle
 ise -p xc6slx9tqg144-2 -dd _ngo -uc mojo_top_0.ucf mojo_top_0.edf
 
-Executing edif2ngd -quiet "mojo_top_0.edf" "_ngo\mojo_top_0.ngo"
-Release 14.7 - edif2ngd P.20131013 (nt)
+Executing edif2ngd -quiet "mojo_top_0.edf" "_ngo/mojo_top_0.ngo"
+Release 14.7 - edif2ngd P.20131013 (lin)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 Reading NGO file
-"C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7
-/1D_Twins_CI03_7.runs/impl_1/_ngo/mojo_top_0.ngo" ...
+"/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.runs/impl_1/_ng
+o/mojo_top_0.ngo" ...
 Gathering constraint information from source properties...
 Done.
 
@@ -31,7 +31,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   0
 
-Total memory usage is 159688 kilobytes
+Total memory usage is 111692 kilobytes
 
 Writing NGD file "mojo_top_0.ngd" ...
 Total REAL time to NGDBUILD completion:  6 sec

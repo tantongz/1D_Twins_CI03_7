@@ -13,6 +13,8 @@ module map_to_display_3 (
     input [35:0] map_b,
     input fill_border_green,
     input fill_border_red,
+    input slowclk,
+    input show_splashscreen,
     output reg [63:0] red,
     output reg [63:0] green
   );
@@ -38,7 +40,7 @@ module map_to_display_3 (
     red[(ep_b[0+2-:3] + 1'h1)*8+(ep_b[3+2-:3] - 1'h1)*1+0-:1] = 1'h1;
     green[(ep_a[0+2-:3] + 1'h1)*8+(ep_a[3+2-:3] + 2'h3)*1+0-:1] = 1'h1;
     green[(ep_b[0+2-:3] + 1'h1)*8+(ep_b[3+2-:3] - 1'h1)*1+0-:1] = 1'h1;
-    if (fill_border_green) begin
+    if (fill_border_green & slowclk) begin
       green[0+7-:8] = 8'hff;
       green[8+7-:8] = 8'hff;
       green[48+7-:8] = 8'hff;
@@ -49,6 +51,10 @@ module map_to_display_3 (
       red[8+7-:8] = 8'hff;
       red[48+7-:8] = 8'hff;
       red[56+7-:8] = 8'hff;
+    end
+    if (show_splashscreen) begin
+      green = 64'h0000e04040400000;
+      red = 64'h00000015150a0000;
     end
   end
 endmodule

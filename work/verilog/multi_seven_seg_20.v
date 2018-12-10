@@ -12,7 +12,7 @@
 module multi_seven_seg_20 (
     input clk,
     input rst,
-    input [15:0] values,
+    input [19:0] values,
     input [3:0] decimal,
     output reg [7:0] seg,
     output reg [3:0] sel
@@ -25,7 +25,7 @@ module multi_seven_seg_20 (
   localparam DIGIT_BITS = 2'h2;
   
   wire [2-1:0] M_ctr_value;
-  counter_32 ctr (
+  counter_34 ctr (
     .clk(clk),
     .rst(rst),
     .value(M_ctr_value)
@@ -33,20 +33,20 @@ module multi_seven_seg_20 (
   
   wire [8-1:0] M_seg_dec_segs;
   reg [6-1:0] M_seg_dec_value;
-  digit_lut_33 seg_dec (
+  digit_lut_35 seg_dec (
     .value(M_seg_dec_value),
     .segs(M_seg_dec_segs)
   );
   
   wire [4-1:0] M_digit_dec_out;
   reg [2-1:0] M_digit_dec_in;
-  decoder_34 digit_dec (
+  decoder_36 digit_dec (
     .in(M_digit_dec_in),
     .out(M_digit_dec_out)
   );
   
   always @* begin
-    M_seg_dec_value = values[(M_ctr_value)*4+3-:4];
+    M_seg_dec_value = values[(M_ctr_value)*5+4-:5];
     seg = {decimal[(M_ctr_value)*1+0-:1], M_seg_dec_segs};
     M_digit_dec_in = M_ctr_value;
     sel = M_digit_dec_out;

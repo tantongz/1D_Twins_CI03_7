@@ -58,7 +58,7 @@ module mojo_top (
     button_conditioner reset_conditioner;
     button_conditioner start_conditioner;
     
-    fsm state(#INIT(MENU_WAIT)) = {MENU_WAIT, MENU_UPDATE, SETUP, WAIT,CHECKA,CHECKB, CHECKWIN, CHECKRESTART, WIN};
+    fsm state(#INIT(SPLASHSCREEN)) = {SPLASHSCREEN, MENU_WAIT, MENU_UPDATE, SETUP, RESET, WAIT,CHECKA,CHECKB, CHECKWIN, CHECKRESTART, WIN};
     
     dff level[4](#INIT(0));
     dff reg_d[3](#INIT(4));
@@ -71,16 +71,30 @@ module mojo_top (
     dff player_pos_b[6];
     dff r1[16];
     dff r2[16];
+    
     .rst(rst) {
       multi_seven_seg seg_display; // Connecting to multi_seven_seg which would help displaying on the segment.
-      
-      
+      counter slowclk(#SIZE(1),#DIV(25));
+      counter midclock(#SIZE(1),#DIV(23));      
     }
-    dff display_value[4][4]; // Size of LED segments.
+    dff display_value[4][5]; // Size of LED segments.
     
   }
   
+  .clk(slowclk.value) {
+    .rst(rst) {
+      dff win_timer[8](#INIT(0));
+    }
+  }
+  
+  .clk(midclock.value) {
+    .rst(rst) {
+      dff wait_timer[8](#INIT(0));
+    }
+  }
+  
   sig r0;
+  sig new_level[4];
   
   always {
     seg_display.decimal = 4b1111; //To control decimal point.
@@ -115,6 +129,10 @@ module mojo_top (
     map_to_dis.ep_a = map.ep_a;
     map_to_dis.ep_b = map.ep_b;
     
+    map_to_dis.show_splashscreen = ctrl.show_splashscreen;
+    
+    map_to_dis.slowclk = slowclk.value;
+    
     decoder.curr_pos = b000000;
     decoder.sel_new_pos = ctrl.sel_new_pos;
     decoder.mapdata = map.map_a;
@@ -127,6 +145,7 @@ module mojo_top (
     led = r1.q;
     ctrl.state = 0;
     ctrl.direction = 0;
+    ctrl.cur_level = level.q;
     
     reg_s.d = 0;
     
@@ -154,19 +173,34 @@ module mojo_top (
     ctrl.state = 0;
     ctrl.direction = 0;
     reg_s.d = 0;
+    seg_display.values = ctrl.text;
+    wait_timer.d = 0;
+    
+ 
     case(state.q) {
+      
+      state.SPLASHSCREEN:
+        
+        ctrl.state = 0;
+        
+        wait_timer.d = wait_timer.q + 1;
+        if (wait_timer.q == 3) {
+          wait_timer.d = 0;
+          state.d = state.MENU_WAIT;
+        }
       
       state.MENU_WAIT:
         // Waits for the user to choose a map to play.
+        
+        ctrl.state = 1;
+        
         // Load player location.
         player_pos_a.d = map.sp_a;
         player_pos_b.d = map.sp_b;
-        if(level.q > 4d9){
-          display_value.d = {4d0, 4d1, 4d11, 4d15};
-        }
-        else{
-          display_value.d = {level.q, 4d0, 4d11, 4d15};
-        }
+        
+        wait_timer.d = 0;
+        win_timer.d = 0;
+
         // Listen for direction input.
         if (right_edge_detector.out) {
           reg_d.d = 3;
@@ -194,7 +228,7 @@ module mojo_top (
       reg_s.d = start_edge_detector.out ? 1 : 0;
         
         if (reg_s.q == 1)
-          state.d = state.WAIT;
+          state.d = state.SETUP;
       
       
       state.MENU_UPDATE:
@@ -202,34 +236,55 @@ module mojo_top (
         
         ctrl.state = 1;
         ctrl.direction = see.q;
-        if(level.q == 4d10){
-        level.d = ctrl.sel_level ? 0 : level.q -1;
-
-                  }
-        else{
-        level.d = ctrl.sel_level ? level.q + 1 : level.q -1;
+        
+        new_level = ctrl.sel_level ? level.q + 1 : level.q -1;
+        
+        if (new_level == 4d10) {
+          level.d = 4d0;
+        } else if (new_level == b1111) {
+          level.d = 4d9;
+        } else {
+          level.d = new_level;
         }
-                reg_d.d = 4;
+        
+        reg_d.d = 4;
         see.d = 4;
         state.d = state.MENU_WAIT;
       
       state.SETUP:
         // Loads the player location onto the selected map.
-        // Acts as the 'reset' state as well.
         
         ctrl.state = 8;
-        led = b10000000;
         
         player_pos_a.d = map.sp_a;
         player_pos_b.d = map.sp_b;
         
-        state.d = state.WAIT;
+        wait_timer.d = wait_timer.q + 1;
+        if (wait_timer.q == 5) {
+          wait_timer.d = 0;
+          state.d = state.WAIT;
+        }
+        
+      state.RESET:
+        // Loads the player location onto the selected map.
+        
+        ctrl.state = 9;
+        
+        player_pos_a.d = map.sp_a;
+        player_pos_b.d = map.sp_b;
+        
+        wait_timer.d = wait_timer.q + 1;
+        if (wait_timer.q == 5) {
+          wait_timer.d = 0;
+          state.d = state.WAIT;
+        }
       
       state.WAIT:
         // Waits for a movement input from the player.
         
         ctrl.state = 2;
         led = b10000001;
+        wait_timer.d = 0;
         
         // Listen for a directional input.
         if (right_edge_detector.out) {
@@ -303,11 +358,17 @@ module mojo_top (
         
         ctrl.state = 6;
       
-      state.d = r0 ? state.SETUP : state.WAIT;
+      state.d = r0 ? state.RESET : state.WAIT;
       
       state.WIN:
         ctrl.state = 7;
         led = b11111111;
+        
+        win_timer.d = win_timer.q + 1;
+        if (win_timer.q == 3) {
+          win_timer.d = 0;
+          state.d = state.MENU_WAIT;
+        }
       
       // Reset button!
       reg_r.d = reset_edge_detector.out ? 1 : 0;
@@ -333,7 +394,6 @@ module mojo_top (
     
     reset_edge_detector.in = reset_conditioner.out;
     start_edge_detector.in = start_conditioner.out;
-    seg_display.values = display_value.q; //Displaying value from the state_machine on the seven segments.
     
   }
 }
