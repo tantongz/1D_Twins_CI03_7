@@ -47,8 +47,11 @@ module digit_lut_33 (
       4'ha: begin
         segs = 7'h7f;
       end
+      4'hb: begin
+        segs = 7'h47;
+      end
       default: begin
-        segs = 7'h3f;
+        segs = 7'h7f;
       end
     endcase
   end

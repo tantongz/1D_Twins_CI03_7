@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Mon Dec 10 20:32:46 2018
+// Written by: Map P.20131013 on Mon Dec 10 23:06:46 2018
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -8,17 +8,17 @@ COMP "clk" LOCATE = SITE "P56" LEVEL 1;
 COMP "cclk" LOCATE = SITE "P70" LEVEL 1;
 COMP "rst_n" LOCATE = SITE "P38" LEVEL 1;
 COMP "io_seg[0]" LOCATE = SITE "P104" LEVEL 1;
-COMP "io_seg[1]" LOCATE = SITE "P115" LEVEL 1;
-COMP "io_seg[2]" LOCATE = SITE "P66" LEVEL 1;
-COMP "io_seg[3]" LOCATE = SITE "P105" LEVEL 1;
+COMP "io_seg[1]" LOCATE = SITE "P117" LEVEL 1;
+COMP "io_seg[2]" LOCATE = SITE "P100" LEVEL 1;
+COMP "io_seg[3]" LOCATE = SITE "P102" LEVEL 1;
 COMP "io_seg[4]" LOCATE = SITE "P58" LEVEL 1;
-COMP "io_seg[5]" LOCATE = SITE "P111" LEVEL 1;
-COMP "io_seg[6]" LOCATE = SITE "P67" LEVEL 1;
-COMP "io_seg[7]" LOCATE = SITE "P102" LEVEL 1;
-COMP "io_sel[0]" LOCATE = SITE "P101" LEVEL 1;
-COMP "io_sel[1]" LOCATE = SITE "P112" LEVEL 1;
-COMP "io_sel[2]" LOCATE = SITE "P117" LEVEL 1;
-COMP "io_sel[3]" LOCATE = SITE "P75" LEVEL 1;
+COMP "io_seg[5]" LOCATE = SITE "P101" LEVEL 1;
+COMP "io_seg[6]" LOCATE = SITE "P75" LEVEL 1;
+COMP "io_seg[7]" LOCATE = SITE "P66" LEVEL 1;
+COMP "io_sel[0]" LOCATE = SITE "P111" LEVEL 1;
+COMP "io_sel[1]" LOCATE = SITE "P115" LEVEL 1;
+COMP "io_sel[2]" LOCATE = SITE "P119" LEVEL 1;
+COMP "io_sel[3]" LOCATE = SITE "P67" LEVEL 1;
 COMP "spi_sck" LOCATE = SITE "P43" LEVEL 1;
 COMP "avr_rx_busy" LOCATE = SITE "P39" LEVEL 1;
 COMP "right_btn" LOCATE = SITE "P10" LEVEL 1;
@@ -63,32 +63,35 @@ COMP "r_green[6]" LOCATE = SITE "P1" LEVEL 1;
 COMP "r_green[7]" LOCATE = SITE "P143" LEVEL 1;
 TIMEGRP clk = BEL "M_r1_q_0" BEL "M_r1_q_1" BEL "M_r1_q_2" BEL "M_r1_q_3" BEL
         "M_r1_q_4" BEL "M_r1_q_5" BEL "M_r1_q_6" BEL "M_r2_q_0" BEL
-        "M_display_value_q_3" BEL "M_player_pos_b_q_0" BEL
-        "M_player_pos_b_q_1" BEL "M_player_pos_b_q_2" BEL "M_player_pos_b_q_3"
-        BEL "M_player_pos_b_q_4" BEL "M_player_pos_b_q_5" BEL "M_reg_s_q" BEL
-        "M_reg_r_q" BEL "M_reg_d_q_0" BEL "M_reg_d_q_1" BEL "M_reg_d_q_2" BEL
-        "M_see_q_0" BEL "M_see_q_1" BEL "M_player_pos_a_q_0" BEL
-        "M_player_pos_a_q_1" BEL "M_player_pos_a_q_2" BEL "M_player_pos_a_q_3"
-        BEL "M_player_pos_a_q_4" BEL "M_player_pos_a_q_5" BEL "M_level_q_0"
-        BEL "M_level_q_1" BEL "M_level_q_2" BEL "M_level_q_3" BEL
-        "M_state_q_FSM_FFd4" BEL "M_state_q_FSM_FFd1" BEL "M_state_q_FSM_FFd3"
-        BEL "M_state_q_FSM_FFd2" BEL "M_state_q_FSM_FFd4_1" BEL
-        "M_state_q_FSM_FFd1_1" BEL "clk_BUFGP/BUFG" BEL
-        "down_edge_detector/M_last_q" BEL "reset_edge_detector/M_last_q" BEL
-        "right_edge_detector/M_last_q" BEL "up_edge_detector/M_last_q" BEL
-        "left_edge_detector/M_last_q" BEL "start_edge_detector/M_last_q" BEL
-        "down_conditioner/M_ctr_q_0" BEL "down_conditioner/M_ctr_q_1" BEL
-        "down_conditioner/M_ctr_q_2" BEL "down_conditioner/M_ctr_q_3" BEL
-        "down_conditioner/M_ctr_q_4" BEL "down_conditioner/M_ctr_q_5" BEL
-        "down_conditioner/M_ctr_q_6" BEL "down_conditioner/M_ctr_q_7" BEL
-        "down_conditioner/M_ctr_q_8" BEL "down_conditioner/M_ctr_q_9" BEL
-        "down_conditioner/M_ctr_q_10" BEL "down_conditioner/M_ctr_q_11" BEL
-        "down_conditioner/M_ctr_q_12" BEL "down_conditioner/M_ctr_q_13" BEL
-        "down_conditioner/M_ctr_q_14" BEL "down_conditioner/M_ctr_q_15" BEL
-        "down_conditioner/M_ctr_q_16" BEL "down_conditioner/M_ctr_q_17" BEL
-        "down_conditioner/M_ctr_q_18" BEL "down_conditioner/M_ctr_q_19" BEL
-        "down_conditioner/sync/M_pipe_q_1" BEL
-        "down_conditioner/sync/Mshreg_M_pipe_q_1" BEL
+        "M_player_pos_b_q_0" BEL "M_player_pos_b_q_1" BEL "M_player_pos_b_q_2"
+        BEL "M_player_pos_b_q_3" BEL "M_player_pos_b_q_4" BEL
+        "M_player_pos_b_q_5" BEL "M_reg_s_q" BEL "M_reg_r_q" BEL "M_reg_d_q_0"
+        BEL "M_reg_d_q_1" BEL "M_reg_d_q_2" BEL "M_see_q_0" BEL "M_see_q_1"
+        BEL "M_player_pos_a_q_0" BEL "M_player_pos_a_q_1" BEL
+        "M_player_pos_a_q_2" BEL "M_player_pos_a_q_3" BEL "M_player_pos_a_q_4"
+        BEL "M_player_pos_a_q_5" BEL "M_display_value_q_0" BEL
+        "M_display_value_q_8" BEL "M_display_value_q_12" BEL
+        "M_display_value_q_13" BEL "M_display_value_q_14" BEL
+        "M_display_value_q_15" BEL "M_state_q_FSM_FFd4" BEL
+        "M_state_q_FSM_FFd1" BEL "M_state_q_FSM_FFd3" BEL "M_state_q_FSM_FFd2"
+        BEL "M_level_q_0" BEL "M_level_q_1" BEL "M_level_q_2" BEL
+        "M_level_q_3" BEL "M_state_q_FSM_FFd3_1" BEL "M_state_q_FSM_FFd2_1"
+        BEL "M_state_q_FSM_FFd4_1" BEL "M_state_q_FSM_FFd1_1" BEL
+        "clk_BUFGP/BUFG" BEL "down_edge_detector/M_last_q" BEL
+        "reset_edge_detector/M_last_q" BEL "right_edge_detector/M_last_q" BEL
+        "up_edge_detector/M_last_q" BEL "left_edge_detector/M_last_q" BEL
+        "start_edge_detector/M_last_q" BEL "down_conditioner/M_ctr_q_0" BEL
+        "down_conditioner/M_ctr_q_1" BEL "down_conditioner/M_ctr_q_2" BEL
+        "down_conditioner/M_ctr_q_3" BEL "down_conditioner/M_ctr_q_4" BEL
+        "down_conditioner/M_ctr_q_5" BEL "down_conditioner/M_ctr_q_6" BEL
+        "down_conditioner/M_ctr_q_7" BEL "down_conditioner/M_ctr_q_8" BEL
+        "down_conditioner/M_ctr_q_9" BEL "down_conditioner/M_ctr_q_10" BEL
+        "down_conditioner/M_ctr_q_11" BEL "down_conditioner/M_ctr_q_12" BEL
+        "down_conditioner/M_ctr_q_13" BEL "down_conditioner/M_ctr_q_14" BEL
+        "down_conditioner/M_ctr_q_15" BEL "down_conditioner/M_ctr_q_16" BEL
+        "down_conditioner/M_ctr_q_17" BEL "down_conditioner/M_ctr_q_18" BEL
+        "down_conditioner/M_ctr_q_19" BEL "down_conditioner/sync/M_pipe_q_1"
+        BEL "down_conditioner/sync/Mshreg_M_pipe_q_1" BEL
         "right_conditioner/M_ctr_q_0" BEL "right_conditioner/M_ctr_q_1" BEL
         "right_conditioner/M_ctr_q_2" BEL "right_conditioner/M_ctr_q_3" BEL
         "right_conditioner/M_ctr_q_4" BEL "right_conditioner/M_ctr_q_5" BEL

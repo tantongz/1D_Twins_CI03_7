@@ -3,7 +3,7 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: mojo_top_0.prj
 
@@ -143,14 +143,15 @@ Elaborating module <digit_lut_33>.
 
 Elaborating module <decoder_34>.
 WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/multi_seven_seg_20.v" Line 50: Result of 9-bit expression is truncated to fit in 8-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 310: Result of 16-bit expression is truncated to fit in 8-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 329: Result of 16-bit expression is truncated to fit in 8-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 359: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 369: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 376: Result of 4-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 405: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 415: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 311: Result of 16-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 330: Result of 16-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 364: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 374: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 385: Result of 4-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 414: Result of 3-bit expression is truncated to fit in 2-bit target.
 WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 424: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 433: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:1127 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 471: Assignment to M_leveltenth_q ignored, since the identifier is never used
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -189,18 +190,20 @@ INFO:Xst:3210 - "C:/Users/ZhiYao/Documents/GitHub/1D_Twins_CI03_7/work/planAhead
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 4-bit subtractor for signal <M_level_q[3]_GND_1_o_sub_24_OUT> created at line 370.
-    Found 4-bit adder for signal <M_level_q[3]_GND_1_o_add_22_OUT> created at line 370.
-    Found 1-bit tristate buffer for signal <spi_miso> created at line 268
-    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 268
-    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 268
-    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 268
-    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 268
-    Found 1-bit tristate buffer for signal <avr_rx> created at line 268
+    Found 4-bit subtractor for signal <M_level_q[3]_GND_1_o_sub_29_OUT> created at line 378.
+    Found 4-bit adder for signal <M_level_q[3]_GND_1_o_add_27_OUT> created at line 378.
+    Found 1-bit tristate buffer for signal <spi_miso> created at line 269
+    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 269
+    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 269
+    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 269
+    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 269
+    Found 1-bit tristate buffer for signal <avr_rx> created at line 269
+    Found 4-bit comparator greater for signal <PWR_1_o_M_level_q[3]_LessThan_12_o> created at line 339
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  72 D-type flip-flop(s).
-	inferred  24 Multiplexer(s).
+	inferred   1 Comparator(s).
+	inferred  25 Multiplexer(s).
 	inferred   6 Tristate(s).
 	inferred   1 Finite State Machine(s).
 Unit <mojo_top_0> synthesized.
@@ -559,7 +562,7 @@ Macro Statistics
  3-bit register                                        : 2
  4-bit register                                        : 2
  6-bit register                                        : 2
-# Comparators                                          : 34
+# Comparators                                          : 35
  16-bit comparator greater                             : 2
  17-bit comparator greater                             : 2
  18-bit comparator greater                             : 2
@@ -577,10 +580,11 @@ Macro Statistics
  30-bit comparator greater                             : 2
  31-bit comparator greater                             : 2
  32-bit comparator greater                             : 2
-# Multiplexers                                         : 917
+ 4-bit comparator greater                              : 1
+# Multiplexers                                         : 918
  1-bit 2-to-1 multiplexer                              : 851
  1-bit 4-to-1 multiplexer                              : 17
- 16-bit 2-to-1 multiplexer                             : 16
+ 16-bit 2-to-1 multiplexer                             : 17
  16-bit 4-to-1 multiplexer                             : 2
  17-bit 2-to-1 multiplexer                             : 2
  18-bit 2-to-1 multiplexer                             : 1
@@ -688,7 +692,7 @@ Macro Statistics
  4-bit updown counter                                  : 1
 # Registers                                            : 89
  Flip-Flops                                            : 89
-# Comparators                                          : 34
+# Comparators                                          : 35
  16-bit comparator greater                             : 2
  17-bit comparator greater                             : 2
  18-bit comparator greater                             : 2
@@ -706,10 +710,11 @@ Macro Statistics
  30-bit comparator greater                             : 2
  31-bit comparator greater                             : 2
  32-bit comparator greater                             : 2
-# Multiplexers                                         : 920
+ 4-bit comparator greater                              : 1
+# Multiplexers                                         : 921
  1-bit 2-to-1 multiplexer                              : 857
  1-bit 4-to-1 multiplexer                              : 17
- 16-bit 2-to-1 multiplexer                             : 16
+ 16-bit 2-to-1 multiplexer                             : 17
  16-bit 4-to-1 multiplexer                             : 2
  17-bit 2-to-1 multiplexer                             : 2
  2-bit 2-to-1 multiplexer                              : 6
@@ -733,27 +738,6 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_15 hinder the constant cleaning in the block mojo_top_0.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_11 hinder the constant cleaning in the block mojo_top_0.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_7 hinder the constant cleaning in the block mojo_top_0.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_3 hinder the constant cleaning in the block mojo_top_0.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1293 - FF/Latch <M_display_value_q_0> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_4> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_5> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_6> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_8> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_9> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_10> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_12> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_13> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_14> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <M_display_value_q_3> in Unit <mojo_top_0> is equivalent to the following 3 FFs/Latches, which will be removed : <M_display_value_q_7> <M_display_value_q_11> <M_display_value_q_15> 
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <FSM_0> on signal <M_state_q[1:4]> with user encoding.
 -------------------
@@ -769,6 +753,25 @@ Optimizing FSM <FSM_0> on signal <M_state_q[1:4]> with user encoding.
  0111  | 0111
  1000  | 1000
 -------------------
+WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_0 hinder the constant cleaning in the block mojo_top_0.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_1 hinder the constant cleaning in the block mojo_top_0.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_2 hinder the constant cleaning in the block mojo_top_0.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_3 hinder the constant cleaning in the block mojo_top_0.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_4 hinder the constant cleaning in the block mojo_top_0.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_5 hinder the constant cleaning in the block mojo_top_0.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch M_display_value_q_7 hinder the constant cleaning in the block mojo_top_0.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1293 - FF/Latch <M_display_value_q_6> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_9> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_10> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_display_value_q_11> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <M_display_value_q_0> in Unit <mojo_top_0> is equivalent to the following 6 FFs/Latches, which will be removed : <M_display_value_q_1> <M_display_value_q_2> <M_display_value_q_3> <M_display_value_q_4> <M_display_value_q_5> <M_display_value_q_7> 
 WARNING:Xst:2042 - Unit control_6: 2 internal tristates are replaced by logic (pull-up yes): sel_level, sel_new_pos<0>.
 
 Optimizing unit <mojo_top_0> ...
@@ -833,8 +836,10 @@ INFO:Xst:2261 - The FF/Latch <seg_display/ctr/M_ctr_q_17> in Unit <mojo_top_0> i
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 16.
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 17.
 FlipFlop M_state_q_FSM_FFd1 has been replicated 1 time(s)
+FlipFlop M_state_q_FSM_FFd2 has been replicated 1 time(s)
+FlipFlop M_state_q_FSM_FFd3 has been replicated 1 time(s)
 FlipFlop M_state_q_FSM_FFd4 has been replicated 1 time(s)
 
 Final Macro Processing ...
@@ -853,8 +858,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 187
- Flip-Flops                                            : 187
+# Registers                                            : 194
+ Flip-Flops                                            : 194
 # Shift Registers                                      : 6
  2-bit shift register                                  : 6
 
@@ -879,24 +884,24 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 1104
+# BELS                             : 1168
 #      GND                         : 21
 #      INV                         : 16
 #      LUT1                        : 149
-#      LUT2                        : 7
-#      LUT3                        : 48
-#      LUT4                        : 79
-#      LUT5                        : 132
-#      LUT6                        : 285
+#      LUT2                        : 8
+#      LUT3                        : 54
+#      LUT4                        : 75
+#      LUT5                        : 197
+#      LUT6                        : 284
 #      MUXCY                       : 173
-#      MUXF7                       : 10
+#      MUXF7                       : 7
 #      VCC                         : 19
 #      XORCY                       : 165
-# FlipFlops/Latches                : 193
-#      FD                          : 12
-#      FDE                         : 37
+# FlipFlops/Latches                : 200
+#      FD                          : 14
+#      FDE                         : 38
 #      FDR                         : 20
-#      FDRE                        : 120
+#      FDRE                        : 124
 #      FDS                         : 4
 # Shift Registers                  : 6
 #      SRLC16E                     : 6
@@ -916,17 +921,17 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             193  out of  11440     1%  
- Number of Slice LUTs:                  722  out of   5720    12%  
-    Number used as Logic:               716  out of   5720    12%  
+ Number of Slice Registers:             200  out of  11440     1%  
+ Number of Slice LUTs:                  789  out of   5720    13%  
+    Number used as Logic:               783  out of   5720    13%  
     Number used as Memory:                6  out of   1440     0%  
        Number used as SRL:                6
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    742
-   Number with an unused Flip Flop:     549  out of    742    73%  
-   Number with an unused LUT:            20  out of    742     2%  
-   Number of fully used LUT-FF pairs:   173  out of    742    23%  
+ Number of LUT Flip Flop pairs used:    812
+   Number with an unused Flip Flop:     612  out of    812    75%  
+   Number with an unused LUT:            23  out of    812     2%  
+   Number of fully used LUT-FF pairs:   177  out of    812    21%  
    Number of unique control sets:        32
 
 IO Utilization: 
@@ -958,7 +963,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 199   |
+clk                                | BUFGP                  | 206   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -969,9 +974,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 18.337ns (Maximum Frequency: 54.535MHz)
+   Minimum period: 17.362ns (Maximum Frequency: 57.598MHz)
    Minimum input arrival time before clock: 3.526ns
-   Maximum output required time after clock: 12.448ns
+   Maximum output required time after clock: 12.528ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -980,38 +985,36 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 18.337ns (frequency: 54.535MHz)
-  Total number of paths / destination ports: 28776049 / 482
+  Clock period: 17.362ns (frequency: 57.598MHz)
+  Total number of paths / destination ports: 30725083 / 498
 -------------------------------------------------------------------------
-Delay:               18.337ns (Levels of Logic = 24)
-  Source:            M_reg_d_q_2 (FF)
-  Destination:       M_state_q_FSM_FFd1 (FF)
+Delay:               17.362ns (Levels of Logic = 23)
+  Source:            M_reg_d_q_0 (FF)
+  Destination:       M_state_q_FSM_FFd4 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: M_reg_d_q_2 to M_state_q_FSM_FFd1
+  Data Path: M_reg_d_q_0 to M_state_q_FSM_FFd4
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              1   0.525   0.910  M_reg_d_q_2 (M_reg_d_q_2)
-     LUT3:I0->O           15   0.235   1.155  n0023<2>1 (n0023)
-     begin scope: 'ctrl:n0023'
-     LUT6:I5->O           15   0.254   1.155  Mmux_sel_new_pos1 (sel_new_pos<1>)
-     end scope: 'ctrl:sel_new_pos<1>'
-     begin scope: 'decoder:sel_new_pos<1>'
-     LUT6:I5->O            4   0.254   0.912  Mmux__n00403_rs_lut<1>1 (Mmux__n00403_rs_lut<1>)
-     LUT6:I4->O           14   0.250   1.127  Mmux__n00403_rs_cy<2>12 (Mmux__n00403_rs_cy<2>)
-     LUT6:I5->O            4   0.254   1.032  Maddsub_n0037_Madd_lut<1>1 (GND_6_o_GND_6_o_add_13_OUT<1>1)
-     LUT6:I3->O           19   0.235   1.261  Maddsub_n0037_Madd_xor<4>11 (GND_6_o_GND_6_o_add_13_OUT<4>1)
-     LUT6:I5->O            1   0.254   0.682  Sh17712 (Sh17712)
-     LUT5:I4->O           18   0.254   1.235  Sh17713 (Sh17713)
-     end scope: 'decoder:Sh17713'
-     LUT6:I5->O            6   0.254   0.875  Mmux_M_alu_a11 (M_alu_a<0>)
-     begin scope: 'alu:a<0>'
-     begin scope: 'alu/cmp_call:a<0>'
-     begin scope: 'alu/cmp_call/adder:a<0>'
-     MUXCY:DI->O           1   0.181   0.000  Mmux_sum1_rs_cy<0> (Mmux_sum1_rs_cy<0>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_sum1_rs_cy<1> (Mmux_sum1_rs_cy<1>)
+     FDE:C->Q              7   0.525   1.018  M_reg_d_q_0 (M_reg_d_q_0)
+     LUT3:I1->O           20   0.250   1.286  n0028<2>1 (n0028)
+     LUT5:I4->O            4   0.254   0.912  M_ctrl_state<0>1_1 (M_ctrl_state<0>1)
+     begin scope: 'decoder:M_ctrl_state<0>1'
+     LUT5:I3->O            1   0.250   0.000  Maddsub_n0037_Madd1_lut<2> (Maddsub_n0037_Madd1_lut<2>)
+     XORCY:LI->O          17   0.149   1.209  Maddsub_n0037_Madd1_xor<2> (Maddsub_n0037_2)
+     LUT6:I5->O            2   0.254   0.834  Maddsub_n0037_Madd_cy<3>11_SW2 (N247)
+     LUT6:I4->O           19   0.250   1.261  Maddsub_n0037_Madd_cy<3>11 (Maddsub_n0037_Madd_cy<3>)
+     LUT6:I5->O            1   0.254   0.790  Sh17712 (Sh17712)
+     LUT5:I3->O           12   0.250   1.069  Sh17713 (Sh17713)
+     LUT5:I4->O            4   0.254   0.804  Mmux_new_pos21 (new_pos<1>)
+     end scope: 'decoder:new_pos<1>'
+     begin scope: 'alu:M_decoder_new_pos<1>'
+     begin scope: 'alu/cmp_call:M_decoder_new_pos<1>'
+     begin scope: 'alu/cmp_call/adder:M_decoder_new_pos<1>'
+     LUT6:I5->O            1   0.254   0.000  Mmux_sum1_rs_lut<1> (Mmux_sum1_rs_lut<1>)
+     MUXCY:S->O            1   0.215   0.000  Mmux_sum1_rs_cy<1> (Mmux_sum1_rs_cy<1>)
      MUXCY:CI->O           1   0.023   0.000  Mmux_sum1_rs_cy<2> (Mmux_sum1_rs_cy<2>)
      MUXCY:CI->O           1   0.023   0.000  Mmux_sum1_rs_cy<3> (Mmux_sum1_rs_cy<3>)
      MUXCY:CI->O           1   0.023   0.000  Mmux_sum1_rs_cy<4> (Mmux_sum1_rs_cy<4>)
@@ -1019,14 +1022,14 @@ Delay:               18.337ns (Levels of Logic = 24)
      end scope: 'alu/cmp_call/adder:Mmux_sum3_split<5>'
      end scope: 'alu/cmp_call:Mmux_sum3_split<5>'
      LUT6:I0->O            1   0.254   0.682  Mmux_alu35 (Mmux_alu34)
-     LUT6:I5->O            8   0.254   0.944  Mmux_alu313_SW1 (N15)
-     LUT6:I5->O            1   0.254   0.910  Mmux_alu313_SW6 (N88)
-     end scope: 'alu:N88'
-     LUT6:I3->O            1   0.235   0.000  M_state_q_FSM_FFd2-In1 (M_state_q_FSM_FFd2-In)
-     FD:D                      0.074          M_state_q_FSM_FFd2
+     LUT6:I5->O            8   0.254   0.944  Mmux_alu313_SW1 (N26)
+     LUT6:I5->O            1   0.254   0.910  Mmux_alu313_SW9 (N82)
+     end scope: 'alu:N82'
+     LUT6:I3->O            2   0.235   0.000  M_state_q_FSM_FFd4-In2 (M_state_q_FSM_FFd4-In)
+     FD:D                      0.074          M_state_q_FSM_FFd4
     ----------------------------------------
-    Total                     18.337ns (4.320ns logic, 14.017ns route)
-                                       (23.6% logic, 76.4% route)
+    Total                     17.362ns (4.506ns logic, 12.856ns route)
+                                       (26.0% logic, 74.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
@@ -1051,9 +1054,9 @@ Offset:              3.526ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 6987 / 37
+  Total number of paths / destination ports: 7011 / 43
 -------------------------------------------------------------------------
-Offset:              12.448ns (Levels of Logic = 10)
+Offset:              12.528ns (Levels of Logic = 10)
   Source:            M_level_q_3 (FF)
   Destination:       r_red<0> (PAD)
   Source Clock:      clk rising
@@ -1062,7 +1065,7 @@ Offset:              12.448ns (Levels of Logic = 10)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             48   0.525   2.064  M_level_q_3 (M_level_q_3)
+     FDRE:C->Q            56   0.525   2.144  M_level_q_3 (M_level_q_3)
      begin scope: 'map:level_adr<3>'
      LUT4:I0->O           16   0.254   1.637  Mram__n0029891 (ep_a<5>)
      end scope: 'map:ep_a<5>'
@@ -1072,13 +1075,13 @@ Offset:              12.448ns (Levels of Logic = 10)
      begin scope: 'mat_dis:_n1494<5>1'
      LUT5:I3->O            1   0.250   1.112  row_red<0>7 (row_red<0>6)
      LUT6:I1->O            1   0.254   0.790  row_red<0>8 (row_red<0>7)
-     LUT3:I1->O            1   0.250   0.000  row_red<0>9_G (N157)
+     LUT3:I1->O            1   0.250   0.000  row_red<0>9_G (N312)
      MUXF7:I1->O           1   0.175   0.681  row_red<0>9 (row_red<0>)
      end scope: 'mat_dis:row_red<0>'
      OBUF:I->O                 2.912          r_red_0_OBUF (r_red<0>)
     ----------------------------------------
-    Total                     12.448ns (4.874ns logic, 7.574ns route)
-                                       (39.2% logic, 60.8% route)
+    Total                     12.528ns (4.874ns logic, 7.654ns route)
+                                       (38.9% logic, 61.1% route)
 
 =========================================================================
 
@@ -1090,20 +1093,20 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |   18.337|         |         |         |
+clk            |   17.362|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 15.00 secs
-Total CPU time to Xst completion: 15.24 secs
+Total REAL time to Xst completion: 16.00 secs
+Total CPU time to Xst completion: 16.32 secs
  
 --> 
 
-Total memory usage is 276072 kilobytes
+Total memory usage is 276008 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   79 (   0 filtered)
+Number of warnings :   75 (   0 filtered)
 Number of infos    :   27 (   0 filtered)
 

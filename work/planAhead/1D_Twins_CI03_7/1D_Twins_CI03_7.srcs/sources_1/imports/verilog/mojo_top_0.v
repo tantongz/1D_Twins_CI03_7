@@ -242,6 +242,7 @@ module mojo_top_0 (
   reg [3:0] M_state_d, M_state_q = MENU_WAIT_state;
   reg [3:0] M_level_d, M_level_q = 1'h0;
   reg [2:0] M_reg_d_d, M_reg_d_q = 3'h4;
+  reg [3:0] M_leveltenth_d, M_leveltenth_q = 1'h0;
   reg [2:0] M_see_d, M_see_q = 1'h0;
   reg M_reg_s_d, M_reg_s_q = 1'h0;
   reg M_reg_r_d, M_reg_r_q = 1'h0;
@@ -335,7 +336,11 @@ module mojo_top_0 (
       MENU_WAIT_state: begin
         M_player_pos_a_d = M_map_sp_a;
         M_player_pos_b_d = M_map_sp_b;
-        M_display_value_d = 16'h8888;
+        if (M_level_q > 4'h9) begin
+          M_display_value_d = 16'h01bf;
+        end else begin
+          M_display_value_d = {M_level_q, 4'h0, 4'hb, 4'hf};
+        end
         if (M_right_edge_detector_out) begin
           M_reg_d_d = 2'h3;
         end else begin
@@ -367,7 +372,11 @@ module mojo_top_0 (
       MENU_UPDATE_state: begin
         M_ctrl_state = 1'h1;
         M_ctrl_direction = M_see_q;
-        M_level_d = M_ctrl_sel_level ? M_level_q + 1'h1 : M_level_q - 1'h1;
+        if (M_level_q == 4'ha) begin
+          M_level_d = M_ctrl_sel_level ? 1'h0 : M_level_q - 1'h1;
+        end else begin
+          M_level_d = M_ctrl_sel_level ? M_level_q + 1'h1 : M_level_q - 1'h1;
+        end
         M_reg_d_d = 3'h4;
         M_see_d = 3'h4;
         M_state_d = MENU_WAIT_state;
@@ -462,6 +471,7 @@ module mojo_top_0 (
   always @(posedge clk) begin
     M_level_q <= M_level_d;
     M_reg_d_q <= M_reg_d_d;
+    M_leveltenth_q <= M_leveltenth_d;
     M_see_q <= M_see_d;
     M_reg_s_q <= M_reg_s_d;
     M_reg_r_q <= M_reg_r_d;

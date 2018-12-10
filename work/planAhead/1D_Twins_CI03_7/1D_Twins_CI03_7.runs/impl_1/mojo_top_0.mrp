@@ -8,23 +8,23 @@ Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Mon Dec 10 20:32:37 2018
+Mapped Date    : Mon Dec 10 23:06:36 2018
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    6
 Slice Logic Utilization:
-  Number of Slice Registers:                   192 out of  11,440    1%
-    Number used as Flip Flops:                 192
+  Number of Slice Registers:                   200 out of  11,440    1%
+    Number used as Flip Flops:                 200
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        675 out of   5,720   11%
-    Number used as logic:                      663 out of   5,720   11%
-      Number using O6 output only:             461
+  Number of Slice LUTs:                        735 out of   5,720   12%
+    Number used as logic:                      723 out of   5,720   12%
+      Number using O6 output only:             513
       Number using O5 output only:             141
-      Number using O5 and O6:                   61
+      Number using O5 and O6:                   69
       Number used as ROM:                        0
     Number used as Memory:                       4 out of   1,440    1%
       Number used as Dual Port RAM:              0
@@ -39,13 +39,13 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   240 out of   1,430   16%
+  Number of occupied Slices:                   256 out of   1,430   17%
   Number of MUXCYs used:                       188 out of   2,860    6%
-  Number of LUT Flip Flop pairs used:          675
-    Number with an unused Flip Flop:           487 out of     675   72%
-    Number with an unused LUT:                   0 out of     675    0%
-    Number of fully used LUT-FF pairs:         188 out of     675   27%
-    Number of unique control sets:              20
+  Number of LUT Flip Flop pairs used:          739
+    Number with an unused Flip Flop:           544 out of     739   73%
+    Number with an unused LUT:                   4 out of     739    1%
+    Number of fully used LUT-FF pairs:         191 out of     739   25%
+    Number of unique control sets:              21
     Number of slice register sites lost
       to control set restrictions:              90 out of  11,440    1%
 
@@ -58,7 +58,6 @@ Slice Logic Distribution:
 IO Utilization:
   Number of bonded IOBs:                        58 out of     102   56%
     Number of LOCed IOBs:                       57 out of      58   98%
-    IOB Flip Flops:                              1
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                         0 out of      32    0%
@@ -71,9 +70,7 @@ Specific Feature Utilization:
   Number of DCM/DCM_CLKGENs:                     0 out of       4    0%
   Number of ILOGIC2/ISERDES2s:                   0 out of     200    0%
   Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     200    0%
-  Number of OLOGIC2/OSERDES2s:                   1 out of     200    1%
-    Number used as OLOGIC2s:                     1
-    Number used as OSERDES2s:                    0
+  Number of OLOGIC2/OSERDES2s:                   0 out of     200    0%
   Number of BSCANs:                              0 out of       4    0%
   Number of BUFHs:                               0 out of     128    0%
   Number of BUFPLLs:                             0 out of       8    0%
@@ -89,9 +86,9 @@ Specific Feature Utilization:
 
 Average Fanout of Non-Clock Nets:                4.14
 
-Peak Memory Usage:  361 MB
-Total REAL time to MAP completion:  8 secs 
-Total CPU time to MAP completion (all processors):   8 secs 
+Peak Memory Usage:  362 MB
+Total REAL time to MAP completion:  10 secs 
+Total CPU time to MAP completion (all processors):   10 secs 
 
 Table of Contents
 -----------------
@@ -275,7 +272,7 @@ Section 6 - IOB Properties
 | io_seg[3]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | io_seg[4]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | io_seg[5]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_seg[6]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW | OFF          |          |          |
+| io_seg[6]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | io_seg[7]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | io_sel[0]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | io_sel[1]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |

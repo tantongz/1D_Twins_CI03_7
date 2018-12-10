@@ -25,10 +25,10 @@ module digit_lut (
 //      d11: segs = ~7b1110111; //A
   //    d12: segs = ~7b0111000; //L
     //  d13: segs = ~7b0111110; //U
-      //d14: segs = ~7b1111100; //B
+      d11: segs = ~7b0111000; //L
      // d15: segs = ~7b1110011; //P
       //d16: segs = ~7b1111001;
-      default: segs = 7b0111111;
+      default: segs = ~7b0000000;
         
     }
     
