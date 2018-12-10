@@ -335,7 +335,7 @@ module mojo_top_0 (
       MENU_WAIT_state: begin
         M_player_pos_a_d = M_map_sp_a;
         M_player_pos_b_d = M_map_sp_b;
-        M_display_value_d = {M_level_q, 4'h0, 4'h0, 4'h0};
+        M_display_value_d = 16'h8888;
         if (M_right_edge_detector_out) begin
           M_reg_d_d = 2'h3;
         end else begin

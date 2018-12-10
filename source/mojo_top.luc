@@ -160,7 +160,7 @@ module mojo_top (
         // Load player location.
         player_pos_a.d = map.sp_a;
         player_pos_b.d = map.sp_b;
-        display_value.d = {level.q , 4d0, 4d0, 4d0};
+        display_value.d = {4d8, 4d8, 4d8, 4d8};
         // Listen for direction input.
         if (right_edge_detector.out) {
           reg_d.d = 3;

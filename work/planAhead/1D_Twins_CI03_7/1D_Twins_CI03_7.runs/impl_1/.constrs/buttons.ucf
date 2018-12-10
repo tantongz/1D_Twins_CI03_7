@@ -1,17 +1,17 @@
-NET "left_btn" LOC = P50;
+NET "left_btn" LOC = P2;
 NET "left_btn" IOSTANDARD = LVTTL;
 NET "left_btn" PULLUP;
-NET "down_btn" LOC = P40;
+NET "down_btn" LOC = P8;
 NET "down_btn" IOSTANDARD = LVTTL;
 NET "down_btn" PULLUP;
-NET "up_btn" LOC = P34;
+NET "up_btn" LOC = P6;
 NET "up_btn" IOSTANDARD = LVTTL;
 NET "up_btn" PULLUP;
-NET "right_btn" LOC = P32;
+NET "right_btn" LOC = P10;
 NET "right_btn" IOSTANDARD = LVTTL;
 NET "right_btn" PULLUP;
 
-NET "start_btn" LOC = P23;
+NET "start_btn" LOC = P27;
 NET "start_btn" IOSTANDARD = LVTTL;
 NET "start_btn" PULLUP;
 NET "reset_btn" LOC = P24;

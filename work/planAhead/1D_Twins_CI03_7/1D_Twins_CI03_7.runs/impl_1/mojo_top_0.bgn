@@ -5,7 +5,7 @@ C:\Xilinx\14.7\ISE_DS\ISE\.
    "mojo_top_0" is an NCD, version 3.2, device xc6slx9, package tqg144, speed -2
 Opened constraints file mojo_top_0.pcf.
 
-Sun Dec 09 20:02:07 2018
+Mon Dec 10 20:33:08 2018
 
 C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\bitgen.exe -g Binary:Yes -g Compress -w -intstyle pa mojo_top_0_routed.ncd mojo_top_0.bit mojo_top_0.pcf 
 
@@ -129,26 +129,9 @@ There were 1 CONFIG constraint(s) processed from mojo_top_0.pcf.
    CONFIG VCCAUX = "3.3"
 
 Running DRC.
-WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
-   r_red[0]_PULLDOWN is set but the tri state is not configured. 
-WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
-   r_red[1]_PULLDOWN is set but the tri state is not configured. 
-WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
-   r_red[2]_PULLDOWN is set but the tri state is not configured. 
-WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
-   r_red[3]_PULLDOWN is set but the tri state is not configured. 
-WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
-   r_red[4]_PULLDOWN is set but the tri state is not configured. 
-WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
-   r_red[5]_PULLDOWN is set but the tri state is not configured. 
-WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
-   r_red[6]_PULLDOWN is set but the tri state is not configured. 
-WARNING:PhysDesignRules:781 - PULLDOWN on an active net. PULLDOWN of comp
-   r_red[7]_PULLDOWN is set but the tri state is not configured. 
-DRC detected 0 errors and 8 warnings.  Please see the previously displayed
-individual error or warning messages for more details.
+DRC detected 0 errors and 0 warnings.
 Creating bit map...
 Saving bit stream in "mojo_top_0.bit".
-Bitstream compression saved 561840 bits.
+Bitstream compression saved 785856 bits.
 Saving bit stream in "mojo_top_0.bin".
 Bitstream generation is complete.
