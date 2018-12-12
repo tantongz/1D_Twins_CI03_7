@@ -37,7 +37,7 @@ module control (
     
   ) {
   
-  sig next_level[4];
+  sig cur_level_lastdigit[4];
   sig display_level[4][5];
   
   always {
@@ -50,13 +50,14 @@ module control (
     show_splashscreen = 0;
     hide_screen = 0;
     
-    next_level = cur_level + 1;
+    cur_level_lastdigit  = (cur_level > 4d9) ? cur_level - 4d10 : cur_level;
     
-    if(next_level > 4d9) {
-      display_level = {5d0, 5d1, 5d11, 5d14};
+    if(cur_level > 4d9) {
+      display_level = {0 + cur_level_lastdigit, 5d1, 5d11, 5d14};
     } else {
-      display_level = {0 + next_level, 5d0, 5d11, 5d14};
+      display_level = {0 + cur_level, 5d0, 5d11, 5d14};
     }
+    
     text = {5d14, 5d14, 5d14, 5d14};
     
     case (state) {

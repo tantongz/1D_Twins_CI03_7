@@ -254,7 +254,7 @@ module mojo_top_0 (
   localparam WIN_state = 4'd10;
   
   reg [3:0] M_state_d, M_state_q = SPLASHSCREEN_state;
-  reg [3:0] M_level_d, M_level_q = 1'h0;
+  reg [3:0] M_level_d, M_level_q = 1'h1;
   reg [2:0] M_reg_d_d, M_reg_d_q = 3'h4;
   reg [3:0] M_leveltenth_d, M_leveltenth_q = 1'h0;
   reg [2:0] M_see_d, M_see_q = 1'h0;
@@ -288,7 +288,6 @@ module mojo_top_0 (
     .rst(rst),
     .value(M_midclock_value)
   );
-  reg [19:0] M_display_value_d, M_display_value_q = 1'h0;
   
   reg [7:0] M_win_timer_d, M_win_timer_q = 1'h0;
   
@@ -417,14 +416,16 @@ module mojo_top_0 (
         M_ctrl_state = 1'h1;
         M_ctrl_direction = M_see_q;
         new_level = M_ctrl_sel_level ? M_level_q + 1'h1 : M_level_q - 1'h1;
-        if (new_level == 4'ha) begin
-          M_level_d = 4'h0;
-        end else begin
-          if (new_level == 4'hf) begin
-            M_level_d = 4'h9;
+        if (new_level == 4'h0) begin
+          if (M_level_q == 4'h1) begin
+            M_level_d = 4'hf;
           end else begin
-            M_level_d = new_level;
+            if (M_level_q == 4'hf) begin
+              M_level_d = 4'h1;
+            end
           end
+        end else begin
+          M_level_d = new_level;
         end
         M_reg_d_d = 3'h4;
         M_see_d = 3'h4;
@@ -564,7 +565,6 @@ module mojo_top_0 (
     M_player_pos_b_q <= M_player_pos_b_d;
     M_r1_q <= M_r1_d;
     M_r2_q <= M_r2_d;
-    M_display_value_q <= M_display_value_d;
     M_state_q <= M_state_d;
   end
   

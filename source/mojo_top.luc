@@ -60,7 +60,7 @@ module mojo_top (
     
     fsm state(#INIT(SPLASHSCREEN)) = {SPLASHSCREEN, MENU_WAIT, MENU_UPDATE, SETUP, RESET, WAIT,CHECKA,CHECKB, CHECKWIN, CHECKRESTART, WIN};
     
-    dff level[4](#INIT(0));
+    dff level[4](#INIT(1));
     dff reg_d[3](#INIT(4));
     dff leveltenth[4](#INIT(0));
     
@@ -77,7 +77,6 @@ module mojo_top (
       counter slowclk(#SIZE(1),#DIV(25));
       counter midclock(#SIZE(1),#DIV(23));      
     }
-    dff display_value[4][5]; // Size of LED segments.
     
   }
   
@@ -239,10 +238,13 @@ module mojo_top (
         
         new_level = ctrl.sel_level ? level.q + 1 : level.q -1;
         
-        if (new_level == 4d10) {
-          level.d = 4d0;
-        } else if (new_level == b1111) {
-          level.d = 4d9;
+        if (new_level == 4d0) {
+          if (level.q == 4d1) {
+            level.d = 4d15;  
+          } else if (level.q == 4d15) {
+           level.d = 4d1;
+          }
+          
         } else {
           level.d = new_level;
         }
