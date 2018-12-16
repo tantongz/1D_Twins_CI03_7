@@ -22,7 +22,7 @@ module control_6 (
   
   
   
-  reg [3:0] next_level;
+  reg [3:0] cur_level_lastdigit;
   
   reg [19:0] display_level;
   
@@ -34,11 +34,11 @@ module control_6 (
     fill_border_red = 1'h0;
     show_splashscreen = 1'h0;
     hide_screen = 1'h0;
-    next_level = cur_level + 1'h1;
-    if (next_level > 4'h9) begin
-      display_level = 20'h0056e;
+    cur_level_lastdigit = (cur_level > 4'h9) ? cur_level - 4'ha : cur_level;
+    if (cur_level > 4'h9) begin
+      display_level = {1'h0 + cur_level_lastdigit, 5'h01, 5'h0b, 5'h0e};
     end else begin
-      display_level = {1'h0 + next_level, 5'h00, 5'h0b, 5'h0e};
+      display_level = {1'h0 + cur_level, 5'h00, 5'h0b, 5'h0e};
     end
     text = 20'h739ce;
     
