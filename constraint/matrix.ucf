@@ -24,3 +24,6 @@ NET "col<2>" LOC = P139 | IOSTANDARD = LVTTL;
 NET "col<1>" LOC = P137 | IOSTANDARD = LVTTL; 
 NET "col<0>" LOC = P133 | IOSTANDARD = LVTTL;  
 
+NET "buzzer_out" LOC = P51 | IOSTANDARD = LVTTL; 
+NET "vibrate_out" LOC = P57 | IOSTANDARD = LVTTL;  
+

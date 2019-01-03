@@ -1,0 +1,121 @@
+
+module tracks_rom (
+    input track[3],
+    input update,
+    input clk,
+    input rst,
+    
+    output pulse,
+    output cur_index[3]
+  ){
+  
+    .clk(clk) {
+     .rst(rst) {
+       counter slowclk(#SIZE(1),#DIV(22));
+       pwm pC4(#TOP(93), #DIV(11));
+       pwm pG4(#TOP(62), #DIV(11));
+       pwm pC5(#TOP(47), #DIV(11));
+       pwm pC6(#TOP(12), #DIV(11)); 
+       pwm pA5(#TOP(28), #DIV(11)); 
+       pwm pGS5(#TOP(29), #DIV(11)); 
+       dff actual_track[3];
+       dff playing;
+    }
+  }
+  
+  .clk(slowclk.value){
+    .rst(rst){
+      dff index[3];
+    }
+  }
+  
+  sig track1[7][4];
+  sig track2[7][4];
+  sig track3[7][4];
+  sig track4[7][4];
+  
+  always {        
+    
+    cur_index = index.q;
+    
+    if (update == 1) {
+      actual_track.d = track;
+      index.d = 0;
+      playing.d = 1;
+    }
+    
+    pC4.update = 1;
+    pG4.update = 1;
+    pC5.update = 1;
+    pC6.update = 1;
+    pA5.update = 1;
+    pGS5.update = 1;
+    
+    pC4.value = b00001000;
+    pG4.value = b00001000;
+    pC5.value = b00001000;
+    pC6.value = b00001000;
+    pA5.value = b00001000;
+    pGS5.value = b00001000;
+    
+    track1 = {4b0010, 4b0011, 4b0010, 4b0011, 4b0011, 4b0011, 4b0010}; // Splashscreen 
+    track2 = {4b0010, 4b0011, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000}; // Start level
+    track3 = {4b0011, 4b0010, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000}; // Dieded
+    track4 = {4b0011, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000}; // Move
+    
+    pulse = 0;
+    
+    if (playing.q == 1) {
+      
+      index.d = index.q - 1;
+      if (index.q == b111) {
+        playing.d = 0;  
+      }
+      
+      case (actual_track.q) {
+        b001:  case (track1[index.q]) {
+              1: pulse = pC4.pulse;
+              2: pulse = pG4.pulse;
+              3: pulse = pC5.pulse;
+              4: pulse = pC6.pulse;
+              5: pulse = pA5.pulse;
+              6: pulse = pGS5.pulse;
+          }
+      
+  
+        
+        b010:  case (track2[index.q]) {
+              1: pulse = pC4.pulse;
+              2: pulse = pG4.pulse;
+              3: pulse = pC5.pulse;
+              4: pulse = pC6.pulse;
+              5: pulse = pA5.pulse;
+              6: pulse = pGS5.pulse;
+          }
+        
+        b011:  case (track3[index.q]) {
+              1: pulse = pC4.pulse;
+              2: pulse = pG4.pulse;
+              3: pulse = pC5.pulse;
+              4: pulse = pC6.pulse;
+              5: pulse = pA5.pulse;
+              6: pulse = pGS5.pulse;
+          }
+            
+          
+        b100:  case (track4[index.q]) {
+              1: pulse = pC4.pulse;
+              2: pulse = pG4.pulse;
+              3: pulse = pC5.pulse;
+              4: pulse = pC6.pulse;
+              5: pulse = pA5.pulse;
+              6: pulse = pGS5.pulse;
+          }
+          
+        default: pulse = 0;
+          
+      }
+        
+    }
+  }
+}

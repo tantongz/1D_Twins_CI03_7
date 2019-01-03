@@ -25,7 +25,10 @@ module mojo_top (
     output col[8],
     output led[8], //built-in leds
     output io_seg [8],      // 7-segment LEDs on IO Shield.
-    output io_sel [4]      // Digit select on IO Shield.
+    output io_sel [4],      // Digit select on IO Shield.
+    
+    output buzzer_out,
+    output vibrate_out
     
   ) {
   
@@ -75,7 +78,8 @@ module mojo_top (
     .rst(rst) {
       multi_seven_seg seg_display; // Connecting to multi_seven_seg which would help displaying on the segment.
       counter slowclk(#SIZE(1),#DIV(25));
-      counter midclock(#SIZE(1),#DIV(23));      
+      counter midclock(#SIZE(1),#DIV(23));
+      tracks_rom tracks;
     }
     
   }
@@ -106,6 +110,11 @@ module mojo_top (
     spi_miso = bz;          // Not using SPI.
     spi_channel = bzzzz;    // Not using flags.
     avr_rx = bz;            // Not using serial port.
+    
+    tracks.track = 0;
+    tracks.update = 0;
+    buzzer_out = tracks.pulse;
+    vibrate_out = 0;
     
     // Setup of various control signals.
     
@@ -166,7 +175,7 @@ module mojo_top (
     
     r0 = alu.alu[0];
     led = b00000000;
-    led = r1.q;
+    led = tracks.cur_index;
     
     
     ctrl.state = 0;
@@ -181,6 +190,9 @@ module mojo_top (
       state.SPLASHSCREEN:
         
         ctrl.state = 0;
+        tracks.track = b001;
+        tracks.update = 1;
+        vibrate_out = 1;
         
         wait_timer.d = wait_timer.q + 1;
         if (wait_timer.q == 3) {
@@ -249,6 +261,8 @@ module mojo_top (
           level.d = new_level;
         }
         
+        vibrate_out = 1;
+        
         reg_d.d = 4;
         see.d = 4;
         state.d = state.MENU_WAIT;
@@ -256,6 +270,8 @@ module mojo_top (
       state.SETUP:
         // Loads the player location onto the selected map.
         
+        tracks.track = b010;
+        tracks.update = 1;
         ctrl.state = 8;
         
         player_pos_a.d = map.sp_a;
@@ -270,6 +286,8 @@ module mojo_top (
       state.RESET:
         // Loads the player location onto the selected map.
         
+        tracks.track = b011;
+        tracks.update = 1;
         ctrl.state = 9;
         
         player_pos_a.d = map.sp_a;
@@ -364,7 +382,9 @@ module mojo_top (
       
       state.WIN:
         ctrl.state = 7;
-        led = b11111111;
+        tracks.track = b001;
+        tracks.update = 1;
+        vibrate_out = 1;
         
         win_timer.d = win_timer.q + 1;
         if (win_timer.q == 3) {

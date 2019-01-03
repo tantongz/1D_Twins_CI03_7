@@ -27,7 +27,9 @@ module mojo_top_0 (
     output reg [7:0] col,
     output reg [7:0] led,
     output reg [7:0] io_seg,
-    output reg [3:0] io_sel
+    output reg [3:0] io_sel,
+    output reg buzzer_out,
+    output reg vibrate_out
   );
   
   
@@ -288,6 +290,18 @@ module mojo_top_0 (
     .rst(rst),
     .value(M_midclock_value)
   );
+  wire [1-1:0] M_tracks_pulse;
+  wire [3-1:0] M_tracks_cur_index;
+  reg [3-1:0] M_tracks_track;
+  reg [1-1:0] M_tracks_update;
+  tracks_rom_23 tracks (
+    .clk(clk),
+    .rst(rst),
+    .track(M_tracks_track),
+    .update(M_tracks_update),
+    .pulse(M_tracks_pulse),
+    .cur_index(M_tracks_cur_index)
+  );
   
   reg [7:0] M_win_timer_d, M_win_timer_q = 1'h0;
   
@@ -320,6 +334,10 @@ module mojo_top_0 (
     spi_miso = 1'bz;
     spi_channel = 4'bzzzz;
     avr_rx = 1'bz;
+    M_tracks_track = 1'h0;
+    M_tracks_update = 1'h0;
+    buzzer_out = M_tracks_pulse;
+    vibrate_out = 1'h0;
     r_red = M_mat_dis_row_red;
     r_green = M_mat_dis_row_green;
     col = M_mat_dis_col;
@@ -362,7 +380,7 @@ module mojo_top_0 (
     end
     r0 = M_alu_alu[0+0-:1];
     led = 8'h00;
-    led = M_r1_q;
+    led = M_tracks_cur_index;
     M_ctrl_state = 1'h0;
     M_ctrl_direction = 1'h0;
     M_reg_s_d = 1'h0;
@@ -372,6 +390,9 @@ module mojo_top_0 (
     case (M_state_q)
       SPLASHSCREEN_state: begin
         M_ctrl_state = 1'h0;
+        M_tracks_track = 3'h1;
+        M_tracks_update = 1'h1;
+        vibrate_out = 1'h1;
         M_wait_timer_d = M_wait_timer_q + 1'h1;
         if (M_wait_timer_q == 2'h3) begin
           M_wait_timer_d = 1'h0;
@@ -427,11 +448,14 @@ module mojo_top_0 (
         end else begin
           M_level_d = new_level;
         end
+        vibrate_out = 1'h1;
         M_reg_d_d = 3'h4;
         M_see_d = 3'h4;
         M_state_d = MENU_WAIT_state;
       end
       SETUP_state: begin
+        M_tracks_track = 3'h2;
+        M_tracks_update = 1'h1;
         M_ctrl_state = 4'h8;
         M_player_pos_a_d = M_map_sp_a;
         M_player_pos_b_d = M_map_sp_b;
@@ -442,6 +466,8 @@ module mojo_top_0 (
         end
       end
       RESET_state: begin
+        M_tracks_track = 3'h3;
+        M_tracks_update = 1'h1;
         M_ctrl_state = 4'h9;
         M_player_pos_a_d = M_map_sp_a;
         M_player_pos_b_d = M_map_sp_b;
@@ -510,7 +536,9 @@ module mojo_top_0 (
       end
       WIN_state: begin
         M_ctrl_state = 3'h7;
-        led = 8'hff;
+        M_tracks_track = 3'h1;
+        M_tracks_update = 1'h1;
+        vibrate_out = 1'h1;
         M_win_timer_d = M_win_timer_q + 1'h1;
         if (M_win_timer_q == 2'h3) begin
           M_win_timer_d = 1'h0;
@@ -536,20 +564,20 @@ module mojo_top_0 (
     M_start_edge_detector_in = M_start_conditioner_out;
   end
   
-  always @(posedge M_slowclk_value) begin
-    if (rst == 1'b1) begin
-      M_win_timer_q <= 1'h0;
-    end else begin
-      M_win_timer_q <= M_win_timer_d;
-    end
-  end
-  
-  
   always @(posedge M_midclock_value) begin
     if (rst == 1'b1) begin
       M_wait_timer_q <= 1'h0;
     end else begin
       M_wait_timer_q <= M_wait_timer_d;
+    end
+  end
+  
+  
+  always @(posedge M_slowclk_value) begin
+    if (rst == 1'b1) begin
+      M_win_timer_q <= 1'h0;
+    end else begin
+      M_win_timer_q <= M_win_timer_d;
     end
   end
   

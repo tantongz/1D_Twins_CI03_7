@@ -1,9 +1,10 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Dec 11 10:23:05 2018
+// Written by: Map P.20131013 on Thu Jan 03 12:49:34 2019
 //! **************************************************************************
 
 SCHEMATIC START;
 CONFIG VCCAUX = "3.3";
+COMP "buzzer_out" LOCATE = SITE "P51" LEVEL 1;
 COMP "clk" LOCATE = SITE "P56" LEVEL 1;
 COMP "cclk" LOCATE = SITE "P70" LEVEL 1;
 COMP "rst_n" LOCATE = SITE "P38" LEVEL 1;
@@ -44,6 +45,7 @@ COMP "left_btn" LOCATE = SITE "P2" LEVEL 1;
 COMP "down_btn" LOCATE = SITE "P8" LEVEL 1;
 COMP "up_btn" LOCATE = SITE "P6" LEVEL 1;
 COMP "spi_ss" LOCATE = SITE "P48" LEVEL 1;
+COMP "vibrate_out" LOCATE = SITE "P57" LEVEL 1;
 COMP "r_red[0]" LOCATE = SITE "P79" LEVEL 1;
 COMP "r_red[1]" LOCATE = SITE "P81" LEVEL 1;
 COMP "r_red[2]" LOCATE = SITE "P83" LEVEL 1;
@@ -62,28 +64,71 @@ COMP "r_green[4]" LOCATE = SITE "P7" LEVEL 1;
 COMP "r_green[5]" LOCATE = SITE "P5" LEVEL 1;
 COMP "r_green[6]" LOCATE = SITE "P1" LEVEL 1;
 COMP "r_green[7]" LOCATE = SITE "P143" LEVEL 1;
-TIMEGRP clk = BEL "M_r1_q_0" BEL "M_r1_q_1" BEL "M_r1_q_3" BEL "M_r1_q_4" BEL
-        "M_r1_q_5" BEL "M_r1_q_6" BEL "M_r2_q_0" BEL "M_reg_s_q" BEL
-        "M_reg_r_q" BEL "M_player_pos_b_q_0" BEL "M_player_pos_b_q_1" BEL
-        "M_player_pos_b_q_2" BEL "M_player_pos_b_q_3" BEL "M_player_pos_b_q_4"
-        BEL "M_player_pos_b_q_5" BEL "M_reg_d_q_0" BEL "M_reg_d_q_1" BEL
-        "M_reg_d_q_2" BEL "M_see_q_0" BEL "M_see_q_1" BEL "M_level_q_0" BEL
-        "M_player_pos_a_q_0" BEL "M_player_pos_a_q_1" BEL "M_player_pos_a_q_2"
-        BEL "M_player_pos_a_q_3" BEL "M_player_pos_a_q_4" BEL
-        "M_player_pos_a_q_5" BEL "M_state_q_FSM_FFd4" BEL "M_state_q_FSM_FFd3"
-        BEL "M_state_q_FSM_FFd2" BEL "M_state_q_FSM_FFd1" BEL "M_level_q_1"
-        BEL "M_level_q_2" BEL "M_level_q_3" BEL "M_state_q_FSM_FFd2_1" BEL
-        "M_state_q_FSM_FFd1_1" BEL "M_state_q_FSM_FFd4_1" BEL
-        "M_state_q_FSM_FFd3_1" BEL "M_player_pos_b_q_0_1" BEL
-        "M_state_q_FSM_FFd2_2" BEL "M_level_q_1_1" BEL "M_level_q_2_1" BEL
-        "M_state_q_FSM_FFd1_2" BEL "M_level_q_0_1" BEL "clk_BUFGP/BUFG" BEL
-        "down_edge_detector/M_last_q" BEL "slowclk/M_ctr_q_24" BEL
-        "slowclk/M_ctr_q_25" BEL "reset_edge_detector/M_last_q" BEL
-        "right_edge_detector/M_last_q" BEL "up_edge_detector/M_last_q" BEL
-        "midclock/M_ctr_q_18" BEL "midclock/M_ctr_q_19" BEL
+TIMEGRP clk = BEL "midclock/M_ctr_q_18" BEL "midclock/M_ctr_q_19" BEL
         "midclock/M_ctr_q_20" BEL "midclock/M_ctr_q_21" BEL
         "midclock/M_ctr_q_22" BEL "midclock/M_ctr_q_23" BEL
-        "left_edge_detector/M_last_q" BEL "start_edge_detector/M_last_q" BEL
+        "M_state_q_FSM_FFd2_1" BEL "M_state_q_FSM_FFd2_2" BEL
+        "seg_display/ctr/M_ctr_q_0" BEL "seg_display/ctr/M_ctr_q_1" BEL
+        "seg_display/ctr/M_ctr_q_2" BEL "seg_display/ctr/M_ctr_q_3" BEL
+        "seg_display/ctr/M_ctr_q_4" BEL "seg_display/ctr/M_ctr_q_5" BEL
+        "seg_display/ctr/M_ctr_q_6" BEL "seg_display/ctr/M_ctr_q_7" BEL
+        "seg_display/ctr/M_ctr_q_8" BEL "seg_display/ctr/M_ctr_q_9" BEL
+        "seg_display/ctr/M_ctr_q_10" BEL "seg_display/ctr/M_ctr_q_11" BEL
+        "seg_display/ctr/M_ctr_q_12" BEL "seg_display/ctr/M_ctr_q_13" BEL
+        "seg_display/ctr/M_ctr_q_14" BEL "seg_display/ctr/M_ctr_q_15" BEL
+        "seg_display/ctr/M_ctr_q_16" BEL "seg_display/ctr/M_ctr_q_17" BEL
+        "clk_BUFGP/BUFG" BEL "reset_cond/M_stage_q_3" BEL
+        "reset_cond/M_stage_q_2" BEL "reset_cond/M_stage_q_1" BEL
+        "reset_cond/M_stage_q_0" BEL "M_state_q_FSM_FFd3_1" BEL
+        "M_state_q_FSM_FFd3_2" BEL "reset_conditioner/M_ctr_q_0" BEL
+        "reset_conditioner/M_ctr_q_1" BEL "reset_conditioner/M_ctr_q_2" BEL
+        "reset_conditioner/M_ctr_q_3" BEL "reset_conditioner/M_ctr_q_4" BEL
+        "reset_conditioner/M_ctr_q_5" BEL "reset_conditioner/M_ctr_q_6" BEL
+        "reset_conditioner/M_ctr_q_7" BEL "reset_conditioner/M_ctr_q_8" BEL
+        "reset_conditioner/M_ctr_q_9" BEL "reset_conditioner/M_ctr_q_10" BEL
+        "reset_conditioner/M_ctr_q_11" BEL "reset_conditioner/M_ctr_q_12" BEL
+        "reset_conditioner/M_ctr_q_13" BEL "reset_conditioner/M_ctr_q_14" BEL
+        "reset_conditioner/M_ctr_q_15" BEL "reset_conditioner/M_ctr_q_16" BEL
+        "reset_conditioner/M_ctr_q_17" BEL "reset_conditioner/M_ctr_q_18" BEL
+        "reset_conditioner/M_ctr_q_19" BEL "reset_conditioner/sync/M_pipe_q_1"
+        BEL "reset_conditioner/sync/Mshreg_M_pipe_q_1" BEL "M_see_q_0" BEL
+        "M_see_q_1" BEL "M_state_q_FSM_FFd4_1" BEL "M_player_pos_b_q_0" BEL
+        "M_player_pos_b_q_1" BEL "M_player_pos_b_q_2" BEL "M_player_pos_b_q_3"
+        BEL "M_player_pos_b_q_4" BEL "M_player_pos_b_q_5" BEL
+        "M_player_pos_b_q_0_1" BEL "down_edge_detector/M_last_q" BEL
+        "M_state_q_FSM_FFd1" BEL "M_state_q_FSM_FFd2" BEL "M_state_q_FSM_FFd3"
+        BEL "M_state_q_FSM_FFd4" BEL "M_reg_d_q_0" BEL "M_reg_d_q_1" BEL
+        "M_reg_d_q_2" BEL "left_conditioner/M_ctr_q_0" BEL
+        "left_conditioner/M_ctr_q_1" BEL "left_conditioner/M_ctr_q_2" BEL
+        "left_conditioner/M_ctr_q_3" BEL "left_conditioner/M_ctr_q_4" BEL
+        "left_conditioner/M_ctr_q_5" BEL "left_conditioner/M_ctr_q_6" BEL
+        "left_conditioner/M_ctr_q_7" BEL "left_conditioner/M_ctr_q_8" BEL
+        "left_conditioner/M_ctr_q_9" BEL "left_conditioner/M_ctr_q_10" BEL
+        "left_conditioner/M_ctr_q_11" BEL "left_conditioner/M_ctr_q_12" BEL
+        "left_conditioner/M_ctr_q_13" BEL "left_conditioner/M_ctr_q_14" BEL
+        "left_conditioner/M_ctr_q_15" BEL "left_conditioner/M_ctr_q_16" BEL
+        "left_conditioner/M_ctr_q_17" BEL "left_conditioner/M_ctr_q_18" BEL
+        "left_conditioner/M_ctr_q_19" BEL "left_conditioner/sync/M_pipe_q_1"
+        BEL "left_conditioner/sync/Mshreg_M_pipe_q_1" BEL "M_reg_r_q" BEL
+        "M_r2_q_0" BEL "reset_edge_detector/M_last_q" BEL "M_reg_s_q" BEL
+        "start_conditioner/M_ctr_q_0" BEL "start_conditioner/M_ctr_q_1" BEL
+        "start_conditioner/M_ctr_q_2" BEL "start_conditioner/M_ctr_q_3" BEL
+        "start_conditioner/M_ctr_q_4" BEL "start_conditioner/M_ctr_q_5" BEL
+        "start_conditioner/M_ctr_q_6" BEL "start_conditioner/M_ctr_q_7" BEL
+        "start_conditioner/M_ctr_q_8" BEL "start_conditioner/M_ctr_q_9" BEL
+        "start_conditioner/M_ctr_q_10" BEL "start_conditioner/M_ctr_q_11" BEL
+        "start_conditioner/M_ctr_q_12" BEL "start_conditioner/M_ctr_q_13" BEL
+        "start_conditioner/M_ctr_q_14" BEL "start_conditioner/M_ctr_q_15" BEL
+        "start_conditioner/M_ctr_q_16" BEL "start_conditioner/M_ctr_q_17" BEL
+        "start_conditioner/M_ctr_q_18" BEL "start_conditioner/M_ctr_q_19" BEL
+        "start_conditioner/sync/M_pipe_q_1" BEL
+        "start_conditioner/sync/Mshreg_M_pipe_q_1" BEL "M_player_pos_a_q_0"
+        BEL "M_player_pos_a_q_1" BEL "M_player_pos_a_q_2" BEL
+        "M_player_pos_a_q_3" BEL "M_player_pos_a_q_4" BEL "M_player_pos_a_q_5"
+        BEL "M_level_q_0_1" BEL "up_edge_detector/M_last_q" BEL
+        "M_level_q_1_1" BEL "left_edge_detector/M_last_q" BEL "M_level_q_0"
+        BEL "M_level_q_1" BEL "M_level_q_2" BEL "M_level_q_3" BEL
+        "M_level_q_2_1" BEL "M_r1_q_0" BEL "M_r1_q_1" BEL "M_r1_q_3" BEL
         "down_conditioner/M_ctr_q_0" BEL "down_conditioner/M_ctr_q_1" BEL
         "down_conditioner/M_ctr_q_2" BEL "down_conditioner/M_ctr_q_3" BEL
         "down_conditioner/M_ctr_q_4" BEL "down_conditioner/M_ctr_q_5" BEL
@@ -95,7 +140,9 @@ TIMEGRP clk = BEL "M_r1_q_0" BEL "M_r1_q_1" BEL "M_r1_q_3" BEL "M_r1_q_4" BEL
         "down_conditioner/M_ctr_q_16" BEL "down_conditioner/M_ctr_q_17" BEL
         "down_conditioner/M_ctr_q_18" BEL "down_conditioner/M_ctr_q_19" BEL
         "down_conditioner/sync/M_pipe_q_1" BEL
-        "down_conditioner/sync/Mshreg_M_pipe_q_1" BEL
+        "down_conditioner/sync/Mshreg_M_pipe_q_1" BEL "M_r1_q_4" BEL
+        "M_r1_q_5" BEL "M_r1_q_6" BEL "slowclk/M_ctr_q_24" BEL
+        "slowclk/M_ctr_q_25" BEL "M_level_q_3_1" BEL
         "right_conditioner/M_ctr_q_0" BEL "right_conditioner/M_ctr_q_1" BEL
         "right_conditioner/M_ctr_q_2" BEL "right_conditioner/M_ctr_q_3" BEL
         "right_conditioner/M_ctr_q_4" BEL "right_conditioner/M_ctr_q_5" BEL
@@ -119,54 +166,17 @@ TIMEGRP clk = BEL "M_r1_q_0" BEL "M_r1_q_1" BEL "M_r1_q_3" BEL "M_r1_q_4" BEL
         "up_conditioner/M_ctr_q_16" BEL "up_conditioner/M_ctr_q_17" BEL
         "up_conditioner/M_ctr_q_18" BEL "up_conditioner/M_ctr_q_19" BEL
         "up_conditioner/sync/M_pipe_q_1" BEL
-        "up_conditioner/sync/Mshreg_M_pipe_q_1" BEL
-        "reset_conditioner/M_ctr_q_0" BEL "reset_conditioner/M_ctr_q_1" BEL
-        "reset_conditioner/M_ctr_q_2" BEL "reset_conditioner/M_ctr_q_3" BEL
-        "reset_conditioner/M_ctr_q_4" BEL "reset_conditioner/M_ctr_q_5" BEL
-        "reset_conditioner/M_ctr_q_6" BEL "reset_conditioner/M_ctr_q_7" BEL
-        "reset_conditioner/M_ctr_q_8" BEL "reset_conditioner/M_ctr_q_9" BEL
-        "reset_conditioner/M_ctr_q_10" BEL "reset_conditioner/M_ctr_q_11" BEL
-        "reset_conditioner/M_ctr_q_12" BEL "reset_conditioner/M_ctr_q_13" BEL
-        "reset_conditioner/M_ctr_q_14" BEL "reset_conditioner/M_ctr_q_15" BEL
-        "reset_conditioner/M_ctr_q_16" BEL "reset_conditioner/M_ctr_q_17" BEL
-        "reset_conditioner/M_ctr_q_18" BEL "reset_conditioner/M_ctr_q_19" BEL
-        "reset_conditioner/sync/M_pipe_q_1" BEL
-        "reset_conditioner/sync/Mshreg_M_pipe_q_1" BEL
-        "seg_display/ctr/M_ctr_q_0" BEL "seg_display/ctr/M_ctr_q_1" BEL
-        "seg_display/ctr/M_ctr_q_2" BEL "seg_display/ctr/M_ctr_q_3" BEL
-        "seg_display/ctr/M_ctr_q_4" BEL "seg_display/ctr/M_ctr_q_5" BEL
-        "seg_display/ctr/M_ctr_q_6" BEL "seg_display/ctr/M_ctr_q_7" BEL
-        "seg_display/ctr/M_ctr_q_8" BEL "seg_display/ctr/M_ctr_q_9" BEL
-        "seg_display/ctr/M_ctr_q_10" BEL "seg_display/ctr/M_ctr_q_11" BEL
-        "seg_display/ctr/M_ctr_q_12" BEL "seg_display/ctr/M_ctr_q_13" BEL
-        "seg_display/ctr/M_ctr_q_14" BEL "seg_display/ctr/M_ctr_q_15" BEL
-        "seg_display/ctr/M_ctr_q_16" BEL "seg_display/ctr/M_ctr_q_17" BEL
-        "start_conditioner/M_ctr_q_0" BEL "start_conditioner/M_ctr_q_1" BEL
-        "start_conditioner/M_ctr_q_2" BEL "start_conditioner/M_ctr_q_3" BEL
-        "start_conditioner/M_ctr_q_4" BEL "start_conditioner/M_ctr_q_5" BEL
-        "start_conditioner/M_ctr_q_6" BEL "start_conditioner/M_ctr_q_7" BEL
-        "start_conditioner/M_ctr_q_8" BEL "start_conditioner/M_ctr_q_9" BEL
-        "start_conditioner/M_ctr_q_10" BEL "start_conditioner/M_ctr_q_11" BEL
-        "start_conditioner/M_ctr_q_12" BEL "start_conditioner/M_ctr_q_13" BEL
-        "start_conditioner/M_ctr_q_14" BEL "start_conditioner/M_ctr_q_15" BEL
-        "start_conditioner/M_ctr_q_16" BEL "start_conditioner/M_ctr_q_17" BEL
-        "start_conditioner/M_ctr_q_18" BEL "start_conditioner/M_ctr_q_19" BEL
-        "start_conditioner/sync/M_pipe_q_1" BEL
-        "start_conditioner/sync/Mshreg_M_pipe_q_1" BEL
-        "left_conditioner/M_ctr_q_0" BEL "left_conditioner/M_ctr_q_1" BEL
-        "left_conditioner/M_ctr_q_2" BEL "left_conditioner/M_ctr_q_3" BEL
-        "left_conditioner/M_ctr_q_4" BEL "left_conditioner/M_ctr_q_5" BEL
-        "left_conditioner/M_ctr_q_6" BEL "left_conditioner/M_ctr_q_7" BEL
-        "left_conditioner/M_ctr_q_8" BEL "left_conditioner/M_ctr_q_9" BEL
-        "left_conditioner/M_ctr_q_10" BEL "left_conditioner/M_ctr_q_11" BEL
-        "left_conditioner/M_ctr_q_12" BEL "left_conditioner/M_ctr_q_13" BEL
-        "left_conditioner/M_ctr_q_14" BEL "left_conditioner/M_ctr_q_15" BEL
-        "left_conditioner/M_ctr_q_16" BEL "left_conditioner/M_ctr_q_17" BEL
-        "left_conditioner/M_ctr_q_18" BEL "left_conditioner/M_ctr_q_19" BEL
-        "left_conditioner/sync/M_pipe_q_1" BEL
-        "left_conditioner/sync/Mshreg_M_pipe_q_1" BEL "reset_cond/M_stage_q_3"
-        BEL "reset_cond/M_stage_q_2" BEL "reset_cond/M_stage_q_1" BEL
-        "reset_cond/M_stage_q_0";
-TS_clk = PERIOD TIMEGRP "clk" 40 MHz HIGH 50%;
+        "up_conditioner/sync/Mshreg_M_pipe_q_1" BEL "tracks/M_playing_q" BEL
+        "tracks/M_actual_track_q_1" BEL "tracks/M_actual_track_q_0" BEL
+        "tracks/pC4/M_needUpdate_q" BEL "tracks/pC4/M_nextValue_q" BEL
+        "tracks/pC5/M_curValue_q_3" BEL "tracks/pC5/ctr/M_ctr_q_18" BEL
+        "tracks/pC5/ctr/M_ctr_q_17" BEL "tracks/pC5/ctr/M_ctr_q_16" BEL
+        "tracks/pC5/ctr/M_ctr_q_15" BEL "tracks/pG4/M_curValue_q_3" BEL
+        "tracks/pG4/ctr/M_ctr_q_16" BEL "tracks/pG4/ctr/M_ctr_q_15" BEL
+        "tracks/pG4/ctr/M_ctr_q_14" BEL "tracks/pG4/ctr/M_ctr_q_13" BEL
+        "tracks/pG4/ctr/M_ctr_q_12" BEL "tracks/pG4/ctr/M_ctr_q_11" BEL
+        "start_edge_detector/M_last_q" BEL "M_state_q_FSM_FFd1_1" BEL
+        "M_state_q_FSM_FFd1_2" BEL "right_edge_detector/M_last_q";
+TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
 SCHEMATIC END;
 

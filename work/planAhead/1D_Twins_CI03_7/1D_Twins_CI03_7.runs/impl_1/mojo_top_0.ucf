@@ -35,7 +35,7 @@ NET "reset_btn" PULLUP;
 CONFIG VCCAUX  = 3.3;
 
 NET "clk" TNM_NET = "clk";
-TIMESPEC TS_clk = PERIOD "clk" 40 MHz HIGH 50 %;
+TIMESPEC TS_clk = PERIOD "clk" 50 MHz HIGH 50 %;
 
 NET "clk" LOC = P56;
 NET "clk" IOSTANDARD = LVTTL;
@@ -165,4 +165,9 @@ NET "col[1]" LOC = P137;
 NET "col[1]" IOSTANDARD = LVTTL;
 NET "col[0]" LOC = P133;
 NET "col[0]" IOSTANDARD = LVTTL;
+
+NET "buzzer_out" LOC = P51;
+NET "buzzer_out" IOSTANDARD = LVTTL;
+NET "vibrate_out" LOC = P57;
+NET "vibrate_out" IOSTANDARD = LVTTL;
 
