@@ -65,7 +65,6 @@ module mojo_top (
     
     dff level[4](#INIT(1));
     dff reg_d[3](#INIT(4));
-    dff leveltenth[4](#INIT(0));
     
     dff see[3];
     dff reg_s;
@@ -74,11 +73,13 @@ module mojo_top (
     dff player_pos_b[6];
     dff r1[16];
     dff r2[16];
+    dff perform_vibrate(#INIT(0));
     
     .rst(rst) {
       multi_seven_seg seg_display; // Connecting to multi_seven_seg which would help displaying on the segment.
       counter slowclk(#SIZE(1),#DIV(25));
       counter midclock(#SIZE(1),#DIV(23));
+      counter fastclock(#SIZE(1),#DIV(21));
       tracks_rom tracks;
     }
     
@@ -93,6 +94,12 @@ module mojo_top (
   .clk(midclock.value) {
     .rst(rst) {
       dff wait_timer[8](#INIT(0));
+    }
+  }
+  
+  .clk(fastclock.value) {
+    .rst(rst) {
+      dff vibrate_timer[8](#INIT(0));
     }
   }
   
@@ -150,7 +157,6 @@ module mojo_top (
     alu.alufn = ctrl.alufn;
     
     led = b00000000;
-    led = r1.q;
     ctrl.state = 0;
     ctrl.direction = 0;
     ctrl.cur_level = level.q;
@@ -184,13 +190,26 @@ module mojo_top (
     seg_display.values = ctrl.text;
     wait_timer.d = 0;
     
+    if (perform_vibrate.q == 1) {
+      vibrate_out = 1;
+      if (vibrate_timer.q == 2) {
+        perform_vibrate.d = 0; 
+        vibrate_timer.d = 0;
+      } else {
+        vibrate_timer.d = vibrate_timer.q + 1; 
+      }
+       
+    } else {
+      vibrate_timer.d = 0; 
+    }
+    
  
     case(state.q) {
       
       state.SPLASHSCREEN:
         
         ctrl.state = 0;
-        tracks.track = b001;
+        tracks.track = 1;
         tracks.update = 1;
         vibrate_out = 1;
         
@@ -261,10 +280,10 @@ module mojo_top (
           level.d = new_level;
         }
         
-        vibrate_out = 1;
         
         reg_d.d = 4;
         see.d = 4;
+        perform_vibrate.d = 1;
         state.d = state.MENU_WAIT;
       
       state.SETUP:
@@ -273,6 +292,7 @@ module mojo_top (
         tracks.track = b010;
         tracks.update = 1;
         ctrl.state = 8;
+        vibrate_out = 1;
         
         player_pos_a.d = map.sp_a;
         player_pos_b.d = map.sp_b;
@@ -369,6 +389,7 @@ module mojo_top (
         // on the endpoint at the same time.
         
         ctrl.state = 5;
+        perform_vibrate.d = 1;
       
       state.d = r0 ? state.WIN : state.CHECKRESTART;
       

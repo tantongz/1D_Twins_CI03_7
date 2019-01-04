@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module digit_lut_36 (
+module digit_lut_37 (
     input [5:0] value,
     output reg [7:0] segs
   );

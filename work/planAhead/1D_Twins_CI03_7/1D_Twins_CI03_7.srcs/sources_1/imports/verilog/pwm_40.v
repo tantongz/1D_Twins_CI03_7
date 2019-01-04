@@ -7,7 +7,7 @@
 /*
    Parameters:
      WIDTH = 8
-     TOP = 62
+     TOP = 93
      DIV = 11
 */
 module pwm_40 (
@@ -19,7 +19,7 @@ module pwm_40 (
   );
   
   localparam WIDTH = 4'h8;
-  localparam TOP = 6'h3e;
+  localparam TOP = 7'h5d;
   localparam DIV = 4'hb;
   
   

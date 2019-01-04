@@ -19,13 +19,13 @@ module counter_50 (
   
   localparam SIZE = 4'h8;
   localparam DIV = 4'hb;
-  localparam TOP = 5'h1d;
+  localparam TOP = 5'h1c;
   localparam UP = 1'h1;
   
   
   reg [18:0] M_ctr_d, M_ctr_q = 1'h0;
   
-  localparam MAX_VALUE = 16'hefff;
+  localparam MAX_VALUE = 16'he7ff;
   
   always @* begin
     M_ctr_d = M_ctr_q;
@@ -33,13 +33,13 @@ module counter_50 (
     value = M_ctr_q[11+7-:8];
     if (1'h1) begin
       M_ctr_d = M_ctr_q + 1'h1;
-      if (1'h1 && M_ctr_q == 16'hefff) begin
+      if (1'h1 && M_ctr_q == 16'he7ff) begin
         M_ctr_d = 1'h0;
       end
     end else begin
       M_ctr_d = M_ctr_q - 1'h1;
       if (1'h1 && M_ctr_q == 1'h0) begin
-        M_ctr_d = 16'hefff;
+        M_ctr_d = 16'he7ff;
       end
     end
   end

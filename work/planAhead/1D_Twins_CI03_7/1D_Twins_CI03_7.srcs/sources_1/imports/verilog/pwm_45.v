@@ -7,10 +7,10 @@
 /*
    Parameters:
      WIDTH = 8
-     TOP = 93
+     TOP = 29
      DIV = 11
 */
-module pwm_39 (
+module pwm_45 (
     input clk,
     input rst,
     input [7:0] value,
@@ -19,12 +19,12 @@ module pwm_39 (
   );
   
   localparam WIDTH = 4'h8;
-  localparam TOP = 7'h5d;
+  localparam TOP = 5'h1d;
   localparam DIV = 4'hb;
   
   
   wire [8-1:0] M_ctr_value;
-  counter_45 ctr (
+  counter_51 ctr (
     .clk(clk),
     .rst(rst),
     .value(M_ctr_value)

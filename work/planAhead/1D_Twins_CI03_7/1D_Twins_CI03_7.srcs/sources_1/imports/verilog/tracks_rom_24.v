@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module tracks_rom_23 (
+module tracks_rom_24 (
     input [2:0] track,
     input update,
     input clk,
@@ -16,7 +16,7 @@ module tracks_rom_23 (
   
   
   wire [1-1:0] M_slowclk_value;
-  counter_38 slowclk (
+  counter_39 slowclk (
     .clk(clk),
     .rst(rst),
     .value(M_slowclk_value)
@@ -24,7 +24,7 @@ module tracks_rom_23 (
   wire [1-1:0] M_pC4_pulse;
   reg [8-1:0] M_pC4_value;
   reg [1-1:0] M_pC4_update;
-  pwm_39 pC4 (
+  pwm_40 pC4 (
     .clk(clk),
     .rst(rst),
     .value(M_pC4_value),
@@ -34,7 +34,7 @@ module tracks_rom_23 (
   wire [1-1:0] M_pG4_pulse;
   reg [8-1:0] M_pG4_value;
   reg [1-1:0] M_pG4_update;
-  pwm_40 pG4 (
+  pwm_41 pG4 (
     .clk(clk),
     .rst(rst),
     .value(M_pG4_value),
@@ -44,7 +44,7 @@ module tracks_rom_23 (
   wire [1-1:0] M_pC5_pulse;
   reg [8-1:0] M_pC5_value;
   reg [1-1:0] M_pC5_update;
-  pwm_41 pC5 (
+  pwm_42 pC5 (
     .clk(clk),
     .rst(rst),
     .value(M_pC5_value),
@@ -54,7 +54,7 @@ module tracks_rom_23 (
   wire [1-1:0] M_pC6_pulse;
   reg [8-1:0] M_pC6_value;
   reg [1-1:0] M_pC6_update;
-  pwm_42 pC6 (
+  pwm_43 pC6 (
     .clk(clk),
     .rst(rst),
     .value(M_pC6_value),
@@ -64,7 +64,7 @@ module tracks_rom_23 (
   wire [1-1:0] M_pA5_pulse;
   reg [8-1:0] M_pA5_value;
   reg [1-1:0] M_pA5_update;
-  pwm_43 pA5 (
+  pwm_44 pA5 (
     .clk(clk),
     .rst(rst),
     .value(M_pA5_value),
@@ -74,7 +74,7 @@ module tracks_rom_23 (
   wire [1-1:0] M_pGS5_pulse;
   reg [8-1:0] M_pGS5_value;
   reg [1-1:0] M_pGS5_update;
-  pwm_44 pGS5 (
+  pwm_45 pGS5 (
     .clk(clk),
     .rst(rst),
     .value(M_pGS5_value),

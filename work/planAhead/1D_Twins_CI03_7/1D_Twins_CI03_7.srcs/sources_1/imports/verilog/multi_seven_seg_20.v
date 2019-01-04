@@ -25,7 +25,7 @@ module multi_seven_seg_20 (
   localparam DIGIT_BITS = 2'h2;
   
   wire [2-1:0] M_ctr_value;
-  counter_35 ctr (
+  counter_36 ctr (
     .clk(clk),
     .rst(rst),
     .value(M_ctr_value)
@@ -33,14 +33,14 @@ module multi_seven_seg_20 (
   
   wire [8-1:0] M_seg_dec_segs;
   reg [6-1:0] M_seg_dec_value;
-  digit_lut_36 seg_dec (
+  digit_lut_37 seg_dec (
     .value(M_seg_dec_value),
     .segs(M_seg_dec_segs)
   );
   
   wire [4-1:0] M_digit_dec_out;
   reg [2-1:0] M_digit_dec_in;
-  decoder_37 digit_dec (
+  decoder_38 digit_dec (
     .in(M_digit_dec_in),
     .out(M_digit_dec_out)
   );
