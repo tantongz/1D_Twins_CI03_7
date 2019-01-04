@@ -164,10 +164,10 @@ Elaborating module <counter_50>.
 WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 363: Result of 16-bit expression is truncated to fit in 8-bit target.
 WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 428: Result of 3-bit expression is truncated to fit in 2-bit target.
 WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 438: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 504: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 514: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 523: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:1127 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 585: Assignment to M_leveltenth_q ignored, since the identifier is never used
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 505: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 515: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 524: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:1127 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 568: Assignment to M_leveltenth_q ignored, since the identifier is never used
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -185,8 +185,6 @@ INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7
 INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 116: Output port <v> of the instance <alu> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 116: Output port <n> of the instance <alu> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/mojo_top_0.v" line 139: Output port <hide_screen> of the instance <ctrl> is unconnected or connected to loadless signal.
-    Found 8-bit register for signal <M_win_timer_q>.
-    Found 4-bit register for signal <M_level_q>.
     Found 3-bit register for signal <M_reg_d_q>.
     Found 3-bit register for signal <M_see_q>.
     Found 1-bit register for signal <M_reg_s_q>.
@@ -196,7 +194,9 @@ INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7
     Found 16-bit register for signal <M_r1_q>.
     Found 16-bit register for signal <M_r2_q>.
     Found 4-bit register for signal <M_state_q>.
+    Found 8-bit register for signal <M_win_timer_q>.
     Found 8-bit register for signal <M_wait_timer_q>.
+    Found 4-bit register for signal <M_level_q>.
     Found finite state machine <FSM_0> for signal <M_state_q>.
     -----------------------------------------------------------------------
     | States             | 11                                             |
@@ -210,8 +210,8 @@ INFO:Xst:3210 - "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7
     -----------------------------------------------------------------------
     Found 4-bit subtractor for signal <M_level_q[3]_GND_1_o_sub_27_OUT> created at line 439.
     Found 4-bit adder for signal <M_level_q[3]_GND_1_o_add_25_OUT> created at line 439.
-    Found 8-bit adder for signal <M_wait_timer_q[7]_GND_1_o_add_38_OUT> created at line 474.
-    Found 8-bit adder for signal <M_win_timer_q[7]_GND_1_o_add_55_OUT> created at line 542.
+    Found 8-bit adder for signal <M_wait_timer_q[7]_GND_1_o_add_38_OUT> created at line 475.
+    Found 8-bit adder for signal <M_win_timer_q[7]_GND_1_o_add_55_OUT> created at line 543.
     Found 1-bit tristate buffer for signal <spi_miso> created at line 314
     Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 314
     Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 314
@@ -562,9 +562,9 @@ Unit <counter_22> synthesized.
 
 Synthesizing Unit <tracks_rom_23>.
     Related source file is "/home/ryan/twins/work/planAhead/1D_Twins_CI03_7/1D_Twins_CI03_7.srcs/sources_1/imports/verilog/tracks_rom_23.v".
+    Found 3-bit register for signal <M_actual_track_q>.
     Found 1-bit register for signal <M_playing_q>.
     Found 3-bit register for signal <M_index_q>.
-    Found 3-bit register for signal <M_actual_track_q>.
     Found 3-bit subtractor for signal <M_index_q[2]_GND_32_o_sub_5_OUT> created at line 126.
     Found 5-bit adder for signal <M_index_q[2]_GND_32_o_add_6_OUT> created at line 134.
     Found 55-bit shifter logical right for signal <n0080> created at line 134

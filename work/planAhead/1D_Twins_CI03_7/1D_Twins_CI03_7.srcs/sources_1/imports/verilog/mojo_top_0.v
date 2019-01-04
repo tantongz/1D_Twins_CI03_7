@@ -469,6 +469,7 @@ module mojo_top_0 (
         M_tracks_track = 3'h3;
         M_tracks_update = 1'h1;
         M_ctrl_state = 4'h9;
+        vibrate_out = 1'h1;
         M_player_pos_a_d = M_map_sp_a;
         M_player_pos_b_d = M_map_sp_b;
         M_wait_timer_d = M_wait_timer_q + 1'h1;
@@ -564,24 +565,6 @@ module mojo_top_0 (
     M_start_edge_detector_in = M_start_conditioner_out;
   end
   
-  always @(posedge M_midclock_value) begin
-    if (rst == 1'b1) begin
-      M_wait_timer_q <= 1'h0;
-    end else begin
-      M_wait_timer_q <= M_wait_timer_d;
-    end
-  end
-  
-  
-  always @(posedge M_slowclk_value) begin
-    if (rst == 1'b1) begin
-      M_win_timer_q <= 1'h0;
-    end else begin
-      M_win_timer_q <= M_win_timer_d;
-    end
-  end
-  
-  
   always @(posedge clk) begin
     M_level_q <= M_level_d;
     M_reg_d_q <= M_reg_d_d;
@@ -594,6 +577,24 @@ module mojo_top_0 (
     M_r1_q <= M_r1_d;
     M_r2_q <= M_r2_d;
     M_state_q <= M_state_d;
+  end
+  
+  
+  always @(posedge M_slowclk_value) begin
+    if (rst == 1'b1) begin
+      M_win_timer_q <= 1'h0;
+    end else begin
+      M_win_timer_q <= M_win_timer_d;
+    end
+  end
+  
+  
+  always @(posedge M_midclock_value) begin
+    if (rst == 1'b1) begin
+      M_wait_timer_q <= 1'h0;
+    end else begin
+      M_wait_timer_q <= M_wait_timer_d;
+    end
   end
   
 endmodule

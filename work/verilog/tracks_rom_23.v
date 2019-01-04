@@ -228,6 +228,15 @@ module tracks_rom_23 (
     end
   end
   
+  always @(posedge M_slowclk_value) begin
+    if (rst == 1'b1) begin
+      M_index_q <= 1'h0;
+    end else begin
+      M_index_q <= M_index_d;
+    end
+  end
+  
+  
   always @(posedge clk) begin
     if (rst == 1'b1) begin
       M_actual_track_q <= 1'h0;
@@ -235,15 +244,6 @@ module tracks_rom_23 (
     end else begin
       M_actual_track_q <= M_actual_track_d;
       M_playing_q <= M_playing_d;
-    end
-  end
-  
-  
-  always @(posedge M_slowclk_value) begin
-    if (rst == 1'b1) begin
-      M_index_q <= 1'h0;
-    end else begin
-      M_index_q <= M_index_d;
     end
   end
   

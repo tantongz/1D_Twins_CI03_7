@@ -289,6 +289,7 @@ module mojo_top (
         tracks.track = b011;
         tracks.update = 1;
         ctrl.state = 9;
+        vibrate_out = 1;
         
         player_pos_a.d = map.sp_a;
         player_pos_b.d = map.sp_b;

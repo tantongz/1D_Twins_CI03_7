@@ -108,15 +108,15 @@ module map_rom_2 (
         ep_b = 6'h21;
       end
       4'hc: begin
-        map_a = 36'hfe18658ff;
-        map_b = 36'hfe1a6387f;
+        map_a = 36'hfe186587f;
+        map_b = 36'hfe1a6187f;
         sp_a = 6'h0b;
         sp_b = 6'h0c;
         ep_a = 6'h1b;
         ep_b = 6'h0a;
       end
       4'hd: begin
-        map_a = 36'hfe19718ff;
+        map_a = 36'hfe19618ff;
         map_b = 36'hfe1c6387f;
         sp_a = 6'h21;
         sp_b = 6'h21;
