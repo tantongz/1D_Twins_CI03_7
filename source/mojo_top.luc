@@ -120,6 +120,7 @@ module mojo_top (
     
     tracks.track = 0;
     tracks.update = 0;
+    tracks.once = 0;
     buzzer_out = tracks.pulse;
     vibrate_out = 0;
     
@@ -291,6 +292,7 @@ module mojo_top (
         
         tracks.track = b010;
         tracks.update = 1;
+        tracks.once = 1;
         ctrl.state = 8;
         vibrate_out = 1;
         
@@ -308,6 +310,7 @@ module mojo_top (
         
         tracks.track = b011;
         tracks.update = 1;
+        tracks.once = 1;
         ctrl.state = 9;
         vibrate_out = 1;
         

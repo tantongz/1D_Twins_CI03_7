@@ -7,6 +7,7 @@
 module tracks_rom_24 (
     input [2:0] track,
     input update,
+    input once,
     input clk,
     input rst,
     output reg pulse,
@@ -53,6 +54,8 @@ module tracks_rom_24 (
   );
   reg [2:0] M_actual_track_d, M_actual_track_q = 1'h0;
   reg M_playing_d, M_playing_q = 1'h0;
+  reg M_play_once_d, M_play_once_q = 1'h0;
+  reg M_played_d, M_played_q = 1'h0;
   
   reg [2:0] M_index_d, M_index_q = 1'h0;
   
@@ -65,15 +68,32 @@ module tracks_rom_24 (
   reg [27:0] track4;
   
   always @* begin
+    M_play_once_d = M_play_once_q;
     M_index_d = M_index_q;
     M_playing_d = M_playing_q;
     M_actual_track_d = M_actual_track_q;
+    M_played_d = M_played_q;
     
     cur_index = M_index_q;
-    if (update == 1'h1) begin
-      M_actual_track_d = track;
-      M_index_d = 1'h0;
-      M_playing_d = 1'h1;
+    M_played_d = 1'h0;
+    if (update == 1'h1 && M_playing_q == 1'h0) begin
+      if (M_play_once_q == 1'h0) begin
+        M_actual_track_d = track;
+        M_play_once_d = once;
+        M_index_d = 1'h0;
+        M_playing_d = 1'h1;
+        M_played_d = 1'h0;
+      end
+      if (M_play_once_q == 1'h1 && M_played_q == 1'h0) begin
+        M_actual_track_d = track;
+        M_play_once_d = once;
+        M_index_d = 1'h0;
+        M_playing_d = 1'h1;
+      end
+    end
+    if (update == 1'h0) begin
+      M_play_once_d = 1'h0;
+      M_played_d = 1'h0;
     end
     M_pC4_update = 1'h1;
     M_pG4_update = 1'h1;
@@ -81,16 +101,17 @@ module tracks_rom_24 (
     M_pC4_value = 8'h08;
     M_pG4_value = 8'h08;
     M_pC5_value = 8'h08;
-    track1 = 28'h2323332;
-    track2 = 28'h2300000;
-    track3 = 28'h3200000;
-    track4 = 28'h3000000;
+    track1 = 28'h0233232;
+    track2 = 28'h0000032;
+    track3 = 28'h0000023;
+    track4 = 28'h0000000;
     pulse = 1'h0;
     if (M_playing_q == 1'h1) begin
-      M_index_d = M_index_q - 1'h1;
+      M_index_d = M_index_q + 1'h1;
       if (M_index_q == 3'h7) begin
         M_playing_d = 1'h0;
         M_index_d = 3'h0;
+        M_played_d = 1'h1;
       end
       
       case (M_actual_track_q)
@@ -170,9 +191,13 @@ module tracks_rom_24 (
     if (rst == 1'b1) begin
       M_actual_track_q <= 1'h0;
       M_playing_q <= 1'h0;
+      M_play_once_q <= 1'h0;
+      M_played_q <= 1'h0;
     end else begin
       M_actual_track_q <= M_actual_track_d;
       M_playing_q <= M_playing_d;
+      M_play_once_q <= M_play_once_d;
+      M_played_q <= M_played_d;
     end
   end
   

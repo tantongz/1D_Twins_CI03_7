@@ -300,11 +300,13 @@ module mojo_top_0 (
   wire [3-1:0] M_tracks_cur_index;
   reg [3-1:0] M_tracks_track;
   reg [1-1:0] M_tracks_update;
+  reg [1-1:0] M_tracks_once;
   tracks_rom_24 tracks (
     .clk(clk),
     .rst(rst),
     .track(M_tracks_track),
     .update(M_tracks_update),
+    .once(M_tracks_once),
     .pulse(M_tracks_pulse),
     .cur_index(M_tracks_cur_index)
   );
@@ -346,6 +348,7 @@ module mojo_top_0 (
     avr_rx = 1'bz;
     M_tracks_track = 1'h0;
     M_tracks_update = 1'h0;
+    M_tracks_once = 1'h0;
     buzzer_out = M_tracks_pulse;
     vibrate_out = 1'h0;
     r_red = M_mat_dis_row_red;
@@ -476,6 +479,7 @@ module mojo_top_0 (
       SETUP_state: begin
         M_tracks_track = 3'h2;
         M_tracks_update = 1'h1;
+        M_tracks_once = 1'h1;
         M_ctrl_state = 4'h8;
         vibrate_out = 1'h1;
         M_player_pos_a_d = M_map_sp_a;
@@ -489,6 +493,7 @@ module mojo_top_0 (
       RESET_state: begin
         M_tracks_track = 3'h3;
         M_tracks_update = 1'h1;
+        M_tracks_once = 1'h1;
         M_ctrl_state = 4'h9;
         vibrate_out = 1'h1;
         M_player_pos_a_d = M_map_sp_a;
@@ -596,15 +601,6 @@ module mojo_top_0 (
   end
   
   
-  always @(posedge M_slowclk_value) begin
-    if (rst == 1'b1) begin
-      M_win_timer_q <= 1'h0;
-    end else begin
-      M_win_timer_q <= M_win_timer_d;
-    end
-  end
-  
-  
   always @(posedge clk) begin
     M_level_q <= M_level_d;
     M_reg_d_q <= M_reg_d_d;
@@ -617,6 +613,15 @@ module mojo_top_0 (
     M_r2_q <= M_r2_d;
     M_perform_vibrate_q <= M_perform_vibrate_d;
     M_state_q <= M_state_d;
+  end
+  
+  
+  always @(posedge M_slowclk_value) begin
+    if (rst == 1'b1) begin
+      M_win_timer_q <= 1'h0;
+    end else begin
+      M_win_timer_q <= M_win_timer_d;
+    end
   end
   
   

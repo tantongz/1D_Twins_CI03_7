@@ -2,6 +2,7 @@
 module tracks_rom (
     input track[3],
     input update,
+    input once,
     input clk,
     input rst,
     
@@ -17,6 +18,8 @@ module tracks_rom (
        pwm pC5(#TOP(47), #DIV(11));
        dff actual_track[3];
        dff playing;
+       dff play_once;
+       dff played;
     }
   }
   
@@ -34,11 +37,28 @@ module tracks_rom (
   always {        
     
     cur_index = index.q;
+    played.d = 0;
     
-    if (update == 1) {
-      actual_track.d = track;
-      index.d = 0;
-      playing.d = 1;
+    if (update == 1 && playing.q == 0) {
+      if (play_once.q == 0) {
+        actual_track.d = track;
+        play_once.d = once;
+        index.d = 0;
+        playing.d = 1;
+        played.d = 0;
+      }
+      
+      if (play_once.q == 1 && played.q == 0) {
+        actual_track.d = track;
+        play_once.d = once;
+        index.d = 0;
+        playing.d = 1;
+      }
+    }
+    
+    if (update == 0) {
+       play_once.d = 0; 
+       played.d = 0;
     }
     
     pC4.update = 1;
@@ -49,19 +69,20 @@ module tracks_rom (
     pG4.value = b00001000;
     pC5.value = b00001000;
     
-    track1 = {4b0010, 4b0011, 4b0010, 4b0011, 4b0011, 4b0011, 4b0010}; // Splashscreen 
-    track2 = {4b0010, 4b0011, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000}; // Start level
-    track3 = {4b0011, 4b0010, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000}; // Dieded
-    track4 = {4b0011, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000}; // Move
+    track1 = {4b0000, 4b0010, 4b0011, 4b0011, 4b0010, 4b0011, 4b0010}; // Splashscreen 
+    track2 = {4b0000, 4b0000, 4b0000, 4b0000, 4b0000, 4b0011, 4b0010}; // Start level
+    track3 = {4b0000, 4b0000, 4b0000, 4b0000, 4b0000, 4b0010, 4b0011}; // Dieded
+    track4 = {4b0000, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000, 4b0000}; // Move
     
     pulse = 0;
     
     if (playing.q == 1) {
       
-      index.d = index.q - 1;
+      index.d = index.q + 1;
       if (index.q == b111) {
         playing.d = 0;  
         index.d = b000;
+        played.d = 1;
       }
       
       case (actual_track.q) {

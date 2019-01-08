@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Jan 08 13:00:40 2019
+// Written by: Map P.20131013 on Tue Jan 08 20:15:11 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -165,7 +165,8 @@ TIMEGRP clk = BEL "midclock/M_ctr_q_18" BEL "midclock/M_ctr_q_19" BEL
         "up_conditioner/M_ctr_q_16" BEL "up_conditioner/M_ctr_q_17" BEL
         "up_conditioner/M_ctr_q_18" BEL "up_conditioner/M_ctr_q_19" BEL
         "up_conditioner/sync/M_pipe_q_1" BEL
-        "up_conditioner/sync/Mshreg_M_pipe_q_1" BEL "tracks/M_playing_q" BEL
+        "up_conditioner/sync/Mshreg_M_pipe_q_1" BEL "tracks/M_played_q" BEL
+        "tracks/M_play_once_q" BEL "tracks/M_playing_q" BEL
         "tracks/M_actual_track_q_1" BEL "tracks/M_actual_track_q_0" BEL
         "tracks/pC4/M_needUpdate_q" BEL "tracks/pC4/M_nextValue_q" BEL
         "tracks/pC5/M_curValue_q_3" BEL "tracks/pC5/ctr/M_ctr_q_18" BEL
