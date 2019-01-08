@@ -120,8 +120,8 @@ module map_rom_2 (
         map_b = 36'hfe1c6387f;
         sp_a = 6'h21;
         sp_b = 6'h21;
-        ep_a = 6'h14;
-        ep_b = 6'h11;
+        ep_a = 6'h1c;
+        ep_b = 6'h19;
       end
       4'he: begin
         map_a = 36'hfe1a6397f;

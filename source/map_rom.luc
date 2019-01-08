@@ -261,8 +261,8 @@ module map_rom (
         
         sp_a = b100001;
         sp_b = b100001;
-        ep_a = b010100;
-        ep_b = b010001;
+        ep_a = b011100;
+        ep_b = b011001;
       
       14:  map_a = {b111111,
           b100001,

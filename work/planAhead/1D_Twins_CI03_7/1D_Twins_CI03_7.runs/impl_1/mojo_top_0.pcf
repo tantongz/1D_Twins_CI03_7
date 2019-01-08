@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Jan 04 18:19:07 2019
+// Written by: Map P.20131013 on Tue Jan 08 13:00:40 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -77,27 +77,25 @@ TIMEGRP clk = BEL "midclock/M_ctr_q_18" BEL "midclock/M_ctr_q_19" BEL
         "seg_display/ctr/M_ctr_q_11" BEL "seg_display/ctr/M_ctr_q_12" BEL
         "seg_display/ctr/M_ctr_q_13" BEL "seg_display/ctr/M_ctr_q_14" BEL
         "seg_display/ctr/M_ctr_q_15" BEL "seg_display/ctr/M_ctr_q_16" BEL
-        "seg_display/ctr/M_ctr_q_17" BEL "M_player_pos_a_q_0_1" BEL
-        "M_player_pos_a_q_0_2" BEL "M_perform_vibrate_q" BEL "clk_BUFGP/BUFG"
-        BEL "reset_cond/M_stage_q_3" BEL "reset_cond/M_stage_q_2" BEL
-        "reset_cond/M_stage_q_1" BEL "reset_cond/M_stage_q_0" BEL
-        "M_state_q_FSM_FFd3_1" BEL "M_player_pos_a_q_1_1" BEL
-        "reset_conditioner/M_ctr_q_0" BEL "reset_conditioner/M_ctr_q_1" BEL
-        "reset_conditioner/M_ctr_q_2" BEL "reset_conditioner/M_ctr_q_3" BEL
-        "reset_conditioner/M_ctr_q_4" BEL "reset_conditioner/M_ctr_q_5" BEL
-        "reset_conditioner/M_ctr_q_6" BEL "reset_conditioner/M_ctr_q_7" BEL
-        "reset_conditioner/M_ctr_q_8" BEL "reset_conditioner/M_ctr_q_9" BEL
-        "reset_conditioner/M_ctr_q_10" BEL "reset_conditioner/M_ctr_q_11" BEL
-        "reset_conditioner/M_ctr_q_12" BEL "reset_conditioner/M_ctr_q_13" BEL
-        "reset_conditioner/M_ctr_q_14" BEL "reset_conditioner/M_ctr_q_15" BEL
-        "reset_conditioner/M_ctr_q_16" BEL "reset_conditioner/M_ctr_q_17" BEL
-        "reset_conditioner/M_ctr_q_18" BEL "reset_conditioner/M_ctr_q_19" BEL
-        "reset_conditioner/sync/M_pipe_q_1" BEL
-        "reset_conditioner/sync/Mshreg_M_pipe_q_1" BEL "M_see_q_0" BEL
+        "seg_display/ctr/M_ctr_q_17" BEL "M_perform_vibrate_q" BEL
+        "clk_BUFGP/BUFG" BEL "reset_cond/M_stage_q_3" BEL
+        "reset_cond/M_stage_q_2" BEL "reset_cond/M_stage_q_1" BEL
+        "reset_cond/M_stage_q_0" BEL "M_state_q_FSM_FFd3_1" BEL
+        "M_state_q_FSM_FFd3_2" BEL "reset_conditioner/M_ctr_q_0" BEL
+        "reset_conditioner/M_ctr_q_1" BEL "reset_conditioner/M_ctr_q_2" BEL
+        "reset_conditioner/M_ctr_q_3" BEL "reset_conditioner/M_ctr_q_4" BEL
+        "reset_conditioner/M_ctr_q_5" BEL "reset_conditioner/M_ctr_q_6" BEL
+        "reset_conditioner/M_ctr_q_7" BEL "reset_conditioner/M_ctr_q_8" BEL
+        "reset_conditioner/M_ctr_q_9" BEL "reset_conditioner/M_ctr_q_10" BEL
+        "reset_conditioner/M_ctr_q_11" BEL "reset_conditioner/M_ctr_q_12" BEL
+        "reset_conditioner/M_ctr_q_13" BEL "reset_conditioner/M_ctr_q_14" BEL
+        "reset_conditioner/M_ctr_q_15" BEL "reset_conditioner/M_ctr_q_16" BEL
+        "reset_conditioner/M_ctr_q_17" BEL "reset_conditioner/M_ctr_q_18" BEL
+        "reset_conditioner/M_ctr_q_19" BEL "reset_conditioner/sync/M_pipe_q_1"
+        BEL "reset_conditioner/sync/Mshreg_M_pipe_q_1" BEL "M_see_q_0" BEL
         "M_see_q_1" BEL "M_state_q_FSM_FFd4_1" BEL "M_player_pos_b_q_0" BEL
         "M_player_pos_b_q_1" BEL "M_player_pos_b_q_2" BEL "M_player_pos_b_q_3"
         BEL "M_player_pos_b_q_4" BEL "M_player_pos_b_q_5" BEL
-        "M_player_pos_b_q_0_1" BEL "M_player_pos_b_q_0_2" BEL
         "down_edge_detector/M_last_q" BEL "M_state_q_FSM_FFd1" BEL
         "M_state_q_FSM_FFd2" BEL "M_state_q_FSM_FFd3" BEL "M_state_q_FSM_FFd4"
         BEL "M_reg_d_q_0" BEL "M_reg_d_q_1" BEL "M_reg_d_q_2" BEL

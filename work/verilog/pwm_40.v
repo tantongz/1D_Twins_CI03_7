@@ -24,7 +24,7 @@ module pwm_40 (
   
   
   wire [8-1:0] M_ctr_value;
-  counter_46 ctr (
+  counter_43 ctr (
     .clk(clk),
     .rst(rst),
     .value(M_ctr_value)

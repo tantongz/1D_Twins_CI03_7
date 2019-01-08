@@ -11,7 +11,7 @@
      TOP = TOP
      UP = 1
 */
-module counter_51 (
+module counter_45 (
     input clk,
     input rst,
     output reg [7:0] value
@@ -19,13 +19,13 @@ module counter_51 (
   
   localparam SIZE = 4'h8;
   localparam DIV = 4'hb;
-  localparam TOP = 5'h1d;
+  localparam TOP = 6'h2f;
   localparam UP = 1'h1;
   
   
   reg [18:0] M_ctr_d, M_ctr_q = 1'h0;
   
-  localparam MAX_VALUE = 16'hefff;
+  localparam MAX_VALUE = 17'h17fff;
   
   always @* begin
     M_ctr_d = M_ctr_q;
@@ -33,13 +33,13 @@ module counter_51 (
     value = M_ctr_q[11+7-:8];
     if (1'h1) begin
       M_ctr_d = M_ctr_q + 1'h1;
-      if (1'h1 && M_ctr_q == 16'hefff) begin
+      if (1'h1 && M_ctr_q == 17'h17fff) begin
         M_ctr_d = 1'h0;
       end
     end else begin
       M_ctr_d = M_ctr_q - 1'h1;
       if (1'h1 && M_ctr_q == 1'h0) begin
-        M_ctr_d = 16'hefff;
+        M_ctr_d = 17'h17fff;
       end
     end
   end

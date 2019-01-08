@@ -51,36 +51,6 @@ module tracks_rom_24 (
     .update(M_pC5_update),
     .pulse(M_pC5_pulse)
   );
-  wire [1-1:0] M_pC6_pulse;
-  reg [8-1:0] M_pC6_value;
-  reg [1-1:0] M_pC6_update;
-  pwm_43 pC6 (
-    .clk(clk),
-    .rst(rst),
-    .value(M_pC6_value),
-    .update(M_pC6_update),
-    .pulse(M_pC6_pulse)
-  );
-  wire [1-1:0] M_pA5_pulse;
-  reg [8-1:0] M_pA5_value;
-  reg [1-1:0] M_pA5_update;
-  pwm_44 pA5 (
-    .clk(clk),
-    .rst(rst),
-    .value(M_pA5_value),
-    .update(M_pA5_update),
-    .pulse(M_pA5_pulse)
-  );
-  wire [1-1:0] M_pGS5_pulse;
-  reg [8-1:0] M_pGS5_value;
-  reg [1-1:0] M_pGS5_update;
-  pwm_45 pGS5 (
-    .clk(clk),
-    .rst(rst),
-    .value(M_pGS5_value),
-    .update(M_pGS5_update),
-    .pulse(M_pGS5_pulse)
-  );
   reg [2:0] M_actual_track_d, M_actual_track_q = 1'h0;
   reg M_playing_d, M_playing_q = 1'h0;
   
@@ -108,15 +78,9 @@ module tracks_rom_24 (
     M_pC4_update = 1'h1;
     M_pG4_update = 1'h1;
     M_pC5_update = 1'h1;
-    M_pC6_update = 1'h1;
-    M_pA5_update = 1'h1;
-    M_pGS5_update = 1'h1;
     M_pC4_value = 8'h08;
     M_pG4_value = 8'h08;
     M_pC5_value = 8'h08;
-    M_pC6_value = 8'h08;
-    M_pA5_value = 8'h08;
-    M_pGS5_value = 8'h08;
     track1 = 28'h2323332;
     track2 = 28'h2300000;
     track3 = 28'h3200000;
@@ -126,6 +90,7 @@ module tracks_rom_24 (
       M_index_d = M_index_q - 1'h1;
       if (M_index_q == 3'h7) begin
         M_playing_d = 1'h0;
+        M_index_d = 3'h0;
       end
       
       case (M_actual_track_q)
@@ -141,15 +106,6 @@ module tracks_rom_24 (
             2'h3: begin
               pulse = M_pC5_pulse;
             end
-            3'h4: begin
-              pulse = M_pC6_pulse;
-            end
-            3'h5: begin
-              pulse = M_pA5_pulse;
-            end
-            3'h6: begin
-              pulse = M_pGS5_pulse;
-            end
           endcase
         end
         3'h2: begin
@@ -163,15 +119,6 @@ module tracks_rom_24 (
             end
             2'h3: begin
               pulse = M_pC5_pulse;
-            end
-            3'h4: begin
-              pulse = M_pC6_pulse;
-            end
-            3'h5: begin
-              pulse = M_pA5_pulse;
-            end
-            3'h6: begin
-              pulse = M_pGS5_pulse;
             end
           endcase
         end
@@ -187,15 +134,6 @@ module tracks_rom_24 (
             2'h3: begin
               pulse = M_pC5_pulse;
             end
-            3'h4: begin
-              pulse = M_pC6_pulse;
-            end
-            3'h5: begin
-              pulse = M_pA5_pulse;
-            end
-            3'h6: begin
-              pulse = M_pGS5_pulse;
-            end
           endcase
         end
         3'h4: begin
@@ -209,15 +147,6 @@ module tracks_rom_24 (
             end
             2'h3: begin
               pulse = M_pC5_pulse;
-            end
-            3'h4: begin
-              pulse = M_pC6_pulse;
-            end
-            3'h5: begin
-              pulse = M_pA5_pulse;
-            end
-            3'h6: begin
-              pulse = M_pGS5_pulse;
             end
           endcase
         end
