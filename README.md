@@ -29,7 +29,11 @@ How to play:
 4. If you’re stuck, press reset to move the robots back to their starting positions.
 Hint: Obstacles aren’t there to just block you. Use them to your advantage!
 
-![Twins Video](Images/video.mp4 "Demo")
+![Twins Video](Images/Demo1.gif "Win")</br>
+Video 1: Example of a Win </br>
+
+![Twins Video](Images/Demo2.gif "Lose")</br>
+Video 2: Example of a Lose
 
 <p>For more information our prototyping development please refer to our <a href="https://github.com/teezhiyao/1D_Twins_CI03_7/blob/master/Report.pdf/" title="report">
 report</a>.</p>
