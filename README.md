@@ -16,11 +16,11 @@ Figure 2: Final Build
 
 ## User Manual
 Rules:
-● Controls will move both robots on the maze
-● Robots can only move onto empty spots
-● Robots cannot move obstacles
-● Both robots have the reach their exits together to win the level.
-● When only 1 robot reaches the exit, it is a lose and the level will restart. 
+* Controls will move both robots on the maze
+* Robots can only move onto empty spots
+* Robots cannot move obstacles
+* Both robots have the reach their exits together to win the level.
+* When only 1 robot reaches the exit, it is a lose and the level will restart. 
  
 How to play:
 1. On the map selection screen, use the direction buttons to scroll through the different levels.
